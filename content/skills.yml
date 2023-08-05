@@ -1,0 +1,14 @@
+- name: JavaScript
+  level: Advanced
+- name: TypeScript
+  level: Advanced
+- name: MongoDB
+  level: Advanced
+- name: Firebase
+  level: Advanced
+- name: Golang
+  level: Intermediate
+- name: PostgreSQL
+  level: Intermediate
+- name: MySQL
+  level: Intermediate
