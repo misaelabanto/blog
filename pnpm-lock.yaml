@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+dependencies:
+  '@unocss/reset':
+    specifier: ^0.54.1
+    version: 0.54.1
+
 devDependencies:
   '@nuxt/content':
     specifier: ^2.7.2
@@ -1474,6 +1479,10 @@ packages:
   /@unocss/reset@0.54.0:
     resolution: {integrity: sha512-zxvr96hVsmvJtxCLatLSCc67RBEgqvVDhEtkIFxIz5oCJzxvipJTGdKxM4F6Akyzx1A+q7zM8dimqvmC6D5Idw==}
     dev: true
+
+  /@unocss/reset@0.54.1:
+    resolution: {integrity: sha512-qZcmybayQTX4QP7ya7jteN9IySU/ViK8HcCpixHA1ttUrsQeSURgdy01E74p+TsWDH0SY7vYmOy+HbYfQNycqQ==}
+    dev: false
 
   /@unocss/scope@0.54.0:
     resolution: {integrity: sha512-47M3y3sl512BWZL5/aLrGPglQIRUjQrIW+WVVh3uzwIGVnDNHlxIhcHQUXXJuf8SLduXoIvcZQTfJt+jSXeuhA==}
