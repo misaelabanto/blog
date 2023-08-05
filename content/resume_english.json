@@ -1,0 +1,489 @@
+{
+    "basics": {
+        "name": "Misael Abanto",
+        "email": "misaelabanto@gmail.com",
+        "phone": "",
+        "photo": {
+            "url": "https://cdn.rxresu.me/uploads/181457/578622/1691009845694.jpeg",
+            "filters": {
+                "size": 128,
+                "shape": "circle",
+                "border": false,
+                "grayscale": false
+            },
+            "visible": true
+        },
+        "summary": "Graduated from Systems Engineering. High level in ideas communication and change proactive. Capacity for finding and solving problems using technology and continuous learning.",
+        "website": "https://misaelabanto.com",
+        "headline": "Passionate about technology and software",
+        "location": {
+            "city": "Lima",
+            "region": "",
+            "address": "",
+            "country": "Peru",
+            "postalCode": ""
+        },
+        "profiles": [
+            {
+                "id": "e9cd4a98-8649-4c8a-9c0e-bf463c5f3f4c",
+                "url": "https://linkedin.com/in/misaelabanto",
+                "network": "LinkedIn",
+                "username": "linkedin.com/in/misaelabanto"
+            },
+            {
+                "id": "b8d515b8-0d38-462b-8b0c-c780f857f334",
+                "url": "https://github.com/misaelabanto",
+                "network": "Github",
+                "username": "github.com/misaelabanto"
+            },
+            {
+                "id": "a6b1ccd2-5216-4214-ad15-83d766033962",
+                "url": "https://x.com/_misaelabanto",
+                "network": "Twitter",
+                "username": "x.com/_misaelabanto"
+            },
+            {
+                "id": "c3391ecd-99e7-414d-9e4a-4500e7978afc",
+                "url": "https://gitlab.com/misaelabanto",
+                "network": "Gitlab",
+                "username": "gitlab.com/misaelabanto"
+            },
+            {
+                "id": "1ee2fd89-878a-42cd-909b-0aeba44d5faa",
+                "url": "https://pluralsight.com/profile/misaelabanto",
+                "network": "Pluralsight",
+                "username": "pluralsight.com/misaelabanto"
+            },
+            {
+                "id": "a725ec41-d3fa-49a0-9ed7-d2852da3497b",
+                "url": "https://t.me/misaelabanto",
+                "network": "Telegram",
+                "username": "t.me/misaelabanto"
+            }
+        ],
+        "birthdate": ""
+    },
+    "sections": {
+        "work": {
+            "id": "work",
+            "name": "Work Experience",
+            "type": "work",
+            "items": [
+                {
+                    "id": "ac9bb29f-ce4f-4dbc-9372-1e35a43eff49",
+                    "url": "https://www.bancoripley.com.pe/",
+                    "date": {
+                        "end": "2021-07-21",
+                        "start": "2020-03-09"
+                    },
+                    "name": "Banco Ripley",
+                    "summary": "- **Infrastructure:** AWS S3, AWS Cloudfront, Google Cloud Platform, Cloudflare Workers\n- **Frontend:** Angular",
+                    "position": "Frontend Developer"
+                },
+                {
+                    "id": "276d28ba-0629-4dd9-b2ef-8b577b8f61ff",
+                    "url": "https://agendalo.io",
+                    "date": {
+                        "end": "2021-10-01",
+                        "start": "2020-07-20"
+                    },
+                    "name": "Agendalo.io Project",
+                    "summary": "Meetings management for professionals\n- **Infrastructure:** AWS EC2, Amplify, S3, SES\n- **Database:** MongoDB\n- **Backend:** Express.js\n- **Frontend:** Vue.js\n- **APIs:** Mercadopago, Niubiz, Zoom, Google Events\n- **CI/CD:** Docker, Gitlab Pipelines",
+                    "position": "Software Developer"
+                },
+                {
+                    "id": "dde2c1f4-c843-4f66-842e-8712ad42f616",
+                    "url": "https://devsu.com",
+                    "date": {
+                        "end": "2022-01-02",
+                        "start": "2021-08-01"
+                    },
+                    "name": "Devsu",
+                    "summary": "Web development\n- **Infrastructure:** GoogleCloud, Azure\n- **Frontend:** React\n- **Backend:** Spring, Node.js, GraphQL",
+                    "position": "Software Developer"
+                },
+                {
+                    "id": "7b061908-cd9a-4a77-9f3b-ff9357a3e079",
+                    "url": "https://agendalo.io",
+                    "date": {
+                        "end": "",
+                        "start": "2021-10-01"
+                    },
+                    "name": "Agendalo.io",
+                    "summary": "Head of technology\n- **Infrastructure:** AWS EC2, Lambda, CloudFormation, Cloudfront, SES, \n- **Database:** MongoDB\n- **Backend:** Nest.js, Golang\n- **Frontend:** Nuxt.js, TailwindCSS, Maizzle \n- **APIs:** MercadoPago, Stripe, Zoom, WhatsApp, \n- **CI/CD:** Docker, Github Actions",
+                    "position": "Founder & CTO"
+                }
+            ],
+            "columns": 1,
+            "visible": true
+        },
+        "awards": {
+            "id": "awards",
+            "name": "Awards",
+            "type": "basic",
+            "items": [],
+            "columns": 2,
+            "visible": true
+        },
+        "skills": {
+            "id": "skills",
+            "name": "Skills",
+            "type": "basic",
+            "items": [
+                {
+                    "id": "0507c9d0-b858-483f-9364-8cabf13a1c83",
+                    "name": "JavaScript",
+                    "level": "Advanced",
+                    "keywords": [
+                        "Node.js",
+                        "Express.js",
+                        "Vue.js",
+                        "Angular",
+                        "React"
+                    ],
+                    "levelNum": 10
+                },
+                {
+                    "id": "888ed9f4-5ee8-4b33-9b4c-5c9a08cff3c6",
+                    "name": "TypeScript",
+                    "level": "Advanced",
+                    "keywords": [
+                        "Generics",
+                        "Nest.js",
+                        "Reflect Metadata"
+                    ],
+                    "levelNum": 9
+                },
+                {
+                    "id": "d597fa02-51a9-4f59-94ac-3963d56c1817",
+                    "name": "C/C++",
+                    "level": "Intermediate",
+                    "keywords": [
+                        "Pointers",
+                        "Data structures"
+                    ],
+                    "levelNum": 6
+                },
+                {
+                    "id": "be5f22e2-4004-4b80-be7b-e01a916b1983",
+                    "name": "Python",
+                    "level": "Advanced",
+                    "keywords": [
+                        "Classes",
+                        "Async/await",
+                        "Scikit-learn"
+                    ],
+                    "levelNum": 9
+                },
+                {
+                    "id": "90a58441-50d4-427a-9056-e9f3d4e26bcf",
+                    "name": "Golang",
+                    "level": "Intermediate",
+                    "keywords": [
+                        "Dynamic types",
+                        "Gin gonic",
+                        "Resty"
+                    ],
+                    "levelNum": 6
+                },
+                {
+                    "id": "9092a50c-72e7-4ce2-87a1-b3e131dd8e96",
+                    "name": "MySQL",
+                    "level": "Advanced",
+                    "keywords": [
+                        "Complex queries",
+                        "Stores procedures",
+                        "Functions"
+                    ],
+                    "levelNum": 8
+                },
+                {
+                    "id": "f9bfd8d5-0254-4128-ba8d-8dc691426b9c",
+                    "name": "PostgreSQL",
+                    "level": "Intermediate",
+                    "keywords": [
+                        "Complex queries",
+                        "Indexes"
+                    ],
+                    "levelNum": 6
+                },
+                {
+                    "id": "d6798237-e55c-4d6b-add7-e03124d1328c",
+                    "name": "MongoDB",
+                    "level": "Advanced",
+                    "keywords": [
+                        "Aggregation",
+                        "Replicas Cluster",
+                        "Indexes"
+                    ],
+                    "levelNum": 9
+                },
+                {
+                    "id": "cd9b8358-a6b7-4342-9081-405f602c309f",
+                    "name": "Linux",
+                    "level": "Intermediate",
+                    "keywords": [
+                        "Server administration",
+                        "Nginx",
+                        "Certbot"
+                    ],
+                    "levelNum": 9
+                },
+                {
+                    "id": "1509cb6d-6cd4-4545-89b9-7c9a1770add0",
+                    "name": "CI/CD",
+                    "level": "Intermediate",
+                    "keywords": [
+                        "Docker",
+                        "Github Actions",
+                        "AWS App Runner",
+                        "Serverless"
+                    ],
+                    "levelNum": 8
+                },
+                {
+                    "id": "ce035c51-422c-4e79-9ed0-89206dc9c0e8",
+                    "name": "Cibersecurity",
+                    "level": "Intermediate",
+                    "keywords": [
+                        "Pentesting",
+                        "Web Ethical Hacking",
+                        "Server security"
+                    ],
+                    "levelNum": 8
+                }
+            ],
+            "columns": 2,
+            "visible": true
+        },
+        "projects": {
+            "id": "projects",
+            "name": "Projects",
+            "type": "basic",
+            "items": [
+                {
+                    "id": "14b9840d-526b-4732-ad5c-d05d3ce042e3",
+                    "url": "https://facebook.com/orcebot",
+                    "date": {
+                        "end": "2018-01-01",
+                        "start": "2017-01-04"
+                    },
+                    "name": "Orcebot",
+                    "summary": "- **Infrastructure** Heroku\n- **Database:** Firebase\n- **Backend:** Express.js, Webscraping with cheerio\n- **Platform:** Facebook Messenger API",
+                    "keywords": [
+                        "Chatbot",
+                        "Facebook messenger",
+                        "Node.js"
+                    ],
+                    "description": "Chatbot for visualizing college grades"
+                },
+                {
+                    "id": "caad0fbc-f34c-413d-895e-25ea490a7ccc",
+                    "url": "https://covid19.orcebot.com",
+                    "date": {
+                        "end": "2020-08-15",
+                        "start": "2020-03-01"
+                    },
+                    "name": "CovidBot",
+                    "summary": "- **Infrastructure:** AWS Amplify\n- **Database:** JSON files\n- **Backend:** Express.js, Webscraping with cheerio\n- **Platform:** Facebook Messenger API",
+                    "keywords": [],
+                    "description": "Peru COVID-19 Stats"
+                }
+            ],
+            "columns": 1,
+            "visible": true
+        },
+        "education": {
+            "id": "education",
+            "name": "Education",
+            "type": "basic",
+            "items": [
+                {
+                    "id": "03043428-c031-4647-8f6d-957209fa303c",
+                    "url": "https://uni.edu.pe",
+                    "area": "Systems Engineering",
+                    "date": {
+                        "end": "2021-08-02",
+                        "start": "2015-08-10"
+                    },
+                    "score": "",
+                    "degree": "Bachelor",
+                    "courses": [
+                        "Algorithms and Data Structures",
+                        "Object Oriented Programming",
+                        "Data Modelling",
+                        "Database Management",
+                        "Information Project Management"
+                    ],
+                    "summary": "",
+                    "institution": "National University of Engineering"
+                }
+            ],
+            "columns": 1,
+            "visible": true
+        },
+        "interests": {
+            "id": "interests",
+            "name": "Interests",
+            "type": "basic",
+            "items": [
+                {
+                    "id": "3ded2ed4-f6c8-4140-80d9-67a6beb36cc3",
+                    "name": "Books",
+                    "keywords": [
+                        "Terror cósmico",
+                        "Ensayo",
+                        "Ciencia ficción dura"
+                    ]
+                },
+                {
+                    "id": "25d00c3a-7760-4cea-8ada-a858c61a5ea1",
+                    "name": "Astronomy",
+                    "keywords": [
+                        "Astrobiology",
+                        "Cosmogenesis",
+                        "Exoplanets"
+                    ]
+                },
+                {
+                    "id": "ff78f4dc-1b52-4232-98af-e246c95619da",
+                    "name": "Puzzles",
+                    "keywords": [
+                        "+1000 pieces"
+                    ]
+                }
+            ],
+            "columns": 2,
+            "visible": true
+        },
+        "languages": {
+            "id": "languages",
+            "name": "Languages",
+            "type": "basic",
+            "items": [
+                {
+                    "id": "135f656a-8500-48ec-831c-e2e436b8656c",
+                    "name": "Spanish",
+                    "level": "Native",
+                    "levelNum": 10
+                },
+                {
+                    "id": "8c14762c-89f5-4ce7-afa0-710a1fd50f0e",
+                    "name": "English",
+                    "level": "Advanced",
+                    "levelNum": 8
+                },
+                {
+                    "id": "2e249f15-3f29-47fc-90f0-800eface7881",
+                    "name": "French",
+                    "level": "Beginner",
+                    "levelNum": 1
+                }
+            ],
+            "columns": 2,
+            "visible": true
+        },
+        "volunteer": {
+            "id": "volunteer",
+            "name": "Volunteer Experience",
+            "type": "basic",
+            "items": [
+                {
+                    "id": "4db857c1-d98f-4c1b-a5ae-27a4f80d649c",
+                    "url": "https://facebook.com/nixvoid",
+                    "date": {
+                        "end": "",
+                        "start": "2017-01-02"
+                    },
+                    "summary": "I conduct workshops and provide consulting for those interested in software and technology. I also develop projects in collaboration with other members.",
+                    "position": "Mentor",
+                    "organization": "Nixvoid"
+                }
+            ],
+            "columns": 1,
+            "visible": true
+        },
+        "references": {
+            "id": "references",
+            "name": "References",
+            "type": "basic",
+            "items": [
+                {
+                    "id": "4366ef94-c04b-4be9-bc3a-a12e7d7e7048",
+                    "name": "Rony Hancco",
+                    "email": "rony.hancco@gmail.com",
+                    "phone": "",
+                    "summary": "He was my professor and collaborator on several projects. We also served as mentors at Nixvoid",
+                    "relationship": "Professor"
+                }
+            ],
+            "columns": 1,
+            "visible": true
+        },
+        "publications": {
+            "id": "publications",
+            "name": "Publications",
+            "type": "basic",
+            "items": [],
+            "columns": 2,
+            "visible": true
+        },
+        "certifications": {
+            "id": "certifications",
+            "name": "Certifications",
+            "type": "basic",
+            "items": [],
+            "columns": 2,
+            "visible": true
+        }
+    },
+    "metadata": {
+        "css": {
+            "value": "/* Enter custom CSS here */\n\n* {\n    outline: 1px solid #000;\n}",
+            "visible": false
+        },
+        "date": {
+            "format": "MMMM DD, YYYY"
+        },
+        "page": {
+            "format": "A4"
+        },
+        "theme": {
+            "text": "#000000",
+            "primary": "#4896d5",
+            "background": "#ffffff"
+        },
+        "layout": [
+            [
+                [
+                    "work",
+                    "education",
+                    "languages",
+                    "references"
+                ],
+                [
+                    "skills",
+                    "projects",
+                    "volunteer",
+                    "awards",
+                    "certifications",
+                    "publications",
+                    "interests"
+                ]
+            ]
+        ],
+        "locale": "en",
+        "template": "leafish",
+        "typography": {
+            "size": {
+                "body": 14,
+                "heading": 28
+            },
+            "family": {
+                "body": "Open Sans",
+                "heading": "Fira Code"
+            }
+        }
+    },
+    "public": true
+}
