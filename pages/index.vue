@@ -10,7 +10,6 @@ const skills = skillsResponse?.body;
 
 <template>
 	<div>
-		hola
 		<ul>
 			<li v-for="skill in skills" :key="skill.name">
 				{{ skill.name }}: {{ skill.level }}
