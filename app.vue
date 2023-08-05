@@ -1,5 +1,5 @@
 <template>
-  <div>
-    <NuxtPage />
-  </div>
+	<Html class="font-sans">
+		<NuxtPage />
+	</Html>
 </template>
