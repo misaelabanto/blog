@@ -7,7 +7,7 @@ export type Skills = {
 	visible: boolean;
 };
 
-type SkillItem = {
+export type SkillItem = {
 	id: string;
 	name: string;
 	level: string;

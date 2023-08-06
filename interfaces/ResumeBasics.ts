@@ -6,25 +6,25 @@ export type Basics = {
 	summary: string;
 	website: string;
 	headline: string;
-	location: Location;
+	location: ProfileLocation;
 	profiles: Profile[];
 	birthdate: string;
 };
 
-type Photo = {
+export type Photo = {
 	url: string;
 	filters: Filters;
 	visible: boolean;
 };
 
-type Filters = {
+export type Filters = {
 	size: number;
 	shape: string;
 	border: boolean;
 	grayscale: boolean;
 };
 
-type ProfileLocation = {
+export type ProfileLocation = {
 	city: string;
 	region: string;
 	address: string;
@@ -32,7 +32,7 @@ type ProfileLocation = {
 	postalCode: string;
 };
 
-type Profile = {
+export type Profile = {
 	id: string;
 	url: string;
 	network: string;
