@@ -288,6 +288,18 @@
                     "summary": "- **Infrastructure:** AWS Amplify\n- **Database:** JSON files\n- **Backend:** Express.js, Webscraping with cheerio\n- **Platform:** Facebook Messenger API",
                     "keywords": [],
                     "description": "Peru COVID-19 Stats"
+                },
+                {
+                    "id": "12adb2f9-5b69-4b13-ac13-8dffa5651487",
+                    "url": "https://play.google.com/store/apps/details?id=app.openlinks.kaliman_reader_app",
+                    "date": {
+                        "end": "",
+                        "start": "2023-02-07"
+                    },
+                    "name": "Kaliman Reeader",
+                    "summary": "- **Backend:** AWS Lambda\n- **Frontend:** Flutter\n- **Storage:** AWS S3",
+                    "keywords": [],
+                    "description": "A Kaliman Comics reader made with Flutter"
                 }
             ],
             "columns": 1,
