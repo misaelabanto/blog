@@ -1,8 +1,8 @@
 <template>
-	<div>
+	<div class="py-4">
 		<h1 class="text-2xl">{{ skill.name }}</h1>
 		<p>{{ skill.level }}</p>
-		<SkillMetric :num="skill.levelNum" />
+		<AboutSkillMetric :num="skill.levelNum" />
 	</div>
 </template>
 
