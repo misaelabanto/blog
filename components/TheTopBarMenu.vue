@@ -24,13 +24,6 @@
 			<li class="h-8">
 				<NuxtLink
 					class="hover:underline hover:underline-dotted hover:underline-blue"
-					to="/about"
-					>Sobre mí</NuxtLink
-				>
-			</li>
-			<li class="h-8">
-				<NuxtLink
-					class="hover:underline hover:underline-dotted hover:underline-blue"
 					href="https://rxresu.me/misaelabanto/english"
 					>Resume/CV</NuxtLink
 				>
