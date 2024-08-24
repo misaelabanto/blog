@@ -2,6 +2,7 @@
 title: La ridícula idea de no volver a verte
 post: true
 image: ./la-ridicula-idea-de-no-volver-a-verte_rosa-montero.jpg
+publishedAt: 2022-05-01
 ---
 
 Acabo de leer el primer libro de Rosa Montero en mi vida. En realidad no pensaba que tuviese la estructura que tiene: mi papá me dijo que era un libro sobre Marie Curie y me contagió su entusiasmo por leerlo. Lo empecé poco después que él, pero no entendía en qué momento empezaba exactamente. No sabía si saltarme el prólogo o no, dado que algunas veces me he visto atacado por spoilers luego de leer el prólogo y, créeme, la sensación es mucho peor en un libro.

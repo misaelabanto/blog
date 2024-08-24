@@ -11,6 +11,11 @@ const { data: entries, refresh } = await useAsyncData('page-data', () =>
 				post: true,
 			},
 		],
+		sortBy: [
+			{
+				createdAt: -1,
+			},
+		],
 	}).find()
 );
 const showMore = ref();
