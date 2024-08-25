@@ -13,7 +13,7 @@ const { data: entries, refresh } = await useAsyncData('page-data', () =>
 		],
 		sortBy: [
 			{
-				createdAt: -1,
+				publishedAt: -1,
 			},
 		],
 	}).find()
@@ -33,7 +33,9 @@ useIntersectionObserver(showMore, async () => {
 		<h1 class="text-3xl text-blue font-serif mt-4 mb-2 text-center">
 			Últimas publicaciones
 		</h1>
-		<BlogEntry v-for="entry in entries" :entry="entry" :key="entry._id" />
+		<div class="grid sm:grid-cols-2 md:grid-cols-3">
+			<BlogEntry v-for="entry in entries" :entry="entry" :key="entry._id" />
+		</div>
 		<div ref="showMore" class="text-center">{{ showMoreText }}</div>
 	</div>
 </template>

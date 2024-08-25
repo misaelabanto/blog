@@ -1,10 +1,10 @@
 <template>
-	<h1 class="text-4xl text-blue font-serif mt-4 mb-2" :id="id">
-		<a v-if="generate" :href="`#${id}`">
+	<h2 :id="id" class="text-2xl text-blue font-serif mt-4 mb-2">
+		<a v-if="id && generate" :href="`#${id}`">
 			<slot />
 		</a>
 		<slot v-else />
-	</h1>
+	</h2>
 </template>
 
 <script setup lang="ts">
@@ -18,6 +18,6 @@ const generate = computed(
 		props.id &&
 		((typeof headings?.anchorLinks === 'boolean' &&
 			headings?.anchorLinks === true) ||
-			(typeof headings?.anchorLinks === 'object' && headings?.anchorLinks?.h1))
+			(typeof headings?.anchorLinks === 'object' && headings?.anchorLinks?.h2))
 );
 </script>

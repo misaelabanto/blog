@@ -1,11 +1,11 @@
 <template>
 	<article
-		class="w-full md:w-1/3 p-4 hover:shadow-lg hover:cursor-pointer rounded-2xl select-none"
+		class="w-full p-4 hover:shadow-lg hover:cursor-pointer rounded-2xl select-none"
 		@click="$router.push(`${entry._path}`)"
 	>
 		<img :src="entry.image" :alt="entry.title" class="w-full" />
 		<h2 class="text-xl font-serif text-blue-500 my-4">{{ entry.title }}</h2>
-		<p class="h-40">{{ entry.description?.substring(0, 300) }} [...]</p>
+		<p class="line-clamp-5">{{ entry.description }}</p>
 	</article>
 </template>
 

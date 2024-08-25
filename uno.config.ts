@@ -9,7 +9,7 @@ export default defineConfig({
 		presetWebFonts({
 			provider: 'google',
 			fonts: {
-				sans: 'Roboto',
+				sans: 'Quattrocento Sans',
 				serif: 'Comfortaa',
 				mono: ['Fira Code', 'Fira Mono:400,700'],
 			},
