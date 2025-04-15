@@ -1,0 +1,245 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<!-- Hero Section -->
+			<section class="py-20 px-6 bg-gradient-to-r from-gray-900 to-slate-800 text-white text-center">
+				<div class="max-w-4xl mx-auto">
+					<h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-amber-200 to-yellow-400 bg-clip-text text-transparent">
+						Hi, I'm Misael – Data Modeler, Fullstack Engineer, and Curious Human.
+					</h1>
+					<p class="text-xl md:text-2xl mb-8 text-gray-200">
+						I build elegant systems, simplify complex data, and explore tech that empowers people.
+					</p>
+					<div class="flex flex-wrap justify-center gap-4">
+						<a href="/blog" class="btn btn-primary">
+							📖 Read My Blog
+						</a>
+						<a href="#work-with-me" class="btn btn-secondary">
+							💼 Work With Me
+						</a>
+						<a href="#" class="btn btn-accent">
+							🎬 Watch My Videos
+						</a>
+					</div>
+				</div>
+			</section>
+			
+			<!-- What I Do Section -->
+			<section id="what-i-do" class="py-16 px-6">
+				<div class="max-w-6xl mx-auto">
+					<h2 class="text-3xl md:text-4xl font-bold mb-2 text-center">🛠️ What I Do</h2>
+					<h3 class="text-2xl font-medium mb-6 text-center">Solving Problems at Scale</h3>
+					<p class="text-lg mb-12 text-center max-w-3xl mx-auto">
+						With a background in data architecture, fullstack development, and startup leadership, I design and implement systems that are efficient, reliable, and human-centered.
+					</p>
+					
+					<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+							<div class="card-body">
+								<h3 class="card-title">🧩 Data Modeling</h3>
+								<p>Enterprise-grade modeling for banks and startups</p>
+							</div>
+						</div>
+						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+							<div class="card-body">
+								<h3 class="card-title">⚙️ Fullstack Development</h3>
+								<p>Node.js, React, PostgreSQL, MongoDB</p>
+							</div>
+						</div>
+						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+							<div class="card-body">
+								<h3 class="card-title">🚀 Startups & Automation</h3>
+								<p>Building MVPs, AI workflows, and internal tools</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<!-- Latest Blog Section -->
+			<section class="py-16 px-6 bg-base-200">
+				<div class="max-w-6xl mx-auto">
+					<h2 class="text-3xl md:text-4xl font-bold mb-2 text-center">✍️ Latest from the Blog</h2>
+					<h3 class="text-2xl font-medium mb-6 text-center">Ideas That Move Me – and Maybe You Too</h3>
+					<p class="text-lg mb-12 text-center max-w-3xl mx-auto">
+						I write about technology, side projects, data strategy, career growth, and sometimes life itself.
+					</p>
+					
+					<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+							<div class="card-body">
+								<h3 class="card-title">What Banks Taught Me About Modeling Risk</h3>
+								<p class="text-base-content/70 mb-4">Lessons from designing data models for financial institutions...</p>
+								<div class="card-actions justify-end">
+									<a href="#" class="btn btn-link no-underline">Read more →</a>
+								</div>
+							</div>
+						</div>
+						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+							<div class="card-body">
+								<h3 class="card-title">Why I Left Lucia Auth for Clerk: A Migration Story</h3>
+								<p class="text-base-content/70 mb-4">My journey switching authentication providers and what I learned...</p>
+								<div class="card-actions justify-end">
+									<a href="#" class="btn btn-link no-underline">Read more →</a>
+								</div>
+							</div>
+						</div>
+						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+							<div class="card-body">
+								<h3 class="card-title">How to Plan a $4500 Trip to Europe Without Going Crazy</h3>
+								<p class="text-base-content/70 mb-4">My system for organizing complex travel plans efficiently...</p>
+								<div class="card-actions justify-end">
+									<a href="#" class="btn btn-link no-underline">Read more →</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="text-center mt-12">
+						<a href="/blog" class="btn btn-primary">
+							📚 Explore the Blog Archive
+						</a>
+					</div>
+				</div>
+			</section>
+			
+			<!-- Projects Section -->
+			<section id="projects" class="py-16 px-6">
+				<div class="max-w-6xl mx-auto">
+					<h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">💡 Featured Projects</h2>
+					<h3 class="text-2xl font-medium mb-6 text-center">Some Things I've Built</h3>
+					
+					<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+							<div class="card-body">
+								<h3 class="card-title">Agéndalo.io</h3>
+								<p class="mb-4">A smart appointment platform now in exit process</p>
+								<div class="flex gap-2">
+									<span class="badge">SaaS</span>
+									<span class="badge">React</span>
+									<span class="badge">Node.js</span>
+								</div>
+							</div>
+						</div>
+						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+							<div class="card-body">
+								<h3 class="card-title">YouTube Party</h3>
+								<p class="mb-4">Real-time party game with Vue & Websockets</p>
+								<div class="flex gap-2">
+									<span class="badge">Vue</span>
+									<span class="badge">WebSockets</span>
+									<span class="badge">Real-time</span>
+								</div>
+							</div>
+						</div>
+						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+							<div class="card-body">
+								<h3 class="card-title">CovidMap</h3>
+								<p class="mb-4">Pandemic dashboard used by thousands in LATAM</p>
+								<div class="flex gap-2">
+									<span class="badge">Data Viz</span>
+									<span class="badge">Maps</span>
+									<span class="badge">Public Good</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="text-center mt-12">
+						<a href="#" class="btn btn-primary">
+							🔍 View All Projects
+						</a>
+					</div>
+				</div>
+			</section>
+			
+			<!-- Work With Me Section -->
+			<section id="work-with-me" class="py-16 px-6 bg-base-200">
+				<div class="max-w-4xl mx-auto text-center">
+					<h2 class="text-3xl md:text-4xl font-bold mb-6">👨‍💻 Work With Me</h2>
+					<h3 class="text-2xl font-medium mb-6">Need a Brain Behind the Backend?</h3>
+					<p class="text-lg mb-8">
+						From architecting robust data models to launching SaaS MVPs, I help teams ship faster and smarter. I'm available for consulting, mentoring, or project collaboration.
+					</p>
+					<a href="#contact" class="btn btn-primary btn-lg">
+						📬 Let's Connect
+					</a>
+				</div>
+			</section>
+			
+			<!-- Stay in Touch Section -->
+			<section class="py-16 px-6">
+				<div class="max-w-4xl mx-auto text-center">
+					<h2 class="text-3xl md:text-4xl font-bold mb-6">📬 Stay in Touch</h2>
+					<h3 class="text-2xl font-medium mb-6">Get My Best Ideas in Your Inbox</h3>
+					<p class="text-lg mb-8">
+						No spam. Just thoughtful writing on data, software, systems, and learning. One email every few weeks.
+					</p>
+					<div class="join max-w-md mx-auto">
+						<input 
+							type="email" 
+							placeholder="Your email address" 
+							class="input input-bordered join-item w-full"
+						/>
+						<button class="btn btn-primary join-item">
+							Subscribe
+						</button>
+					</div>
+				</div>
+			</section>
+			
+			<!-- About Me Section -->
+			<section id="about" class="py-16 px-6 bg-base-200">
+				<div class="max-w-4xl mx-auto">
+					<h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">🧭 About Me</h2>
+					<h3 class="text-2xl font-medium mb-6 text-center">A Bit More About Misael</h3>
+					<p class="text-lg text-center">
+						I'm a Peruvian engineer who believes in the power of clarity — in systems, writing, and life. 
+						I love building useful things, learning obsessively, and sharing what I know. Outside of tech, 
+						I'm into science fiction, travel planning, and making everyday life more efficient.
+					</p>
+				</div>
+			</section>
+			
+			<!-- Contact Section -->
+			<section id="contact" class="py-16 px-6">
+				<div class="max-w-4xl mx-auto text-center">
+					<h2 class="text-3xl md:text-4xl font-bold mb-8">Let's Connect</h2>
+					<div class="flex justify-center gap-6 flex-wrap">
+						<a href="https://twitter.com/_misaelabanto" target="_blank" class="btn btn-outline">
+							Twitter
+						</a>
+						<a href="https://linkedin.com/in/misaelabanto" target="_blank" class="btn btn-outline">
+							LinkedIn
+						</a>
+						<a href="https://github.com/misaelabanto" target="_blank" class="btn btn-outline">
+							GitHub
+						</a>
+						<a href="mailto:misaelabanto@gmail.com" class="btn btn-outline">
+							Email
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+		
+		<!-- Footer -->
+		<footer class="footer footer-center p-10 bg-neutral text-neutral-content">
+			<div>
+				<p class="font-bold">© 2025 Misael Abanto</p>
+				<p>Made with ☕ in Lima</p>
+			</div> 
+		</footer>
+	</body>
+</html>
