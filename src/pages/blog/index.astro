@@ -20,7 +20,7 @@ const posts = (await getCollection('blog')).sort(
 		<Header />
 		<main class="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
 			<section>
-				<ul class="flex flex-wrap gap-8 list-none m-0 p-0 sm:gap-2">
+				<ul class="flex flex-wrap gap-4 list-none m-0 p-0 md:gap-8">
 					{
 						posts.map((post) => (
 							<li class:list={[
@@ -30,7 +30,8 @@ const posts = (await getCollection('blog')).sort(
 								'hover:shadow-xl',
 								'transition-shadow',
 								'w-full', // Default to full width on small screens
-								post === posts[0] ? 'mb-4 text-center sm:mb-0' : 'md:w-[calc(50%-1rem)]', // Conditional width and margin for first item
+								post === posts[0] ? 'text-center' : '', // Conditional text-center for first item
+								post === posts[0] ? '' : 'md:w-[calc(50%-1rem)]', // Conditional width for non-first items on md+
 							]}>
 								<a href={`/blog/${post.id}/`} class="block group no-underline transition-all duration-200 ease-in-out">
 									<figure class="rounded-xl overflow-hidden mb-2">
