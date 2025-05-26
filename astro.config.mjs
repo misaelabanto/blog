@@ -2,16 +2,15 @@
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind'; // Import the Astro Tailwind integration
+import tailwindcss from 'vite-plugin-tailwindcss'; // Import vite-plugin-tailwindcss
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://misaelabanto.com',
-  integrations: [mdx(), sitemap()], // Add tailwind() to integrations
+  integrations: [mdx(), sitemap()],
   output: 'static',
 
-  // Remove the vite.plugins entry as it's handled by the Astro integration
   vite: {
      plugins: [tailwindcss()]
   }
-});</source>
+});
