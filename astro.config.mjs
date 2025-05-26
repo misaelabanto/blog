@@ -7,11 +7,11 @@ import tailwind from '@astrojs/tailwind'; // Import the Astro Tailwind integrati
 // https://astro.build/config
 export default defineConfig({
   site: 'https://misaelabanto.com',
-  integrations: [mdx(), sitemap(), tailwind()], // Add tailwind() to integrations
+  integrations: [mdx(), sitemap()], // Add tailwind() to integrations
   output: 'static',
 
   // Remove the vite.plugins entry as it's handled by the Astro integration
-  // vite: {
-  //   plugins: [tailwindcss()]
-  // }
+  vite: {
+     plugins: [tailwindcss()]
+  }
 });</source>
