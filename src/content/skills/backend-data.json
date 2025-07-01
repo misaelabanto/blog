@@ -1,0 +1,50 @@
+{
+  "category": "backend-data",
+  "title": "Backend & Data",
+  "icon": "🏗️",
+  "description": "Server-side development, databases, and data processing technologies",
+  "technologies": [
+    {
+      "name": "Node.js",
+      "level": "expert",
+      "years": 8
+    },
+    {
+      "name": "Python",
+      "level": "expert",
+      "years": 10
+    },
+    {
+      "name": "PostgreSQL",
+      "level": "expert",
+      "years": 9
+    },
+    {
+      "name": "MongoDB",
+      "level": "advanced",
+      "years": 6
+    },
+    {
+      "name": "Redis",
+      "level": "advanced",
+      "years": 5
+    },
+    {
+      "name": "Apache Kafka",
+      "level": "advanced",
+      "years": 4
+    },
+    {
+      "name": "Apache Spark",
+      "level": "advanced",
+      "years": 3
+    },
+    {
+      "name": "Elasticsearch",
+      "level": "intermediate",
+      "years": 3
+    }
+  ],
+  "order": 1,
+  "featured": true
+}

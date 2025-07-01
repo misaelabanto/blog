@@ -5,7 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE } from '../consts';
 
-// Get all experience and projects from content collections
+// Get all experience, projects, and skills from content collections
 const experiences = (await getCollection('experience')).sort(
   (a, b) => a.data.order - b.data.order
 );
@@ -14,7 +14,12 @@ const projects = (await getCollection('projects')).sort(
   (a, b) => a.data.order - b.data.order
 );
 
+const skills = (await getCollection('skills')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
 const featuredProjects = projects.filter(project => project.data.featured);
+const featuredSkills = skills.filter(skill => skill.data.featured);
 
 // Helper function to format dates
 function formatDate(dateString: string) {
@@ -51,6 +56,17 @@ function getProjectIcon(title: string) {
   if (title.includes('YouTube')) return '🎮';
   if (title.includes('Covid')) return '🗺️';
   return '💻';
+}
+
+// Helper function to get skill level badge
+function getSkillLevelBadge(level: string) {
+  switch (level) {
+    case 'expert': return { class: 'badge-success', text: 'Expert' };
+    case 'advanced': return { class: 'badge-warning', text: 'Advanced' };
+    case 'intermediate': return { class: 'badge-info', text: 'Intermediate' };
+    case 'beginner': return { class: 'badge-neutral', text: 'Beginner' };
+    default: return { class: 'badge-neutral', text: level };
+  }
 }
 ---
 
@@ -247,61 +263,71 @@ function getProjectIcon(title: string) {
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="card bg-base-100 shadow-md">
-              <div class="card-body text-center">
-                <div class="text-3xl mb-4">🏗️</div>
-                <h3 class="card-title justify-center mb-2">Backend & Data</h3>
-                <div class="flex flex-wrap gap-1 justify-center">
-                  <span class="badge badge-outline badge-sm">Node.js</span>
-                  <span class="badge badge-outline badge-sm">Python</span>
-                  <span class="badge badge-outline badge-sm">PostgreSQL</span>
-                  <span class="badge badge-outline badge-sm">MongoDB</span>
-                  <span class="badge badge-outline badge-sm">Redis</span>
-                  <span class="badge badge-outline badge-sm">Apache Kafka</span>
+            {featuredSkills.map((skill) => (
+              <div class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow">
+                <div class="card-body text-center">
+                  <div class="text-3xl mb-4">{skill.data.icon}</div>
+                  <h3 class="card-title justify-center mb-2">{skill.data.title}</h3>
+                  {skill.data.description && (
+                    <p class="text-sm text-base-content/70 mb-4">{skill.data.description}</p>
+                  )}
+                  <div class="flex flex-wrap gap-1 justify-center">
+                    {skill.data.technologies.slice(0, 6).map((tech) => {
+                      const levelBadge = tech.level ? getSkillLevelBadge(tech.level) : null;
+                      return (
+                        <div class="tooltip" data-tip={tech.level ? `${tech.level}${tech.years ? ` - ${tech.years} years` : ''}` : tech.name}>
+                          <span class={`badge badge-outline badge-sm ${levelBadge ? 'cursor-help' : ''}`}>
+                            {tech.name}
+                            {tech.level === 'expert' && <span class="ml-1">⭐</span>}
+                          </span>
+                        </div>
+                      );
+                    })}
+                    {skill.data.technologies.length > 6 && (
+                      <span class="badge badge-outline badge-sm opacity-60">
+                        +{skill.data.technologies.length - 6}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
+          </div>
 
-            <div class="card bg-base-100 shadow-md">
-              <div class="card-body text-center">
-                <div class="text-3xl mb-4">🎨</div>
-                <h3 class="card-title justify-center mb-2">Frontend</h3>
-                <div class="flex flex-wrap gap-1 justify-center">
-                  <span class="badge badge-outline badge-sm">React</span>
-                  <span class="badge badge-outline badge-sm">Vue.js</span>
-                  <span class="badge badge-outline badge-sm">TypeScript</span>
-                  <span class="badge badge-outline badge-sm">Tailwind CSS</span>
-                  <span class="badge badge-outline badge-sm">D3.js</span>
+          <!-- Detailed Skills Breakdown -->
+          <div class="mt-16">
+            <h3 class="text-2xl font-bold mb-8 text-center">Detailed Skills Overview</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {featuredSkills.map((skill) => (
+                <div class="card bg-base-100 shadow-md">
+                  <div class="card-body">
+                    <h4 class="card-title mb-4">
+                      <span class="text-2xl mr-2">{skill.data.icon}</span>
+                      {skill.data.title}
+                    </h4>
+                    <div class="space-y-3">
+                      {skill.data.technologies.map((tech) => {
+                        const levelBadge = tech.level ? getSkillLevelBadge(tech.level) : null;
+                        return (
+                          <div class="flex items-center justify-between">
+                            <span class="font-medium">{tech.name}</span>
+                            <div class="flex items-center gap-2">
+                              {tech.years && (
+                                <span class="text-sm text-base-content/60">{tech.years}y</span>
+                              )}
+                              {levelBadge && (
+                                <span class={`badge badge-sm ${levelBadge.class}`}>
+                                  {levelBadge.text}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-
-            <div class="card bg-base-100 shadow-md">
-              <div class="card-body text-center">
-                <div class="text-3xl mb-4">☁️</div>
-                <h3 class="card-title justify-center mb-2">Cloud & DevOps</h3>
-                <div class="flex flex-wrap gap-1 justify-center">
-                  <span class="badge badge-outline badge-sm">AWS</span>
-                  <span class="badge badge-outline badge-sm">Docker</span>
-                  <span class="badge badge-outline badge-sm">Kubernetes</span>
-                  <span class="badge badge-outline badge-sm">Terraform</span>
-                  <span class="badge badge-outline badge-sm">CI/CD</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="card bg-base-100 shadow-md">
-              <div class="card-body text-center">
-                <div class="text-3xl mb-4">📊</div>
-                <h3 class="card-title justify-center mb-2">Data & Analytics</h3>
-                <div class="flex flex-wrap gap-1 justify-center">
-                  <span class="badge badge-outline badge-sm">Apache Spark</span>
-                  <span class="badge badge-outline badge-sm">Airflow</span>
-                  <span class="badge badge-outline badge-sm">Tableau</span>
-                  <span class="badge badge-outline badge-sm">ETL</span>
-                  <span class="badge badge-outline badge-sm">Data Modeling</span>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

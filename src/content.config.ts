@@ -51,4 +51,21 @@ const projects = defineCollection({
 	}),
 });
 
-export const collections = { blog, experience, projects };
+const skills = defineCollection({
+	loader: glob({ base: './src/content/skills', pattern: '**/*.json' }),
+	schema: z.object({
+		category: z.string(),
+		title: z.string(),
+		icon: z.string(),
+		description: z.string().optional(),
+		technologies: z.array(z.object({
+			name: z.string(),
+			level: z.enum(['beginner', 'intermediate', 'advanced', 'expert']).optional(),
+			years: z.number().optional(),
+		})),
+		order: z.number().default(0),
+		featured: z.boolean().default(true),
+	}),
+});
+
+export const collections = { blog, experience, projects, skills };

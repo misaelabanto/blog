@@ -1,0 +1,50 @@
+{
+  "category": "data-analytics",
+  "title": "Data & Analytics",
+  "icon": "📊",
+  "description": "Data analysis, machine learning, and business intelligence tools",
+  "technologies": [
+    {
+      "name": "Apache Airflow",
+      "level": "expert",
+      "years": 5
+    },
+    {
+      "name": "dbt",
+      "level": "advanced",
+      "years": 3
+    },
+    {
+      "name": "Tableau",
+      "level": "advanced",
+      "years": 4
+    },
+    {
+      "name": "Power BI",
+      "level": "intermediate",
+      "years": 2
+    },
+    {
+      "name": "ETL Pipelines",
+      "level": "expert",
+      "years": 8
+    },
+    {
+      "name": "Data Modeling",
+      "level": "expert",
+      "years": 9
+    },
+    {
+      "name": "Snowflake",
+      "level": "advanced",
+      "years": 3
+    },
+    {
+      "name": "TensorFlow",
+      "level": "intermediate",
+      "years": 2
+    }
+  ],
+  "order": 4,
+  "featured": true
+}
