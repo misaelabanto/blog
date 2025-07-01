@@ -1,0 +1,29 @@
+{
+  "title": "CovidMap - Pandemic Dashboard",
+  "description": "A comprehensive COVID-19 tracking dashboard that provided real-time data visualization and analytics, serving thousands of users across Latin America during the pandemic.",
+  "image": "/images/projects/covid-map.jpg",
+  "technologies": [
+    "React",
+    "D3.js",
+    "Node.js",
+    "MongoDB",
+    "Express",
+    "Mapbox",
+    "Chart.js",
+    "AWS"
+  ],
+  "githubUrl": "https://github.com/misaelabanto/covid-map",
+  "liveUrl": "",
+  "featured": true,
+  "startDate": "2020-03-01",
+  "endDate": "2021-06-01",
+  "status": "archived",
+  "order": 3,
+  "category": "Public Good",
+  "highlights": [
+    "50,000+ daily active users at peak",
+    "Users from 15+ Latin American countries",
+    "Featured in local news outlets and social media",
+    "Acknowledged by health authorities as reliable source"
+  ]
+}

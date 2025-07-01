@@ -1,0 +1,27 @@
+{
+  "title": "YouTube Party - Real-Time Party Game",
+  "description": "A real-time multiplayer party game built with Vue.js and WebSockets, where players guess YouTube video details in a fun, competitive environment.",
+  "image": "/images/projects/youtube-party.jpg",
+  "technologies": [
+    "Vue.js",
+    "Node.js",
+    "Socket.io",
+    "Express",
+    "YouTube API",
+    "Tailwind CSS"
+  ],
+  "githubUrl": "https://github.com/misaelabanto/youtube-party",
+  "liveUrl": "https://youtube-party.app",
+  "featured": true,
+  "startDate": "2020-08-01",
+  "endDate": "2020-12-01",
+  "status": "completed",
+  "order": 2,
+  "category": "Game",
+  "highlights": [
+    "Average session time of 45 minutes",
+    "Viral growth through social media sharing",
+    "Built a dedicated community of regular players",
+    "Valuable experience in real-time web applications"
+  ]
+}

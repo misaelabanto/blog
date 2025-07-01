@@ -1,8 +1,57 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE } from '../consts';
+
+// Get all experience and projects from content collections
+const experiences = (await getCollection('experience')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const featuredProjects = projects.filter(project => project.data.featured);
+
+// Helper function to format dates
+function formatDate(dateString: string) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'short' 
+  });
+}
+
+// Helper function to get type badge
+function getTypeBadge(type: string) {
+  switch (type) {
+    case 'work': return '💼 Full-time';
+    case 'freelance': return '🏃‍♂️ Freelance';
+    case 'startup': return '🚀 Startup';
+    default: return '💼 Work';
+  }
+}
+
+// Helper function to get status badge
+function getStatusBadge(status: string) {
+  switch (status) {
+    case 'completed': return { class: 'badge-success', text: '✅ Completed' };
+    case 'in-progress': return { class: 'badge-warning', text: '🚧 In Progress' };
+    case 'archived': return { class: 'badge-neutral', text: '📦 Archived' };
+    default: return { class: 'badge-neutral', text: status };
+  }
+}
+
+// Helper function to get project icon
+function getProjectIcon(title: string) {
+  if (title.includes('Agéndalo')) return '📅';
+  if (title.includes('YouTube')) return '🎮';
+  if (title.includes('Covid')) return '🗺️';
+  return '💻';
+}
 ---
 
 <!doctype html>
@@ -46,138 +95,49 @@ import { SITE_TITLE } from '../consts';
           </div>
 
           <div class="space-y-8">
-            <!-- Senior Data Architect -->
-            <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-primary">
-              <div class="card-body">
-                <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                  <div class="flex-1">
-                    <h3 class="card-title text-2xl mb-2">Senior Data Architect</h3>
-                    <h4 class="text-lg font-semibold text-primary mb-2">TechCorp Financial</h4>
-                    <p class="text-base-content/70 mb-4">Led enterprise data architecture initiatives for a Fortune 500 financial services company, designing scalable data models and implementing robust data governance frameworks.</p>
+            {experiences.map((experience) => (
+              <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-primary">
+                <div class="card-body">
+                  <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                    <div class="flex-1">
+                      <h3 class="card-title text-2xl mb-2">{experience.data.position}</h3>
+                      <h4 class="text-lg font-semibold text-primary mb-2">{experience.data.company}</h4>
+                      <p class="text-base-content/70 mb-4">{experience.data.description}</p>
+                    </div>
+                    <div class="flex flex-col items-end text-right">
+                      <div class="badge badge-outline mb-2">
+                        {getTypeBadge(experience.data.type)}
+                      </div>
+                      <div class="text-sm text-base-content/70 mb-1">
+                        {formatDate(experience.data.startDate)} - 
+                        {experience.data.current ? 'Present' : formatDate(experience.data.endDate || '')}
+                      </div>
+                      <div class="text-sm text-base-content/70">{experience.data.location}</div>
+                    </div>
                   </div>
-                  <div class="flex flex-col items-end text-right">
-                    <div class="badge badge-outline mb-2">💼 Full-time</div>
-                    <div class="text-sm text-base-content/70 mb-1">Mar 2022 - Jan 2024</div>
-                    <div class="text-sm text-base-content/70">San Francisco, CA (Remote)</div>
-                  </div>
-                </div>
 
-                <!-- Technologies -->
-                <div class="mb-4">
-                  <h5 class="font-semibold mb-2">Technologies & Tools:</h5>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="badge badge-secondary">PostgreSQL</span>
-                    <span class="badge badge-secondary">Apache Kafka</span>
-                    <span class="badge badge-secondary">Apache Airflow</span>
-                    <span class="badge badge-secondary">Python</span>
-                    <span class="badge badge-secondary">Docker</span>
-                    <span class="badge badge-secondary">Kubernetes</span>
-                    <span class="badge badge-secondary">AWS</span>
-                    <span class="badge badge-secondary">Terraform</span>
+                  <!-- Technologies -->
+                  <div class="mb-4">
+                    <h5 class="font-semibold mb-2">Technologies & Tools:</h5>
+                    <div class="flex flex-wrap gap-2">
+                      {experience.data.technologies.map((tech) => (
+                        <span class="badge badge-secondary">{tech}</span>
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                <!-- Key Achievements -->
-                <div class="mb-4">
-                  <h5 class="font-semibold mb-2">Key Achievements:</h5>
-                  <ul class="list-disc list-inside space-y-1 text-base-content/80">
-                    <li>Designed and implemented a real-time risk assessment system processing 10M+ transactions daily</li>
-                    <li>Reduced data processing latency by 75% through optimized data pipeline architecture</li>
-                    <li>Led a team of 8 engineers in migrating legacy systems to cloud-native architecture</li>
-                    <li>Established data governance practices that improved data quality scores by 40%</li>
-                  </ul>
+                  <!-- Key Achievements -->
+                  <div class="mb-4">
+                    <h5 class="font-semibold mb-2">Key Achievements:</h5>
+                    <ul class="list-disc list-inside space-y-1 text-base-content/80">
+                      {experience.data.achievements.map((achievement) => (
+                        <li>{achievement}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <!-- Lead Fullstack Engineer -->
-            <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-primary">
-              <div class="card-body">
-                <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                  <div class="flex-1">
-                    <h3 class="card-title text-2xl mb-2">Lead Fullstack Engineer</h3>
-                    <h4 class="text-lg font-semibold text-primary mb-2">StartupXYZ</h4>
-                    <p class="text-base-content/70 mb-4">Built and scaled the core platform for a fast-growing SaaS startup, leading both frontend and backend development while establishing engineering best practices.</p>
-                  </div>
-                  <div class="flex flex-col items-end text-right">
-                    <div class="badge badge-outline mb-2">💼 Full-time</div>
-                    <div class="text-sm text-base-content/70 mb-1">Jun 2020 - Feb 2022</div>
-                    <div class="text-sm text-base-content/70">Austin, TX</div>
-                  </div>
-                </div>
-
-                <!-- Technologies -->
-                <div class="mb-4">
-                  <h5 class="font-semibold mb-2">Technologies & Tools:</h5>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="badge badge-secondary">React</span>
-                    <span class="badge badge-secondary">Node.js</span>
-                    <span class="badge badge-secondary">TypeScript</span>
-                    <span class="badge badge-secondary">PostgreSQL</span>
-                    <span class="badge badge-secondary">Redis</span>
-                    <span class="badge badge-secondary">AWS</span>
-                    <span class="badge badge-secondary">Docker</span>
-                    <span class="badge badge-secondary">GraphQL</span>
-                  </div>
-                </div>
-
-                <!-- Key Achievements -->
-                <div class="mb-4">
-                  <h5 class="font-semibold mb-2">Key Achievements:</h5>
-                  <ul class="list-disc list-inside space-y-1 text-base-content/80">
-                    <li>Architected and built the MVP that secured $2M in Series A funding</li>
-                    <li>Scaled the platform to handle 100K+ active users with 99.9% uptime</li>
-                    <li>Implemented automated testing and CI/CD pipelines, reducing deployment time by 80%</li>
-                    <li>Mentored 5 junior developers and established code review processes</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- Freelance Consultant -->
-            <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-primary">
-              <div class="card-body">
-                <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                  <div class="flex-1">
-                    <h3 class="card-title text-2xl mb-2">Freelance Data & Engineering Consultant</h3>
-                    <h4 class="text-lg font-semibold text-primary mb-2">Independent Consulting</h4>
-                    <p class="text-base-content/70 mb-4">Provided specialized data engineering and fullstack development services to multiple clients, ranging from early-stage startups to established enterprises.</p>
-                  </div>
-                  <div class="flex flex-col items-end text-right">
-                    <div class="badge badge-outline mb-2">🏃‍♂️ Freelance</div>
-                    <div class="text-sm text-base-content/70 mb-1">Jan 2019 - May 2020</div>
-                    <div class="text-sm text-base-content/70">Remote</div>
-                  </div>
-                </div>
-
-                <!-- Technologies -->
-                <div class="mb-4">
-                  <h5 class="font-semibold mb-2">Technologies & Tools:</h5>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="badge badge-secondary">Python</span>
-                    <span class="badge badge-secondary">React</span>
-                    <span class="badge badge-secondary">Vue.js</span>
-                    <span class="badge badge-secondary">PostgreSQL</span>
-                    <span class="badge badge-secondary">MongoDB</span>
-                    <span class="badge badge-secondary">AWS</span>
-                    <span class="badge badge-secondary">GCP</span>
-                    <span class="badge badge-secondary">Apache Spark</span>
-                    <span class="badge badge-secondary">Tableau</span>
-                  </div>
-                </div>
-
-                <!-- Key Achievements -->
-                <div class="mb-4">
-                  <h5 class="font-semibold mb-2">Key Achievements:</h5>
-                  <ul class="list-disc list-inside space-y-1 text-base-content/80">
-                    <li>Delivered 15+ successful projects for clients across fintech, healthcare, and e-commerce</li>
-                    <li>Built data pipelines processing 50M+ records daily for a healthcare analytics company</li>
-                    <li>Developed a real-time dashboard system that increased client operational efficiency by 60%</li>
-                    <li>Maintained 100% client retention rate with 5-star average rating</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -194,134 +154,84 @@ import { SITE_TITLE } from '../consts';
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <!-- Agéndalo.io Project -->
-            <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
-              <figure class="px-6 pt-6">
-                <div class="w-full h-48 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
-                  <div class="text-4xl">📅</div>
-                </div>
-              </figure>
-              <div class="card-body">
-                <h3 class="card-title text-xl mb-2">Agéndalo.io - Smart Appointment Platform</h3>
-                <p class="text-base-content/70 mb-4">A comprehensive SaaS platform for appointment scheduling and business management, currently in exit process after successful growth and market validation.</p>
-                
-                <!-- Project Status -->
-                <div class="flex items-center gap-2 mb-4">
-                  <div class="badge badge-success">✅ Completed</div>
-                  <div class="text-sm text-base-content/70">Jan 2021</div>
-                </div>
+            {featuredProjects.map((project) => {
+              const statusBadge = getStatusBadge(project.data.status);
+              return (
+                <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
+                  <figure class="px-6 pt-6">
+                    <div class="w-full h-48 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
+                      <div class="text-4xl">
+                        {getProjectIcon(project.data.title)}
+                      </div>
+                    </div>
+                  </figure>
+                  <div class="card-body">
+                    <h3 class="card-title text-xl mb-2">{project.data.title}</h3>
+                    <p class="text-base-content/70 mb-4">{project.data.description}</p>
+                    
+                    <!-- Project Status and Category -->
+                    <div class="flex items-center gap-2 mb-4">
+                      <div class={`badge ${statusBadge.class}`}>
+                        {statusBadge.text}
+                      </div>
+                      {project.data.category && (
+                        <div class="badge badge-outline">
+                          {project.data.category}
+                        </div>
+                      )}
+                      <div class="text-sm text-base-content/70">
+                        {formatDate(project.data.startDate)}
+                      </div>
+                    </div>
 
-                <!-- Technologies -->
-                <div class="mb-4">
-                  <div class="flex flex-wrap gap-1">
-                    <span class="badge badge-outline badge-sm">React</span>
-                    <span class="badge badge-outline badge-sm">Node.js</span>
-                    <span class="badge badge-outline badge-sm">PostgreSQL</span>
-                    <span class="badge badge-outline badge-sm">Redis</span>
-                    <span class="badge badge-outline badge-sm">+4</span>
+                    <!-- Technologies -->
+                    <div class="mb-4">
+                      <div class="flex flex-wrap gap-1">
+                        {project.data.technologies.slice(0, 4).map((tech) => (
+                          <span class="badge badge-outline badge-sm">{tech}</span>
+                        ))}
+                        {project.data.technologies.length > 4 && (
+                          <span class="badge badge-outline badge-sm">+{project.data.technologies.length - 4}</span>
+                        )}
+                      </div>
+                    </div>
+
+                    <!-- Project Highlights -->
+                    {project.data.highlights && project.data.highlights.length > 0 && (
+                      <div class="mb-4">
+                        <h5 class="font-semibold mb-2 text-sm">Key Highlights:</h5>
+                        <ul class="list-disc list-inside space-y-1 text-sm text-base-content/70">
+                          {project.data.highlights.slice(0, 2).map((highlight) => (
+                            <li>{highlight}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    <div class="card-actions justify-between items-center">
+                      <div class="flex gap-2">
+                        {project.data.githubUrl && (
+                          <a href={project.data.githubUrl} target="_blank" class="btn btn-ghost btn-sm">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd" />
+                            </svg>
+                            Code
+                          </a>
+                        )}
+                        {project.data.liveUrl && (
+                          <a href={project.data.liveUrl} target="_blank" class="btn btn-ghost btn-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                            Live
+                          </a>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </div>
-
-                <div class="card-actions justify-between items-center">
-                  <div class="flex gap-2">
-                    <a href="https://agendalo.io" target="_blank" class="btn btn-ghost btn-sm">
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                      </svg>
-                      Live
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- YouTube Party Project -->
-            <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
-              <figure class="px-6 pt-6">
-                <div class="w-full h-48 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
-                  <div class="text-4xl">🎮</div>
-                </div>
-              </figure>
-              <div class="card-body">
-                <h3 class="card-title text-xl mb-2">YouTube Party - Real-Time Party Game</h3>
-                <p class="text-base-content/70 mb-4">A real-time multiplayer party game built with Vue.js and WebSockets, where players guess YouTube video details in a fun, competitive environment.</p>
-                
-                <!-- Project Status -->
-                <div class="flex items-center gap-2 mb-4">
-                  <div class="badge badge-success">✅ Completed</div>
-                  <div class="text-sm text-base-content/70">Aug 2020</div>
-                </div>
-
-                <!-- Technologies -->
-                <div class="mb-4">
-                  <div class="flex flex-wrap gap-1">
-                    <span class="badge badge-outline badge-sm">Vue.js</span>
-                    <span class="badge badge-outline badge-sm">Node.js</span>
-                    <span class="badge badge-outline badge-sm">Socket.io</span>
-                    <span class="badge badge-outline badge-sm">Express</span>
-                    <span class="badge badge-outline badge-sm">+2</span>
-                  </div>
-                </div>
-
-                <div class="card-actions justify-between items-center">
-                  <div class="flex gap-2">
-                    <a href="https://github.com/misaelabanto/youtube-party" target="_blank" class="btn btn-ghost btn-sm">
-                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd" />
-                      </svg>
-                      Code
-                    </a>
-                    <a href="https://youtube-party.app" target="_blank" class="btn btn-ghost btn-sm">
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                      </svg>
-                      Live
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CovidMap Project -->
-            <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
-              <figure class="px-6 pt-6">
-                <div class="w-full h-48 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
-                  <div class="text-4xl">🗺️</div>
-                </div>
-              </figure>
-              <div class="card-body">
-                <h3 class="card-title text-xl mb-2">CovidMap - Pandemic Dashboard</h3>
-                <p class="text-base-content/70 mb-4">A comprehensive COVID-19 tracking dashboard that provided real-time data visualization and analytics, serving thousands of users across Latin America during the pandemic.</p>
-                
-                <!-- Project Status -->
-                <div class="flex items-center gap-2 mb-4">
-                  <div class="badge badge-neutral">📦 Archived</div>
-                  <div class="text-sm text-base-content/70">Mar 2020</div>
-                </div>
-
-                <!-- Technologies -->
-                <div class="mb-4">
-                  <div class="flex flex-wrap gap-1">
-                    <span class="badge badge-outline badge-sm">React</span>
-                    <span class="badge badge-outline badge-sm">D3.js</span>
-                    <span class="badge badge-outline badge-sm">Node.js</span>
-                    <span class="badge badge-outline badge-sm">MongoDB</span>
-                    <span class="badge badge-outline badge-sm">+4</span>
-                  </div>
-                </div>
-
-                <div class="card-actions justify-between items-center">
-                  <div class="flex gap-2">
-                    <a href="https://github.com/misaelabanto/covid-map" target="_blank" class="btn btn-ghost btn-sm">
-                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd" />
-                      </svg>
-                      Code
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -1,0 +1,26 @@
+{
+  "title": "Data Pipeline Optimizer",
+  "description": "An intelligent system for optimizing data processing pipelines using machine learning to predict bottlenecks and suggest performance improvements.",
+  "image": "/images/projects/data-optimizer.jpg",
+  "technologies": [
+    "Python",
+    "Apache Spark",
+    "TensorFlow",
+    "Kubernetes",
+    "PostgreSQL",
+    "Grafana"
+  ],
+  "githubUrl": "https://github.com/misaelabanto/data-pipeline-optimizer",
+  "liveUrl": "",
+  "featured": false,
+  "startDate": "2023-03-01",
+  "endDate": "2023-08-15",
+  "status": "completed",
+  "order": 4,
+  "category": "Data Engineering",
+  "highlights": [
+    "Reduced pipeline processing time by 45% on average",
+    "Implemented predictive analytics for resource allocation",
+    "Open-sourced with 200+ GitHub stars"
+  ]
+}

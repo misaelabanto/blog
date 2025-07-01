@@ -16,23 +16,24 @@ const blog = defineCollection({
 });
 
 const experience = defineCollection({
-	loader: glob({ base: './src/content/experience', pattern: '**/*.{md,mdx}' }),
+	loader: glob({ base: './src/content/experience', pattern: '**/*.json' }),
 	schema: z.object({
 		company: z.string(),
 		position: z.string(),
-		startDate: z.coerce.date(),
-		endDate: z.coerce.date().optional(),
+		startDate: z.string(),
+		endDate: z.string().optional(),
 		current: z.boolean().default(false),
 		location: z.string(),
 		description: z.string(),
 		technologies: z.array(z.string()),
 		achievements: z.array(z.string()),
 		type: z.enum(['work', 'freelance', 'startup']),
+		order: z.number().default(0),
 	}),
 });
 
 const projects = defineCollection({
-	loader: glob({ base: './src/content/projects', pattern: '**/*.{md,mdx}' }),
+	loader: glob({ base: './src/content/projects', pattern: '**/*.json' }),
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
@@ -41,9 +42,12 @@ const projects = defineCollection({
 		githubUrl: z.string().optional(),
 		liveUrl: z.string().optional(),
 		featured: z.boolean().default(false),
-		startDate: z.coerce.date(),
-		endDate: z.coerce.date().optional(),
+		startDate: z.string(),
+		endDate: z.string().optional(),
 		status: z.enum(['completed', 'in-progress', 'archived']),
+		order: z.number().default(0),
+		category: z.string().optional(),
+		highlights: z.array(z.string()).optional(),
 	}),
 });
 
