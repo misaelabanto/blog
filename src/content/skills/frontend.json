@@ -1,0 +1,50 @@
+{
+  "category": "frontend",
+  "title": "Frontend",
+  "icon": "🎨",
+  "description": "User interface development and client-side technologies",
+  "technologies": [
+    {
+      "name": "React",
+      "level": "expert",
+      "years": 7
+    },
+    {
+      "name": "Vue.js",
+      "level": "advanced",
+      "years": 5
+    },
+    {
+      "name": "TypeScript",
+      "level": "expert",
+      "years": 6
+    },
+    {
+      "name": "JavaScript",
+      "level": "expert",
+      "years": 10
+    },
+    {
+      "name": "Tailwind CSS",
+      "level": "advanced",
+      "years": 4
+    },
+    {
+      "name": "D3.js",
+      "level": "advanced",
+      "years": 4
+    },
+    {
+      "name": "Next.js",
+      "level": "advanced",
+      "years": 3
+    },
+    {
+      "name": "Astro",
+      "level": "intermediate",
+      "years": 2
+    }
+  ],
+  "order": 2,
+  "featured": true
+}

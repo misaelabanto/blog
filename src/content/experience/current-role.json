@@ -1,0 +1,26 @@
+{
+  "company": "DataFlow Solutions",
+  "position": "Principal Data Engineer",
+  "startDate": "2024-02-01",
+  "current": true,
+  "location": "Remote",
+  "description": "Leading data architecture and engineering initiatives for a cutting-edge AI company, focusing on real-time data processing and machine learning infrastructure.",
+  "technologies": [
+    "Python",
+    "Apache Kafka",
+    "Kubernetes",
+    "Apache Airflow",
+    "Snowflake",
+    "dbt",
+    "Terraform",
+    "AWS"
+  ],
+  "achievements": [
+    "Architected a real-time ML feature store serving 1B+ requests daily",
+    "Reduced infrastructure costs by 35% through intelligent resource optimization",
+    "Built a data quality framework that improved model accuracy by 20%",
+    "Leading a team of 12 engineers across 3 time zones"
+  ],
+  "type": "work",
+  "order": 0
+}
