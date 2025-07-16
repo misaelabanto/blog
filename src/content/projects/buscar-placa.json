@@ -1,0 +1,25 @@
+{
+  "title": "Buscar Placa - Vehicle History Checker",
+  "description": "A web platform that allows users to verify the history of second-hand vehicles in Peru before purchase, providing comprehensive information from official SUNARP records.",
+  "image": "/images/projects/buscar-placa.jpg",
+  "technologies": [
+    "React",
+    "Node.js",
+    "MongoDB",
+    "AWS"
+  ],
+  "githubUrl": "",
+  "liveUrl": "https://buscarplaca.com",
+  "featured": true,
+  "startDate": "2021-09-01",
+  "endDate": "",
+  "status": "in-progress",
+  "order": 2,
+  "category": "SaaS",
+  "highlights": [
+    "Largest vehicle database in Peru",
+    "Official SUNARP data integration",
+    "Comprehensive vehicle history reports",
+    "Helps prevent fraud in second-hand vehicle purchases"
+  ]
+}

@@ -3,17 +3,13 @@
   "description": "A comprehensive COVID-19 tracking dashboard that provided real-time data visualization and analytics, serving thousands of users across Latin America during the pandemic.",
   "image": "/images/projects/covid-map.jpg",
   "technologies": [
-    "React",
-    "D3.js",
+    "Vue",
     "Node.js",
-    "MongoDB",
-    "Express",
-    "Mapbox",
     "Chart.js",
-    "AWS"
+    "AWS Amplify"
   ],
-  "githubUrl": "https://github.com/misaelabanto/covid-map",
-  "liveUrl": "",
+  "githubUrl": "",
+  "liveUrl": "https://covid19.orcebot.com/",
   "featured": true,
   "startDate": "2020-03-01",
   "endDate": "2021-06-01",

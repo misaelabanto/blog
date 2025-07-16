@@ -9,6 +9,11 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 <html lang="en" data-theme="light">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<script is:inline>
+			// Get theme from localStorage or default to light
+			const savedTheme = localStorage.getItem('theme');
+			document.documentElement.setAttribute('data-theme', savedTheme || 'light');
+		</script>
 	</head>
 	<body>
 		<Header />
@@ -17,7 +22,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 			<section class="py-20 px-6 bg-gradient-to-r from-gray-900 to-slate-800 text-white text-center">
 				<div class="max-w-4xl mx-auto">
 					<h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-amber-200 to-yellow-400 bg-clip-text text-transparent">
-						Hi, I'm Misael – Data Modeler, Fullstack Engineer, and Curious Human.
+						Hi, I'm Misael - Fullstack Engineer, and Curious Human.
 					</h1>
 					<p class="text-xl md:text-2xl mb-8 text-gray-200">
 						I build elegant systems, simplify complex data, and explore tech that empowers people.

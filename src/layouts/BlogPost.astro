@@ -10,9 +10,14 @@ type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" data-theme="light">
 	<head>
 		<BaseHead title={title} description={description} />
+		<script is:inline>
+			// Get theme from localStorage or default to light
+			const savedTheme = localStorage.getItem('theme');
+			document.documentElement.setAttribute('data-theme', savedTheme || 'light');
+		</script>
 	</head>
 
 	<body>

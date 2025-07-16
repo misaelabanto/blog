@@ -17,13 +17,11 @@ const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 		'no-underline',
 		'py-4',
 		'px-2',
-		'text-[rgb(15,18,25)]', /* Corresponds to --black */
 		'border-b-4',
 		'border-transparent',
 		{
 			'font-bold': isActive,
 			'underline': isActive,
-			'border-[#2337ff]': isActive /* Corresponds to --accent */,
 		},
 	]}
 	{...props}

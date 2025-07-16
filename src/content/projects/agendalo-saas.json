@@ -3,14 +3,13 @@
   "description": "A comprehensive SaaS platform for appointment scheduling and business management, currently in exit process after successful growth and market validation.",
   "image": "/images/projects/agendalo.jpg",
   "technologies": [
-    "React",
+    "Vue",
     "Node.js",
-    "PostgreSQL",
-    "Redis",
-    "AWS",
-    "Stripe",
-    "Twilio",
-    "TypeScript"
+    "MongoDB",
+    "AWS S3, Amplify, Route 53, CloudFront",
+    "Stripe, Paypal, Mercado Pago",
+    "TypeScript",
+    "WhatsApp Cloud API"
   ],
   "githubUrl": "",
   "liveUrl": "https://agendalo.io",
