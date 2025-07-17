@@ -1,0 +1,277 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE } from '../../consts';
+
+const experiences = (await getCollection('experience')).sort(
+	(a, b) => b.data.order - a.data.order,
+);
+
+const skills = (await getCollection('skills')).sort(
+	(a, b) => a.data.order - b.data.order,
+);
+
+const projects = (await getCollection('projects')).filter(
+	(project) => project.data.featured
+).sort((a, b) => b.data.order - a.data.order);
+
+// Group experiences by type
+const workExperiences = experiences.filter(exp => exp.data.type === 'work');
+const freelanceExperiences = experiences.filter(exp => exp.data.type === 'freelance');
+const startupExperiences = experiences.filter(exp => exp.data.type === 'startup');
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead title={`Experiencia - ${SITE_TITLE}`} description="Experiencia profesional de Misael Abanto en desarrollo fullstack, arquitectura de datos y liderazgo de startups." />
+	</head>
+	<body>
+		<Header />
+		<main class="max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+			<!-- Hero Section -->
+			<section class="text-center mb-16">
+				<h1 class="text-4xl md:text-5xl font-bold mb-4">Mi Experiencia</h1>
+				<p class="text-xl text-gray-600 max-w-3xl mx-auto">
+					Más de 5 años construyendo sistemas escalables, liderando equipos y resolviendo problemas complejos 
+					en startups y empresas establecidas.
+				</p>
+			</section>
+
+			<!-- Professional Experience -->
+			<section class="mb-16">
+				<h2 class="text-3xl font-bold mb-8 text-center">💼 Experiencia Profesional</h2>
+				
+				{workExperiences.length > 0 && (
+					<div class="mb-12">
+						<h3 class="text-2xl font-semibold mb-6">Posiciones Corporativas</h3>
+						<div class="space-y-8">
+							{workExperiences.map((exp) => (
+								<div class="card bg-base-100 shadow-lg">
+									<div class="card-body">
+										<div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+											<div>
+												<h4 class="card-title text-xl mb-2">{exp.data.position}</h4>
+												<h5 class="text-lg font-medium text-primary">{exp.data.company}</h5>
+											</div>
+											<div class="text-sm text-gray-500 mt-2 md:mt-0">
+												<div>{exp.data.startDate} - {exp.data.endDate || 'Presente'}</div>
+												<div>{exp.data.location}</div>
+											</div>
+										</div>
+										<p class="text-gray-700 mb-4">{exp.data.description}</p>
+										
+										{exp.data.achievements.length > 0 && (
+											<div class="mb-4">
+												<h6 class="font-semibold mb-2">Logros Clave:</h6>
+												<ul class="list-disc list-inside space-y-1">
+													{exp.data.achievements.map((achievement) => (
+														<li class="text-sm">{achievement}</li>
+													))}
+												</ul>
+											</div>
+										)}
+										
+										<div class="flex flex-wrap gap-2">
+											{exp.data.technologies.map((tech) => (
+												<span class="badge badge-outline">{tech}</span>
+											))}
+										</div>
+									</div>
+								</div>
+							))}
+						</div>
+					</div>
+				)}
+
+				{startupExperiences.length > 0 && (
+					<div class="mb-12">
+						<h3 class="text-2xl font-semibold mb-6">Emprendimientos</h3>
+						<div class="space-y-8">
+							{startupExperiences.map((exp) => (
+								<div class="card bg-gradient-to-r from-purple-50 to-pink-50 shadow-lg">
+									<div class="card-body">
+										<div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+											<div>
+												<h4 class="card-title text-xl mb-2">{exp.data.position}</h4>
+												<h5 class="text-lg font-medium text-primary">{exp.data.company}</h5>
+											</div>
+											<div class="text-sm text-gray-500 mt-2 md:mt-0">
+												<div>{exp.data.startDate} - {exp.data.endDate || 'Presente'}</div>
+												<div>{exp.data.location}</div>
+											</div>
+										</div>
+										<p class="text-gray-700 mb-4">{exp.data.description}</p>
+										
+										{exp.data.achievements.length > 0 && (
+											<div class="mb-4">
+												<h6 class="font-semibold mb-2">Logros Clave:</h6>
+												<ul class="list-disc list-inside space-y-1">
+													{exp.data.achievements.map((achievement) => (
+														<li class="text-sm">{achievement}</li>
+													))}
+												</ul>
+											</div>
+										)}
+										
+										<div class="flex flex-wrap gap-2">
+											{exp.data.technologies.map((tech) => (
+												<span class="badge badge-primary">{tech}</span>
+											))}
+										</div>
+									</div>
+								</div>
+							))}
+						</div>
+					</div>
+				)}
+
+				{freelanceExperiences.length > 0 && (
+					<div class="mb-12">
+						<h3 class="text-2xl font-semibold mb-6">Consultoría & Freelance</h3>
+						<div class="space-y-8">
+							{freelanceExperiences.map((exp) => (
+								<div class="card bg-gradient-to-r from-green-50 to-blue-50 shadow-lg">
+									<div class="card-body">
+										<div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+											<div>
+												<h4 class="card-title text-xl mb-2">{exp.data.position}</h4>
+												<h5 class="text-lg font-medium text-primary">{exp.data.company}</h5>
+											</div>
+											<div class="text-sm text-gray-500 mt-2 md:mt-0">
+												<div>{exp.data.startDate} - {exp.data.endDate || 'Presente'}</div>
+												<div>{exp.data.location}</div>
+											</div>
+										</div>
+										<p class="text-gray-700 mb-4">{exp.data.description}</p>
+										
+										{exp.data.achievements.length > 0 && (
+											<div class="mb-4">
+												<h6 class="font-semibold mb-2">Logros Clave:</h6>
+												<ul class="list-disc list-inside space-y-1">
+													{exp.data.achievements.map((achievement) => (
+														<li class="text-sm">{achievement}</li>
+													))}
+												</ul>
+											</div>
+										)}
+										
+										<div class="flex flex-wrap gap-2">
+											{exp.data.technologies.map((tech) => (
+												<span class="badge badge-secondary">{tech}</span>
+											))}
+										</div>
+									</div>
+								</div>
+							))}
+						</div>
+					</div>
+				)}
+			</section>
+
+			<!-- Skills Section -->
+			<section class="mb-16">
+				<h2 class="text-3xl font-bold mb-8 text-center">🛠️ Habilidades Técnicas</h2>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+					{skills.map((skill) => (
+						<div class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow">
+							<div class="card-body">
+								<div class="flex items-center mb-3">
+									<span class="text-2xl mr-3">{skill.data.icon}</span>
+									<h3 class="card-title text-lg">{skill.data.title}</h3>
+								</div>
+								{skill.data.description && (
+									<p class="text-sm text-gray-600 mb-3">{skill.data.description}</p>
+								)}
+								<div class="space-y-2">
+									{skill.data.technologies.map((tech) => (
+										<div class="flex justify-between items-center">
+											<span class="text-sm font-medium">{tech.name}</span>
+											{tech.level && (
+												<span class="badge badge-xs badge-outline">
+													{tech.level === 'expert' ? 'Experto' : 
+													 tech.level === 'advanced' ? 'Avanzado' : 
+													 tech.level === 'intermediate' ? 'Intermedio' : 'Principiante'}
+												</span>
+											)}
+										</div>
+									))}
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- Featured Projects -->
+			{projects.length > 0 && (
+				<section class="mb-16">
+					<h2 class="text-3xl font-bold mb-8 text-center">🚀 Proyectos Destacados</h2>
+					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+						{projects.map((project) => (
+							<div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+								<div class="card-body">
+									<h3 class="card-title mb-3">{project.data.title}</h3>
+									<p class="text-gray-700 mb-4">{project.data.description}</p>
+									
+									{project.data.highlights && project.data.highlights.length > 0 && (
+										<div class="mb-4">
+											<h6 class="font-semibold mb-2">Aspectos Destacados:</h6>
+											<ul class="list-disc list-inside space-y-1">
+												{project.data.highlights.map((highlight) => (
+													<li class="text-xs">{highlight}</li>
+												))}
+											</ul>
+										</div>
+									)}
+									
+									<div class="flex flex-wrap gap-2 mb-4">
+										{project.data.technologies.map((tech) => (
+											<span class="badge badge-outline badge-sm">{tech}</span>
+										))}
+									</div>
+									
+									<div class="card-actions justify-end">
+										{project.data.liveUrl && (
+											<a href={project.data.liveUrl} target="_blank" class="btn btn-primary btn-sm">
+												Ver Proyecto
+											</a>
+										)}
+										{project.data.githubUrl && (
+											<a href={project.data.githubUrl} target="_blank" class="btn btn-outline btn-sm">
+												Código
+											</a>
+										)}
+									</div>
+								</div>
+							</div>
+						))}
+					</div>
+				</section>
+			)}
+
+			<!-- Call to Action -->
+			<section class="text-center bg-gradient-to-r from-blue-50 to-indigo-100 rounded-xl p-8">
+				<h2 class="text-3xl font-bold mb-4">¿Interesado en Trabajar Juntos?</h2>
+				<p class="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
+					Estoy disponible para proyectos de consultoría, desarrollo fullstack, arquitectura de datos, 
+					y oportunidades de liderazgo técnico. Conversemos sobre cómo puedo ayudar a tu equipo.
+				</p>
+				<div class="flex gap-4 justify-center flex-wrap">
+					<a href="mailto:misaelabanto@gmail.com" class="btn btn-primary">
+						📧 Enviar Email
+					</a>
+					<a href="https://linkedin.com/in/misaelabanto" target="_blank" class="btn btn-outline">
+						💼 Conectar en LinkedIn
+					</a>
+					<a href="/es/about" class="btn btn-outline">
+						👨‍💻 Conoce Más Sobre Mí
+					</a>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html> 
