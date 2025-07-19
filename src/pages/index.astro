@@ -11,6 +11,12 @@ const featuredProjects = allProjects
 	.filter(project => project.data.featured)
 	.sort((a, b) => a.data.order - b.data.order)
 	.slice(0, 3); // Show only top 3 featured projects
+
+// Get latest blog posts, sorted by date (most recent first)
+const allPosts = await getCollection('blog');
+const latestPosts = allPosts
+	.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+	.slice(0, 3); // Show only the 3 most recent posts
 ---
 
 <!doctype html>
@@ -91,33 +97,17 @@ const featuredProjects = allProjects
 					</p>
 					
 					<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-							<div class="card-body">
-								<h3 class="card-title">What Banks Taught Me About Modeling Risk</h3>
-								<p class="text-base-content/70 mb-4">Lessons from designing data models for financial institutions...</p>
-								<div class="card-actions justify-end">
-									<a href="#" class="btn btn-link no-underline">Read more →</a>
+						{latestPosts.map((post) => (
+							<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+								<div class="card-body">
+									<h3 class="card-title">{post.data.title}</h3>
+									<p class="text-base-content/70 mb-4">{post.data.description}</p>
+									<div class="card-actions justify-end">
+										<a href={`/blog/${post.id}`} class="btn btn-link no-underline">Read more →</a>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-							<div class="card-body">
-								<h3 class="card-title">Why I Left Lucia Auth for Clerk: A Migration Story</h3>
-								<p class="text-base-content/70 mb-4">My journey switching authentication providers and what I learned...</p>
-								<div class="card-actions justify-end">
-									<a href="#" class="btn btn-link no-underline">Read more →</a>
-								</div>
-							</div>
-						</div>
-						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-							<div class="card-body">
-								<h3 class="card-title">How to Plan a $4500 Trip to Europe Without Going Crazy</h3>
-								<p class="text-base-content/70 mb-4">My system for organizing complex travel plans efficiently...</p>
-								<div class="card-actions justify-end">
-									<a href="#" class="btn btn-link no-underline">Read more →</a>
-								</div>
-							</div>
-						</div>
+						))}
 					</div>
 					
 					<div class="text-center mt-12">

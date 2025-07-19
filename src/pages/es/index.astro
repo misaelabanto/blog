@@ -11,6 +11,12 @@ const featuredProjects = allProjects
 	.filter(project => project.data.featured)
 	.sort((a, b) => a.data.order - b.data.order)
 	.slice(0, 3); // Show only top 3 featured projects
+
+// Get latest blog posts, sorted by date (most recent first)
+const allPosts = await getCollection('blog');
+const latestPosts = allPosts
+	.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+	.slice(0, 3); // Show only the 3 most recent posts
 ---
 
 <!doctype html>
@@ -91,33 +97,17 @@ const featuredProjects = allProjects
 					</p>
 					
 					<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-							<div class="card-body">
-								<h3 class="card-title">Lo Que Los Bancos Me Enseñaron Sobre Modelar Riesgo</h3>
-								<p class="text-base-content/70 mb-4">Lecciones del diseño de modelos de datos para instituciones financieras...</p>
-								<div class="card-actions justify-end">
-									<a href="#" class="btn btn-link no-underline">Leer más →</a>
+						{latestPosts.map((post) => (
+							<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+								<div class="card-body">
+									<h3 class="card-title">{post.data.title}</h3>
+									<p class="text-base-content/70 mb-4">{post.data.description}</p>
+									<div class="card-actions justify-end">
+										<a href={`/es/blog/${post.id}`} class="btn btn-link no-underline">Leer más →</a>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-							<div class="card-body">
-								<h3 class="card-title">Por Qué Dejé Lucia Auth por Clerk: Una Historia de Migración</h3>
-								<p class="text-base-content/70 mb-4">Mi experiencia cambiando proveedores de autenticación y lo que aprendí...</p>
-								<div class="card-actions justify-end">
-									<a href="#" class="btn btn-link no-underline">Leer más →</a>
-								</div>
-							</div>
-						</div>
-						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-							<div class="card-body">
-								<h3 class="card-title">Cómo Planear un Viaje de $4500 a Europa Sin Volverse Loco</h3>
-								<p class="text-base-content/70 mb-4">Mi sistema para organizar planes de viaje complejos de manera eficiente...</p>
-								<div class="card-actions justify-end">
-									<a href="#" class="btn btn-link no-underline">Leer más →</a>
-								</div>
-							</div>
-						</div>
+						))}
 					</div>
 					
 					<div class="text-center mt-12">
