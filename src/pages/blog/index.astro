@@ -1,10 +1,10 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import BaseHead from '@/components/BaseHead.astro';
+import Footer from '@/components/Footer.astro';
+import FormattedDate from '@/components/FormattedDate.astro';
+import Header from '@/components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
 import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -20,6 +20,10 @@ const posts = (await getCollection('blog')).sort(
 		<Header />
 		<main class="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
 			<section>
+				<h1 class="text-4xl font-bold mb-8 text-center">Blog</h1>
+				<p class="text-lg mb-12 text-center max-w-3xl mx-auto text-gray-600">
+					Mis pensamientos sobre tecnología, desarrollo, datos y aprendizaje. Ideas que espero te resulten útiles e interesantes.
+				</p>
 				<ul class="flex flex-wrap gap-4 list-none m-0 p-0 md:gap-8">
 					{
 						posts.map((post) => (
@@ -48,8 +52,6 @@ const posts = (await getCollection('blog')).sort(
 											'card-title',
 											'm-0',
 											'leading-tight',
-											'text-[rgb(var(--black))]',
-											'group-hover:text-[rgb(var(--accent))]',
 											post === posts[0] ? 'text-4xl sm:text-2xl' : '', // Larger title for first item
 										]}>
 											{post.data.title}

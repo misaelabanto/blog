@@ -52,8 +52,6 @@ const posts = (await getCollection('blog')).sort(
 											'card-title',
 											'm-0',
 											'leading-tight',
-											'text-[rgb(var(--black))]',
-											'group-hover:text-[rgb(var(--accent))]',
 											post === posts[0] ? 'text-4xl sm:text-2xl' : '', // Larger title for first item
 										]}>
 											{post.data.title}

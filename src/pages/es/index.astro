@@ -3,6 +3,14 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro'; // Import the Footer component
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { getCollection } from 'astro:content';
+
+// Get featured projects, sorted by order
+const allProjects = await getCollection('projects');
+const featuredProjects = allProjects
+	.filter(project => project.data.featured)
+	.sort((a, b) => a.data.order - b.data.order)
+	.slice(0, 3); // Show only top 3 featured projects
 ---
 
 <!doctype html>
@@ -22,7 +30,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 			<section class="py-20 px-6 bg-gradient-to-r from-gray-900 to-slate-800 text-white text-center">
 				<div class="max-w-4xl mx-auto">
 					<h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-amber-200 to-yellow-400 bg-clip-text text-transparent">
-						Hola, soy Misael - Ingeniero Fullstack y Humano Curioso.
+						Hola, soy Misael - Ingeniero de Software y Humano Curioso.
 					</h1>
 					<p class="text-xl md:text-2xl mb-8 text-gray-200">
 						Construyo sistemas elegantes, simplifico datos complejos y exploro tecnología que empodera a las personas.
@@ -127,39 +135,22 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 					<h3 class="text-2xl font-medium mb-6 text-center">Algunas Cosas Que He Construido</h3>
 					
 					<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-							<div class="card-body">
-								<h3 class="card-title">Agéndalo.io</h3>
-								<p class="mb-4">Una plataforma inteligente de citas ahora en proceso de salida</p>
-								<div class="flex gap-2">
-									<span class="badge">SaaS</span>
-									<span class="badge">React</span>
-									<span class="badge">Node.js</span>
+						{featuredProjects.map((project) => (
+							<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+								<div class="card-body">
+									<h3 class="card-title">{project.data.title.split(' - ')[0]}</h3>
+									<p class="mb-4">{project.data.description}</p>
+									<div class="flex gap-2 flex-wrap">
+										{project.data.category && (
+											<span class="badge">{project.data.category}</span>
+										)}
+										{project.data.technologies.slice(0, 2).map((tech) => (
+											<span class="badge">{tech}</span>
+										))}
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-							<div class="card-body">
-								<h3 class="card-title">YouTube Party</h3>
-								<p class="mb-4">Juego de fiesta en tiempo real con Vue y Websockets</p>
-								<div class="flex gap-2">
-									<span class="badge">Vue</span>
-									<span class="badge">WebSockets</span>
-									<span class="badge">Tiempo Real</span>
-								</div>
-							</div>
-						</div>
-						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-							<div class="card-body">
-								<h3 class="card-title">CovidMap</h3>
-								<p class="mb-4">Dashboard de pandemia usado por miles en LATAM</p>
-								<div class="flex gap-2">
-									<span class="badge">Visualización</span>
-									<span class="badge">Mapas</span>
-									<span class="badge">Bien Público</span>
-								</div>
-							</div>
-						</div>
+						))}
 					</div>
 					
 					<div class="text-center mt-12">
