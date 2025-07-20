@@ -7,7 +7,7 @@
     {
       "name": "AWS",
       "level": "expert",
-      "years": 8
+      "years": 9
     },
     {
       "name": "Docker",
@@ -15,34 +15,19 @@
       "years": 7
     },
     {
-      "name": "Kubernetes",
-      "level": "advanced",
-      "years": 5
-    },
-    {
-      "name": "Terraform",
-      "level": "advanced",
-      "years": 4
-    },
-    {
       "name": "CI/CD",
       "level": "expert",
-      "years": 8
+      "years": 9
     },
     {
       "name": "GitHub Actions",
       "level": "advanced",
-      "years": 4
+      "years": 7
     },
     {
       "name": "GCP",
       "level": "intermediate",
       "years": 3
-    },
-    {
-      "name": "Azure",
-      "level": "intermediate",
-      "years": 2
     }
   ],
   "order": 3,

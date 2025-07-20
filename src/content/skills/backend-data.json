@@ -7,42 +7,27 @@
     {
       "name": "Node.js",
       "level": "expert",
-      "years": 8
+      "years": 9
     },
     {
       "name": "Python",
       "level": "expert",
-      "years": 10
+      "years": 7
     },
     {
       "name": "PostgreSQL",
       "level": "expert",
-      "years": 9
+      "years": 7
     },
     {
       "name": "MongoDB",
       "level": "advanced",
-      "years": 6
+      "years": 9
     },
     {
-      "name": "Redis",
+      "name": "MySQL",
       "level": "advanced",
-      "years": 5
-    },
-    {
-      "name": "Apache Kafka",
-      "level": "advanced",
-      "years": 4
-    },
-    {
-      "name": "Apache Spark",
-      "level": "advanced",
-      "years": 3
-    },
-    {
-      "name": "Elasticsearch",
-      "level": "intermediate",
-      "years": 3
+      "years": 7
     }
   ],
   "order": 1,
