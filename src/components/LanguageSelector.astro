@@ -1,0 +1,109 @@
+---
+import { languages, getLangFromUrl, translateRoute } from '../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+
+// Create language options with smart route translation
+const languageOptions = Object.entries(languages).map(([lang, label]) => {
+  const isActive = lang === currentLang;
+  const targetPath = translateRoute(Astro.url, lang as any);
+  
+  return {
+    lang,
+    label,
+    href: targetPath,
+    isActive,
+    flag: lang === 'en' ? '🇺🇸' : '🇪🇸',
+  };
+});
+---
+
+<!-- Desktop Language Selector -->
+<div class="hidden sm:block">
+  <div class="dropdown dropdown-end">
+    <div tabindex="0" role="button" class="btn btn-ghost btn-sm gap-2">
+      <span class="text-lg">
+        {languageOptions.find(opt => opt.isActive)?.flag}
+      </span>
+      <span class="hidden md:inline">
+        {languageOptions.find(opt => opt.isActive)?.label}
+      </span>
+      <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+      </svg>
+    </div>
+    <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow-lg border border-base-300">
+      {languageOptions.map((option) => (
+        <li>
+          <a 
+            href={option.href}
+            class={`flex items-center gap-3 ${option.isActive ? 'active bg-primary text-primary-content' : ''}`}
+            onclick="localStorage.setItem('language', this.dataset.lang)"
+            data-lang={option.lang}
+          >
+            <span class="text-lg">{option.flag}</span>
+            <div class="flex flex-col">
+              <span class="font-medium">{option.label}</span>
+              <span class="text-xs opacity-70">
+                {option.lang === 'en' ? 'English' : 'Español'}
+              </span>
+            </div>
+            {option.isActive && (
+              <svg class="w-4 h-4 ml-auto" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<!-- Mobile Language Selector -->
+<div class="sm:hidden">
+  <div class="dropdown dropdown-end">
+    <div tabindex="0" role="button" class="btn btn-ghost btn-sm btn-circle">
+      <span class="text-lg">
+        {languageOptions.find(opt => opt.isActive)?.flag}
+      </span>
+    </div>
+    <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-36 p-2 shadow-lg border border-base-300">
+      {languageOptions.map((option) => (
+        <li>
+          <a 
+            href={option.href}
+            class={`flex items-center gap-2 ${option.isActive ? 'active bg-primary text-primary-content' : ''}`}
+            onclick="localStorage.setItem('language', this.dataset.lang)"
+            data-lang={option.lang}
+          >
+            <span>{option.flag}</span>
+            <span class="text-sm font-medium">{option.lang.toUpperCase()}</span>
+            {option.isActive && (
+              <svg class="w-3 h-3 ml-auto" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<script>
+  // Store language preference when switching
+  document.addEventListener('DOMContentLoaded', () => {
+    const languageLinks = document.querySelectorAll('[data-lang]');
+    
+    languageLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLElement;
+        const lang = target?.getAttribute('data-lang');
+        if (lang) {
+          localStorage.setItem('language', lang);
+        }
+      });
+    });
+  });
+</script> 

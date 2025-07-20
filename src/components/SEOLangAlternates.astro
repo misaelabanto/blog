@@ -1,0 +1,17 @@
+---
+import { getAlternateUrls } from '../i18n/utils';
+
+// Get the site URL from the Astro site config
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://misaelabanto.com';
+
+// Generate alternate URLs for all supported languages
+const alternateUrls = getAlternateUrls(Astro.url, siteUrl);
+---
+
+<!-- SEO: Language alternatives for search engines -->
+{alternateUrls.map(({ lang, url }) => (
+  <link rel="alternate" hreflang={lang} href={url} />
+))}
+
+<!-- SEO: Default/fallback language -->
+<link rel="alternate" hreflang="x-default" href={`${siteUrl}${alternateUrls.find(alt => alt.lang === 'en')?.url.replace(siteUrl, '') || '/'}`} /> 

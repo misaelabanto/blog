@@ -1,0 +1,50 @@
+---
+import { getLangFromUrl, useTranslatedPath } from '../i18n/utils';
+import HeaderLink from './HeaderLink.astro';
+
+const currentLang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(currentLang);
+
+// Define navigation items with their translations
+const navigationItems = [
+  {
+    path: '/',
+    labelEn: 'Home',
+    labelEs: 'Inicio'
+  },
+  {
+    path: '/experience',
+    labelEn: 'Experience', 
+    labelEs: 'Experiencia'
+  },
+  {
+    path: '/about',
+    labelEn: 'About',
+    labelEs: 'Sobre Mí'
+  },
+  {
+    path: '/blog',
+    labelEn: 'Blog',
+    labelEs: 'Blog'
+  }
+];
+
+// Get the current label based on language
+function getLabel(item: typeof navigationItems[0]) {
+  return currentLang === 'es' ? item.labelEs : item.labelEn;
+}
+---
+
+<div class="internal-links">
+  {navigationItems.map((item) => (
+    <HeaderLink href={translatePath(item.path)}>
+      {getLabel(item)}
+    </HeaderLink>
+  ))}
+  <HeaderLink href="#projects">
+    {currentLang === 'es' ? 'Proyectos' : 'Projects'}
+  </HeaderLink>
+  <HeaderLink href="#contact">
+    {currentLang === 'es' ? 'Contacto' : 'Contact'}
+  </HeaderLink>
+</div> 
