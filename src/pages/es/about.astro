@@ -1,146 +1,86 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
-import { SITE_TITLE } from '../../consts';
+import { getLocalizedMeta } from '../../i18n/utils';
+import Layout from '../../layouts/BlogPost.astro';
+
+const meta = getLocalizedMeta('es');
 ---
 
-<!doctype html>
-<html lang="es">
-	<head>
-		<BaseHead title={`Sobre Mí - ${SITE_TITLE}`} description="Conoce más sobre Misael Abanto, ingeniero de software peruano especializado en desarrollo fullstack y arquitectura de datos." />
-	</head>
-	<body>
-		<Header />
-		<main class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-			<div class="hero min-h-[50vh] bg-gradient-to-r from-blue-50 to-indigo-100 rounded-xl mb-12">
-				<div class="hero-content text-center">
-					<div class="max-w-md">
-						<img 
-							src="/blog-placeholder-about.jpg" 
-							alt="Misael Abanto" 
-							class="rounded-full w-48 h-48 mx-auto mb-6 object-cover shadow-xl"
-						/>
-						<h1 class="text-5xl font-bold mb-4">Sobre Mí</h1>
-						<p class="text-xl text-gray-600">
-							Ingeniero de software con pasión por construir sistemas elegantes y resolver problemas complejos.
-						</p>
-					</div>
-				</div>
-			</div>
+<Layout
+	title="Sobre Mí"
+	description={meta.aboutDescription}
+	pubDate={new Date('2024-01-01')}
+	heroImage="/blog-placeholder-about.jpg"
+>
+	<h1>Sobre Mí</h1>
+	
+	<p>
+		¡Hola! Soy <strong>Misael Abanto</strong>, un ingeniero de software peruano especializado en desarrollo fullstack y arquitectura de datos. Con más de 8 años de experiencia, he construido sistemas escalables que han impactado a miles de usuarios.
+	</p>
 
-			<div class="prose lg:prose-xl mx-auto">
-				<section class="mb-12">
-					<h2 class="text-3xl font-bold mb-6">🧭 Mi Historia</h2>
-					<p class="text-lg leading-relaxed mb-6">
-						Soy un ingeniero peruano que cree en el poder de la claridad — en sistemas, escritura y vida. 
-						Mi pasión por la tecnología comenzó temprano, pero fue trabajando con bancos y startups donde 
-						realmente aprendí el valor de construir sistemas que no solo funcionen, sino que también sean 
-						comprensibles y mantenibles.
-					</p>
-					<p class="text-lg leading-relaxed mb-6">
-						Con más de 5 años de experiencia en el desarrollo de software, he trabajado en todo, desde 
-						arquitecturas de datos para instituciones financieras hasta MVPs de startups que han servido 
-						a miles de usuarios. Me especializo en encontrar el equilibrio perfecto entre innovación 
-						técnica y necesidades reales del negocio.
-					</p>
-				</section>
+	<h2>Mi Trayectoria</h2>
+	
+	<p>
+		Mi carrera comenzó como desarrollador backend, pero rápidamente evolucioné hacia roles más estratégicos donde pude combinar mi pasión por la tecnología con el impacto en el negocio. He liderado equipos de desarrollo, diseñado arquitecturas de datos complejas y construido productos desde cero hasta escalar a millones de usuarios.
+	</p>
 
-				<section class="mb-12">
-					<h2 class="text-3xl font-bold mb-6">🛠️ Lo Que Hago</h2>
-					<div class="grid md:grid-cols-2 gap-8">
-						<div class="card bg-base-100 shadow-lg">
-							<div class="card-body">
-								<h3 class="card-title text-xl mb-3">💻 Desarrollo Fullstack</h3>
-								<p>Construyo aplicaciones web completas usando tecnologías modernas como React, Node.js, y TypeScript. Me enfoco en crear experiencias de usuario fluidas respaldadas por arquitecturas robustas.</p>
-							</div>
-						</div>
-						<div class="card bg-base-100 shadow-lg">
-							<div class="card-body">
-								<h3 class="card-title text-xl mb-3">📊 Arquitectura de Datos</h3>
-								<p>Diseño sistemas de datos escalables para empresas. He trabajado con PostgreSQL, MongoDB, y sistemas de análisis en tiempo real para bancos y startups.</p>
-							</div>
-						</div>
-						<div class="card bg-base-100 shadow-lg">
-							<div class="card-body">
-								<h3 class="card-title text-xl mb-3">🚀 Liderazgo de Producto</h3>
-								<p>Guío equipos desde la concepción hasta el lanzamiento. He liderado el desarrollo de Agéndalo.io, una plataforma SaaS que ahora está en proceso de salida.</p>
-							</div>
-						</div>
-						<div class="card bg-base-100 shadow-lg">
-							<div class="card-body">
-								<h3 class="card-title text-xl mb-3">✍️ Comunicación Técnica</h3>
-								<p>Escribo sobre tecnología, sistemas y aprendizaje. Creo que compartir conocimiento es fundamental para el crecimiento de nuestra industria.</p>
-							</div>
-						</div>
-					</div>
-				</section>
+	<p>
+		Actualmente trabajo como Arquitecto Senior de Datos en una empresa fintech líder, donde diseño e implemento soluciones de datos que procesan miles de transacciones diarias con estrictos requerimientos de seguridad y compliance.
+	</p>
 
-				<section class="mb-12">
-					<h2 class="text-3xl font-bold mb-6">🌟 Valores & Filosofía</h2>
-					<div class="space-y-4">
-						<div class="flex items-start space-x-4">
-							<span class="text-2xl">🎯</span>
-							<div>
-								<h4 class="font-semibold text-lg">Claridad sobre Complejidad</h4>
-								<p>Creo que las mejores soluciones son simples y elegantes. La complejidad debe estar justificada, no ser el objetivo.</p>
-							</div>
-						</div>
-						<div class="flex items-start space-x-4">
-							<span class="text-2xl">🤝</span>
-							<div>
-								<h4 class="font-semibold text-lg">Impacto Humano</h4>
-								<p>La tecnología debe servir a las personas. Cada línea de código que escribo tiene el potencial de mejorar la vida de alguien.</p>
-							</div>
-						</div>
-						<div class="flex items-start space-x-4">
-							<span class="text-2xl">📚</span>
-							<div>
-								<h4 class="font-semibold text-lg">Aprendizaje Continuo</h4>
-								<p>La industria tecnológica evoluciona constantemente. Mantengo una mente curiosa y estoy siempre dispuesto a desaprender y reaprender.</p>
-							</div>
-						</div>
-					</div>
-				</section>
+	<h2>Especialidades</h2>
+	
+	<ul>
+		<li><strong>Backend & APIs:</strong> Python, Node.js, PostgreSQL, Redis, arquitecturas de microservicios</li>
+		<li><strong>Frontend:</strong> React, TypeScript, Next.js, Astro, Tailwind CSS</li>
+		<li><strong>Cloud & DevOps:</strong> AWS, Docker, Kubernetes, CI/CD, infraestructura como código</li>
+		<li><strong>Datos:</strong> Pipelines de datos, ETL/ELT, data warehousing, analytics</li>
+		<li><strong>Liderazgo:</strong> Gestión de equipos técnicos, arquitectura de sistemas, mentoring</li>
+	</ul>
 
-				<section class="mb-12">
-					<h2 class="text-3xl font-bold mb-6">🎯 Más Allá del Código</h2>
-					<p class="text-lg leading-relaxed mb-4">
-						Cuando no estoy escribiendo código, probablemente me encuentres:
-					</p>
-					<ul class="list-disc list-inside space-y-2 text-lg">
-						<li>📖 Leyendo ciencia ficción (especialmente autores como Isaac Asimov y Liu Cixin)</li>
-						<li>✈️ Planificando el próximo viaje (soy algo obsesivo con la optimización de itinerarios)</li>
-						<li>🎬 Viendo documentales sobre ciencia y tecnología</li>
-						<li>🍕 Experimentando con recetas (el desarrollo culinario es sorprendentemente similar al desarrollo de software)</li>
-						<li>🏃‍♂️ Corriendo por Lima (mi forma favorita de pensar en problemas complejos)</li>
-					</ul>
-				</section>
+	<h2>Emprendimiento</h2>
+	
+	<p>
+		También soy un emprendedor apasionado. He co-fundado y liderado técnicamente varias startups, incluyendo una plataforma SaaS para la gestión de citas médicas que alcanzó más de 50,000 usuarios activos. Esta experiencia me enseñó la importancia de validar ideas rápidamente, construir MVP eficientes y escalar productos con recursos limitados.
+	</p>
 
-				<section>
-					<h2 class="text-3xl font-bold mb-6">📬 Conectemos</h2>
-					<p class="text-lg leading-relaxed mb-6">
-						Siempre estoy interesado en conversar sobre tecnología, startups, o simplemente intercambiar ideas. 
-						Si tienes un proyecto interesante, una oportunidad de colaboración, o solo quieres charlar sobre 
-						sistemas distribuidos, no dudes en contactarme.
-					</p>
-					<div class="flex gap-4 flex-wrap">
-						<a href="mailto:misaelabanto@gmail.com" class="btn btn-primary">
-							📧 Email
-						</a>
-						<a href="https://linkedin.com/in/misaelabanto" target="_blank" class="btn btn-outline">
-							💼 LinkedIn
-						</a>
-						<a href="https://twitter.com/_misaelabanto" target="_blank" class="btn btn-outline">
-							🐦 Twitter
-						</a>
-						<a href="https://github.com/misaelabanto" target="_blank" class="btn btn-outline">
-							💻 GitHub
-						</a>
-					</div>
-				</section>
-			</div>
-		</main>
-		<Footer />
-	</body>
-</html> 
+	<h2>Filosofía</h2>
+	
+	<p>
+		Creo firmemente en el poder de la tecnología para resolver problemas reales y mejorar la vida de las personas. Me apasiona construir sistemas que no solo funcionen bien técnicamente, sino que también generen valor tangible para los usuarios y el negocio.
+	</p>
+
+	<p>
+		En mi trabajo, priorizo:
+	</p>
+	
+	<ul>
+		<li><strong>Simplicidad:</strong> Las mejores soluciones suelen ser las más simples</li>
+		<li><strong>Escalabilidad:</strong> Diseñar pensando en el futuro, pero sin sobre-ingeniería</li>
+		<li><strong>Calidad:</strong> Código limpio, bien probado y documentado</li>
+		<li><strong>Impacto:</strong> Enfoque en métricas que importan al negocio</li>
+		<li><strong>Aprendizaje continuo:</strong> La tecnología evoluciona constantemente</li>
+	</ul>
+
+	<h2>Fuera del Código</h2>
+	
+	<p>
+		Cuando no estoy escribiendo código, disfruto explorando nuevas tecnologías, leyendo sobre startups y tecnología, y compartiendo conocimiento a través de mentoring y charlas técnicas. También me gusta viajar, la fotografía y pasar tiempo con mi familia.
+	</p>
+
+	<h2>Conectemos</h2>
+	
+	<p>
+		Estoy siempre abierto a conversaciones interesantes sobre tecnología, startups, arquitectura de sistemas o cualquier proyecto desafiante. Puedes encontrarme en:
+	</p>
+	
+	<ul>
+		<li><strong>Email:</strong> hola@misaelabanto.com</li>
+		<li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/misaelabanto" target="_blank">linkedin.com/in/misaelabanto</a></li>
+		<li><strong>GitHub:</strong> <a href="https://github.com/misaelabanto" target="_blank">github.com/misaelabanto</a></li>
+		<li><strong>Twitter:</strong> <a href="https://twitter.com/misaelabanto" target="_blank">@misaelabanto</a></li>
+	</ul>
+
+	<p>
+		Si tienes un proyecto interesante, una oportunidad de colaboración, o simplemente quieres charlar sobre tecnología, ¡no dudes en contactarme!
+	</p>
+</Layout> 

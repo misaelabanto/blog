@@ -5,8 +5,11 @@ import FormattedDate from '@/components/FormattedDate.astro';
 import Header from '@/components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
 import { getCollection } from 'astro:content';
+import { filterByLanguage } from '../../../i18n/utils';
 
-const posts = (await getCollection('blog')).sort(
+// Get all blog posts and filter for Spanish only
+const allPosts = await getCollection('blog');
+const posts = filterByLanguage(allPosts, 'es').sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
@@ -24,47 +27,55 @@ const posts = (await getCollection('blog')).sort(
 				<p class="text-lg mb-12 text-center max-w-3xl mx-auto text-gray-600">
 					Mis pensamientos sobre tecnología, desarrollo, datos y aprendizaje. Ideas que espero te resulten útiles e interesantes.
 				</p>
-				<ul class="flex flex-wrap gap-4 list-none m-0 p-0 md:gap-8">
-					{
-						posts.map((post) => (
-							<li class:list={[
-								'card',
-								'bg-base-100',
-								'shadow-md',
-								'hover:shadow-xl',
-								'transition-shadow',
-								'w-full', // Default to full width on small screens
-								post === posts[0] ? 'text-center' : '', // Conditional text-center for first item
-								post === posts[0] ? '' : 'md:w-[calc(50%-1rem)]', // Conditional width for non-first items on md+
-							]}>
-								<a href={`/es/blog/${post.id}/`} class="block group no-underline transition-all duration-200 ease-in-out">
-									<figure class="rounded-xl overflow-hidden mb-2">
-										<img
-											width={720}
-											height={360}
-											src={post.data.heroImage}
-											alt=""
-											class="w-full object-cover group-hover:shadow-xl"
-										/>
-									</figure>
-									<div class="card-body p-4">
-										<h4 class:list={[
-											'card-title',
-											'm-0',
-											'leading-tight',
-											post === posts[0] ? 'text-4xl sm:text-2xl' : '', // Larger title for first item
-										]}>
-											{post.data.title}
-										</h4>
-										<p class="m-0 text-[rgb(var(--gray))] text-sm group-hover:text-[rgb(var(--accent))]">
-											<FormattedDate date={post.data.pubDate} />
-										</p>
-									</div>
-								</a>
-							</li>
-						))
-					}
-				</ul>
+				{posts.length === 0 ? (
+					<div class="text-center py-12">
+						<p class="text-lg text-gray-600 mb-4">Aún no hay posts en español disponibles.</p>
+						<p class="text-sm text-gray-500">¡Pronto habrá contenido nuevo!</p>
+					</div>
+				) : (
+					<ul class="flex flex-wrap gap-4 list-none m-0 p-0 md:gap-8">
+						{
+							posts.map((post) => (
+								<li class:list={[
+									'card',
+									'bg-base-100',
+									'shadow-md',
+									'hover:shadow-xl',
+									'transition-shadow',
+									'w-full', // Default to full width on small screens
+									post === posts[0] ? 'text-center' : '', // Conditional text-center for first item
+									post === posts[0] ? '' : 'md:w-[calc(50%-1rem)]', // Conditional width for non-first items on md+
+								]}>
+									<a href={`/es/blog/${post.id.split('/')[1]}/`} class="block group no-underline transition-all duration-200 ease-in-out">
+										<figure class="rounded-xl overflow-hidden mb-2">
+											<img
+												width={720}
+												height={360}
+												src={post.data.heroImage}
+												alt=""
+												class="w-full object-cover group-hover:shadow-xl"
+											/>
+										</figure>
+										<div class="card-body p-4">
+											<h4 class:list={[
+												'card-title',
+												'm-0',
+												'leading-tight',
+												post === posts[0] ? 'text-4xl sm:text-2xl' : '', // Larger title for first item
+											]}>
+												{post.data.title}
+											</h4>
+											<p class="m-0 text-[rgb(var(--gray))] text-sm group-hover:text-[rgb(var(--accent))]">
+												<FormattedDate date={post.data.pubDate} />
+											</p>
+											<p class="text-base-content/70 mt-2">{post.data.description}</p>
+										</div>
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				)}
 			</section>
 		</main>
 		<Footer />
