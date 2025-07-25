@@ -1,0 +1,26 @@
+{
+  "company": "Devsu",
+  "position": "Software Engineer",
+  "startDate": "2021-01-01",
+  "endDate": "2022-12-31",
+  "current": false,
+  "location": "Remote",
+  "description": "Maintained and enhanced web applications using modern technologies, ensuring seamless user experiences and optimal performance.",
+  "technologies": [
+    "React",
+    "Node.js",
+    "Spring",
+    "Google Cloud",
+    "GraphQL",
+    "TypeScript",
+    "JavaScript"
+  ],
+  "achievements": [
+    "Maintained web applications using React for the frontend and Node.js and Spring for the backend, ensuring seamless user experiences",
+    "Leveraged Google Cloud to deploy and manage applications, improving scalability and reliability",
+    "Integrated GraphQL APIs to optimize data fetching and improve application performance",
+    "Participated in code reviews and aligned to best practices for coding standards, leading to a 30% reduction in bugs and improved code maintainability"
+  ],
+  "type": "work",
+  "order": 1
+}

@@ -1,0 +1,28 @@
+{
+  "company": "IAPBBS",
+  "position": "Fullstack Developer",
+  "startDate": "2018-01-01",
+  "endDate": "2019-12-31",
+  "current": false,
+  "location": "Lima, Peru",
+  "description": "Built a comprehensive ERP system for hardware stores, managing all aspects of business operations from client management to billing and transportation.",
+  "technologies": [
+    "MySQL",
+    "Node.js",
+    "Vanilla JavaScript",
+    "Bootstrap",
+    "Express.js",
+    "REST APIs",
+    "Database Design"
+  ],
+  "achievements": [
+    "Built an ERP system to manage clients, sales, purchases, suppliers, stock, transportation, and billing for hardware stores",
+    "Used MySQL for database management, ensuring reliable and efficient data storage",
+    "Developed the backend using Node.js, providing a robust and scalable server-side application and provided a flexible model adaptable to different companies",
+    "Implemented the frontend using Vanilla JavaScript and Bootstrap, creating a user-friendly and responsive interface",
+    "Automated processes that saved over $1000 per month per store in human resource costs",
+    "The ERP was adopted by 12 companies across Lima, enhancing their operational efficiency"
+  ],
+  "type": "work",
+  "order": 4
+}

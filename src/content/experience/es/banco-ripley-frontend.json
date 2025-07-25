@@ -1,0 +1,27 @@
+{
+  "company": "Banco Ripley",
+  "position": "Ingeniero Frontend",
+  "startDate": "2020-01-01",
+  "endDate": "2021-12-31",
+  "current": false,
+  "location": "Lima, Perú",
+  "description": "Desarrollé aplicaciones web responsivas y amigables para servicios bancarios, enfocándome en optimización de rendimiento y compatibilidad multiplataforma.",
+  "technologies": [
+    "Angular",
+    "AWS S3",
+    "AWS CloudFront",
+    "Google Cloud Platform",
+    "Cloudflare Workers",
+    "TypeScript",
+    "CSS",
+    "JavaScript"
+  ],
+  "achievements": [
+    "Desarrollé aplicaciones web responsivas y amigables usando Angular, asegurando una experiencia de usuario fluida en todos los dispositivos",
+    "Desplegué y gestioné aplicaciones en AWS S3, AWS CloudFront, Google Cloud Platform y Cloudflare Workers, mejorando el rendimiento y la seguridad",
+    "Optimicé el rendimiento de las aplicaciones, reduciendo los tiempos de carga en 40% y mejorando el engagement de usuarios",
+    "Trabajé en estrecha colaboración con desarrolladores backend y diseñadores UX/UI para crear soluciones web cohesivas y eficientes"
+  ],
+  "type": "work",
+  "order": 3
+}
