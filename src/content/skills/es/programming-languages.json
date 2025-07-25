@@ -1,0 +1,65 @@
+{
+  "category": "programming-languages",
+  "title": "Lenguajes de Programación y Frameworks",
+  "icon": "💻",
+  "description": "Lenguajes de programación principales y frameworks para desarrollo full-stack",
+  "technologies": [
+    {
+      "name": "JavaScript y TypeScript",
+      "level": "expert",
+      "years": 8,
+      "keywords": [
+        "Node.js",
+        "Express.js",
+        "Vue.js",
+        "Angular",
+        "React",
+        "Bun.js",
+        "Elysia",
+        "Testing"
+      ]
+    },
+    {
+      "name": "Python",
+      "level": "advanced",
+      "years": 5,
+      "keywords": [
+        "Clases",
+        "Async/await",
+        "Scikit-learn"
+      ]
+    },
+    {
+      "name": "Golang",
+      "level": "intermediate",
+      "years": 2,
+      "keywords": [
+        "Gin gonic",
+        "Resty",
+        "Tipos genéricos"
+      ]
+    },
+    {
+      "name": "Node.js",
+      "level": "expert",
+      "years": 8
+    },
+    {
+      "name": "Vue.js",
+      "level": "expert",
+      "years": 6
+    },
+    {
+      "name": "React",
+      "level": "advanced",
+      "years": 5
+    },
+    {
+      "name": "Angular",
+      "level": "advanced",
+      "years": 4
+    }
+  ],
+  "order": 1,
+  "featured": true
+}

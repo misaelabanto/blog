@@ -1,0 +1,49 @@
+{
+  "category": "databases",
+  "title": "Bases de Datos",
+  "icon": "🗄️",
+  "description": "Sistemas de gestión de bases de datos y soluciones de almacenamiento",
+  "technologies": [
+    {
+      "name": "MongoDB",
+      "level": "expert",
+      "years": 6,
+      "keywords": [
+        "Agregación",
+        "Cluster de Réplicas",
+        "Índices"
+      ]
+    },
+    {
+      "name": "PostgreSQL",
+      "level": "advanced",
+      "years": 5,
+      "keywords": [
+        "Consultas complejas",
+        "Índices"
+      ]
+    },
+    {
+      "name": "MySQL",
+      "level": "advanced",
+      "years": 6,
+      "keywords": [
+        "Consultas complejas",
+        "Procedimientos almacenados",
+        "Funciones"
+      ]
+    },
+    {
+      "name": "Diseño de Base de Datos",
+      "level": "advanced",
+      "years": 7
+    },
+    {
+      "name": "Optimización de Consultas",
+      "level": "advanced",
+      "years": 6
+    }
+  ],
+  "order": 2,
+  "featured": true
+}

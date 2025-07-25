@@ -1,38 +1,57 @@
 {
   "category": "cloud-devops",
-  "title": "Cloud & DevOps",
+  "title": "Cloud y DevOps",
   "icon": "☁️",
-  "description": "Infraestructura en la nube, contenedores y automatización",
+  "description": "Infraestructura en la nube, automatización de despliegues y administración de sistemas",
   "technologies": [
     {
       "name": "AWS",
-      "level": "expert",
-      "years": 7
+      "level": "advanced",
+      "years": 5,
+      "keywords": [
+        "EC2",
+        "ECS",
+        "S3",
+        "SES",
+        "CloudWatch",
+        "Lambda"
+      ]
+    },
+    {
+      "name": "CI/CD",
+      "level": "advanced",
+      "years": 4,
+      "keywords": [
+        "Docker",
+        "Github Actions",
+        "AWS App Runner",
+        "Serverless"
+      ]
+    },
+    {
+      "name": "Linux",
+      "level": "intermediate",
+      "years": 6,
+      "keywords": [
+        "Administración de servidores",
+        "Nginx",
+        "Certbot"
+      ]
     },
     {
       "name": "Docker",
       "level": "advanced",
-      "years": 6
-    },
-    {
-      "name": "Kubernetes",
-      "level": "advanced",
       "years": 4
-    },
-    {
-      "name": "Terraform",
-      "level": "intermediate",
-      "years": 3
     },
     {
       "name": "GitHub Actions",
       "level": "advanced",
-      "years": 5
+      "years": 3
     },
     {
-      "name": "Apache Airflow",
+      "name": "Nginx",
       "level": "intermediate",
-      "years": 3
+      "years": 5
     }
   ],
   "order": 3,
