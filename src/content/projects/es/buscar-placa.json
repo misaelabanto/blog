@@ -1,0 +1,28 @@
+{
+  "title": "BuscarPlaca - Consultas Vehiculares Perú",
+  "description": "Una aplicación web que permite consultar información vehicular en Perú utilizando el número de placa, procesando miles de consultas diarias de manera eficiente.",
+  "image": "/images/projects/buscar-placa.jpg",
+  "technologies": [
+    "React",
+    "Node.js",
+    "PostgreSQL",
+    "Redis",
+    "AWS Lambda",
+    "API Gateway",
+    "CloudFront"
+  ],
+  "githubUrl": "https://github.com/misaelabanto/buscar-placa",
+  "liveUrl": "https://buscarplaca.pe",
+  "featured": true,
+  "startDate": "2023-06-01",
+  "endDate": "2023-10-01",
+  "status": "completed",
+  "order": 2,
+  "category": "Utilidad Pública",
+  "highlights": [
+    "Procesa 50,000+ consultas mensuales",
+    "Tiempo de respuesta promedio <200ms",
+    "Integración con APIs gubernamentales oficiales",
+    "99.9% de uptime desde el lanzamiento"
+  ]
+}

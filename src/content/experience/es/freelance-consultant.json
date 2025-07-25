@@ -1,0 +1,28 @@
+{
+  "company": "Consultor Independiente",
+  "position": "Consultor Senior de Datos y Fullstack",
+  "startDate": "2021-01-01",
+  "endDate": "2024-01-31",
+  "location": "Remoto - Internacional",
+  "description": "Proporcioné consultoría especializada en arquitectura de datos, desarrollo fullstack y estrategia tecnológica para startups y empresas medianas en mercados emergentes.",
+  "technologies": [
+    "PostgreSQL",
+    "MongoDB",
+    "Python",
+    "TypeScript",
+    "Vue.js",
+    "React",
+    "Node.js",
+    "AWS",
+    "GCP"
+  ],
+  "achievements": [
+    "Ayudé a 15+ clientes a escalar sus sistemas de 10K a 1M+ usuarios",
+    "Diseñé arquitecturas de datos que redujeron tiempos de consulta en 80%",
+    "Implementé pipelines de CI/CD que aceleraron deployments de días a minutos",
+    "Mentoré a 30+ desarrolladores junior en mejores prácticas de ingeniería",
+    "Generé $200K+ en ingresos anuales mediante consultoría especializada"
+  ],
+  "type": "freelance",
+  "order": 1
+}

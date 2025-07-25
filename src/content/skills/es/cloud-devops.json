@@ -1,0 +1,40 @@
+{
+  "category": "cloud-devops",
+  "title": "Cloud & DevOps",
+  "icon": "☁️",
+  "description": "Infraestructura en la nube, contenedores y automatización",
+  "technologies": [
+    {
+      "name": "AWS",
+      "level": "expert",
+      "years": 7
+    },
+    {
+      "name": "Docker",
+      "level": "advanced",
+      "years": 6
+    },
+    {
+      "name": "Kubernetes",
+      "level": "advanced",
+      "years": 4
+    },
+    {
+      "name": "Terraform",
+      "level": "intermediate",
+      "years": 3
+    },
+    {
+      "name": "GitHub Actions",
+      "level": "advanced",
+      "years": 5
+    },
+    {
+      "name": "Apache Airflow",
+      "level": "intermediate",
+      "years": 3
+    }
+  ],
+  "order": 3,
+  "featured": true
+}

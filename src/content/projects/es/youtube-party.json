@@ -1,0 +1,28 @@
+{
+  "title": "YouTube Party - Ver Videos Juntos",
+  "description": "Una aplicación de sincronización de videos que permite a amigos ver contenido de YouTube juntos en tiempo real, con chat integrado y controles sincronizados.",
+  "image": "/images/projects/youtube-party.jpg",
+  "technologies": [
+    "React",
+    "Socket.io",
+    "Node.js",
+    "Express",
+    "YouTube API",
+    "WebRTC",
+    "Heroku"
+  ],
+  "githubUrl": "https://github.com/misaelabanto/youtube-party",
+  "liveUrl": "https://youtube-party-app.herokuapp.com",
+  "featured": false,
+  "startDate": "2022-08-01",
+  "endDate": "2022-11-01",
+  "status": "completed",
+  "order": 4,
+  "category": "Entretenimiento",
+  "highlights": [
+    "Sincronización en tiempo real con latencia <50ms",
+    "Soporte para salas de hasta 50 usuarios",
+    "Chat de texto integrado con emojis",
+    "Compatible con playlists de YouTube"
+  ]
+}

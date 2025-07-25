@@ -1,0 +1,26 @@
+{
+  "company": "DataFlow Solutions",
+  "position": "Ingeniero Principal de Datos",
+  "startDate": "2024-02-01",
+  "current": true,
+  "location": "Remoto",
+  "description": "Liderando iniciativas de arquitectura e ingeniería de datos para una empresa de IA de vanguardia, enfocándome en procesamiento de datos en tiempo real e infraestructura de machine learning.",
+  "technologies": [
+    "Python",
+    "Apache Kafka",
+    "Kubernetes",
+    "Apache Airflow",
+    "Snowflake",
+    "dbt",
+    "Terraform",
+    "AWS"
+  ],
+  "achievements": [
+    "Diseñé un feature store de ML en tiempo real que sirve más de 1B de solicitudes diarias",
+    "Reduje los costos de infraestructura en un 35% mediante optimización inteligente de recursos",
+    "Construí un marco de calidad de datos que mejoró la precisión del modelo en un 20%",
+    "Liderando un equipo de 12 ingenieros en 3 zonas horarias"
+  ],
+  "type": "work",
+  "order": 0
+}

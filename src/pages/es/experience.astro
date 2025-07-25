@@ -1,123 +1,361 @@
 ---
+import BaseHead from '@/components/BaseHead.astro';
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+import { SITE_TITLE } from '@/consts';
+import { filterByLanguage } from '@/i18n/utils';
 import { getCollection } from 'astro:content';
-import { filterByLanguage, getLocalizedMeta } from '../../i18n/utils';
-import Layout from '../../layouts/BlogPost.astro';
 
-// Get Spanish experience data
-const allExperience = await getCollection('experience');
-const experiences = filterByLanguage(allExperience, 'es');
+// Get all experience, projects, and skills from content collections
+const allExperiences = await getCollection('experience');
+const experiences = filterByLanguage(allExperiences, 'es').sort(
+  (a, b) => a.data.order - b.data.order
+);
 
-const meta = getLocalizedMeta('es');
+const allProjects = await getCollection('projects');
+const projects = filterByLanguage(allProjects, 'es').sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const allSkills = await getCollection('skills');
+const skills = filterByLanguage(allSkills, 'es').sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const featuredProjects = projects.filter(project => project.data.featured);
+const featuredSkills = skills.filter(skill => skill.data.featured);
+
+// Helper function to format dates
+function formatDate(dateString: string) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('es-ES', { 
+    year: 'numeric', 
+    month: 'short' 
+  });
+}
+
+// Helper function to get type badge
+function getTypeBadge(type: string) {
+  switch (type) {
+    case 'work': return '💼 Tiempo Completo';
+    case 'freelance': return '🏃‍♂️ Freelance';
+    case 'startup': return '🚀 Startup';
+    default: return '💼 Trabajo';
+  }
+}
+
+// Helper function to get status badge
+function getStatusBadge(status: string) {
+  switch (status) {
+    case 'completed': return { class: 'badge-success', text: '✅ Completado' };
+    case 'in-progress': return { class: 'badge-warning', text: '🚧 En Progreso' };
+    case 'archived': return { class: 'badge-neutral', text: '📦 Archivado' };
+    default: return { class: 'badge-neutral', text: status };
+  }
+}
+
+// Helper function to get project icon
+function getProjectIcon(title: string) {
+  if (title.includes('Agéndalo')) return '📅';
+  if (title.includes('YouTube')) return '🎮';
+  if (title.includes('Covid')) return '🗺️';
+  return '💻';
+}
+
+// Helper function to get skill level badge
+function getSkillLevelBadge(level: string) {
+  switch (level) {
+    case 'expert': return { class: 'badge-success', text: 'Experto' };
+    case 'advanced': return { class: 'badge-warning', text: 'Avanzado' };
+    case 'intermediate': return { class: 'badge-info', text: 'Intermedio' };
+    case 'beginner': return { class: 'badge-neutral', text: 'Principiante' };
+    default: return { class: 'badge-neutral', text: level };
+  }
+}
 ---
 
-<Layout
-	title="Experiencia Profesional"
-	description="Descubre mi trayectoria profesional como ingeniero de software, arquitecto de datos y líder técnico en startups y empresas fintech."
-	pubDate={new Date('2024-01-01')}
-	heroImage="/blog-placeholder-3.jpg"
->
-	<h1>Experiencia Profesional</h1>
-	
-	<p class="text-lg text-gray-600 mb-8">
-		Más de 8 años construyendo sistemas escalables, liderando equipos técnicos y 
-		transformando ideas en productos que impactan a miles de usuarios.
-	</p>
+<!doctype html>
+<html lang="es" data-theme="light">
+  <head>
+    <BaseHead title={`Experiencia - ${SITE_TITLE}`} description="Mi trayectoria profesional, experiencia laboral y proyectos destacados que muestran mis habilidades en arquitectura de datos, desarrollo fullstack y diseño de sistemas." />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <!-- Hero Section -->
+      <section class="py-20 px-6 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            Mi Trayectoria
+          </h1>
+          <p class="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto">
+            Desde arquitectura de datos en empresas Fortune 500 hasta construir startups exitosas, 
+            aquí está la historia de mi evolución profesional y los proyectos que definen mi experiencia.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="#experience" class="btn btn-primary">
+              💼 Experiencia Laboral
+            </a>
+            <a href="#projects" class="btn btn-secondary">
+              🚀 Proyectos Destacados
+            </a>
+          </div>
+        </div>
+      </section>
 
-	<div class="space-y-12">
-		{experiences.length > 0 ? (
-			experiences.map((experience) => (
-				<div class="border-l-4 border-primary pl-6 pb-8">
-					<div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-						<div class="flex-1">
-							<h2 class="text-2xl font-bold text-gray-900 mb-2">
-								{experience.data.position}
-							</h2>
-							<h3 class="text-xl text-primary font-semibold mb-2">
-								{experience.data.company}
-							</h3>
-							<p class="text-gray-600 mb-3">
-								{experience.data.location}
-							</p>
-						</div>
-						<div class="flex flex-col items-start lg:items-end text-sm text-gray-500">
-							<span class="font-medium">
-								{experience.data.startDate} - {experience.data.endDate}
-							</span>
-							<span class="bg-gray-100 px-2 py-1 rounded-full mt-2">
-								{experience.data.type}
-							</span>
-						</div>
-					</div>
-					
-					<p class="text-gray-700 mb-4 leading-relaxed">
-						{experience.data.description}
-					</p>
-					
-					{experience.data.achievements && experience.data.achievements.length > 0 && (
-						<div class="mb-4">
-							<h4 class="text-lg font-semibold mb-3 text-gray-800">
-								Logros Principales:
-							</h4>
-							<ul class="space-y-2">
-								{experience.data.achievements.map((achievement) => (
-									<li class="flex items-start">
-										<span class="text-primary mr-2 mt-1">•</span>
-										<span class="text-gray-700">{achievement}</span>
-									</li>
-								))}
-							</ul>
-						</div>
-					)}
-					
-					{experience.data.technologies && experience.data.technologies.length > 0 && (
-						<div>
-							<h4 class="text-lg font-semibold mb-3 text-gray-800">
-								Tecnologías:
-							</h4>
-							<div class="flex flex-wrap gap-2">
-								{experience.data.technologies.map((tech) => (
-									<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">
-										{tech}
-									</span>
-								))}
-							</div>
-						</div>
-					)}
-				</div>
-			))
-		) : (
-			<div class="text-center py-12">
-				<h2 class="text-2xl font-bold text-gray-900 mb-4">
-					Contenido en Desarrollo
-				</h2>
-				<p class="text-gray-600 mb-6">
-					La versión en español de mi experiencia profesional estará disponible pronto.
-				</p>
-				<a href="/experience" class="btn btn-primary">
-					Ver en Inglés
-				</a>
-			</div>
-		)}
-	</div>
+      <!-- Experience Section -->
+      <section id="experience" class="py-16 px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">💼 Experiencia Profesional</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+              Mi trayectoria profesional abarca arquitectura de datos empresariales, liderazgo de startups y consultoría freelance, 
+              con un enfoque en construir sistemas escalables que resuelvan problemas del mundo real.
+            </p>
+          </div>
 
-	{experiences.length > 0 && (
-		<div class="mt-16 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100">
-			<h2 class="text-2xl font-bold text-gray-900 mb-4">
-				¿Interesado en Colaborar?
-			</h2>
-			<p class="text-gray-700 mb-4">
-				Estoy siempre abierto a nuevas oportunidades y proyectos desafiantes. 
-				Si buscas un líder técnico experimentado o quieres discutir una idea innovadora, 
-				¡me encantaría conversar contigo!
-			</p>
-			<div class="flex gap-4 flex-wrap">
-				<a href="mailto:hola@misaelabanto.com" class="btn btn-primary">
-					📧 Contáctame
-				</a>
-				<a href="https://linkedin.com/in/misaelabanto" target="_blank" class="btn btn-outline">
-					💼 LinkedIn
-				</a>
-			</div>
-		</div>
-	)}
-</Layout> 
+          <div class="space-y-8">
+            {experiences.map((experience) => (
+              <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-primary">
+                <div class="card-body">
+                  <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                    <div class="flex-1">
+                      <h3 class="card-title text-2xl mb-2">{experience.data.position}</h3>
+                      <h4 class="text-lg font-semibold text-primary mb-2">{experience.data.company}</h4>
+                      <p class="text-base-content/70 mb-4">{experience.data.description}</p>
+                    </div>
+                    <div class="flex flex-col items-end text-right">
+                      <div class="badge badge-outline mb-2">
+                        {getTypeBadge(experience.data.type)}
+                      </div>
+                      <div class="text-sm text-base-content/70 mb-1">
+                        {formatDate(experience.data.startDate)} - 
+                        {experience.data.current ? 'Presente' : formatDate(experience.data.endDate || '')}
+                      </div>
+                      <div class="text-sm text-base-content/70">{experience.data.location}</div>
+                    </div>
+                  </div>
+
+                  <!-- Technologies -->
+                  <div class="mb-4">
+                    <h5 class="font-semibold mb-2">Tecnologías y Herramientas:</h5>
+                    <div class="flex flex-wrap gap-2">
+                      {experience.data.technologies.map((tech) => (
+                        <span class="badge badge-secondary">{tech}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <!-- Key Achievements -->
+                  <div class="mb-4">
+                    <h5 class="font-semibold mb-2">Logros Principales:</h5>
+                    <ul class="list-disc list-inside space-y-1 text-base-content/80">
+                      {experience.data.achievements.map((achievement) => (
+                        <li>{achievement}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="py-16 px-6 bg-base-200">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">🚀 Proyectos Destacados</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+              Una selección de proyectos que muestran mis habilidades técnicas, capacidades de resolución de problemas 
+              y pasión por construir soluciones que generen un impacto real.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {featuredProjects.map((project) => {
+              const statusBadge = getStatusBadge(project.data.status);
+              return (
+                <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
+                  <figure class="px-6 pt-6">
+                    <div class="w-full h-48 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
+                      <div class="text-4xl">
+                        {getProjectIcon(project.data.title)}
+                      </div>
+                    </div>
+                  </figure>
+                  <div class="card-body">
+                    <h3 class="card-title text-xl mb-2">{project.data.title}</h3>
+                    <p class="text-base-content/70 mb-4">{project.data.description}</p>
+                    
+                    <!-- Project Status and Category -->
+                    <div class="flex items-center gap-2 mb-4">
+                      <div class={`badge ${statusBadge.class}`}>
+                        {statusBadge.text}
+                      </div>
+                      {project.data.category && (
+                        <div class="badge badge-outline">
+                          {project.data.category}
+                        </div>
+                      )}
+                      <div class="text-sm text-base-content/70">
+                        {formatDate(project.data.startDate)}
+                      </div>
+                    </div>
+
+                    <!-- Technologies -->
+                    <div class="mb-4">
+                      <div class="flex flex-wrap gap-1">
+                        {project.data.technologies.slice(0, 4).map((tech) => (
+                          <span class="badge badge-outline badge-sm">{tech}</span>
+                        ))}
+                        {project.data.technologies.length > 4 && (
+                          <span class="badge badge-outline badge-sm">+{project.data.technologies.length - 4}</span>
+                        )}
+                      </div>
+                    </div>
+
+                    <!-- Project Highlights -->
+                    {project.data.highlights && project.data.highlights.length > 0 && (
+                      <div class="mb-4">
+                        <h5 class="font-semibold mb-2 text-sm">Puntos Destacados:</h5>
+                        <ul class="list-disc list-inside space-y-1 text-sm text-base-content/70">
+                          {project.data.highlights.slice(0, 2).map((highlight) => (
+                            <li>{highlight}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    <div class="card-actions justify-between items-center">
+                      <div class="flex gap-2">
+                        {project.data.githubUrl && (
+                          <a href={project.data.githubUrl} target="_blank" class="btn btn-ghost btn-sm">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd" />
+                            </svg>
+                            Código
+                          </a>
+                        )}
+                        {project.data.liveUrl && (
+                          <a href={project.data.liveUrl} target="_blank" class="btn btn-ghost btn-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                            Demo
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills & Technologies Overview -->
+      <section class="py-16 px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">🛠️ Experiencia Técnica</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+              Una visión integral de las tecnologías, herramientas y metodologías que he dominado a lo largo de mi carrera.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredSkills.map((skill) => (
+              <div class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow">
+                <div class="card-body text-center">
+                  <div class="text-3xl mb-4">{skill.data.icon}</div>
+                  <h3 class="card-title justify-center mb-2">{skill.data.title}</h3>
+                  {skill.data.description && (
+                    <p class="text-sm text-base-content/70 mb-4">{skill.data.description}</p>
+                  )}
+                  <div class="flex flex-wrap gap-1 justify-center">
+                    {skill.data.technologies.slice(0, 6).map((tech) => {
+                      const levelBadge = tech.level ? getSkillLevelBadge(tech.level) : null;
+                      return (
+                        <div class="tooltip" data-tip={tech.level ? `${tech.level}${tech.years ? ` - ${tech.years} años` : ''}` : tech.name}>
+                          <span class={`badge badge-outline badge-sm ${levelBadge ? 'cursor-help' : ''}`}>
+                            {tech.name}
+                            {tech.level === 'expert' && <span class="ml-1">⭐</span>}
+                          </span>
+                        </div>
+                      );
+                    })}
+                    {skill.data.technologies.length > 6 && (
+                      <span class="badge badge-outline badge-sm opacity-60">
+                        +{skill.data.technologies.length - 6}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Detailed Skills Breakdown -->
+          <div class="mt-16">
+            <h3 class="text-2xl font-bold mb-8 text-center">Desglose Detallado de Habilidades</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {featuredSkills.map((skill) => (
+                <div class="card bg-base-100 shadow-md">
+                  <div class="card-body">
+                    <h4 class="card-title mb-4">
+                      <span class="text-2xl mr-2">{skill.data.icon}</span>
+                      {skill.data.title}
+                    </h4>
+                    <div class="space-y-3">
+                      {skill.data.technologies.map((tech) => {
+                        const levelBadge = tech.level ? getSkillLevelBadge(tech.level) : null;
+                        return (
+                          <div class="flex items-center justify-between">
+                            <span class="font-medium">{tech.name}</span>
+                            <div class="flex items-center gap-2">
+                              {tech.years && (
+                                <span class="text-sm text-base-content/60">{tech.years}a</span>
+                              )}
+                              {levelBadge && (
+                                <span class={`badge badge-sm ${levelBadge.class}`}>
+                                  {levelBadge.text}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="py-16 px-6 bg-gradient-to-r from-primary to-secondary text-white">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Construyamos Algo Increíble Juntos</h2>
+          <p class="text-xl mb-8 opacity-90">
+            ¿Listo para abordar tu próximo desafío técnico? Estoy disponible para consultoría, 
+            colaboración en proyectos u oportunidades de tiempo completo.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="#contact" class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-primary">
+              📬 Ponte en Contacto
+            </a>
+            <a href="/es/blog" class="btn btn-ghost btn-lg text-white hover:bg-white/10">
+              📖 Lee Mi Blog
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html> 

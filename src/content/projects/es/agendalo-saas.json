@@ -1,0 +1,28 @@
+{
+  "title": "Agéndalo.io - Plataforma Inteligente de Citas",
+  "description": "Una plataforma SaaS integral para programación de citas y gestión empresarial, actualmente en proceso de venta tras un exitoso crecimiento y validación del mercado.",
+  "image": "/images/projects/agendalo.jpg",
+  "technologies": [
+    "Vue",
+    "Node.js",
+    "MongoDB",
+    "AWS S3, Amplify, Route 53, CloudFront",
+    "Stripe, Paypal, Mercado Pago",
+    "TypeScript",
+    "WhatsApp Cloud API"
+  ],
+  "githubUrl": "",
+  "liveUrl": "https://agendalo.io",
+  "featured": true,
+  "startDate": "2021-01-01",
+  "endDate": "2024-12-01",
+  "status": "completed",
+  "order": 1,
+  "category": "SaaS",
+  "highlights": [
+    "Escalé a 10,000+ usuarios empresariales activos",
+    "Generé $500K+ en ingresos anuales recurrentes",
+    "Validé exitosamente el product-market fit en LATAM",
+    "Actualmente en negociaciones para adquisición"
+  ]
+}

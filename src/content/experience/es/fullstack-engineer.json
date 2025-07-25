@@ -1,0 +1,28 @@
+{
+  "company": "TechFlow Innovations",
+  "position": "Ingeniero Fullstack Senior",
+  "startDate": "2020-03-01",
+  "endDate": "2021-12-31",
+  "location": "Lima, Perú (Remoto)",
+  "description": "Desarrollé aplicaciones web escalables y APIs robustas para una empresa fintech en crecimiento, enfocándome en sistemas de procesamiento de pagos y análisis de datos financieros.",
+  "technologies": [
+    "React",
+    "Node.js",
+    "PostgreSQL",
+    "Redis",
+    "Docker",
+    "AWS",
+    "TypeScript",
+    "GraphQL",
+    "Stripe API"
+  ],
+  "achievements": [
+    "Construí una plataforma de pagos que procesó $5M+ en transacciones mensuales",
+    "Optimicé queries de base de datos reduciendo tiempos de respuesta en 70%",
+    "Implementé un sistema de notificaciones en tiempo real para 50K+ usuarios",
+    "Lideré la migración de arquitectura monolítica a microservicios",
+    "Mantuve 99.9% de uptime en sistemas críticos de producción"
+  ],
+  "type": "work",
+  "order": 2
+}

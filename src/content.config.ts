@@ -16,6 +16,7 @@ const blog = defineCollection({
 });
 
 const experience = defineCollection({
+	// Load JSON files from language-specific subdirectories
 	loader: glob({ base: './src/content/experience', pattern: '**/*.json' }),
 	schema: z.object({
 		company: z.string(),
@@ -33,6 +34,7 @@ const experience = defineCollection({
 });
 
 const projects = defineCollection({
+	// Load JSON files from language-specific subdirectories
 	loader: glob({ base: './src/content/projects', pattern: '**/*.json' }),
 	schema: z.object({
 		title: z.string(),
@@ -52,6 +54,7 @@ const projects = defineCollection({
 });
 
 const skills = defineCollection({
+	// Load JSON files from language-specific subdirectories
 	loader: glob({ base: './src/content/skills', pattern: '**/*.json' }),
 	schema: z.object({
 		category: z.string(),
