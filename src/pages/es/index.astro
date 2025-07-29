@@ -1,0 +1,235 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro'; // Import the Footer component
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { getCollection } from 'astro:content';
+import { filterByLanguage } from '../../i18n/utils';
+
+// Get featured projects, sorted by order
+const allProjects = await getCollection('projects');
+const featuredProjects = allProjects
+	.filter(project => project.data.featured)
+	.sort((a, b) => a.data.order - b.data.order)
+	.slice(0, 3); // Show only top 3 featured projects
+
+// Get latest Spanish blog posts, sorted by date (most recent first)
+const allPosts = await getCollection('blog');
+const latestPosts = filterByLanguage(allPosts, 'es')
+	.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+	.slice(0, 3); // Show only the 3 most recent posts
+---
+
+<!doctype html>
+<html lang="es" data-theme="light">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<script is:inline>
+			// Get theme from localStorage or default to light
+			const savedTheme = localStorage.getItem('theme');
+			document.documentElement.setAttribute('data-theme', savedTheme || 'light');
+		</script>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<!-- Hero Section -->
+			<section class="py-20 px-6 bg-gradient-to-r from-gray-900 to-slate-800 text-white text-center">
+				<div class="max-w-4xl mx-auto">
+					<h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-amber-200 to-yellow-400 bg-clip-text text-transparent">
+						Hola, soy Misael - Ingeniero de Software y Humano Curioso.
+					</h1>
+					<p class="text-xl md:text-2xl mb-8 text-gray-200">
+						Construyo sistemas elegantes, simplifico datos complejos y exploro tecnología que empodera a las personas.
+					</p>
+					<div class="flex flex-wrap justify-center gap-4">
+						<a href="/es/blog" class="btn btn-primary">
+							📖 Lee Mi Blog
+						</a>
+						<a href="#work-with-me" class="btn btn-secondary">
+							💼 Trabaja Conmigo
+						</a>
+						<a href="#" class="btn btn-accent">
+							🎬 Ve Mis Videos
+						</a>
+					</div>
+				</div>
+			</section>
+			
+			<!-- What I Do Section -->
+			<section id="what-i-do" class="py-16 px-6">
+				<div class="max-w-6xl mx-auto">
+					<h2 class="text-3xl md:text-4xl font-bold mb-2 text-center">🛠️ Lo Que Hago</h2>
+					<h3 class="text-2xl font-medium mb-6 text-center">Resolviendo Problemas a Escala</h3>
+					<p class="text-lg mb-12 text-center max-w-3xl mx-auto">
+						Con experiencia en arquitectura de datos, desarrollo fullstack y liderazgo en startups, diseño e implemento sistemas que son eficientes, confiables y centrados en las personas.
+					</p>
+					
+					<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+							<div class="card-body">
+								<h3 class="card-title">🧩 Modelado de Datos</h3>
+								<p>Modelado de nivel empresarial para bancos y startups</p>
+							</div>
+						</div>
+						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+							<div class="card-body">
+								<h3 class="card-title">⚙️ Desarrollo Fullstack</h3>
+								<p>Node.js, React, PostgreSQL, MongoDB</p>
+							</div>
+						</div>
+						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+							<div class="card-body">
+								<h3 class="card-title">🚀 Startups y Automatización</h3>
+								<p>Construyendo MVPs, flujos de IA y herramientas internas</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<!-- Latest Blog Section -->
+			<section class="py-16 px-6 bg-base-200">
+				<div class="max-w-6xl mx-auto">
+					<h2 class="text-3xl md:text-4xl font-bold mb-2 text-center">✍️ Últimas del Blog</h2>
+					<h3 class="text-2xl font-medium mb-6 text-center">Ideas Que Me Mueven – Y Tal Vez a Ti También</h3>
+					<p class="text-lg mb-12 text-center max-w-3xl mx-auto">
+						Escribo sobre tecnología, proyectos personales, estrategia de datos, crecimiento profesional y a veces la vida misma.
+					</p>
+					
+					{latestPosts.length === 0 ? (
+						<div class="text-center py-8">
+							<p class="text-lg text-gray-600 mb-4">Aún no hay posts en español disponibles.</p>
+							<p class="text-sm text-gray-500">¡Pronto habrá contenido nuevo!</p>
+						</div>
+					) : (
+						<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+							{latestPosts.map((post) => (
+								<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+									<div class="card-body">
+										<h3 class="card-title">{post.data.title}</h3>
+										<p class="text-base-content/70 mb-4">{post.data.description}</p>
+										<div class="card-actions justify-end">
+											<a href={`/es/blog/${post.id.split('/')[1]}`} class="btn btn-link no-underline">Leer más →</a>
+										</div>
+									</div>
+								</div>
+							))}
+						</div>
+					)}
+					
+					<div class="text-center mt-12">
+						<a href="/es/blog" class="btn btn-primary">
+							📚 Explorar el Archivo del Blog
+						</a>
+					</div>
+				</div>
+			</section>
+			
+			<!-- Projects Section -->
+			<section id="projects" class="py-16 px-6">
+				<div class="max-w-6xl mx-auto">
+					<h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">💡 Proyectos Destacados</h2>
+					<h3 class="text-2xl font-medium mb-6 text-center">Algunas Cosas Que He Construido</h3>
+					
+					<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+						{featuredProjects.map((project) => (
+							<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+								<div class="card-body">
+									<h3 class="card-title">{project.data.title.split(' - ')[0]}</h3>
+									<p class="mb-4">{project.data.description}</p>
+									<div class="flex gap-2 flex-wrap">
+										{project.data.category && (
+											<span class="badge">{project.data.category}</span>
+										)}
+										{project.data.technologies.slice(0, 2).map((tech) => (
+											<span class="badge">{tech}</span>
+										))}
+									</div>
+								</div>
+							</div>
+						))}
+					</div>
+					
+					<div class="text-center mt-12">
+						<a href="#" class="btn btn-primary">
+							🔍 Ver Todos los Proyectos
+						</a>
+					</div>
+				</div>
+			</section>
+			
+			<!-- Work With Me Section -->
+			<section id="work-with-me" class="py-16 px-6 bg-base-200">
+				<div class="max-w-4xl mx-auto text-center">
+					<h2 class="text-3xl md:text-4xl font-bold mb-6">👨‍💻 Trabaja Conmigo</h2>
+					<h3 class="text-2xl font-medium mb-6">¿Necesitas un Cerebro Detrás del Backend?</h3>
+					<p class="text-lg mb-8">
+						Desde arquitecturar modelos de datos robustos hasta lanzar MVPs de SaaS, ayudo a los equipos a enviar productos más rápido y de manera más inteligente. Estoy disponible para consultoría, mentoría o colaboración en proyectos.
+					</p>
+					<a href="#contact" class="btn btn-primary btn-lg">
+						📬 Conectemos
+					</a>
+				</div>
+			</section>
+			
+			<!-- Stay in Touch Section -->
+			<section class="py-16 px-6">
+				<div class="max-w-4xl mx-auto text-center">
+					<h2 class="text-3xl md:text-4xl font-bold mb-6">📬 Mantente en Contacto</h2>
+					<h3 class="text-2xl font-medium mb-6">Recibe Mis Mejores Ideas en Tu Bandeja</h3>
+					<p class="text-lg mb-8">
+						Sin spam. Solo escritura reflexiva sobre datos, software, sistemas y aprendizaje. Un email cada pocas semanas.
+					</p>
+					<div class="join max-w-md mx-auto">
+						<input 
+							type="email" 
+							placeholder="Tu dirección de email" 
+							class="input input-bordered join-item w-full"
+						/>
+						<button class="btn btn-primary join-item">
+							Suscribirse
+						</button>
+					</div>
+				</div>
+			</section>
+			
+			<!-- About Me Section -->
+			<section id="about" class="py-16 px-6 bg-base-200">
+				<div class="max-w-4xl mx-auto">
+					<h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">🧭 Sobre Mí</h2>
+					<h3 class="text-2xl font-medium mb-6 text-center">Un Poco Más Sobre Misael</h3>
+					<p class="text-lg text-center">
+						Soy un ingeniero peruano que cree en el poder de la claridad — en sistemas, escritura y vida. 
+						Me encanta construir cosas útiles, aprender obsesivamente y compartir lo que sé. Fuera de la tecnología, 
+						me gusta la ciencia ficción, planear viajes y hacer la vida cotidiana más eficiente.
+					</p>
+				</div>
+			</section>
+			
+			<!-- Contact Section -->
+			<section id="contact" class="py-16 px-6">
+				<div class="max-w-4xl mx-auto text-center">
+					<h2 class="text-3xl md:text-4xl font-bold mb-8">Conectemos</h2>
+					<div class="flex justify-center gap-6 flex-wrap">
+						<a href="https://twitter.com/_misaelabanto" target="_blank" class="btn btn-outline">
+							Twitter
+						</a>
+						<a href="https://linkedin.com/in/misaelabanto" target="_blank" class="btn btn-outline">
+							LinkedIn
+						</a>
+						<a href="https://github.com/misaelabanto" target="_blank" class="btn btn-outline">
+							GitHub
+						</a>
+						<a href="mailto:misaelabanto@gmail.com" class="btn btn-outline">
+							Email
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+		
+		<!-- Footer -->
+		<Footer />
+	</body>
+</html> 

@@ -1,0 +1,28 @@
+{
+  "company": "IAPBBS",
+  "position": "Desarrollador Fullstack",
+  "startDate": "2018-01-01",
+  "endDate": "2019-12-31",
+  "current": false,
+  "location": "Lima, Perú",
+  "description": "Construí un sistema ERP integral para ferreterías, gestionando todos los aspectos de las operaciones comerciales desde gestión de clientes hasta facturación y transporte.",
+  "technologies": [
+    "MySQL",
+    "Node.js",
+    "Vanilla JavaScript",
+    "Bootstrap",
+    "Express.js",
+    "APIs REST",
+    "Diseño de Base de Datos"
+  ],
+  "achievements": [
+    "Construí un sistema ERP para gestionar clientes, ventas, compras, proveedores, stock, transporte y facturación para ferreterías",
+    "Usé MySQL para gestión de base de datos, asegurando almacenamiento de datos confiable y eficiente",
+    "Desarrollé el backend usando Node.js, proporcionando una aplicación del lado del servidor robusta y escalable con un modelo flexible adaptable a diferentes empresas",
+    "Implementé el frontend usando Vanilla JavaScript y Bootstrap, creando una interfaz amigable y responsiva",
+    "Automaticé procesos que ahorraron más de $1000 por mes por tienda en costos de recursos humanos",
+    "El ERP fue adoptado por 12 empresas en Lima, mejorando su eficiencia operacional"
+  ],
+  "type": "work",
+  "order": 4
+}

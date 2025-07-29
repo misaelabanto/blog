@@ -1,0 +1,28 @@
+{
+  "title": "Agéndalo.io - Smart Appointment Platform",
+  "description": "A comprehensive SaaS platform for appointment scheduling and business management, currently in exit process after successful growth and market validation.",
+  "image": "/images/projects/agendalo.jpg",
+  "technologies": [
+    "Vue",
+    "Node.js",
+    "MongoDB",
+    "AWS S3, Amplify, Route 53, CloudFront",
+    "Stripe, Paypal, Mercado Pago",
+    "TypeScript",
+    "WhatsApp Cloud API"
+  ],
+  "githubUrl": "",
+  "liveUrl": "https://agendalo.io",
+  "featured": true,
+  "startDate": "2021-01-01",
+  "endDate": "2024-12-01",
+  "status": "completed",
+  "order": 1,
+  "category": "SaaS",
+  "highlights": [
+    "Scaled to 10,000+ active business users",
+    "Generated $500K+ in annual recurring revenue",
+    "Successfully validated product-market fit in LATAM",
+    "Currently in negotiations for acquisition"
+  ]
+}

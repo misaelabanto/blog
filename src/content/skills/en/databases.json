@@ -1,0 +1,49 @@
+{
+  "category": "databases",
+  "title": "Databases",
+  "icon": "🗄️",
+  "description": "Database management systems and data storage solutions",
+  "technologies": [
+    {
+      "name": "MongoDB",
+      "level": "expert",
+      "years": 6,
+      "keywords": [
+        "Aggregation",
+        "Replicas Cluster",
+        "Indexes"
+      ]
+    },
+    {
+      "name": "PostgreSQL",
+      "level": "advanced",
+      "years": 5,
+      "keywords": [
+        "Complex queries",
+        "Indexes"
+      ]
+    },
+    {
+      "name": "MySQL",
+      "level": "advanced",
+      "years": 6,
+      "keywords": [
+        "Complex queries",
+        "Stored procedures",
+        "Functions"
+      ]
+    },
+    {
+      "name": "Database Design",
+      "level": "advanced",
+      "years": 7
+    },
+    {
+      "name": "Query Optimization",
+      "level": "advanced",
+      "years": 6
+    }
+  ],
+  "order": 2,
+  "featured": true
+}

@@ -1,0 +1,28 @@
+{
+  "title": "Mapa Interactivo COVID-19 Perú",
+  "description": "Un dashboard interactivo que visualiza datos de COVID-19 en tiempo real para Perú, proporcionando insights valiosos durante la pandemia a autoridades y ciudadanos.",
+  "image": "/images/projects/covid-map.jpg",
+  "technologies": [
+    "D3.js",
+    "React",
+    "Python",
+    "FastAPI",
+    "PostgreSQL",
+    "Mapbox",
+    "AWS EC2"
+  ],
+  "githubUrl": "https://github.com/misaelabanto/covid-peru-map",
+  "liveUrl": "",
+  "featured": true,
+  "startDate": "2020-04-01",
+  "endDate": "2021-03-01",
+  "status": "archived",
+  "order": 3,
+  "category": "Salud Pública",
+  "highlights": [
+    "Visualizó datos de 2M+ casos confirmados",
+    "Utilizado por funcionarios del MINSA",
+    "100,000+ visitas durante picos de la pandemia",
+    "Actualizaciones automáticas cada 6 horas"
+  ]
+}

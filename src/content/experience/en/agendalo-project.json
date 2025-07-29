@@ -1,0 +1,30 @@
+{
+  "company": "Agendalo.io Project",
+  "position": "Software Engineer",
+  "startDate": "2020-01-01",
+  "endDate": "2021-12-31",
+  "current": false,
+  "location": "Remote",
+  "description": "Engineered the initial meetings management platform that would later become Agendalo.io, focusing on full-stack development and infrastructure.",
+  "technologies": [
+    "Vue.js",
+    "Express.js",
+    "AWS EC2",
+    "AWS Amplify",
+    "AWS S3",
+    "AWS SES",
+    "Mercadopago",
+    "Niubiz",
+    "Zoom API",
+    "Docker",
+    "GitLab Pipelines"
+  ],
+  "achievements": [
+    "Engineered a meetings management platform using Vue.js for the frontend and Express.js for the backend",
+    "Managed AWS infrastructure, including EC2, Amplify, S3, and SES, to ensure high availability and performance",
+    "Integrated various third-party APIs such as Mercadopago, Niubiz, and Zoom, enhancing the platform's functionality",
+    "Created CI/CD pipelines using Docker and Gitlab Pipelines, reducing deployment times and improving development workflow"
+  ],
+  "type": "work",
+  "order": 2
+}

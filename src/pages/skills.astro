@@ -1,0 +1,268 @@
+---
+import BaseHead from '@/components/BaseHead.astro';
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+import { SITE_TITLE } from '@/consts';
+import { filterByLanguage } from '@/i18n/utils';
+import { getCollection } from 'astro:content';
+
+// Get all skills and filter for English only
+const allSkills = await getCollection('skills');
+const skills = filterByLanguage(allSkills, 'en').sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const featuredSkills = skills.filter(skill => skill.data.featured);
+
+// Helper function to get skill level badge
+function getSkillLevelBadge(level: string) {
+  switch (level) {
+    case 'expert': return { class: 'badge-success', text: 'Expert' };
+    case 'advanced': return { class: 'badge-warning', text: 'Advanced' };
+    case 'intermediate': return { class: 'badge-info', text: 'Intermediate' };
+    case 'beginner': return { class: 'badge-neutral', text: 'Beginner' };
+    default: return { class: 'badge-neutral', text: level };
+  }
+}
+
+// Helper function to get proficiency percentage
+function getProficiencyPercentage(level: string): number {
+  switch (level) {
+    case 'expert': return 95;
+    case 'advanced': return 80;
+    case 'intermediate': return 60;
+    case 'beginner': return 30;
+    default: return 0;
+  }
+}
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <BaseHead title={`Skills - ${SITE_TITLE}`} description="Explore my technical expertise in frontend development, backend systems, data architecture, and cloud technologies." />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <!-- Hero Section -->
+      <section class="py-20 px-6 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            🛠️ Technical Skills
+          </h1>
+          <p class="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto">
+            A comprehensive overview of the technologies, tools, and methodologies I've mastered 
+            throughout my career as a software engineer and data architect.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="#overview" class="btn btn-primary">
+              📊 Skills Overview
+            </a>
+            <a href="#detailed" class="btn btn-secondary">
+              🔍 Detailed Breakdown
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Overview Section -->
+      <section id="overview" class="py-16 px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">📊 Skills Overview</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+              My technical expertise spans across multiple domains, from frontend development 
+              to data architecture and cloud infrastructure.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredSkills.map((skill) => (
+              <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300">
+                <div class="card-body text-center">
+                  <div class="text-4xl mb-4">{skill.data.icon}</div>
+                  <h3 class="card-title justify-center mb-2">{skill.data.title}</h3>
+                  {skill.data.description && (
+                    <p class="text-sm text-base-content/70 mb-4">{skill.data.description}</p>
+                  )}
+                  <div class="flex flex-wrap gap-1 justify-center">
+                    {skill.data.technologies.slice(0, 6).map((tech) => {
+                      const levelBadge = tech.level ? getSkillLevelBadge(tech.level) : null;
+                      return (
+                        <div class="tooltip" data-tip={tech.level ? `${tech.level}${tech.years ? ` - ${tech.years} years` : ''}` : tech.name}>
+                          <span class={`badge badge-outline badge-sm ${levelBadge ? 'cursor-help' : ''}`}>
+                            {tech.name}
+                            {tech.level === 'expert' && <span class="ml-1">⭐</span>}
+                          </span>
+                        </div>
+                      );
+                    })}
+                    {skill.data.technologies.length > 6 && (
+                      <span class="badge badge-outline badge-sm opacity-60">
+                        +{skill.data.technologies.length - 6}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Detailed Skills Section -->
+      <section id="detailed" class="py-16 px-6 bg-base-200">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">🔍 Detailed Skills Breakdown</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+              A deep dive into my technical capabilities, including proficiency levels and years of experience.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {featuredSkills.map((skill) => (
+              <div class="card bg-base-100 shadow-lg">
+                <div class="card-body">
+                  <h4 class="card-title mb-4">
+                    <span class="text-2xl mr-3">{skill.data.icon}</span>
+                    {skill.data.title}
+                  </h4>
+                  {skill.data.description && (
+                    <p class="text-base-content/70 mb-4">{skill.data.description}</p>
+                  )}
+                  <div class="space-y-4">
+                    {skill.data.technologies.map((tech) => {
+                      const levelBadge = tech.level ? getSkillLevelBadge(tech.level) : null;
+                      const proficiency = tech.level ? getProficiencyPercentage(tech.level) : 0;
+                      return (
+                        <div class="space-y-2">
+                          <div class="flex items-center justify-between">
+                            <span class="font-medium">{tech.name}</span>
+                            <div class="flex items-center gap-2">
+                              {tech.years && (
+                                <span class="text-sm text-base-content/60">{tech.years} years</span>
+                              )}
+                              {levelBadge && (
+                                <span class={`badge badge-sm ${levelBadge.class}`}>
+                                  {levelBadge.text}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                          {tech.level && (
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                              <div 
+                                class={`h-2 rounded-full transition-all duration-1000 ${
+                                  tech.level === 'expert' ? 'bg-green-500' :
+                                  tech.level === 'advanced' ? 'bg-yellow-500' :
+                                  tech.level === 'intermediate' ? 'bg-blue-500' : 'bg-gray-400'
+                                }`}
+                                style={`width: ${proficiency}%`}
+                              ></div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience Summary -->
+      <section class="py-16 px-6">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">💡 Experience Summary</h2>
+            <p class="text-lg text-gray-600">
+              How I've applied these skills in real-world scenarios
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="stats shadow">
+              <div class="stat text-center">
+                <div class="stat-title">Programming Experience</div>
+                <div class="stat-value text-primary">8+</div>
+                <div class="stat-desc">Years</div>
+              </div>
+            </div>
+            
+            <div class="stats shadow">
+              <div class="stat text-center">
+                <div class="stat-title">Technologies Mastered</div>
+                <div class="stat-value text-secondary">25+</div>
+                <div class="stat-desc">Tools & Frameworks</div>
+              </div>
+            </div>
+            
+            <div class="stats shadow">
+              <div class="stat text-center">
+                <div class="stat-title">Projects Delivered</div>
+                <div class="stat-value text-accent">50+</div>
+                <div class="stat-desc">Successful Deployments</div>
+              </div>
+            </div>
+            
+            <div class="stats shadow">
+              <div class="stat text-center">
+                <div class="stat-title">Data Processed</div>
+                <div class="stat-value text-info">10TB+</div>
+                <div class="stat-desc">Daily</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-12 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">
+              🎯 Core Competencies
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-semibold mb-2">Technical Leadership</h4>
+                <p class="text-gray-700 text-sm">Leading engineering teams and making architectural decisions</p>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-2">System Design</h4>
+                <p class="text-gray-700 text-sm">Designing scalable, maintainable software architectures</p>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-2">Data Architecture</h4>
+                <p class="text-gray-700 text-sm">Building robust data pipelines and analytics systems</p>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-2">Product Development</h4>
+                <p class="text-gray-700 text-sm">End-to-end product development from concept to deployment</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="py-16 px-6 bg-gradient-to-r from-primary to-secondary text-white">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Work Together?</h2>
+          <p class="text-xl mb-8 opacity-90">
+            Whether you need a technical leader, a full-stack developer, or a data architect, 
+            I'm here to help bring your vision to life.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="#contact" class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-primary">
+              📬 Get in Touch
+            </a>
+            <a href="/projects" class="btn btn-ghost btn-lg text-white hover:bg-white/10">
+              🚀 View Projects
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html> 

@@ -1,0 +1,59 @@
+{
+  "category": "cloud-devops",
+  "title": "Cloud & DevOps",
+  "icon": "☁️",
+  "description": "Cloud infrastructure, deployment automation, and system administration",
+  "technologies": [
+    {
+      "name": "AWS",
+      "level": "advanced",
+      "years": 5,
+      "keywords": [
+        "EC2",
+        "ECS",
+        "S3",
+        "SES",
+        "CloudWatch",
+        "Lambda"
+      ]
+    },
+    {
+      "name": "CI/CD",
+      "level": "advanced",
+      "years": 4,
+      "keywords": [
+        "Docker",
+        "Github Actions",
+        "AWS App Runner",
+        "Serverless"
+      ]
+    },
+    {
+      "name": "Linux",
+      "level": "intermediate",
+      "years": 6,
+      "keywords": [
+        "Server administration",
+        "Nginx",
+        "Certbot"
+      ]
+    },
+    {
+      "name": "Docker",
+      "level": "advanced",
+      "years": 4
+    },
+    {
+      "name": "GitHub Actions",
+      "level": "advanced",
+      "years": 3
+    },
+    {
+      "name": "Nginx",
+      "level": "intermediate",
+      "years": 5
+    }
+  ],
+  "order": 3,
+  "featured": true
+}

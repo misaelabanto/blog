@@ -1,0 +1,56 @@
+{
+  "category": "ai-architecture",
+  "title": "IA y Arquitectura de Software",
+  "icon": "🤖",
+  "description": "Herramientas modernas de IA, patrones de diseño de software y prácticas de seguridad",
+  "technologies": [
+    {
+      "name": "APIs y Herramientas de IA",
+      "level": "advanced",
+      "years": 3,
+      "keywords": [
+        "ChatGPT",
+        "OpenAI",
+        "Gemini",
+        "Whisper"
+      ]
+    },
+    {
+      "name": "Diseño de Software",
+      "level": "advanced",
+      "years": 7,
+      "keywords": [
+        "DDD",
+        "Arquitectura Limpia",
+        "Patrones de Diseño"
+      ]
+    },
+    {
+      "name": "Ciberseguridad",
+      "level": "intermediate",
+      "years": 4,
+      "keywords": [
+        "Pentesting",
+        "Hacking Ético Web",
+        "Seguridad de Servidores"
+      ]
+    },
+    {
+      "name": "Domain-Driven Design",
+      "level": "advanced",
+      "years": 5
+    },
+    {
+      "name": "Arquitectura Limpia",
+      "level": "advanced",
+      "years": 6
+    },
+    {
+      "name": "Patrones de Diseño",
+      "level": "advanced",
+      "years": 7
+    }
+  ],
+  "order": 4,
+  "featured": true
+}

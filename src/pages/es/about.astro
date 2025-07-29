@@ -1,0 +1,86 @@
+---
+import { getLocalizedMeta } from '../../i18n/utils';
+import Layout from '../../layouts/BlogPost.astro';
+
+const meta = getLocalizedMeta('es');
+---
+
+<Layout
+	title="Sobre Mí"
+	description={meta.aboutDescription}
+	pubDate={new Date('2024-01-01')}
+	heroImage="/blog-placeholder-about.jpg"
+>
+	<h1>Sobre Mí</h1>
+	
+	<p>
+		¡Hola! Soy <strong>Misael Abanto</strong>, un ingeniero de software peruano especializado en desarrollo fullstack y arquitectura de datos. Con más de 8 años de experiencia, he construido sistemas escalables que han impactado a miles de usuarios.
+	</p>
+
+	<h2>Mi Trayectoria</h2>
+	
+	<p>
+		Mi carrera comenzó como desarrollador backend, pero rápidamente evolucioné hacia roles más estratégicos donde pude combinar mi pasión por la tecnología con el impacto en el negocio. He liderado equipos de desarrollo, diseñado arquitecturas de datos complejas y construido productos desde cero hasta escalar a millones de usuarios.
+	</p>
+
+	<p>
+		Actualmente trabajo como Arquitecto Senior de Datos en una empresa fintech líder, donde diseño e implemento soluciones de datos que procesan miles de transacciones diarias con estrictos requerimientos de seguridad y compliance.
+	</p>
+
+	<h2>Especialidades</h2>
+	
+	<ul>
+		<li><strong>Backend & APIs:</strong> Python, Node.js, PostgreSQL, Redis, arquitecturas de microservicios</li>
+		<li><strong>Frontend:</strong> React, TypeScript, Next.js, Astro, Tailwind CSS</li>
+		<li><strong>Cloud & DevOps:</strong> AWS, Docker, Kubernetes, CI/CD, infraestructura como código</li>
+		<li><strong>Datos:</strong> Pipelines de datos, ETL/ELT, data warehousing, analytics</li>
+		<li><strong>Liderazgo:</strong> Gestión de equipos técnicos, arquitectura de sistemas, mentoring</li>
+	</ul>
+
+	<h2>Emprendimiento</h2>
+	
+	<p>
+		También soy un emprendedor apasionado. He co-fundado y liderado técnicamente varias startups, incluyendo una plataforma SaaS para la gestión de citas médicas que alcanzó más de 50,000 usuarios activos. Esta experiencia me enseñó la importancia de validar ideas rápidamente, construir MVP eficientes y escalar productos con recursos limitados.
+	</p>
+
+	<h2>Filosofía</h2>
+	
+	<p>
+		Creo firmemente en el poder de la tecnología para resolver problemas reales y mejorar la vida de las personas. Me apasiona construir sistemas que no solo funcionen bien técnicamente, sino que también generen valor tangible para los usuarios y el negocio.
+	</p>
+
+	<p>
+		En mi trabajo, priorizo:
+	</p>
+	
+	<ul>
+		<li><strong>Simplicidad:</strong> Las mejores soluciones suelen ser las más simples</li>
+		<li><strong>Escalabilidad:</strong> Diseñar pensando en el futuro, pero sin sobre-ingeniería</li>
+		<li><strong>Calidad:</strong> Código limpio, bien probado y documentado</li>
+		<li><strong>Impacto:</strong> Enfoque en métricas que importan al negocio</li>
+		<li><strong>Aprendizaje continuo:</strong> La tecnología evoluciona constantemente</li>
+	</ul>
+
+	<h2>Fuera del Código</h2>
+	
+	<p>
+		Cuando no estoy escribiendo código, disfruto explorando nuevas tecnologías, leyendo sobre startups y tecnología, y compartiendo conocimiento a través de mentoring y charlas técnicas. También me gusta viajar, la fotografía y pasar tiempo con mi familia.
+	</p>
+
+	<h2>Conectemos</h2>
+	
+	<p>
+		Estoy siempre abierto a conversaciones interesantes sobre tecnología, startups, arquitectura de sistemas o cualquier proyecto desafiante. Puedes encontrarme en:
+	</p>
+	
+	<ul>
+		<li><strong>Email:</strong> hola@misaelabanto.com</li>
+		<li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/misaelabanto" target="_blank">linkedin.com/in/misaelabanto</a></li>
+		<li><strong>GitHub:</strong> <a href="https://github.com/misaelabanto" target="_blank">github.com/misaelabanto</a></li>
+		<li><strong>Twitter:</strong> <a href="https://twitter.com/misaelabanto" target="_blank">@misaelabanto</a></li>
+	</ul>
+
+	<p>
+		Si tienes un proyecto interesante, una oportunidad de colaboración, o simplemente quieres charlar sobre tecnología, ¡no dudes en contactarme!
+	</p>
+</Layout> 

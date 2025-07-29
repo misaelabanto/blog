@@ -1,0 +1,29 @@
+{
+  "company": "Agendalo.io",
+  "position": "Fundador y CTO",
+  "startDate": "2021-01-01",
+  "current": true,
+  "location": "Remoto",
+  "description": "Fundé y lideré el desarrollo técnico de Agendalo.io, una plataforma SaaS integral para programación de citas y gestión empresarial.",
+  "technologies": [
+    "Nest.js",
+    "Docker",
+    "MongoDB",
+    "AWS",
+    "Vue.js",
+    "Express.js",
+    "CI/CD",
+    "MFA",
+    "Cifrado de Datos",
+    "Autoscaling"
+  ],
+  "achievements": [
+    "Diseñé una arquitectura basada en DDD usando Nest.js y Docker, introduje MongoDB y migré a AWS, manejando un aumento del 300% de usuarios con 99% de uptime y 45% de tiempos de respuesta más rápidos",
+    "Gestioné un equipo usando metodologías ágiles, mejorando la productividad en 40%, la calidad del código y reduciendo bugs en 80%",
+    "Desarrollé nuevas funcionalidades y arquitectura orientada a plugins, aumentando la base de usuarios en 150%, los ingresos en 80% y expandiendo a Colombia, México y Chile",
+    "Automaticé deployments con CI/CD, reduciendo el tiempo de lanzamiento de funcionalidades en 50% y el tiempo de resolución de incidentes en 40%",
+    "Implementé MFA, cifrado de datos y autoscaling en AWS, asegurando cero incidentes de seguridad y escalado sin problemas"
+  ],
+  "type": "startup",
+  "order": 0
+}

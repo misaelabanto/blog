@@ -1,0 +1,56 @@
+{
+  "category": "ai-architecture",
+  "title": "AI & Software Architecture",
+  "icon": "🤖",
+  "description": "Modern AI tools, software design patterns, and security practices",
+  "technologies": [
+    {
+      "name": "AI APIs and Tools",
+      "level": "advanced",
+      "years": 3,
+      "keywords": [
+        "ChatGPT",
+        "OpenAI",
+        "Gemini",
+        "Whisper"
+      ]
+    },
+    {
+      "name": "Software Design",
+      "level": "advanced",
+      "years": 7,
+      "keywords": [
+        "DDD",
+        "Clean Architecture",
+        "Design Patterns"
+      ]
+    },
+    {
+      "name": "Cybersecurity",
+      "level": "intermediate",
+      "years": 4,
+      "keywords": [
+        "Pentesting",
+        "Web Ethical Hacking",
+        "Server Security"
+      ]
+    },
+    {
+      "name": "Domain-Driven Design",
+      "level": "advanced",
+      "years": 5
+    },
+    {
+      "name": "Clean Architecture",
+      "level": "advanced",
+      "years": 6
+    },
+    {
+      "name": "Design Patterns",
+      "level": "advanced",
+      "years": 7
+    }
+  ],
+  "order": 4,
+  "featured": true
+}
