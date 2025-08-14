@@ -17,22 +17,21 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.3.0
         version: 3.3.0
+      '@tailwindcss/typography':
+        specifier: ^0.5.16
+        version: 0.5.16(tailwindcss@4.1.4)
       '@tailwindcss/vite':
         specifier: ^4.1.4
         version: 4.1.4(vite@6.2.6(jiti@2.4.2)(lightningcss@1.29.2))
       astro:
         specifier: ^5.7.0
         version: 5.7.0(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.40.0)(typescript@5.8.3)
+      daisyui:
+        specifier: ^5.0.49
+        version: 5.0.49
       tailwindcss:
         specifier: ^4.1.4
         version: 4.1.4
-    devDependencies:
-      '@tailwindcss/typography':
-        specifier: ^0.5.16
-        version: 0.5.16(tailwindcss@4.1.4)
-      daisyui:
-        specifier: ^5.0.20
-        version: 5.0.20
 
 packages:
 
@@ -784,8 +783,8 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  daisyui@5.0.20:
-    resolution: {integrity: sha512-dR9WSFsWG5bHuwTnlcuh/MZFROaddxB+BFxB06EgDy7gU5M7eY/RsY1g/DwCMwgnqS7dEsjxNd/x+WgC3N+TDQ==}
+  daisyui@5.0.49:
+    resolution: {integrity: sha512-LcShkCUPsgmaZN0+VouY9oiTY2JCBiSz33kg99hl1XhGd0aGumXEo25IvGhK7CCN0CGhbmX2TLugiSap8YGzVQ==}
 
   debug@4.4.0:
     resolution: {integrity: sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==}
@@ -2573,7 +2572,7 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  daisyui@5.0.20: {}
+  daisyui@5.0.49: {}
 
   debug@4.4.0:
     dependencies:
