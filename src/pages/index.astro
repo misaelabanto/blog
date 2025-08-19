@@ -8,7 +8,7 @@ import { filterByLanguage } from '@/i18n/utils';
 
 // Get featured projects, sorted by order
 const allProjects = await getCollection('projects');
-const featuredProjects = allProjects
+const featuredProjects = filterByLanguage(allProjects, 'en')
 	.filter(project => project.data.featured)
 	.sort((a, b) => a.data.order - b.data.order)
 	.slice(0, 3); // Show only top 3 featured projects
