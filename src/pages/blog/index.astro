@@ -69,6 +69,34 @@ const posts = filterByLanguage(allPosts, 'en').sort(
 												<FormattedDate date={post.data.pubDate} />
 											</p>
 											<p class="text-base-content/70 mt-2">{post.data.description}</p>
+											
+											<!-- Category and Tags -->
+											<div class="meta-info mt-3">
+												{post.data.category && (
+													<div class="category mb-2">
+														<a 
+															href={`/blog/category/${post.data.category.toLowerCase().replace(/\s+/g, '-')}`}
+															class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-300 dark:hover:bg-blue-800 transition-colors"
+														>
+															{post.data.category}
+														</a>
+													</div>
+												)}
+												{post.data.tags.length > 0 && (
+													<div class="tags">
+														<div class="flex flex-wrap gap-1">
+															{post.data.tags.map((tag: string) => (
+																<a 
+																	href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+																	class="inline-block bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-md hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 transition-colors"
+																>
+																	#{tag}
+																</a>
+															))}
+														</div>
+													</div>
+												)}
+											</div>
 										</div>
 									</a>
 								</li>

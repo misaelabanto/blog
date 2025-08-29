@@ -3,6 +3,9 @@ title: 'Mi Primer Post en Español'
 description: 'Reflexiones sobre el desarrollo de software y la arquitectura de sistemas desde una perspectiva latina'
 pubDate: 'Nov 15 2024'
 heroImage: '/blog-placeholder-1.jpg'
+category: 'Personal'
+tags: ['desarrollo-software', 'arquitectura', 'carrera', 'latam', 'español']
+featured: true
 ---
 
 Hola y bienvenidos a la versión en español de mi blog. Como ingeniero de software peruano, he tenido la oportunidad de trabajar en proyectos que van desde sistemas bancarios hasta startups innovadoras, y quiero compartir algunas reflexiones sobre lo que he aprendido en el camino.

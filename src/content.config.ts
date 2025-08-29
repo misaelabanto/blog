@@ -12,6 +12,14 @@ const blog = defineCollection({
 		pubDate: z.coerce.date(),
 		updatedDate: z.coerce.date().optional(),
 		heroImage: z.string().optional(),
+		// Add category (single, broad topic)
+		category: z.string(),
+		// Add tags (multiple, specific topics)
+		tags: z.array(z.string()).default([]),
+		// Optional: make posts draft
+		draft: z.boolean().default(false),
+		// Optional: featured posts
+		featured: z.boolean().default(false),
 	}),
 });
 
