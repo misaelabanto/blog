@@ -1,10 +1,10 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro'; // Import the Footer component
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import BaseHead from '@/components/BaseHead.astro';
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
 import { getCollection } from 'astro:content';
-import { filterByLanguage } from '../../i18n/utils';
+import { filterByLanguage } from '@/i18n/utils';
 
 // Get featured projects, sorted by order
 const allProjects = await getCollection('projects');
