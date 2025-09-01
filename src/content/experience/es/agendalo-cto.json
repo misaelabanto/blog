@@ -25,5 +25,5 @@
     "Implementé MFA, cifrado de datos y autoscaling en AWS, asegurando cero incidentes de seguridad y escalado sin problemas"
   ],
   "type": "startup",
-  "order": 0
+  "order": 1
 }

@@ -25,5 +25,5 @@
     "Implemented MFA, data encryption, and autoscaling on AWS, ensuring zero security incidents and seamless scaling"
   ],
   "type": "startup",
-  "order": 0
+  "order": 1
 }

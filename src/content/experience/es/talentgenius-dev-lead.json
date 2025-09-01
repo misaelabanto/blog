@@ -1,0 +1,25 @@
+{
+  "company": "TalentGenius",
+  "position": "Líder de Desarrollo",
+  "startDate": "2022-01-01",
+  "current": true,
+  "location": "Remoto",
+  "description": "Lideré el desarrollo técnico de TalentGenius, enfocado en la plataforma AgentPowered",
+  "technologies": [
+    "Astro",
+    "PostgreSQL",
+    "Fly.io",
+    "HTMX",
+    "Tailwind CSS",
+    "RAG queries",
+    "Vector search"
+  ],
+  "achievements": [
+    "Gestioné un equipo de 3 ingenieros, mejorando la productividad en un 40%, la calidad del código y reduciendo bugs en un 80%",
+    "Desarrollé nuevas funcionalidades y arquitectura basada en RAG",
+    "Reemplacé mi flujo de trabajo de frameworks de JS del cliente a Astro, mejorando el rendimiento en un 40% y reduciendo el código del cliente en un 60%",
+    "Gestioné migraciones de datos a gran escala y procesamiento de datos para más de 4M de registros"
+  ],
+  "type": "work",
+  "order": 0
+}
