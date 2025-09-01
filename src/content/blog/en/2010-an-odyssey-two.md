@@ -1,8 +1,8 @@
 ---
-title: 2010: Una odisea dos
-description: A review of Arthur C. Clarke's '2010: An Odyssey Two'. The author highlights it as much better than the first book, exploring unique extraterrestrial life forms and scientifically explaining the existence of ghosts. A fascinating and well-written book recommended for careful reading.
+title: '2010: Una odisea dos'
+description: "A review of Arthur C. Clarke's '2010: An Odyssey Two'. The author highlights it as much better than the first book, exploring unique extraterrestrial life forms and scientifically explaining the existence of ghosts. A fascinating and well-written book recommended for careful reading."
 pubDate: 2014-05-15
-heroImage: https://images.unsplash.com/photo-1676944229914-2194fdafd024?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb
+heroImage: 'https://images.unsplash.com/photo-1676944229914-2194fdafd024?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Books
 tags: []
 ---
