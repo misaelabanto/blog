@@ -1,6 +1,6 @@
 ---
 title: "2010: Una odisea dos"
-description: "Reseña del libro \"2010: Una Odisea Dos\" de Arthur C. Clarke, destacando su superioridad sobre el primer libro, la imaginación de Clarke para la vida extraterrestre y una explicación científica sobre la existencia de fantasmas."
+description: "Una reseña de 2010: Una Odisea Dos de Arthur C. Clarke. El autor destaca que es superior al primer libro, explorando formas de vida extraterrestre únicas y ofreciendo explicaciones científicas sobre fenómenos como los fantasmas. Recomienda su lectura cuidadosa por su riqueza de detalles y su enfoque científico sobre la vida inteligente en el espacio."
 pubDate: 2014-05-15
 heroImage: 'https://images.unsplash.com/photo-1676944229914-2194fdafd024?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Books
