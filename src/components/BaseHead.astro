@@ -1,9 +1,9 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
-import { SITE_TITLE } from '../consts';
-import '../styles/global.css';
-import SEOLangAlternates from './SEOLangAlternates.astro';
+import { SITE_TITLE } from '@/consts';
+import '@/styles/global.css';
+import SEOLangAlternates from '@/components/SEOLangAlternates.astro';
 
 interface Props {
 	title: string;
@@ -57,3 +57,73 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Language Detection Script -->
+<script>
+  // Client-side language detection for static builds
+  // This replaces server-side header detection that doesn't work with static output
+  
+  const languages = { "es": "es", "en": "en" };
+  const defaultLang = "en";
+
+  function detectUserLanguage() {
+    // Check for stored preference first
+    const stored = localStorage.getItem('preferred-language');
+    if (stored && stored in languages) {
+      return stored;
+    }
+
+    // Get browser languages in order of preference
+    const browserLanguages = navigator.languages || [navigator.language];
+    
+    // Find the first supported language
+    for (const browserLang of browserLanguages) {
+      const language = browserLang.split('-')[0].toLowerCase();
+      if (language in languages) {
+        return language;
+      }
+    }
+
+    return defaultLang;
+  }
+
+  function handleLanguageRedirection() {
+    const currentPath = window.location.pathname;
+    const currentUrl = new URL(window.location.href);
+    
+    // Skip if we're already on a localized path
+    const pathSegments = currentPath.split('/').filter(Boolean);
+    const potentialLocale = pathSegments[0];
+    if (potentialLocale && potentialLocale in languages) {
+      return;
+    }
+
+    const preferredLang = detectUserLanguage();
+    
+    // Only redirect if preferred language is not the default
+    if (preferredLang === defaultLang) {
+      return;
+    }
+
+    // Store the preference
+    localStorage.setItem('preferred-language', preferredLang);
+
+    // Build the redirect URL
+    let redirectPath;
+    if (currentPath === '/') {
+      redirectPath = `/${preferredLang}/`;
+    } else {
+      redirectPath = `/${preferredLang}${currentPath}`;
+    }
+
+    // Perform the redirect
+    window.location.href = new URL(redirectPath, currentUrl.origin).href;
+  }
+
+  // Initialize language detection when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', handleLanguageRedirection);
+  } else {
+    handleLanguageRedirection();
+  }
+</script>

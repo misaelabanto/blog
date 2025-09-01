@@ -1,7 +1,7 @@
 ---
+import { filterByLanguage, getSlugFromId } from '@/i18n/utils';
+import BlogPost from '@/layouts/BlogPost.astro';
 import { type CollectionEntry, getCollection, render } from 'astro:content';
-import { filterByLanguage, getSlugFromId } from '../../../i18n/utils';
-import BlogPost from '../../../layouts/BlogPost.astro';
 
 export async function getStaticPaths() {
 	const allPosts = await getCollection('blog');

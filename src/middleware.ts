@@ -1,6 +1,6 @@
+import { defaultLang, languages, type Language } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { defineMiddleware } from 'astro:middleware';
-import { defaultLang, languages, type Language } from './i18n/utils';
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const url = context.url;
@@ -45,29 +45,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 });
 
 function detectLanguageFromRequest(request: Request): Language {
-  // Check Accept-Language header
-  const acceptLanguage = request.headers.get('accept-language');
-
-  if (acceptLanguage) {
-    // Parse Accept-Language header
-    const languageRanges = acceptLanguage
-      .split(',')
-      .map((lang) => {
-        const [language, quality = '1'] = lang.trim().split(';q=');
-        return {
-          language: language.split('-')[0].toLowerCase(),
-          quality: parseFloat(quality),
-        };
-      })
-      .sort((a, b) => b.quality - a.quality);
-
-    // Find the first supported language
-    for (const { language } of languageRanges) {
-      if (language in languages) {
-        return language as Language;
-      }
-    }
-  }
-
+  // In static builds, we can't access headers during build time
+  // Language detection is now handled client-side
   return defaultLang;
 } 
