@@ -1,6 +1,6 @@
 ---
-title: ""2010: An Odyssey Two""
-description: ""A review of Arthur C. Clarke's \"2010: An Odyssey Two,\" highlighting its superiority over the first book, Clarke's imaginative extraterrestrial life, and a scientific explanation for the existence of ghosts.""
+title: "2010: An Odyssey Two"
+description: "A review of Arthur C. Clarke's \"2010: An Odyssey Two,\" highlighting its superiority over the first book, Clarke's imaginative extraterrestrial life, and a scientific explanation for the existence of ghosts."
 pubDate: 2014-05-15
 heroImage: 'https://images.unsplash.com/photo-1676944229914-2194fdafd024?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Books
