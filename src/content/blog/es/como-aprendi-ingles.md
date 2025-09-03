@@ -1,6 +1,6 @@
 ---
 title: "Cómo aprendí inglés"
-description: "Descubre cómo el autor aprendió inglés con Duolingo y otros métodos, manteniendo una racha de más de 1200 días y logrando su primer trabajo en USA. Explora sus inicios y evolución en el aprendizaje del idioma."
+description: "El autor comparte su experiencia aprendiendo inglés, desde sus inicios sin recursos para academias hasta el uso de Duolingo y cómo esto lo llevó a su primer trabajo en USA. Detalla las pautas iniciales y la evolución de su método."
 pubDate: 2025-09-01
 heroImage: 'https://images.unsplash.com/photo-1588912914017-923900a34710?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Tutorial
@@ -21,4 +21,8 @@ En el colegio me importaba mucho el aprender inglés, pero mi familia no dispon�
 
 ## La evolución
 
-Con estas pautas iniciadas a los 15 años, aprendí muchos conceptos pero todos limitados a configuraciones y aplicaciones, pues yo seguía consumiendo contenido en español, eso hizo que mi vocabulario no creciera tanto. No obstante, seguí con este método hasta después de haber ingresado a la universidad. En la universidad intenté muchas veces mantener una racha uniforme de Duolingo, pero la perdía con frecuencia. De todas formas, tenía una base interesante con la cual pod
+Con estas pautas iniciadas a los 15 años, aprendí muchos conceptos pero todos limitados a configuraciones y aplicaciones, pues yo seguía consumiendo contenido en español, eso hizo que mi vocabulario no creciera tanto. No obstante, seguí con este método hasta después de haber ingresado a la universidad. En la universidad intenté muchas veces mantener una racha uniforme de Duolingo, pero la perdía con frecuencia. De todas formas, tenía una base interesante con la cual podía entender algunos textos básicos.
+
+## Duolingo
+
+Todos decían que el inglés era importante y yo lo sabía bien, pero no era capaz
