@@ -1,6 +1,6 @@
 ---
 title: "Cómo aprendí inglés"
-description: "Descubre cómo logré aprender inglés con Duolingo y otras estrategias, manteniendo una racha de más de 1200 días y consiguiendo mi primer trabajo en USA."
+description: "Descubre cómo pasé de no tener recursos para aprender inglés a dominarlo con Duolingo y otras estrategias, logrando mi primer trabajo en USA. Exploro mis inicios, la evolución de mi método y el papel clave de Duolingo."
 pubDate: 2025-09-01
 heroImage: 'https://images.unsplash.com/photo-1588912914017-923900a34710?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Tutorial
@@ -25,4 +25,4 @@ Con estas pautas iniciadas a los 15 años, aprendí muchos conceptos pero todos 
 
 ## Duolingo
 
-Todos decían que el inglés era importante y yo lo sabía bien, pero no era capaz de estudiar nada. Sentía que no avanzaba en absoluto y que seguía teniendo siempre el mismo nivel que en colegio. Un día
+Todos decían que el inglés era importante y yo lo sabía bien, pero no era capaz de estudiar nada. Sentía que no avanzaba en absoluto y que seguía teniendo siempre el mismo nivel que en colegio. Un día, mi profesor Rony Hancco hizo un taller de hábitos basado en Hábitos Atómicos.
