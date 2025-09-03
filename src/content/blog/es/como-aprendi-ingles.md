@@ -1,6 +1,6 @@
 ---
 title: "Cómo aprendí inglés"
-description: "Descubre cómo aprendí inglés con Duolingo y otras estrategias, lo que me permitió conseguir mi primer trabajo en USA. Explico mi método y cómo mantuve la racha por más de tres años."
+description: "Descubre cómo aprendí inglés usando Duolingo por más de 1200 días y cómo me ayudó a conseguir mi primer trabajo en USA. Exploro mis inicios, las pautas que me puse y la evolución de mi método de aprendizaje."
 pubDate: 2025-09-01
 heroImage: 'https://images.unsplash.com/photo-1588912914017-923900a34710?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Tutorial
@@ -21,4 +21,4 @@ En el colegio me importaba mucho el aprender inglés, pero mi familia no dispon�
 
 ## La evolución
 
-Con estas pautas iniciadas a los 15 años, aprendí muchos
+Con estas pautas iniciadas a los 15 años, aprendí muchos conceptos pero todos limitados a configuraciones y aplicaciones, pues yo seguía consumiendo contenido en español, eso hizo que mi vocabulario no creciera tanto. Sin embargo, seguí con este método
