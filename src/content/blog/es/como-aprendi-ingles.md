@@ -1,6 +1,6 @@
 ---
 title: "Cómo aprendí inglés"
-description: "Descubre cómo el autor aprendió inglés principalmente con Duolingo, manteniendo una racha de 1200 días, y cómo esto le ayudó a conseguir su primer trabajo en USA. Explora sus inicios, las pautas que estableció y su evolución antes de Duolingo."
+description: "Descubre cómo logré aprender inglés con Duolingo y otras estrategias, manteniendo una racha de más de 1200 días y consiguiendo mi primer trabajo en USA."
 pubDate: 2025-09-01
 heroImage: 'https://images.unsplash.com/photo-1588912914017-923900a34710?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Tutorial
@@ -21,8 +21,8 @@ En el colegio me importaba mucho el aprender inglés, pero mi familia no dispon�
 
 ## La evolución
 
-Con estas pautas iniciadas a los 15 años, aprendí muchos conceptos pero todos limitados a configuraciones y aplicaciones, pues yo seguía consumiendo contenido en español, eso hizo que mi vocabulario no creciera tanto. No obstante, seguí con este método hasta después de haber ingresado a la universidad. En la universidad intenté muchas veces mantener una racha uniforme de Duolingo, pero la perdía con frecuencia. De todas formas, tenía una base interesante con la cual podía entender algunos textos básicos.
+Con estas pautas iniciadas a los 15 años, aprendí muchos conceptos pero todos limitados a configuraciones y aplicaciones, pues yo seguía consumiendo contenido en español, eso hizo que mi vocabulario no creciera tanto. No obstante, seguí con este método hasta después de haber ingresado a la universidad. En la universidad intenté muchas veces mantener una racha uniforme de Duolingo, pero la perdía con frecuencia. De todas formas, tenía una base interesante con la cual podía entender algunos textos intermedios y noticias.
 
 ## Duolingo
 
-Todos decían que el inglés era importante y yo lo sabía bien, pero no era capaz
+Todos decían que el inglés era importante y yo lo sabía bien, pero no era capaz de estudiar nada. Sentía que no avanzaba en absoluto y que seguía teniendo siempre el mismo nivel que en colegio. Un día
