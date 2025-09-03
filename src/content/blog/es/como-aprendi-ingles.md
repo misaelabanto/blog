@@ -1,17 +1,17 @@
 ---
 title: "Cómo aprendí inglés"
-description: "Descubre cómo el autor aprendió inglés con Duolingo, manteniendo una racha de 1200 días, y cómo esto lo llevó a su primer trabajo en USA. Explora sus inicios, evolución y el método clave para la constancia."
+description: "Descubre cómo el autor aprendió inglés con Duolingo y otras estrategias, logrando su primer trabajo en USA. Un viaje de más de tres años, desde los inicios en el colegio hasta la universidad, y cómo un taller de hábitos cambió su forma de aprender."
 pubDate: 2025-09-01
 heroImage: 'https://images.unsplash.com/photo-1588912914017-923900a34710?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Tutorial
 tags: ["english"]
 ---
 
-Bueno, yo aprendí en Duolingo y ya voy 1200 días y me ayudó mucho. De esa forma conseguí mi primer trabajo en USA. En este post explicaré cómo empecé y cómo conseguí mantener la racha a lo largo de más de tres años.
+Bueno, yo aprendí en Duolingo y ya voy 1200 días y me ayudó mucho. De esa forma conseguí mi primer trabajo en USA. En este post explicaré cómo empecé y cómo conseguí mantener la racha a lo largo de más de tres años. 
 
 ## Los inicios
 
-En el colegio me importaba mucho el aprender inglés, pero mi familia no disponía de tanto dinero como para inscribirme en una academia. Pero si tenía internet y con ello podría experimentar con YouTube. En esas épocas no había tanto contenido de inglés como ahora, pero de todas formas no me animaba a consumir ese contenido. Pensaba que podría aprender cambiando mi entorno a inglés. Así que me puse algunas pautas:
+En el colegio me importaba mucho el aprender inglés, pero mi familia no disponía de tanto dinero como para inscribirme en una academia. Pero si tenía internet y con ello podría experimentar con YouTube. En esas épocas no había tanto contenido de inglés como ahora, pero de todas formas no me animaba a consumir ese contenido. Pensaba que podría aprender cambiando mi entorno a inglés. Así que me puse algunas pautas: 
 
 - Tener el idioma de mi celular configurado en inglés
 
@@ -25,4 +25,4 @@ Con estas pautas iniciadas a los 15 años, aprendí muchos conceptos pero todos 
 
 ## Duolingo
 
-Todos decían que el inglés era importante y yo lo sabía bien, pero no era capaz de estudiar nada. Sentía que no avanzaba en absoluto y que seguía teniendo siempre el mismo nivel que en colegio. Un día, mi profesor Rony Hancco hizo un taller de hábitos basado en Hábitos Atómicos y descubrí un método simple pero muy efectivo para no dejar nunca de hacer mis lecciones: **“hacerlo visible”.** Sólo reemplazando mis aplicaciones
+Todos decían que el inglés era importante y yo lo sabía bien, pero no era capaz de estudiar nada. Sentía que no avanzaba en absoluto y que seguía teniendo siempre el mismo nivel que en colegio. Un día, mi profesor Rony Hancco hizo un taller de hábitos basado en Hábitos Atómicos y descubrí un método simple pero muy efectivo para no dejar nunca de hacer mis lecciones: **“hacerlo visible”.** Sólo reemplazando mis aplicaciones más frecuentes por la app de Duolingo logré abrirla más veces por “memoria muscular”. No fue fácil, llegué a mis
