@@ -1,6 +1,6 @@
 ---
 title: "Cómo aprendí inglés"
-description: "Descubre cómo pasé de no tener recursos para aprender inglés a conseguir mi primer trabajo en USA, manteniendo una racha de Duolingo por más de 1200 días y aplicando hábitos efectivos."
+description: "Descubre cómo el autor aprendió inglés, desde sus inicios autodidactas hasta alcanzar una racha de 1200 días en Duolingo, lo que le permitió conseguir su primer trabajo en Estados Unidos. Aprende sobre las pautas iniciales, la evolución de su método y la importancia de la disciplina."
 pubDate: 2025-09-01
 heroImage: 'https://images.unsplash.com/photo-1588912914017-923900a34710?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Tutorial
@@ -29,4 +29,4 @@ Todos decían que el inglés era importante y yo lo sabía bien, pero no era cap
 
 ## Entorno laboral
 
-En 2021, conseguí un empleo en Devsu. Durante la entrevista, me pidieron que responda unas cuantas preguntas en inglés. Me preguntaron cómo lograría construir un sistema gigante de escala mundial, la pregunta no era tan fácil y en inglés, mucho menos. Fui muy afortunado al saber que finalmente me contrataron y me enviaron a hacer algunas entrevistas con empresas cliente.
+En 2021, conseguí un empleo en Devsu. Durante la entrevista, me pidieron que responda unas cuantas preguntas en inglés. Me preguntaron cómo lograría construir un sistema gigante de escala mundial, la pregunta no era tan fácil y en inglés, mucho menos. Fui muy afortunado al saber que finalmente me contrataron y me enviaron a hacer algunas entrevistas con
