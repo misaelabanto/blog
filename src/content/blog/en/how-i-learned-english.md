@@ -1,36 +1,18 @@
 ---
 title: "How I Learned English"
-description: "Discover how I went from not being able to afford an academy to getting my first job in the USA, maintaining a Duolingo streak of over 1200 days, and refining my English with real content."
+description: "A concise story of how the author used Duolingo and environment changes to learn English and secure a remote job in the USA."
 pubDate: 2025-09-01
-heroImage: 'https://images.unsplash.com/photo-1588912914017-923900a34710?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
+heroImage: 'https://images.unsplash.com/photo-1455540904194-fc101941273a?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Tutorial
 tags: ["english"]
 ---
 
-Well, I learned on Duolingo and I'm already on a 1200-day streak. That's how I got my first job in the USA. In this post, I'll explain how I started and how I managed to maintain the streak for over three years.
+I learned using Duolingo and by changing my digital environment to English. In this post I describe how I started and how I kept practicing consistently over the years.
 
-## The Beginnings
+Beginnings: at school I wanted to learn English but we couldn't afford courses. With internet access, I used YouTube and set my phone and social media to English, and watched films with English subtitles.
 
-In school, learning English was very important to me, but my family didn't have enough money to enroll me in an academy. But I did have internet, and with it, I could experiment with YouTube. In those days, there wasn't as much English content as there is now, but either way, I wasn't encouraged to consume that content. I thought I could learn by changing my environment to English. So I set some guidelines for myself:
+Progress: these habits gave me a foundation, though my vocabulary grew slowly because I still consumed a lot of Spanish content. During university I tried and sometimes lost Duolingo streaks, but I kept building an intermediate level.
 
-- Have my phone's language set to English
+Duolingo and habits: after attending a habits workshop, I learned to 'make it visible' by placing the app where I would open it often. That helped me build long streaks and realize discipline matters as much as knowledge.
 
-- Facebook's language also in English
-
-- Finally, watch movies in English with subtitles
-
-## The Evolution
-
-With these guidelines, started at age 15, I learned many concepts, but all were limited to settings and applications, as I continued consuming content in Spanish, which meant my vocabulary didn't grow much. Nevertheless, I continued with this method until after entering university. In university, I tried many times to maintain a consistent Duolingo streak, but I frequently lost it. Still, I had an interesting foundation with which I could understand some intermediate texts and news.
-
-## Duolingo
-
-Everyone said English was important, and I knew it well, but I wasn't able to study anything. I felt like I wasn't making any progress at all and that I always had the same level as in school. One day, my professor Rony Hancco held a habits workshop based on Atomic Habits, and I discovered a simple but very effective method to never stop doing my lessons: **“make it visible.”** By simply replacing my most frequent apps with the Duolingo app, I managed to open it more times through “muscle memory.” It wasn't easy; I reached my first 170-day streak the first time and lost it. It hurt a lot; even so, I kept trying from scratch and reached 365 days. A full year of practicing. And that's how I discovered that the problem was discipline, not just knowledge.
-
-## Work Environment
-
-In 2021, I got a job at Devsu. During the interview, they asked me to answer a few questions in English. They asked me how I would build a giant, global-scale system—the question wasn't easy, and in English, even less so. I was very fortunate to learn that I was finally hired, and they sent me to do some interviews with business clients to be assigned to a project. It didn't go entirely well: in a real environment, I froze, didn't understand much of what they were saying, and felt too insecure about myself.
-
-## Takeoff
-
-I changed my environment and content consumption again. I started watching series entirely in English with English subtitles, and I also started following more English content creators. Although it was difficult to understand at first, I didn't let it bother me and pushed myself to keep consuming increasingly advanced and fast content. In other words, **REAL** content. This allowed me to train my ear and better associate sounds directly with meanings. Before, I used to
+Work and real practice: in 2021 I got a job where I had to speak English. I struggled at first, so I increased exposure to real English content. In 2024 I applied to many companies and eventually landed a 100% remote job in the USA after several interviews in English.
