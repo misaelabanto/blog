@@ -1,6 +1,6 @@
 ---
 title: "Cómo aprendí inglés"
-description: "Descubre cómo el autor aprendió inglés con Duolingo y otras estrategias, logrando su primer trabajo en USA. Un viaje de más de tres años, desde los inicios en el colegio hasta la universidad, y cómo un taller de hábitos cambió su forma de aprender."
+description: "Descubre cómo el autor aprendió inglés, mantuvo una racha de Duolingo de más de 1200 días y consiguió su primer trabajo en USA, desde sus inicios en el colegio hasta la universidad y el entorno laboral."
 pubDate: 2025-09-01
 heroImage: 'https://images.unsplash.com/photo-1588912914017-923900a34710?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Tutorial
@@ -25,4 +25,8 @@ Con estas pautas iniciadas a los 15 años, aprendí muchos conceptos pero todos 
 
 ## Duolingo
 
-Todos decían que el inglés era importante y yo lo sabía bien, pero no era capaz de estudiar nada. Sentía que no avanzaba en absoluto y que seguía teniendo siempre el mismo nivel que en colegio. Un día, mi profesor Rony Hancco hizo un taller de hábitos basado en Hábitos Atómicos y descubrí un método simple pero muy efectivo para no dejar nunca de hacer mis lecciones: **“hacerlo visible”.** Sólo reemplazando mis aplicaciones más frecuentes por la app de Duolingo logré abrirla más veces por “memoria muscular”. No fue fácil, llegué a mis
+Todos decían que el inglés era importante y yo lo sabía bien, pero no era capaz de estudiar nada. Sentía que no avanzaba en absoluto y que seguía teniendo siempre el mismo nivel que en colegio. Un día, mi profesor Rony Hancco hizo un taller de hábitos basado en Hábitos Atómicos y descubrí un método simple pero muy efectivo para no dejar nunca de hacer mis lecciones: **“hacerlo visible”.** Sólo reemplazando mis aplicaciones más frecuentes por la app de Duolingo logré abrirla más veces por “memoria muscular”. No fue fácil, llegué a mis primeros 170 días de racha la primera vez y la perdí. Dolió mucho; aun así, continué intentándolo desde cero y llegué a 365 días. Un año completo practicando. Y así descubrí que el problema era de disciplina, no solo de conocimiento. 
+
+## Entorno laboral
+
+En 2021, conseguí un empleo en Devsu. Durante la entrevista, me pidieron que responda unas cuantas preguntas en inglés. Me preguntaron cómo lograría construir un sistema gigante de escala mundial, la pregunta no era tan fácil y no lograba
