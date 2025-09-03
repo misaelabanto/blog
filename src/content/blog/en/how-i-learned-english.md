@@ -1,6 +1,6 @@
 ---
 title: "How I Learned English"
-description: "Discover how I learned English using Duolingo and other strategies, which helped me land my first job in the USA. I explain my method and how I maintained my streak for over three years."
+description: "Discover how I learned English using Duolingo for over 1200 days and how it helped me land my first job in the USA. I'll explain my beginnings, the guidelines I set for myself, and the evolution of my learning method."
 pubDate: 2025-09-01
 heroImage: 'https://images.unsplash.com/photo-1588912914017-923900a34710?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Tutorial
@@ -21,4 +21,4 @@ In school, learning English was very important to me, but my family didn't have 
 
 ## The Evolution
 
-With these guidelines, started at age 15, I learned many
+With these guidelines, started at age 15, I learned many concepts, but all limited to settings and applications, as I continued consuming content in Spanish. This meant my vocabulary didn't grow much. However, I continued with this method
