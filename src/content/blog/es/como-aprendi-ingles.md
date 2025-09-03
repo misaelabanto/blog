@@ -1,6 +1,6 @@
 ---
 title: "Cómo aprendí inglés"
-description: "Descubre cómo pasé de no tener recursos para aprender inglés a conseguir mi primer trabajo en USA, manteniendo una racha de Duolingo por más de 1200 días y superando los desafíos del entorno laboral."
+description: "Descubre cómo el autor aprendió inglés, mantuvo una racha de Duolingo por más de 1200 días y consiguió su primer trabajo en USA, explicando sus inicios, evolución y el impacto de la disciplina."
 pubDate: 2025-09-01
 heroImage: 'https://images.unsplash.com/photo-1588912914017-923900a34710?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Tutorial
@@ -29,4 +29,8 @@ Todos decían que el inglés era importante y yo lo sabía bien, pero no era cap
 
 ## Entorno laboral
 
-En 2021, conseguí un empleo en Devsu. Durante la entrevista, me pidieron que responda unas cuantas preguntas en inglés. Me preguntaron cómo lograría construir un sistema gigante de escala mundial, la pregunta no era tan fácil y en inglés, mucho menos. Fui muy afortunado al saber que finalmente me contrataron y me enviaron a hacer algunas entrevistas con clientes empresariales para que me asignen a un proyecto. No me fue del todo bien: en un entorno real, me paralicé, no entendía gran parte de lo que decían y me sentía demasiado inseguro de mí mismo.
+En 2021, conseguí un empleo en Devsu. Durante la entrevista, me pidieron que responda unas cuantas preguntas en inglés. Me preguntaron cómo lograría construir un sistema gigante de escala mundial, la pregunta no era tan fácil y en inglés, mucho menos. Fui muy afortunado al saber que finalmente me contrataron y me enviaron a hacer algunas entrevistas con clientes empresariales para que me asignen a un proyecto. No me fue del todo bien: en un entorno real, me paralicé, no entendía gran parte de lo que decían y me sentía demasiado inseguro de mí mismo. 
+
+## Despegue
+
+Volví a cambiar mi entorno y mi consumo de contenido. Empecé a ver series completamente en inglés con subtítulos en inglés, aunque no
