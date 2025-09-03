@@ -1,6 +1,6 @@
 ---
 title: "Cómo aprendí inglés"
-description: "Descubre cómo pasé de no poder pagar una academia de inglés a conseguir mi primer trabajo en USA, manteniendo una racha de Duolingo de más de 1200 días. Exploro mis inicios, la evolución de mi aprendizaje, el papel crucial de Duolingo y cómo superé mis inseguridades en el entorno laboral para finalmente despegar."
+description: "Descubre cómo pasé de no poder pagar una academia a conseguir mi primer trabajo en USA, manteniendo una racha de Duolingo de más de 1200 días y afinando mi inglés con contenido real."
 pubDate: 2025-09-01
 heroImage: 'https://images.unsplash.com/photo-1588912914017-923900a34710?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Tutorial
@@ -33,4 +33,4 @@ En 2021, conseguí un empleo en Devsu. Durante la entrevista, me pidieron que re
 
 ## Despegue
 
-Volví a cambiar mi entorno y mi consumo de contenido. Empecé a ver series completamente en inglés con subtítulos en inglés, también empecé a seguir a más creadores de contenido en inglés. Aunque me costaba entender al inicio, no le tomé importancia y me esforcé en seguir consumiendo ese contenido cada vez más avanzado y rápido. Mejor dicho, contenido **REAL. Eso**
+Volví a cambiar mi entorno y mi consumo de contenido. Empecé a ver series completamente en inglés con subtítulos en inglés, también empecé a seguir a más creadores de contenido en inglés. Aunque me costaba entender al inicio, no le tomé importancia y me esforcé en seguir consumiendo ese contenido cada vez más avanzado y rápido. Mejor dicho, contenido **REAL.** Esto me permitió afinar el oído y a asociar mejor los sonidos con los significados directamente. Antes, yo solía
