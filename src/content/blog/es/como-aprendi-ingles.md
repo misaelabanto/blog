@@ -1,6 +1,6 @@
 ---
 title: "Cómo aprendí inglés"
-description: "Un relato personal sobre cómo el autor aprendió inglés, desde sus inicios con Duolingo y el cambio de entorno, hasta conseguir su primer trabajo en USA y superar los desafíos en un entorno laboral real. Se detalla el método para mantener una racha de Duolingo de más de 1200 días."
+description: "Descubre cómo pasé de no tener recursos para aprender inglés a conseguir mi primer trabajo en USA, manteniendo una racha de Duolingo de más de 1200 días. Exploro mis inicios, la evolución de mi aprendizaje, el papel crucial de Duolingo y cómo superé desafíos en el entorno laboral para finalmente despegar."
 pubDate: 2025-09-01
 heroImage: 'https://images.unsplash.com/photo-1588912914017-923900a34710?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Tutorial
