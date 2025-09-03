@@ -1,6 +1,6 @@
 ---
 title: "2010: Una odisea dos"
-description: "El autor terminó de leer '2010: Una Odisea Dos' de Arthur C. Clarke y lo considera mucho mejor que el primer libro. Destaca la originalidad de la vida extraterrestre descrita por Clarke y cómo el libro ofrece explicaciones científicas sobre fenómenos como la existencia de fantasmas. Es una obra fascinante sobre el espacio y la vida inteligente, recomendada con cautela."
+description: "Recientemente terminé de leer 2010: Una Odisea Dos de Arthur C. Clarke, y lo encontré superior al primer libro. La novela explora formas de vida alienígena únicas y ofrece explicaciones científicas, incluso para la existencia de fantasmas. Es una lectura cautivadora que me encantó y recomiendo."
 pubDate: 2014-05-15
 heroImage: 'https://images.unsplash.com/photo-1676944229914-2194fdafd024?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Books
