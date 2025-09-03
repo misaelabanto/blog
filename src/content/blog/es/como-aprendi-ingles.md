@@ -1,6 +1,6 @@
 ---
 title: "Cómo aprendí inglés"
-description: "Descubre cómo pasé de no tener dinero para una academia a conseguir mi primer trabajo en USA gracias a Duolingo y un método de disciplina basado en Hábitos Atómicos. Aprende mis pautas iniciales y cómo mantuve una racha de más de 1200 días."
+description: "Descubre cómo pasé de no tener dinero para una academia a conseguir mi primer trabajo en USA, manteniendo una racha de Duolingo de más de 1200 días y aplicando hábitos efectivos."
 pubDate: 2025-09-01
 heroImage: 'https://images.unsplash.com/photo-1588912914017-923900a34710?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Tutorial
@@ -29,4 +29,4 @@ Todos decían que el inglés era importante y yo lo sabía bien, pero no era cap
 
 ## Entorno laboral
 
-En 2021, conseguí un empleo en Devsu. Durante la entrevista, me pidieron que responda unas cuantas preguntas en inglés. Me preguntaron cómo lograría construir un sistema gigante de escala mundial, la pregunta no era tan fácil y en inglés, mucho menos. Fui muy afortunado al saber que finalmente me contrataron y me enviaron a hacer algunas entrevistas con
+En 2021, conseguí un empleo en Devsu. Durante la entrevista, me pidieron que responda unas cuantas preguntas en inglés. Me preguntaron cómo lograría construir un sistema gigante de escala mundial, la pregunta no era tan fácil y en inglés, mucho menos. Fui muy afortunado al saber que finalmente me contrataron y me enviaron a hacer algunas entrevistas con clientes empresariales para que me asignen a un proyecto. No me fue del todo bien: en un entorno real, me
