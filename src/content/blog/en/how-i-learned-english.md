@@ -1,49 +1,10 @@
 ---
 title: "How I Learned English"
-description: "I learned English primarily through Duolingo, maintaining a 1200-day streak, which ultimately helped me secure my first job in the USA. This post details my initial struggles and how I consistently practiced for over three years. It highlights the journey from self-study with limited resources to successfully navigating professional interviews."
+description: "The author details their journey of learning English, starting with Duolingo and immersing themselves in the language, eventually securing a job in the USA. They explain how discipline and exposure to authentic content were crucial in overcoming challenges and achieving professional goals. This post outlines their methods and progression over more than three years of consistent practice."
 pubDate: 2025-09-01
 heroImage: 'https://images.unsplash.com/photo-1455540904194-fc101941273a?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Tutorial
 tags: ["english"]
 ---
 
-Well, I learned on Duolingo and I'm already on a 1200-day streak. That's how I got my first job in the USA. In this post, I will explain how I started and how I managed to maintain the streak for over three years.
-
-## The Beginnings
-
-In school, learning English was very important to me, but my family didn't have enough money to enroll me in an academy. But I did have internet, and with it, I could experiment with YouTube. In those days, there wasn't as much English content as there is now, but I still wasn't encouraged to consume that content. I thought I could learn by changing my environment to English. So I set some guidelines:
-
-- Have my phone's language configured to English
-
-- Facebook's language also in English
-
-- Finally, watch movies in English with subtitles
-
-## The Evolution
-
-With these guidelines started at age 15, I learned many concepts, but all limited to settings and applications, as I continued to consume content in Spanish, which meant my vocabulary didn't grow much. Nevertheless, I continued with this method until after I entered university. At university, I tried many times to maintain a consistent Duolingo streak, but I often lost it. Anyway, I had an interesting foundation with which I could understand some intermediate texts and news.
-
-## Duolingo
-
-Everyone said English was important, and I knew it well, but I wasn't capable of studying anything. I felt like I wasn't making any progress and that I always had the same level as in school. One day, my professor Rony Hancco held a habit workshop based on Atomic Habits, and I discovered a simple but very effective method to never stop doing my lessons: **“make it visible.”** Just by replacing my most frequent apps with the Duolingo app, I managed to open it more times through “muscle memory.” It wasn't easy; I reached my first 170-day streak the first time and lost it. It hurt a lot; even so, I continued trying from scratch and reached 365 days. A full year of practicing. And that's how I discovered that the problem was discipline, not just knowledge.
-
-## Work Environment
-
-In 2021, I got a job at Devsu. During the interview, they asked me to answer a few questions in English. They asked me how I would build a giant global-scale system—the question wasn't easy, and in English, even less so. I was very fortunate to learn that they finally hired me and sent me to do some interviews with business clients to assign me to a project. It didn't go entirely well: in a real environment, I froze, I didn't understand much of what they were saying, and I felt too insecure about myself.
-
-## Takeoff
-
-I changed my environment and content consumption again. I started watching series completely in English with English subtitles, and I also started following more content creators in English. Although it was difficult to understand at first, I didn't pay much attention to it and made an effort to keep consuming increasingly advanced and fast content. Or rather, **REAL** content. This allowed me to fine-tune my ear and better associate sounds with meanings directly. Before, I used to have the following complex flow:
-
-```mermaid
-graph TD
-  S[Sound in English] --> T[Text]
-  T --> TR[Translation] 
-  TR --> SG[Meaning]
-```
-
-With this flow, my brain became super slow when listening to English words. Little by little, I understood that practice made such complicated things easier. That comforted me and encouraged me to continue.
-
-## Job in USA
-
-In 2024, I applied to over 100 companies, all of which were foreign companies. This process was slow and required patience and preparation (I will tell the full story in another post). The best of all those jobs was for 100% remote work in the USA. If I hadn't decided years ago to start practicing English every day, I wouldn't have succeeded, given that I passed more than 5 interviews in English with different people involved. And in all of them, I stood out even though my English wasn't perfect.
+Well, I learned on Duolingo and I'm already on a 1200-day streak. That's how I got my first job in the USA. In this post, I will explain how I started and how I managed to maintain the streak for over three years.## The BeginningsIn school, learning English was very important to me, but my family didn't have enough money to enroll me in an academy. But I did have internet, and with it, I could experiment with YouTube. In those days, there wasn't as much English content as there is now, but I still wasn't encouraged to consume that content. I thought I could learn by changing my environment to English. So, I set some guidelines for myself:- Have my phone's language set to English- Facebook's language also in English- Finally, watch movies in English with subtitles## The EvolutionWith these guidelines, started at age 15, I learned many concepts, but all limited to settings and applications, as I continued to consume content in Spanish. This meant my vocabulary didn't grow much. Nevertheless, I continued with this method until after I entered university. At university, I tried many times to maintain a consistent Duolingo streak, but I often lost it. Still, I had an interesting foundation with which I could understand some intermediate texts and news.## DuolingoEveryone said English was important, and I knew it well, but I wasn't able to study anything. I felt like I wasn't progressing at all and that I always had the same level as in high school. One day, my professor Rony Hancco held a habit workshop based on Atomic Habits, and I discovered a simple but very effective method to never stop doing my lessons: **“make it visible.”** By simply replacing my most frequent applications with the Duolingo app, I managed to open it more times through “muscle memory.” It wasn't easy; I reached my first 170-day streak the first time and lost it. It hurt a lot; even so, I kept trying from scratch and reached 365 days. A full year of practicing. And that's how I discovered that the problem was discipline, not just knowledge.## Work EnvironmentIn 2021, I got a job at Devsu. During the interview, they asked me to answer a few questions in English. They asked how I would build a giant, global-scale system—the question wasn't easy, and in English, even less so. I was very fortunate to learn that they finally hired me and sent me to do some interviews with corporate clients to assign me to a project. It didn't go entirely well: in a real environment, I froze, I didn't understand much of what they were saying, and I felt too insecure about myself.## TakeoffI changed my environment and content consumption again. I started watching series completely in English with English subtitles, and I also started following more content creators in English. Although it was difficult to understand at first, I didn't pay much attention to it and pushed myself to keep consuming increasingly advanced and fast content. Or rather, **REAL** content. This allowed me to train my ear and better associate sounds directly with meanings. Before, I used to have the following complex flow:```mermaidgraph TD  S[Sound in English] --> T[Text]  T --> TR[Translation] TR --> SG[Meaning]```With this flow, my brain became super slow when listening to English words. Little by little, I understood that practice made such complicated things easier. That comforted me and encouraged me to continue.## Job in USAIn 2024, I applied to over 100 companies, all of which were foreign companies. This process was slow and required patience and preparation (I will tell the full story in another post). The best of all those jobs was to work 100% remotely in the USA. If I hadn't decided years ago to start practicing English every day, I wouldn't have succeeded, as I went through more than 5 interviews in English with different people involved. And in all of them, I stood out even though my English wasn't perfect.## ConclusionIf you want to learn English really well, you must not only have willpower but also discipline; it's something that is built every day.
