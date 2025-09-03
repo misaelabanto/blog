@@ -1,13 +1,13 @@
 ---
 title: "How I Learned English"
-description: "Discover how the author learned English with Duolingo, maintaining a 1200-day streak, and how it led to their first job in the USA. Explore their beginnings, evolution, and the key method for consistency."
+description: "Discover how the author learned English using Duolingo and other strategies, landing their first job in the USA. A journey of over three years, from school beginnings to university, and how a habits workshop transformed their learning approach."
 pubDate: 2025-09-01
 heroImage: 'https://images.unsplash.com/photo-1588912914017-923900a34710?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Tutorial
 tags: ["english"]
 ---
 
-Well, I learned on Duolingo and I'm already at 1200 days, and it helped me a lot. That's how I got my first job in the USA. In this post, I will explain how I started and how I managed to maintain the streak for over three years.
+Well, I learned on Duolingo and I'm already at 1200 days, and it helped me a lot. That's how I got my first job in the USA. In this post, I'll explain how I started and how I managed to maintain the streak for over three years.
 
 ## The Beginnings
 
@@ -21,8 +21,8 @@ In school, learning English was very important to me, but my family didn't have 
 
 ## The Evolution
 
-With these guidelines started at age 15, I learned many concepts, but all were limited to configurations and applications, as I continued consuming content in Spanish, which prevented my vocabulary from growing much. Nevertheless, I continued with this method until after entering university. At university, I tried many times to maintain a consistent Duolingo streak, but I often lost it. Still, I had an interesting foundation with which I could understand some intermediate texts and news.
+With these guidelines started at age 15, I learned many concepts, but all were limited to settings and applications, as I continued consuming content in Spanish, which prevented my vocabulary from growing much. Nevertheless, I continued with this method until after entering university. At university, I tried many times to maintain a consistent Duolingo streak, but I often lost it. Still, I had an interesting foundation with which I could understand some intermediate texts and news.
 
 ## Duolingo
 
-Everyone said English was important, and I knew it well, but I wasn't able to study anything. I felt like I wasn't making any progress at all and that I always had the same level as in school. One day, my professor Rony Hancco held a habits workshop based on Atomic Habits, and I discovered a simple but very effective method to never stop doing my lessons: **"make it visible."** Just by replacing my applications
+Everyone said English was important, and I knew it well, but I wasn't able to study anything. I felt like I wasn't making any progress at all and that I always had the same level as in school. One day, my professor Rony Hancco held a habits workshop based on Atomic Habits, and I discovered a simple but very effective method to never stop doing my lessons: **"make it visible."** Just by replacing my most frequent applications with the Duolingo app, I managed to open it more times by "muscle memory." It wasn't easy, I reached my
