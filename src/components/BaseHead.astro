@@ -15,7 +15,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 ---
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4Y6X3BVBK3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(...args: any[]){dataLayer.push(args);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-4Y6X3BVBK3');
+</script>
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
