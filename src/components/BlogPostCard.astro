@@ -1,5 +1,6 @@
 ---
 import FormattedDate from './FormattedDate.astro';
+import { getLangFromUrl, useTranslatedPath } from '@/i18n/utils';
 
 export interface Props {
 	post: any;
@@ -7,6 +8,26 @@ export interface Props {
 }
 
 const { post, isFirst = false } = Astro.props;
+
+// Determine the current language from the URL
+const currentLang = getLangFromUrl(Astro.url);
+// Get a path translation function for the current language
+const translatePath = useTranslatedPath(currentLang);
+
+// Extract the slug from the post ID (e.g., 'en/my-post' -> 'my-post')
+const postSlug = post.id.split('/')[1];
+// Translate the blog post link
+const postLink = translatePath(`/blog/${postSlug}/`);
+
+// Prepare category link
+const categorySlug = post.data.category?.toLowerCase().replace(/\s+/g, '-');
+const categoryLink = categorySlug ? translatePath(`/blog/category/${categorySlug}`) : '';
+
+// Prepare tag links
+const tagLinks = post.data.tags.map((tag: string) => ({
+    name: tag,
+    link: translatePath(`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`)
+}));
 ---
 
 <li class:list={[
@@ -19,7 +40,7 @@ const { post, isFirst = false } = Astro.props;
 	isFirst ? 'text-center' : '', // Conditional text-center for first item
 	isFirst ? '' : 'md:w-[calc(50%-1rem)]', // Conditional width for non-first items on md+
 ]}>
-	<a href={`/blog/${post.id.split('/')[1]}/`} class="block group no-underline transition-all duration-200 ease-in-out">
+	<a href={postLink} class="block group no-underline transition-all duration-200 ease-in-out">
 		<figure class="rounded-xl overflow-hidden mb-2">
 			<img
 				width={720}
@@ -48,7 +69,7 @@ const { post, isFirst = false } = Astro.props;
 				{post.data.category && (
 					<div class="category mb-2">
 						<a 
-							href={`/blog/category/${post.data.category.toLowerCase().replace(/\s+/g, '-')}`}
+							href={categoryLink}
 							class="inline-block bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-300 dark:hover:bg-blue-800 transition-colors"
 						>
 							{post.data.category}
@@ -58,12 +79,12 @@ const { post, isFirst = false } = Astro.props;
 				{post.data.tags.length > 0 && (
 					<div class="tags">
 						<div class="flex flex-wrap gap-1 justify-center">
-							{post.data.tags.map((tag: string) => (
+							{tagLinks.map((tag: { name: string, link: string }) => (
 								<a 
-									href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+									href={tag.link}
 									class="inline-block bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-md hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 transition-colors"
 								>
-									#{tag}
+									#{tag.name}
 								</a>
 							))}
 						</div>

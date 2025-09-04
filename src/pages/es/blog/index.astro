@@ -1,7 +1,7 @@
 ---
 import BaseHead from '@/components/BaseHead.astro';
+import BlogPostCard from '@/components/BlogPostCard.astro'; // Added import for BlogPostCard
 import Footer from '@/components/Footer.astro';
-import FormattedDate from '@/components/FormattedDate.astro';
 import Header from '@/components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
 import { filterByLanguage } from '@/i18n/utils';
@@ -36,70 +36,8 @@ const posts = filterByLanguage(allPosts, 'es').sort(
 					<ul class="flex flex-wrap gap-4 list-none m-0 p-0 md:gap-8">
 						{
 							posts.map((post) => (
-								<li class:list={[
-									'card',
-									'bg-base-100',
-									'shadow-md',
-									'hover:shadow-xl',
-									'transition-shadow',
-									'w-full', // Default to full width on small screens
-									post === posts[0] ? 'text-center' : '', // Conditional text-center for first item
-									post === posts[0] ? '' : 'md:w-[calc(50%-1rem)]', // Conditional width for non-first items on md+
-								]}>
-									<a href={`/es/blog/${post.id.split('/')[1]}/`} class="block group no-underline transition-all duration-200 ease-in-out">
-										<figure class="rounded-xl overflow-hidden mb-2">
-											<img
-												width={720}
-												height={360}
-												src={post.data.heroImage}
-												alt=""
-												class="w-full object-cover group-hover:shadow-xl"
-											/>
-										</figure>
-										<div class="card-body p-4">
-											<h4 class:list={[
-												'card-title',
-												'm-0',
-												'leading-tight',
-												post === posts[0] ? 'text-4xl sm:text-2xl' : '', // Larger title for first item
-											]}>
-												{post.data.title}
-											</h4>
-											<p class="m-0 text-[rgb(var(--gray))] text-sm group-hover:text-[rgb(var(--accent))]">
-												<FormattedDate date={post.data.pubDate} />
-											</p>
-											<p class="text-base-content/70 mt-2">{post.data.description}</p>
-											
-											<!-- Category and Tags -->
-											<div class="meta-info mt-3">
-												{post.data.category && (
-													<div class="category mb-2">
-														<a 
-															href={`/es/blog/category/${post.data.category.toLowerCase().replace(/\s+/g, '-')}`}
-															class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-300 dark:hover:bg-blue-800 transition-colors"
-														>
-															{post.data.category}
-														</a>
-													</div>
-												)}
-												{post.data.tags.length > 0 && (
-													<div class="tags">
-														<div class="flex flex-wrap gap-1">
-															{post.data.tags.map((tag: string) => (
-																<a 
-																	href={`/es/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
-																	class="inline-block bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-md hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 transition-colors"
-																>
-																	#{tag}
-																</a>
-															))}
-														</div>
-													</div>
-												)}
-											</div>
-										</div>
-									</a>
-								</li>
+								// Using the BlogPostCard component here
+								<BlogPostCard post={post} isFirst={post === posts[0]} />
 							))
 						}
 					</ul>
@@ -108,4 +46,4 @@ const posts = filterByLanguage(allPosts, 'es').sort(
 		</main>
 		<Footer />
 	</body>
-</html> 
+</html>
