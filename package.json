@@ -19,5 +19,8 @@
     "daisyui": "^5.0.49",
     "mermaid": "^11.10.1",
     "tailwindcss": "^4.1.4"
+  },
+  "devDependencies": {
+    "astro-icon": "^1.1.5"
   }
 }
