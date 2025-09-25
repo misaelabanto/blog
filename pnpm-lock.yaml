@@ -39,6 +39,9 @@ importers:
         specifier: ^4.1.4
         version: 4.1.4
     devDependencies:
+      '@iconify-json/simple-icons':
+        specifier: ^1.2.53
+        version: 1.2.53
       astro-icon:
         specifier: ^1.1.5
         version: 1.1.5
@@ -273,6 +276,9 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@iconify-json/simple-icons@1.2.53':
+    resolution: {integrity: sha512-8GEW5mshsPAZpVAJmkBG/niR2qn8t4U03Wmz6aSD9R4VMZKTECqbOxH3z4inA0JfZOoTvP4qoK9T2VXAx2Xg5g==}
 
   '@iconify/tools@4.1.3':
     resolution: {integrity: sha512-guPw9jvkrCCGFUvPr+NgUcQIpQcIll38NQzUzrEMK/1vrDmeJ9jstsp/Dx5LIP2na9BUBLHKOKXA6cERTpnGFw==}
@@ -2784,6 +2790,10 @@ snapshots:
 
   '@esbuild/win32-x64@0.25.2':
     optional: true
+
+  '@iconify-json/simple-icons@1.2.53':
+    dependencies:
+      '@iconify/types': 2.0.0
 
   '@iconify/tools@4.1.3':
     dependencies:

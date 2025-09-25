@@ -21,6 +21,7 @@
     "tailwindcss": "^4.1.4"
   },
   "devDependencies": {
+    "@iconify-json/simple-icons": "^1.2.53",
     "astro-icon": "^1.1.5"
   }
 }
