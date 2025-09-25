@@ -17,6 +17,9 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.3.0
         version: 3.3.0
+      '@iconify-json/simple-icons':
+        specifier: ^1.2.53
+        version: 1.2.53
       '@tailwindcss/typography':
         specifier: ^0.5.16
         version: 0.5.16(tailwindcss@4.1.4)
@@ -26,6 +29,9 @@ importers:
       astro:
         specifier: ^5.7.0
         version: 5.7.0(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.40.0)(typescript@5.8.3)
+      astro-icon:
+        specifier: ^1.1.5
+        version: 1.1.5
       astro-mermaid:
         specifier: ^1.0.4
         version: 1.0.4(astro@5.7.0(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.40.0)(typescript@5.8.3))(mermaid@11.10.1)
@@ -38,13 +44,6 @@ importers:
       tailwindcss:
         specifier: ^4.1.4
         version: 4.1.4
-    devDependencies:
-      '@iconify-json/simple-icons':
-        specifier: ^1.2.53
-        version: 1.2.53
-      astro-icon:
-        specifier: ^1.1.5
-        version: 1.1.5
 
 packages:
 
