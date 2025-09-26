@@ -26,6 +26,11 @@ const navigationItems = [
     path: '/blog',
     labelEn: 'Blog',
     labelEs: 'Blog'
+  },
+  {
+    path: '/projects',
+    labelEn: 'Projects',
+    labelEs: 'Proyectos'
   }
 ];
 
@@ -41,10 +46,5 @@ function getLabel(item: typeof navigationItems[0]) {
       {getLabel(item)}
     </HeaderLink>
   ))}
-  <HeaderLink href="#projects">
-    {currentLang === 'es' ? 'Proyectos' : 'Projects'}
-  </HeaderLink>
-  <HeaderLink href="#contact">
-    {currentLang === 'es' ? 'Contacto' : 'Contact'}
-  </HeaderLink>
+
 </div> 
