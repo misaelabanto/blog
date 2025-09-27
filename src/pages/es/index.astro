@@ -5,6 +5,8 @@ import Header from '@/components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
 import { getCollection } from 'astro:content';
 import { filterByLanguage } from '@/i18n/utils';
+import ThemeManager from '@/components/ThemeManager.astro';
+import { Icon } from 'astro-icon/components';
 
 // Get featured projects, sorted by order
 const allProjects = await getCollection('projects');
@@ -24,11 +26,7 @@ const latestPosts = filterByLanguage(allPosts, 'es')
 <html lang="es" data-theme="light">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<script is:inline>
-			// Get theme from localStorage or default to light
-			const savedTheme = localStorage.getItem('theme');
-			document.documentElement.setAttribute('data-theme', savedTheme || 'light');
-		</script>
+		<ThemeManager />
 	</head>
 	<body>
 		<Header />
@@ -43,16 +41,16 @@ const latestPosts = filterByLanguage(allPosts, 'es')
 						Construyo sistemas elegantes, simplifico datos complejos y exploro tecnología que empodera a las personas.
 					</p>
 					<div class="flex flex-wrap justify-center gap-4">
-						<a href="/es/blog" class="btn btn-primary">
+						<a href="/es/blog" class="btn btn-primary btn-lg">
 							📖 Lee Mi Blog
 						</a>
-						<a href="#work-with-me" class="btn btn-secondary">
+						<a href="#work-with-me" class="btn btn-secondary btn-lg">
 							💼 Trabaja Conmigo
 						</a>
 					</div>
 				</div>
 			</section>
-			
+
 			<!-- What I Do Section -->
 			<section id="what-i-do" class="py-16 px-6">
 				<div class="max-w-6xl mx-auto">
@@ -61,7 +59,7 @@ const latestPosts = filterByLanguage(allPosts, 'es')
 					<p class="text-lg mb-12 text-center max-w-3xl mx-auto">
 						Con experiencia en arquitectura de datos, desarrollo fullstack y liderazgo en startups, diseño e implemento sistemas que son eficientes, confiables y centrados en las personas.
 					</p>
-					
+
 					<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
 							<div class="card-body">
@@ -84,7 +82,7 @@ const latestPosts = filterByLanguage(allPosts, 'es')
 					</div>
 				</div>
 			</section>
-			
+
 			<!-- Latest Blog Section -->
 			<section class="py-16 px-6 bg-base-200">
 				<div class="max-w-6xl mx-auto">
@@ -93,7 +91,7 @@ const latestPosts = filterByLanguage(allPosts, 'es')
 					<p class="text-lg mb-12 text-center max-w-3xl mx-auto">
 						Escribo sobre tecnología, proyectos personales, estrategia de datos, crecimiento profesional y a veces la vida misma.
 					</p>
-					
+
 					{latestPosts.length === 0 ? (
 						<div class="text-center py-8">
 							<p class="text-lg text-gray-600 mb-4">Aún no hay posts en español disponibles.</p>
@@ -114,21 +112,21 @@ const latestPosts = filterByLanguage(allPosts, 'es')
 							))}
 						</div>
 					)}
-					
+
 					<div class="text-center mt-12">
-						<a href="/es/blog" class="btn btn-primary">
+						<a href="/es/blog" class="btn btn-primary btn-lg">
 							📚 Explorar el Archivo del Blog
 						</a>
 					</div>
 				</div>
 			</section>
-			
+
 			<!-- Projects Section -->
 			<section id="projects" class="py-16 px-6">
 				<div class="max-w-6xl mx-auto">
 					<h2 class="text-3xl md:text-4xl mb-6 text-center">💡 Proyectos Destacados</h2>
 					<h3 class="text-2xl mb-6 text-center">Algunas Cosas Que He Construido</h3>
-					
+
 					<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
 						{featuredProjects.map((project) => (
 							<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
@@ -147,15 +145,15 @@ const latestPosts = filterByLanguage(allPosts, 'es')
 							</div>
 						))}
 					</div>
-					
+
 					<div class="text-center mt-12">
-						<a href="/es/projects" class="btn btn-primary">
+						<a href="/es/projects" class="btn btn-primary btn-lg">
 							🔍 Ver Todos los Proyectos
 						</a>
 					</div>
 				</div>
 			</section>
-			
+
 			<!-- Work With Me Section -->
 			<section id="work-with-me" class="py-16 px-6 bg-base-200">
 				<div class="max-w-4xl mx-auto text-center">
@@ -169,7 +167,7 @@ const latestPosts = filterByLanguage(allPosts, 'es')
 					</a>
 				</div>
 			</section>
-			
+
 			<!-- Stay in Touch Section -->
 			<section class="py-16 px-6">
 				<div class="max-w-4xl mx-auto text-center">
@@ -178,54 +176,52 @@ const latestPosts = filterByLanguage(allPosts, 'es')
 					<p class="text-lg mb-8">
 						Sin spam. Solo escritura reflexiva sobre datos, software, sistemas y aprendizaje. Un email cada pocas semanas.
 					</p>
-					<div class="join max-w-md mx-auto">
-						<input 
-							type="email" 
-							placeholder="Tu dirección de email" 
-							class="input input-bordered join-item w-full"
-						/>
-						<button class="btn btn-primary join-item">
+					<div class="text-center">
+						<a href="/es/newsletter" class="btn btn-secondary btn-lg">
 							Suscribirse
-						</button>
+						</a>
 					</div>
 				</div>
 			</section>
-			
+
 			<!-- About Me Section -->
 			<section id="about" class="py-16 px-6 bg-base-200">
 				<div class="max-w-4xl mx-auto">
 					<h2 class="text-3xl md:text-4xl mb-6 text-center">🧭 Sobre Mí</h2>
 					<h3 class="text-2xl mb-6 text-center">Un Poco Más Sobre Misael</h3>
 					<p class="text-lg text-center">
-						Soy un ingeniero peruano que cree en el poder de la claridad — en sistemas, escritura y vida. 
-						Me encanta construir cosas útiles, aprender obsesivamente y compartir lo que sé. Fuera de la tecnología, 
+						Soy un ingeniero peruano que cree en el poder de la claridad — en sistemas, escritura y vida.
+						Me encanta construir cosas útiles, aprender obsesivamente y compartir lo que sé. Fuera de la tecnología,
 						me gusta la ciencia ficción, planear viajes y hacer la vida cotidiana más eficiente.
 					</p>
 				</div>
 			</section>
-			
+
 			<!-- Contact Section -->
 			<section id="contact" class="py-16 px-6">
 				<div class="max-w-4xl mx-auto text-center">
 					<h2 class="text-3xl md:text-4xl mb-8">Conectemos</h2>
 					<div class="flex justify-center gap-6 flex-wrap">
-						<a href="https://twitter.com/_misaelabanto" target="_blank" class="btn btn-outline">
-							Twitter
+						<a href="https://x.com/_misaelabanto" target="_blank" class="btn btn-outline btn-square" aria-label="Twitter">
+							<Icon name="simple-icons:x" class="w-6 h-6" />
 						</a>
-						<a href="https://linkedin.com/in/misaelabanto" target="_blank" class="btn btn-outline">
-							LinkedIn
+						<a href="https://linkedin.com/in/misaelabanto" target="_blank" class="btn btn-outline btn-square" aria-label="LinkedIn">
+							<Icon name="simple-icons:linkedin" class="w-6 h-6" />
 						</a>
-						<a href="https://github.com/misaelabanto" target="_blank" class="btn btn-outline">
-							GitHub
+						<a href="https://github.com/misaelabanto" target="_blank" class="btn btn-outline btn-square" aria-label="GitHub">
+							<Icon name="simple-icons:github" class="w-6 h-6" />
 						</a>
-						<a href="mailto:misaelabanto@gmail.com" class="btn btn-outline">
-							Email
+						<a href="https://t.me/misaelabanto" target="_blank" class="btn btn-outline btn-square" aria-label="Telegram">
+							<Icon name="simple-icons:telegram" class="w-6 h-6" />
+						</a>
+						<a href="mailto:hi@misaelabanto.com" class="btn btn-outline btn-square" aria-label="Email">
+							<Icon name="mdi:email" class="w-6 h-6" />
 						</a>
 					</div>
 				</div>
 			</section>
 		</main>
-		
+
 		<!-- Footer -->
 		<Footer />
 	</body>

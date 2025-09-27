@@ -1,30 +1,50 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '@/components/BaseHead.astro';
+import BlogSEO from '@/components/BlogSEO.astro';
 import Footer from '@/components/Footer.astro';
 import FormattedDate from '@/components/FormattedDate.astro';
 import Header from '@/components/Header.astro';
 
+import ThemeManager from '@/components/ThemeManager.astro';
+
 type Props = CollectionEntry<'blog'>['data'] & {
 	lang?: string;
+	slug?: string;
 };
 
-const { title, description, pubDate, updatedDate, heroImage, category, tags = [], lang = 'en' } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, category, tags = [], lang = 'en', slug = '' } = Astro.props;
 ---
 
 <html lang={lang} data-theme="light">
 	<head>
-		<BaseHead title={title} description={description} />
-		<script is:inline>
-			// Get theme from localStorage or default to light
-			const savedTheme = localStorage.getItem('theme');
-			document.documentElement.setAttribute('data-theme', savedTheme || 'light');
-		</script>
-	</head>
+		<BaseHead
+			title={title}
+			description={description}
+			image={heroImage}
+			type="article"
+			publishedTime={pubDate}
+			modifiedTime={updatedDate}
+			author="Misael Abanto"
+			section={category}
+			tags={tags}
+		/>
+		<BlogSEO
+			title={title}
+			description={description}
+			pubDate={pubDate}
+			updatedDate={updatedDate}
+			heroImage={heroImage}
+			category={category}
+			tags={tags}
+			lang={lang}
+			slug={slug}
+		/>
+		<ThemeManager />	</head>
 
-	<body>
+	<body class="flex flex-col min-h-screen">
 		<Header />
-		<main class="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+		<main class="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8 flex-grow">
 			<article>
 				<div class="hero-image mb-8 rounded-lg overflow-hidden">
 					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
@@ -42,12 +62,12 @@ const { title, description, pubDate, updatedDate, heroImage, category, tags = []
 							}
 						</div>
 						<h1>{title}</h1>
-						
+
 						<!-- Category and Tags -->
 						<div class="meta-info mt-4 mb-8">
 							{category && (
 								<div class="category mb-2">
-									<a 
+									<a
 										href={`${lang === 'es' ? '/es' : ''}/blog/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
 										class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-300 dark:hover:bg-blue-800 transition-colors"
 									>
@@ -59,7 +79,7 @@ const { title, description, pubDate, updatedDate, heroImage, category, tags = []
 								<div class="tags">
 									<div class="flex flex-wrap gap-2">
 										{tags.map((tag: string) => (
-											<a 
+											<a
 												href={`${lang === 'es' ? '/es' : ''}/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
 												class="inline-block bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-md hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 transition-colors"
 											>
@@ -70,7 +90,7 @@ const { title, description, pubDate, updatedDate, heroImage, category, tags = []
 								</div>
 							)}
 						</div>
-						
+
 						<hr class="my-8 border-t border-gray-300" />
 					</div>
 					<slot />

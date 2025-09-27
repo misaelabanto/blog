@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 import mermaid from 'astro-mermaid';
+import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,7 +14,8 @@ export default defineConfig({
     sitemap(),
     mermaid({
       autoTheme: true 
-    })
+    }),
+    icon()
   ],
   output: 'static',
   i18n: {

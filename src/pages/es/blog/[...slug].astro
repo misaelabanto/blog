@@ -16,8 +16,9 @@ type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
 const { Content } = await render(post);
+const slug = getSlugFromId(post.id);
 ---
 
-<BlogPost {...post.data} lang="es">
+<BlogPost {...post.data} lang="es" slug={slug}>
 	<Content />
 </BlogPost> 

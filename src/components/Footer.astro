@@ -1,9 +1,15 @@
 ---
+const { currentLocale } = Astro;
+const newsletterLink = currentLocale === 'es' ? '/es/newsletter' : '/newsletter';
+const newsletterText = currentLocale === 'es' ? 'Suscríbete a mi boletín' : 'Subscribe to my newsletter';
 ---
 
 <footer class="footer footer-center p-10 bg-neutral text-neutral-content">
 	<div>
 		<p class="font-bold">© 2025 Misael Abanto</p>
 		<p>Made in Lima</p>
-	</div> 
+	</div>
+	<div>
+		<a href={newsletterLink} class="link link-hover">{newsletterText}</a>
+	</div>
 </footer>
