@@ -1,0 +1,5 @@
+<script is:inline>
+  // Get theme from localStorage or default to light
+  const savedTheme = localStorage.getItem('theme');
+  document.documentElement.setAttribute('data-theme', savedTheme || 'light');
+</script>
