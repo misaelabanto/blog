@@ -9,9 +9,10 @@ import { getCollection } from 'astro:content';
 
 // Get all blog posts and filter for Spanish only
 const allPosts = await getCollection('blog');
-const posts = filterByLanguage(allPosts, 'es').sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const now = new Date();
+const posts = filterByLanguage(allPosts, 'es')
+        .filter((post) => post.data.pubDate <= now)
+        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <!doctype html>

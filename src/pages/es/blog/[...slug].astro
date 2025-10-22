@@ -4,8 +4,9 @@ import BlogPost from '@/layouts/BlogPost.astro';
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-	const allPosts = await getCollection('blog');
-	const spanishPosts = filterByLanguage(allPosts, 'es');
+        const allPosts = await getCollection('blog');
+        const now = new Date();
+        const spanishPosts = filterByLanguage(allPosts, 'es').filter((post) => post.data.pubDate <= now);
 	
 	return spanishPosts.map((post) => ({
 		params: { slug: getSlugFromId(post.id) },
