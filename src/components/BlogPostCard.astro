@@ -1,6 +1,7 @@
 ---
 import FormattedDate from './FormattedDate.astro';
 import { getLangFromUrl, useTranslatedPath } from '@/i18n/utils';
+import { getBlogPlaceholderImage } from '@/utils/blogPlaceholders';
 
 export interface Props {
 	post: any;
@@ -18,6 +19,13 @@ const translatePath = useTranslatedPath(currentLang);
 const postSlug = post.id.split('/')[1];
 // Translate the blog post link
 const postLink = translatePath(`/blog/${postSlug}/`);
+
+// Determine which image to show for the card. If the post does not include a hero image,
+// we fallback to a deterministic placeholder picked from the publication date so the
+// same post keeps the same visual across the site.
+const heroImage = post.data.heroImage && post.data.heroImage.trim().length > 0
+        ? post.data.heroImage
+        : getBlogPlaceholderImage(post.data.pubDate);
 
 // Prepare category link
 const categorySlug = post.data.category?.toLowerCase().replace(/\s+/g, '-');
@@ -41,15 +49,17 @@ const tagLinks = post.data.tags.map((tag: string) => ({
 	isFirst ? '' : 'md:w-[calc(50%-1rem)]', // Conditional width for non-first items on md+
 ]}>
 	<a href={postLink} class="block group no-underline transition-all duration-200 ease-in-out">
-		<figure class="rounded-xl overflow-hidden mb-2">
-			<img
-				width={720}
-				height={360}
-				src={post.data.heroImage}
-				alt=""
-				class="w-full h-[300px] object-cover group-hover:shadow-xl"
-			/>
-		</figure>
+                {heroImage && (
+                        <figure class="rounded-xl overflow-hidden mb-2">
+                                <img
+                                        width={720}
+                                        height={360}
+                                        src={heroImage}
+                                        alt={`Cover image for ${post.data.title}`}
+                                        class="w-full h-[300px] object-cover group-hover:shadow-xl"
+                                />
+                        </figure>
+                )}
 		<div class="card-body p-4">
 			<h4 class:list={[
 				'card-title',

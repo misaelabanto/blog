@@ -6,6 +6,8 @@ import Footer from '@/components/Footer.astro';
 import FormattedDate from '@/components/FormattedDate.astro';
 import Header from '@/components/Header.astro';
 
+import { getBlogPlaceholderImage } from '@/utils/blogPlaceholders';
+
 import ThemeManager from '@/components/ThemeManager.astro';
 
 type Props = CollectionEntry<'blog'>['data'] & {
@@ -14,6 +16,8 @@ type Props = CollectionEntry<'blog'>['data'] & {
 };
 
 const { title, description, pubDate, updatedDate, heroImage, category, tags = [], lang = 'en', slug = '' } = Astro.props;
+
+const resolvedHeroImage = heroImage && heroImage.trim().length > 0 ? heroImage : getBlogPlaceholderImage(pubDate);
 ---
 
 <html lang={lang} data-theme="light">
@@ -21,7 +25,7 @@ const { title, description, pubDate, updatedDate, heroImage, category, tags = []
 		<BaseHead
 			title={title}
 			description={description}
-			image={heroImage}
+                        image={resolvedHeroImage}
 			type="article"
 			publishedTime={pubDate}
 			modifiedTime={updatedDate}
@@ -34,7 +38,7 @@ const { title, description, pubDate, updatedDate, heroImage, category, tags = []
 			description={description}
 			pubDate={pubDate}
 			updatedDate={updatedDate}
-			heroImage={heroImage}
+                        heroImage={resolvedHeroImage}
 			category={category}
 			tags={tags}
 			lang={lang}
@@ -46,9 +50,16 @@ const { title, description, pubDate, updatedDate, heroImage, category, tags = []
 		<Header />
 		<main class="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8 flex-grow">
 			<article>
-				<div class="hero-image mb-8 rounded-lg overflow-hidden">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
-				</div>
+                                <div class="hero-image mb-8 rounded-lg overflow-hidden">
+                                        {resolvedHeroImage && (
+                                                <img
+                                                        width={1020}
+                                                        height={510}
+                                                        src={resolvedHeroImage}
+                                                        alt={`Cover image for ${title}`}
+                                                />
+                                        )}
+                                </div>
 				<div class="prose lg:prose-xl mx-auto">
 					<div>
 						<div>
