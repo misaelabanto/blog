@@ -7,4 +7,74 @@ category: Software
 tags: ["web"]
 ---
 
-I finally stopped using frontend frameworks. I started in the web development world using Angular, then I preferred Vue, and at Devsu I used React. Now, I use none. Why? In this article, I will explain in detail what led me to make this decision.## State managementImagine you have a CRUD application. The process to implement it using YouTube tutorials for beginner developers, as I was initially, would be the following:- Define database model- Choose a database engine- Choose a backend framework. This could be Express.js, Nest.js, or Hono- Implement a REST API in this backend- Choose a frontend framework. This could be Angular, Vue, or React.- Implement services that consume the REST API- Implement the UICan you already see what the problem is here?```mermaidgraph LRDATABASE --> BACKENDBACKEND --> ENDPOINT1BACKEND --> ENDPOINT2ENDPOINT1 --> UI_SERVICE1UI_SERVICE1 --> UI_STATE1UI_SERVICE1 --> UI_STATE2UI_SERVICE1 --> UI_STATE3```## How a web application should lookWe all know that we should separate the presentation layer from the business layer. It's something we often forget. In a web application, HTML is just another presentation layer, made of text.```mermaidgraph LRDATABASE --> BUSINESSBUSINESS --> UI_PRESENTATION_LAYERBUSINESS --> API_PRESENTATION_LAYER```Servers are good at serving and returning text, any kind of text, not just JSON.😉## HTMXIn my latest projects, I have consistently used HTMX. This has significantly accelerated development, as I no longer program two independent projects—one for frontend and one for backend—but only the backend, dictating how each part of the web should be updated. This has also allowed me to see things differently. Sometimes it is also much easier to create a custom HTML component instead of handling forms in strange ways, such as creating a long list of useState, as in the following example:![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b9eb5589-c2ac-4c5c-8357-49b23d1b7529/04eb041f-b9a8-4557-a22247bfdf36/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466TY6DZL6M%2F20251001%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251001T040649Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHIaCXVzLXdlc3QtMiJGMEQCIHeNbF8wftz%2FLa5WSuzcvx4N6vMTQMrLK84ruEmKNo72AiAi05VUpORC%2BvLeQglxFoh4foxcwnplIJpqQCH0mEtusiqIBAj7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDYzNzQyMzE4MzgwNSIMQTaHLSnkAKgeUpquKtwDNDVBc4BDsgiLzL%2FWOCsF66gdLQRUbUbwtsHMuuzlnN3B4ZVtgZMOX%2FbLNQRiBQrpFLtw9zgs6lSzvUYByd8rYGOLgt2dfWOx0LMB9PY3YfVeBL39UuAKuiJBWVm3Y8%2Fbwl2Ob%2FDRBJjmYa2biz%2BmLZtldxFNd9NA3iDzaOCjMEbRdeDfq396KcyGCrsxfQlA%2Bzs6f3ME9uZ%2Fhx4nlr%2FFdRTumRmeeAadZd1qCeode%2BoOHemKFa3OryqJuvFNm92c8fpUWn6JuTcFYbxEzq6pbdwyzi5pz7LJvcI2Kspp2V2N3ehsHQOqzErh2FgIgFNsa3eiWdB5O8a0sVnVNsFs%2BV6Iu9frkzgODnEGp2sJaLMRvWRB9bzHnDRg7rCa5wMAar6C7Su%2Bo102twQO6UwVUVYEbtq3zyvtHQrMdNHkiN1uWkMwTZ7rwknUkl6BluPWeVBd4023V2crYbIj6fyRVj9%2FVSdZnzSKALuqbL06NVklowaRlLKMq3sTlmUKQ58RTdZo73SN98yjVhFZWC6T7cTqAPdCpbZDz7p93xqw9S6W4TNgpKhcG47PwtgijM6HUrqbwxt9x6CxZOMTR6EvCoM78X0OoYc9wsOCx2dnB6y3XGyIgf%2FX9HF%2B1y4wionyxgY6pgFmz5KrkeiyY1nDcaldktI9kIPKyxa5%2FBILHEHGYGUtD5P2hRx3u1qV0SdAmTxl6df2kn9YPySYAw%2F2Mov%2BwZ7D9CocI2FixCDPL%2FRJiSax%2F%2FWPejUNnfEPdXQRixMXTRCYTQG2juxojFnlRJk%2FYUGprg%2FikA87FrpB0Eu4PhY1IIVI4RSqjVfC1d5ShGHOTzVQlYM8VfBccsQ7kfGNqTEY3Bdu8HEJ&X-Amz-Signature=2e7c1704572d702e63b8e7463ca24ae8347cd130d53c15f4e3094b8aabcefa61&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)There are also other horrifying examples online, like this one: ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b9eb5589-c2ac-4c5c-8357-49b23d1b7529/ebb24493-fdad-41c1-a285-e2141b9987ec/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466TY6DZL6M%2F20251001%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251001T040649Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHIaCXVzLXdlc3QtMiJGMEQCIHeNbF8wftz%2FLa5WSuzcvx4N6vMTQMrLK84ruEmKNo72AiAi05VUpORC%2BvLeQglxFoh4foxcwnplIJpqQCH0mEtusiqIBAj7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDYzNzQyMzE4MzgwNSIMQTaHLSnkAKgeUpquKtwDNDVBc4BDsgiLzL%2FWOCsF66gdLQRUbUbwtsHMuuzlnN3B4ZVtgZMOX%2FbLNQRiBQrpFLtw9zgs6lSzvUYByd8rYGOLgt2dfWOx0LMB9PY3YfVeBL39UuAKuiJBWVm3Y8%2Fbwl2Ob%2FDRBJjmYa2biz%2BmLZtldxFNd9NA3iDzaOCjMEbRdeDfq396KcyGCrsxfQlA%2Bzs6f3ME9uZ%2Fhx4nlr%2FFdRTumRmeeAadZd1qCeode%2BoOHemKFa3OryqJuvFNm92c8fpUWn6JuTcFYbxEzq6pbdwyzi5pz7LJvcI2Kspp2V2N3ehsHQOqzErh2FgIgFNsa3eiWdB5O8a0sVnVNsFs%2BV6Iu9frkzgODnEGp2sJaLMRvWRB9bzHnDRg7rCa5wMAar6C7Su%2Bo102twQO6UwVUVYEbtq3zyvtHQrMdNHkiN1uWkMwTZ7rwknUkl6BluPWeVBd4023V2crYbIj6fyRVj9%2FVSdZnzSKALuqbL06NVklowaRlLKMq3sTlmUKQ58RTdZo73SN98yjVhFZWC6T7cTqAPdCpbZDz7p93xqw9S6W4TNgpKhcG47PwtgijM6HUrqbwxt9x6CxZOMTR6EvCoM78X0OoYc9wsOCx2dnB6y3XGyIgf%2FX9HF%2B1y4wionyxgY6pgFmz5KrkeiyY1nDcaldktI9kIPKyxa5%2FBILHEHGYGUtD5P2hRx3u1qV0SdAmTxl6df2kn9YPySYAw%2F2Mov%2BwZ7D9CocI2FixCDPL%2FRJiSax%2F%2FWPejUNnfEPdXQRixMXTRCYTQG2juxojFnlRJk%2FYUGprg%2FikA87FrpB0Eu4PhY1IIVI4RSqjVfC1d5ShGHOTzVQlYM8VfBccsQ7kfGNqTEY3Bdu8HEJ&X-Amz-Signature=5772f76ed432f08a8e06173f527f844980d98a494dfdb249647ee2ba9292b0e4&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)I wonder if it's necessary to have all this mess of states. Why do we have to live like this? I feel that since I started using HTMX, my web apps have significantly simplified and improved.Yes, I know. A project can be developed with much cleaner and tidier code than this, but unfortunately, that is not the most common practice.Anyway, I do enjoy writing code in Flutter, for which I cannot render directly from the server, can I? I like the language (Dart); I think it's a modern and easy-to-use language. However, I have really liked GetX for state management because the abstraction is super intuitive. It is one of the best frameworks I have seen.
+I finally stopped using frontend frameworks. I started in the web development world using Angular, then I preferred Vue, and at Devsu I used React. Now, I use none. Why? In this article, I will explain in detail what led me to make this decision.
+
+## State management
+
+Imagine you have a CRUD application. The process to implement it using YouTube tutorials for beginner developers, as I was initially, would be the following:
+- Define database model
+- Choose a database engine
+- Choose a backend framework. This could be Express.js, Nest.js, or Hono
+- Implement a REST API in this backend
+- Choose a frontend framework. This could be Angular, Vue, or React.
+- Implement services that consume the REST API
+- Implement the UI
+
+Can you already see what the problem is here?
+
+```mermaid
+graph LR
+DATABASE --> BACKEND
+BACKEND --> ENDPOINT1
+BACKEND --> ENDPOINT2
+ENDPOINT1 --> UI_SERVICE1
+UI_SERVICE1 --> UI_STATE1
+UI_SERVICE1 --> UI_STATE2
+UI_SERVICE1 --> UI_STATE3
+```
+
+## How a web application should look
+
+We all know that we should separate the presentation layer from the business layer. It's something we often forget. In a web application, HTML is just another presentation layer, made of text.
+
+```mermaid
+graph LR
+DATABASE --> BUSINESS
+BUSINESS --> UI_PRESENTATION_LAYER
+BUSINESS --> API_PRESENTATION_LAYER
+```
+
+Servers are good at serving and returning text, any kind of text, not just JSON.😉
+
+## HTMX
+
+In my latest projects, I have consistently used HTMX. This has significantly accelerated development, as I no longer program two independent projects—one for frontend and one for backend—but only the backend, dictating how each part of the web should be updated. This has also allowed me to see things differently. Sometimes it is also much easier to create a custom HTML component instead of handling forms in strange ways, such as creating a long list of useState, as in the following example:
+
+```jsx
+import { useState } from 'react';
+
+function Form() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [zip, setZip] = useState('');
+  const [country, setCountry] = useState('');
+  const [phone, setPhone] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(null);
+
+  // ...
+}
+```
+
+There are also other horrifying examples online, like this one: [An image displaying a complex and hard-to-read code example was formerly here.]
+
+I wonder if it's necessary to have all this mess of states. Why do we have to live like this? I feel that since I started using HTMX, my web apps have significantly simplified and improved.
+
+Yes, I know. A project can be developed with much cleaner and tidier code than this, but unfortunately, that is not the most common practice.
+
+Anyway, I do enjoy writing code in Flutter, for which I cannot render directly from the server, can I? I like the language (Dart), I think it's a modern and easy-to-use language. However, I have really liked GetX for state management because the abstraction is super intuitive. It is one of the best frameworks I have seen.
