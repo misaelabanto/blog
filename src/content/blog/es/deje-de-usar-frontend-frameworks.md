@@ -1,6 +1,6 @@
 ---
 title: "Dejé de usar frontend frameworks"
-description: "Finalmente he dejado de usar frameworks frontend como Angular, Vue y React, cansado de la complejidad en la gestión de estados y la doble programación. Ahora, con HTMX, me enfoco en un solo proyecto backend, permitiendo que el servidor maneje de forma más sencilla tanto la lógica de negocio como la presentación."
+description: "Finalmente he dejado de lado los frameworks frontend como Angular, Vue y React, cansado de la complejidad innecesaria en la gestión de estados que suelen introducir. Mi experiencia con HTMX me ha demostrado que simplificar el desarrollo web, volviendo a un enfoque centrado en el backend, es más eficiente y mejora significativamente mis aplicaciones."
 pubDate: 2025-09-03
 heroImage: '/blog/i-stopped-using-frontend-frameworks/cover.jpeg'
 category: Software
@@ -64,11 +64,11 @@ Los servidores son buenos sirviendo y retornando texto, cualquier tipo de texto,
 
 En mis últimos proyectos he utilizado HTMX de forma seguida. Esto ha permitido acelerar el desarrollo dado que ya no se programan dos proyectos de forma independiente, uno para frontend y otro para backend sino sólo backend y mostrando cómo debería actualizarse cada parte de la web. Esto también ha permitido que vea las cosas de forma diferente. A veces también es mucho más fácil crear un custom component de HTML en lugar de manejar los formularios de formas extrañas, como creando una larga lista de useState, como en el siguiente ejemplo:
 
-![27f326c8-cefd-8062-a651-e7afa7ea6985.png](/blog/deje-de-usar-frontend-frameworks/27f326c8-cefd-8062-a651-e7afa7ea6985.png)
+![27f326c8-cefd-8062-a651-e7afa7ea6985.png](/blog/i-stopped-using-frontend-frameworks/27f326c8-cefd-8062-a651-e7afa7ea6985.png)
 
 En internet también hay otros ejemplos horrorosos, como este: 
 
-![27f326c8-cefd-80b6-8a18-f6e43d9db04c.png](/blog/deje-de-usar-frontend-frameworks/27f326c8-cefd-80b6-8a18-f6e43d9db04c.png)
+![27f326c8-cefd-80b6-8a18-f6e43d9db04c.png](/blog/i-stopped-using-frontend-frameworks/27f326c8-cefd-80b6-8a18-f6e43d9db04c.png)
 
 Yo me pregunto si es necesario tener toda esta maraña de estados. ¿Por qué tenemos que vivir así? Siento que desde que uso HTMX mis web apps se han simplificado significativamente y se ha mejorado. 
 
