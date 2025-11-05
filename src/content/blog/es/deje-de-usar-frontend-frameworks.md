@@ -2,7 +2,7 @@
 title: "Dejé de usar frontend frameworks"
 description: "Después de años utilizando Angular, Vue y React, he decidido dejar de lado los frameworks frontend tradicionales. En este artículo, explico cómo la complejidad en la gestión de estados me llevó a adoptar HTMX, simplificando drásticamente mis aplicaciones web al permitir que el backend maneje gran parte de la presentación."
 pubDate: 2025-09-03
-heroImage: './blog/deje-de-usar-frontend-frameworks/cover.jpeg'
+heroImage: '/blog/deje-de-usar-frontend-frameworks/cover.jpeg'
 category: Software
 tags: ["web"]
 ---
