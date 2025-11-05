@@ -1,6 +1,6 @@
 ---
 title: "Dejé de usar frontend frameworks"
-description: "Después de años utilizando Angular, Vue y React, he decidido dejar de lado los frameworks frontend tradicionales. En este artículo, explico cómo la complejidad en la gestión de estados me llevó a adoptar HTMX, simplificando drásticamente mis aplicaciones web al permitir que el backend maneje gran parte de la presentación."
+description: "Después de años navegando entre Angular, Vue y React, finalmente he dejado de usar frameworks frontend, cansado de la complejidad en el manejo de estados. Ahora, con HTMX, he simplificado radicalmente mis proyectos web, permitiendo que el servidor gestione la presentación y acelerando el desarrollo con una aproximación mucho más limpia y eficiente."
 pubDate: 2025-09-03
 heroImage: '/blog/deje-de-usar-frontend-frameworks/cover.jpeg'
 category: Software
@@ -82,4 +82,3 @@ De cualquier forma, sí disfruto escribir código en Flutter, para el cual no pu
 
 
 
-END
