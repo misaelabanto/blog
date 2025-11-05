@@ -1,6 +1,6 @@
 ---
 title: "Dejé de usar frontend frameworks"
-description: "Después de años navegando entre Angular, Vue y React, finalmente he dejado de usar frameworks frontend, cansado de la complejidad en el manejo de estados. Ahora, con HTMX, he simplificado radicalmente mis proyectos web, permitiendo que el servidor gestione la presentación y acelerando el desarrollo con una aproximación mucho más limpia y eficiente."
+description: "Después de años usando frameworks como Angular, Vue y React, he decidido dejarlos por la complejidad que introducen, especialmente en la gestión de estados. Actualmente, utilizo herramientas como HTMX para simplificar el desarrollo, permitiendo que mi backend maneje la capa de presentación directamente y volviendo a un modelo web más intuitivo."
 pubDate: 2025-09-03
 heroImage: '/blog/deje-de-usar-frontend-frameworks/cover.jpeg'
 category: Software
@@ -72,13 +72,11 @@ En internet también hay otros ejemplos horrorosos, como este:
 
 Yo me pregunto si es necesario tener toda esta maraña de estados. ¿Por qué tenemos que vivir así? Siento que desde que uso HTMX mis web apps se han simplificado significativamente y se ha mejorado. 
 
-
-
 Sí, ya sé. Se puede desarrollar un proyecto con código mucho más limpio y ordenado que esto, pero lamentablemente eso no es lo más común.
 
+De cualquier forma, sí disfruto escribir código en Flutter, para el cual _no puedo_ renderizar directamente desde el servidor, ¿verdad? Me gusta el lenguaje (Dart), creo que es un lenguaje moderno y fácil de usar. También me ha gustado mucho GetX para manejar los estados pues la abstracción es super intuitiva. Es de los mejores frameworks que he visto. 
 
-
-De cualquier forma, sí disfruto escribir código en Flutter, para el cual no puedo renderizar directamente desde el servidor, ¿verdad? Me gusta el lenguaje (Dart), creo que es un lenguaje moderno y fácil de usar. Sin embargo, me ha gustado mucho GetX para manejar los estados pues la abstracción es super intuitiva. Es de los mejores frameworks que he visto. 
+En conclusión, creo que el desarrollo web frontend está volviendo a sus inicios de una manera más sencilla y accesible. Es probable que pronto haga un tutorial sobre cómo hacer un servidor E2E usando sólo Elysia u Hono y HTMX. 
 
 
 
