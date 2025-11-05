@@ -1,13 +1,39 @@
 ---
 title: "Dejé de usar frontend frameworks"
-description: "El autor narra su experiencia abandonando los frameworks frontend como Angular, Vue y React, explicando las razones detrás de esta decisión. El artículo profundiza en los problemas de gestión de estado en aplicaciones web típicas y propone un enfoque alternativo centrado en la separación de capas y el uso de HTMX para simplificar el desarrollo y mejorar la arquitectura."
+description: "Después de años utilizando Angular, Vue y React, he decidido dejar de lado los frameworks frontend tradicionales. En este artículo, explico cómo la complejidad en la gestión de estados me llevó a adoptar HTMX, simplificando drásticamente mis aplicaciones web al permitir que el backend maneje gran parte de la presentación."
 pubDate: 2025-09-03
-heroImage: ''
+heroImage: './blog/deje-de-usar-frontend-frameworks/cover.jpeg'
 category: Software
 tags: ["web"]
 ---
 
-Finalmente deje de usar frontend frameworks. Empecé en el mundo de desarrollo web usando Angular, luego me gustó más Vue y en Devsu usé React. Finalmente ahora no uso ninguno. ¿Por qué? En este artículo explicaré de manera detallada qué me llevó a tomar esta decisión. ## State management Imagina que tienes una aplicación CRUD. El proceso para llevarla a cabo con los tutoriales de YouTube y para desarrolladores principiantes, como yo fui en un inicio, sería el siguiente: - Definir modelo de base de datos - Escoger un motor de base de datos - Escoger un framework backend. Puede ser Express.js, Nest.js u Hono - Implementar una REST API en este backend - Escoger un framework frontend. Puede ser Angular, Vue o React. - Implementar servicios que consuman la API REST - Implementar la UI ¿Ya se puede observar cuál es el problema aquí? ```mermaid
+Finalmente deje de usar frontend frameworks. Empecé en el mundo de desarrollo web usando Angular, luego me gustó más Vue y en Devsu usé React. Finalmente ahora no uso ninguno. ¿Por qué? En este artículo explicaré de manera detallada qué me llevó a tomar esta decisión. 
+
+## State management
+
+Imagina que tienes una aplicación CRUD. El proceso para llevarla a cabo con los tutoriales de YouTube y para desarrolladores principiantes, como yo fui en un inicio, sería el siguiente:
+
+- Definir modelo de base de datos
+
+- Escoger un motor de base de datos
+
+- Escoger un framework backend. Puede ser Express.js, Nest.js u Hono
+
+- Implementar una REST API en este backend
+
+- Escoger un framework frontend. Puede ser Angular, Vue o React.
+
+- Implementar servicios que consuman la API REST
+
+- Implementar la UI
+
+
+
+¿Ya se puede observar cuál es el problema aquí? 
+
+
+
+```mermaid
 graph LR
   DATABASE --> BACKEND
   BACKEND --> ENDPOINT1
@@ -18,10 +44,42 @@ graph LR
   UI_SERVICE1 --> UI_STATE3
   
   
-``` ## Cómo debería verse una aplicación web Todos sabemos que deberíamos separar la capa de presentación de la capa de negocio. Es algo que muchas veces olvidamos. En una aplicación web, el HTML es una capa de presentación más, hecha de texto. ```mermaid
+```
+
+## Cómo debería verse una aplicación web
+
+Todos sabemos que deberíamos separar la capa de presentación de la capa de negocio. Es algo que muchas veces olvidamos. En una aplicación web, el HTML es una capa de presentación más, hecha de texto. 
+
+```mermaid
 graph LR
   DATABASE --> BUSINESS
   BUSINESS --> UI_PRESENTATION_LAYER
   BUSINESS --> API_PRESENTATION_LAYER
    
-``` Los servidores son buenos sirviendo y retornando texto, cualquier tipo de texto, no sólo JSON. 😉 ## HTMX En mis últimos proyectos he utilizado HTMX de forma seguida. Esto ha permitido acelerar el desarrollo dado que ya no se programan dos proyectos de forma independiente, uno para frontend y otro para backend sino sólo backend y mostrando cómo debería actualizarse cada parte de la web. Esto también ha permitido que vea las cosas de forma diferente. A veces también es mucho más fácil crear un custom component de HTML en lugar de manejar los formularios de formas extrañas, como creando una larga lista de useState, como en el siguiente ejemplo: ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b9eb5589-c2ac-4c5c-8357-49b23d1b7529/04eb041f-b9a8-4557-a7a2-a22247bfdf36/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466Y2WBZ7BA%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T011831Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEG0aCXVzLXdlc3QtMiJHMEUCIQDM8PEajTzD63OT%2FX72ZDx3RjfJuHnAQGZqgslOBhk%2FlwIgQ3sPo%2FxWCajLQm%2FbXF6mp%2B9XVWGIeMqCXMzwbOQMfAYq%2FwMINhAAGgw2Mzc0MjMxODM4MDUiDJNffMhz%2ByqqT4O1WCrcA8ca3FBowx5ylvOIWUSK8DEou4XttNKnLRAFu1hO9pWHEHGvc8HrwFTksI%2FLnRLzEqcnOelIC8lNPOq87yu6j5yHSdoolNO3f9DEV70yOrD8e0%2F%2BueqOuIQemCWXdHb5z4peqIqw98a9oBX5L509QbruRgV%2FKhLMJExTZ8xRrhsIqPs%2Bboz36kL%2FdbscC9OEVILR2K8xTwNJIKKXnjhf3PNOXW%2Fojhq91hG5uRWfxCm%2Fpi6NKVmznHWlhyCgOEHSlJTlpetIAvqWbOG2Co7sGMkp8N6uqHLR4aj4Aumo2%2BpMUMm4edV973BeNp4OMsMFtgRtkkfm31M7ubkkXNbPDH0jeS4CvX7ExY%2FxUNDR7LQOpOik42s%2FLhKC1x621cOvUIkWZ24f0pX%2Bl%2FohPYRijwTvxHAekdYQzRebXd1BR%2Fxb%2FrZpBy5k8sKbX%2FwtwwdTODsLU5UxYvkho0dWSmmsSI17mKbDxIp7blXdLBE048mY6gYX%2BnY3VQ6yagAKdPYqqWOPI%2FpiHxRxMa%2F0QKM4k%2BPARuv1VvvzSDaIdmzK0L%2BRxb36ygQTMBKoauh8XXGCteXqSYYShzHRBE5fgcS4wGE3O5aeXLh0ZUVirBnuriP4MV3hj6C7vLAWlVB8MIPZmcgGOqUBTleaiAEapXMDiT0syyGYeXYSvfu9ipqqGYONF5KVxFAZqk7YEeI2EZiwU0%2BijlFa9fTzZU41QhA6rg%2BEfZ1N0Htvh8ML8G0GuJGl1JiHJYkhX74H6tUsWuc6FK1BM3BD9NCZfxpCP6E6GeLhP6MTYyeWwaAAZ707Jb7PSbYbTHHcg3S0haWmkMmPoy4j%2FbrvOcRKJyoXIfPFAeho6M9ZbmXA%2BnA3&X-Amz-Signature=aaf001464e2526c22e26e5158da6a291b4ff838ad4750478d0844dd7b9aaeab2&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject) En internet también hay otros ejemplos horrorosos, como este: ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/b9eb5589-c2ac-4c5c-8357-49b23d1b7529/ebb24493-fdad-41c1-a285-e2141b9987ec/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466Y2WBZ7BA%2F20251102%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20251102T011831Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEG0aCXVzLXdlc3QtMiJHMEUCIQDM8PEajTzD63OT%2FX72ZDx3RjfJuHnAQGZqgslOBhk%2FlwIgQ3sPo%2FxWCajLQm%2FbXF6mp%2B9XVWGIeMqCXMzwbOQMfAYq%2FwMINhAAGgw2Mzc0MjMxODM4MDUiDJNffMhz%2ByqqT4O1WCrcA8ca3FBowx5ylvOIWUSK8DEou4XttNKnLRAFu1hO9pWHEHGvc8HrwFTksI%2FLnRLzEqcnOelIC8lNPOq87yu6j5yHSdoolNO3f9DEV70yOrD8e0%2F%2BueqOuIQemCWXdHb5z4peqIqw98a9oBX5L509QbruRgV%2FKhLMJExTZ8xRrhsIqPs%2Bboz36kL%2FdbscC9OEVILR2K8xTwNJIKKXnjhf3PNOXW%2Fojhq91hG5uRWfxCm%2Fpi6NKVmznHWlhyCgOEHSlJTlpetIAvqWbOG2Co7sGMkp8N6uqHLR4aj4Aumo2%2BpMUMm4edV973BeNp4OMsMFtgRtkkfm31M7ubkkXNbPDH0jeS4CvX7ExY%2FxUNDR7LQOpOik42s%2FLhKC1x621cOvUIkWZ24f0pX%2Bl%2FohPYRijwTvxHAekdYQzRebXd1BR%2Fxb%2FrZpBy5k8sKbX%2FwtwwdTODsLU5UxYvkho0dWSmmsSI17mKbDxIp7blXdLBE048mY6gYX%2BnY3VQ6yagAKdPYqqWOPI%2FpiHxRxMa%2F0QKM4k%2BPARuv1VvvzSDaIdmzK0L%2BRxb36ygQTMBKoauh8XXGCteXqSYYShzHRBE5fgcS4wGE3O5aeXLh0ZUVirBnuriP4MV3hj6C7vLAWlVB8MIPZmcgGOqUBTleaiAEapXMDiT0syyGYeXYSvfu9ipqqGYONF5KVxFAZqk7YEeI2EZiwU0%2BijlFa9fTzZU41QhA6rg%2BEfZ1N0Htvh8ML8G0GuJGl1JiHJYkhX74H6tUsWuc6FK1BM3BD9NCZfxpCP6E6GeLhP6MTYyeWwaAAZ707Jb7PSbYbTHHcg3S0haWmkMmPoy4j%2FbrvOcRKJyoXIfPFAeho6M9ZbmXA%2BnA3&X-Amz-Signature=d404b1320e9d4b320da1e8cb24780e2fc202153a284234b7ee3169705e9e384c&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject) Yo me pregunto si es necesario tener toda esta maraña de estados. ¿Por qué tenemos que vivir así? Siento que desde que uso HTMX mis web apps se han simplificado significativamente y se ha mejorado. Sí, ya sé. Se puede desarrollar un proyecto con código mucho más limpio y ordenado que esto, pero lamentablemente eso no es lo más común. De cualquier forma, sí disfruto escribir código en Flutter, para el cual no puedo renderizar directamente desde el servidor, ¿verdad? Me gusta el lenguaje (Dart), creo que es un lenguaje moderno y fácil de usar. Sin embargo, me ha gustado mucho GetX para manejar los estados pues la abstracción es super intuitiva. Es de los mejores frameworks que he visto.
+```
+
+Los servidores son buenos sirviendo y retornando texto, cualquier tipo de texto, no sólo JSON. 😉 
+
+## HTMX
+
+En mis últimos proyectos he utilizado HTMX de forma seguida. Esto ha permitido acelerar el desarrollo dado que ya no se programan dos proyectos de forma independiente, uno para frontend y otro para backend sino sólo backend y mostrando cómo debería actualizarse cada parte de la web. Esto también ha permitido que vea las cosas de forma diferente. A veces también es mucho más fácil crear un custom component de HTML en lugar de manejar los formularios de formas extrañas, como creando una larga lista de useState, como en el siguiente ejemplo:
+
+![27f326c8-cefd-8062-a651-e7afa7ea6985.png](/blog/deje-de-usar-frontend-frameworks/27f326c8-cefd-8062-a651-e7afa7ea6985.png)
+
+En internet también hay otros ejemplos horrorosos, como este: 
+
+![27f326c8-cefd-80b6-8a18-f6e43d9db04c.png](/blog/deje-de-usar-frontend-frameworks/27f326c8-cefd-80b6-8a18-f6e43d9db04c.png)
+
+Yo me pregunto si es necesario tener toda esta maraña de estados. ¿Por qué tenemos que vivir así? Siento que desde que uso HTMX mis web apps se han simplificado significativamente y se ha mejorado. 
+
+
+
+Sí, ya sé. Se puede desarrollar un proyecto con código mucho más limpio y ordenado que esto, pero lamentablemente eso no es lo más común.
+
+
+
+De cualquier forma, sí disfruto escribir código en Flutter, para el cual no puedo renderizar directamente desde el servidor, ¿verdad? Me gusta el lenguaje (Dart), creo que es un lenguaje moderno y fácil de usar. Sin embargo, me ha gustado mucho GetX para manejar los estados pues la abstracción es super intuitiva. Es de los mejores frameworks que he visto. 
+
+
+
+END
