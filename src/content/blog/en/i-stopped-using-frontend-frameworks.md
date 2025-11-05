@@ -1,17 +1,17 @@
 ---
 title: "I stopped using frontend frameworks"
-description: "I've finally stopped using frontend frameworks like Angular, Vue, and React, tired of the complexity in state management and dual programming. Now, with HTMX, I focus on a single backend project, allowing the server to handle both business logic and presentation more simply."
+description: "I have finally abandoned frontend frameworks like Angular, Vue, and React, tired of the unnecessary complexity in state management they often introduce. My experience with HTMX has shown me that simplifying web development, returning to a backend-centric approach, is more efficient and significantly improves my applications."
 pubDate: 2025-09-03
 heroImage: '/blog/i-stopped-using-frontend-frameworks/cover.jpeg'
 category: Software
 tags: ["web"]
 ---
 
-I finally stopped using frontend frameworks. I started in the web development world using Angular, then I liked Vue more, and at Devsu, I used React. Finally, now I don't use any. Why? In this article, I will explain in detail what led me to make this decision. 
+I finally stopped using frontend frameworks. I started in the world of web development using Angular, then I liked Vue more, and at Devsu, I used React. Finally, now I don't use any. Why? In this article, I will explain in detail what led me to make this decision. 
 
 ## State management
 
-Imagine you have a CRUD application. The process to carry it out with YouTube tutorials and for beginner developers, as I was initially, would be the following:
+Imagine you have a CRUD application. The process to carry it out with YouTube tutorials and for beginner developers, like I was initially, would be the following:
 
 - Define database model
 
@@ -62,21 +62,21 @@ Servers are good at serving and returning text, any type of text, not just JSON.
 
 ## HTMX
 
-In my latest projects, I have consistently used HTMX. This has allowed me to accelerate development since I no longer program two independent projects, one for frontend and one for backend, but only backend, showing how each part of the web should be updated. This has also allowed me to see things differently. Sometimes it is also much easier to create a custom HTML component instead of handling forms in strange ways, such as creating a long list of useState, as in the following example:
+In my latest projects, I have consistently used HTMX. This has allowed me to accelerate development since I no longer program two independent projects, one for frontend and one for backend, but only backend, showing how each part of the web should be updated. This has also allowed me to see things differently. Sometimes it's also much easier to create a custom HTML component instead of handling forms in strange ways, like creating a long list of useState, as in the following example:
 
-![27f326c8-cefd-8062-a651-e7afa7ea6985.png](/blog/deje-de-usar-frontend-frameworks/27f326c8-cefd-8062-a651-e7afa7ea6985.png)
+![27f326c8-cefd-8062-a651-e7afa7ea6985.png](/blog/i-stopped-using-frontend-frameworks/27f326c8-cefd-8062-a651-e7afa7ea6985.png)
 
 On the internet, there are also other horrible examples, like this one: 
 
-![27f326c8-cefd-80b6-8a18-f6e43d9db04c.png](/blog/deje-de-usar-frontend-frameworks/27f326c8-cefd-80b6-8a18-f6e43d9db04c.png)
+![27f326c8-cefd-80b6-8a18-f6e43d9db04c.png](/blog/i-stopped-using-frontend-frameworks/27f326c8-cefd-80b6-8a18-f6e43d9db04c.png)
 
-I wonder if it's necessary to have this whole tangle of states. Why do we have to live like this? I feel that since I started using HTMX, my web apps have significantly simplified and improved. 
+I wonder if it's necessary to have all this mess of states. Why do we have to live like this? I feel that since I started using HTMX, my web apps have significantly simplified and improved.
 
-Yes, I know. A project can be developed with much cleaner and tidier code than this, but unfortunately, that's not the most common.
+Yes, I know. You can develop a project with much cleaner and tidier code than this, but unfortunately, that's not the most common.
 
-Anyway, I do enjoy writing code in Flutter, for which I _cannot_ render directly from the server, right? I like the language (Dart); I think it's a modern and easy-to-use language. I have also really liked GetX for state management because the abstraction is super intuitive. It's one of the best frameworks I've seen. 
+Anyway, I do enjoy writing code in Flutter, for which I *cannot* render directly from the server, right? I like the language (Dart); I think it's a modern and easy-to-use language. I have also really liked GetX for state management because the abstraction is super intuitive. It's one of the best frameworks I've seen.
 
-In conclusion, I believe that frontend web development is returning to its beginnings in a simpler and more accessible way. It's likely that I will soon do a tutorial on how to make an E2E server using only Elysia or Hono and HTMX. 
+In conclusion, I believe that frontend web development is returning to its beginnings in a simpler and more accessible way. I will probably soon create a tutorial on how to make an E2E server using only Elysia or Hono and HTMX. 
 
 
 
