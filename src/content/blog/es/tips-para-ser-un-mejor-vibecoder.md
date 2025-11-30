@@ -1,8 +1,8 @@
 ---
 title: "Tips para ser un mejor vibecoder"
-description: "El auge del vibecoding abre puertas a la eficiencia, pero como vibecoder, es vital dominar los fundamentos y ser preciso en cada paso: desde un contexto granular y tareas super específicas hasta un feedback puntual. ¡Recuerda que la IA no reemplaza tus bases de ingeniería de software!"
+description: "El auge del \"vibecoding\" va más allá de los ingenieros, prometiendo acelerar el desarrollo, pero también presenta riesgos si faltan fundamentos sólidos. Para ser un vibecoder efectivo, es crucial proporcionar contexto granular, tareas súper específicas y feedback puntual, aprovechando las herramientas remotas y, sobre todo, reforzando siempre nuestros conocimientos básicos de ingeniería de software."
 pubDate: 2025-09-30
-heroImage: ''
+heroImage: 'https://images.unsplash.com/photo-1626968361222-291e74711449?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb'
 category: Tutorial
 tags: ["tips"]
 ---
