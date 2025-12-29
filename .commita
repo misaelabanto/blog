@@ -1,0 +1,4 @@
+PROVIDER=openai
+MODEL=gpt-5-mini
+PROMPT_STYLE=default
+COMMIT_STYLE=emoji
