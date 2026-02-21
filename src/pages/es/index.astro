@@ -13,13 +13,13 @@ const allProjects = await getCollection('projects');
 const featuredProjects = filterByLanguage(allProjects, 'es')
 	.filter(project => project.data.featured)
 	.sort((a, b) => a.data.order - b.data.order)
-	.slice(0, 3); // Show only top 3 featured projects
+	.slice(0, 3);
 
 // Get latest Spanish blog posts, sorted by date (most recent first)
 const allPosts = await getCollection('blog');
 const latestPosts = filterByLanguage(allPosts, 'es')
 	.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
-	.slice(0, 3); // Show only the 3 most recent posts
+	.slice(0, 3);
 ---
 
 <!doctype html>
@@ -31,198 +31,320 @@ const latestPosts = filterByLanguage(allPosts, 'es')
 	<body>
 		<Header />
 		<main>
-			<!-- Hero Section -->
-			<section class="py-20 px-6 bg-gradient-to-r from-gray-900 to-slate-800 text-white text-center">
-				<div class="max-w-4xl mx-auto">
-					<h1 class="text-4xl md:text-5xl mb-4 bg-gradient-to-r from-amber-200 to-yellow-400 bg-clip-text text-transparent">
-						Hola, soy Misael - Ingeniero de Software y Humano Curioso.
+			<!-- ═══ HERO ═══ -->
+			<section
+				class="relative min-h-[90vh] flex items-center justify-center overflow-hidden retro-scanlines"
+				style="background: linear-gradient(135deg, var(--retro-deep-navy) 0%, var(--retro-navy) 50%, oklch(22% 0.06 240) 100%);"
+			>
+				<!-- Star field -->
+				<div class="absolute inset-0" style="z-index: 0;">
+					{Array.from({ length: 60 }).map((_, i) => (
+						<div
+							class="absolute rounded-full retro-animate-fade"
+							style={`
+								width: ${1 + (i % 3)}px;
+								height: ${1 + (i % 3)}px;
+								background: var(--retro-star);
+								top: ${(i * 17 + 7) % 100}%;
+								left: ${(i * 23 + 13) % 100}%;
+								opacity: ${0.3 + (i % 5) * 0.14};
+								animation-delay: ${(i % 8) * 0.3}s;
+							`}
+						/>
+					))}
+				</div>
+
+				<!-- Perspective grid -->
+				<div
+					class="absolute inset-0 retro-grid-bg"
+					style="opacity: 0.4; mask-image: linear-gradient(to bottom, transparent 10%, black 40%, black 60%, transparent 90%); z-index: 0;"
+				></div>
+
+				<!-- Hero content -->
+				<div class="relative z-10 text-center px-6 max-w-4xl mx-auto retro-stagger">
+					<!-- Status label -->
+					<div class="retro-animate-in mb-8 flex items-center justify-center gap-2">
+						<span class="retro-pulse-dot"></span>
+						<span class="retro-label" style="color: var(--retro-amber);">SIGNAL ACTIVE</span>
+					</div>
+
+					<h1
+						class="retro-animate-in text-5xl md:text-7xl font-bold mb-6 retro-glow-amber retro-animate-flicker"
+						style="color: var(--retro-amber-bright);"
+					>
+						MISAEL ABANTO
 					</h1>
-					<p class="text-xl md:text-2xl mb-8 text-gray-200">
+
+					<p
+						class="retro-animate-in font-mono-accent text-lg md:text-xl mb-4"
+						style="color: var(--retro-cyan);"
+					>
+						Ingeniero Fullstack &middot; Pensador de Sistemas &middot; Humano Curioso
+					</p>
+
+					<p
+						class="retro-animate-in text-base md:text-lg mb-10 max-w-2xl mx-auto"
+						style="color: oklch(80% 0.02 260);"
+					>
 						Construyo sistemas elegantes, simplifico datos complejos y exploro tecnología que empodera a las personas.
 					</p>
-					<div class="flex flex-wrap justify-center gap-4">
-						<a href="/es/blog" class="btn btn-primary btn-lg">
-							📖 Lee Mi Blog
+
+					<!-- CTAs -->
+					<div class="retro-animate-in flex flex-wrap justify-center gap-4">
+						<a
+							href="/es/blog"
+							class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105"
+							style="background: var(--retro-amber); color: var(--retro-deep-navy);"
+						>
+							Leer Transmisiones
 						</a>
-						<a href="#work-with-me" class="btn btn-secondary btn-lg">
-							💼 Trabaja Conmigo
+						<a
+							href="#passions"
+							class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider border-2 transition-all duration-300 hover:scale-105"
+							style="border-color: var(--retro-cyan); color: var(--retro-cyan);"
+						>
+							Explorar
 						</a>
 					</div>
 				</div>
 			</section>
 
-			<!-- What I Do Section -->
-			<section id="what-i-do" class="py-16 px-6">
-				<div class="max-w-6xl mx-auto">
-					<h2 class="text-3xl md:text-4xl mb-2 text-center">🛠️ Lo Que Hago</h2>
-					<h3 class="text-2xl mb-6 text-center">Resolviendo Problemas a Escala</h3>
-					<p class="text-lg mb-12 text-center max-w-3xl mx-auto">
-						Con experiencia en arquitectura de datos, desarrollo fullstack y liderazgo en startups, diseño e implemento sistemas que son eficientes, confiables y centrados en las personas.
-					</p>
+			<!-- ═══ PASSIONS SHOWCASE ═══ -->
+			<section
+				id="passions"
+				class="py-20 px-6 retro-scanlines"
+				style="background: var(--retro-navy);"
+			>
+				<div class="relative z-10 max-w-6xl mx-auto">
+					<div class="text-center mb-14 retro-stagger">
+						<span class="retro-label retro-animate-in block mb-3" style="color: var(--retro-cyan);">SECTORS OF INTEREST</span>
+						<h2 class="retro-animate-in text-3xl md:text-4xl font-bold retro-glow-cyan" style="color: var(--retro-cyan-bright);">
+							Lo Que Alimenta la Señal
+						</h2>
+					</div>
 
-					<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-							<div class="card-body">
-								<h3 class="card-title">🧩 Modelado de Datos</h3>
-								<p>Modelado de nivel empresarial para bancos y startups</p>
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-6 retro-stagger">
+						<!-- Astronomy & Space -->
+						<div class="retro-card retro-animate-in relative overflow-hidden group">
+							<div class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-10 group-hover:opacity-20 transition-opacity" style="background: radial-gradient(circle, var(--retro-amber) 0%, transparent 70%); transform: translate(30%, -30%);"></div>
+							<span class="retro-label block mb-3" style="color: var(--retro-amber);">SECTOR 01</span>
+							<div class="flex items-center gap-3 mb-3">
+								<Icon name="mdi:telescope" class="w-7 h-7" style="color: var(--retro-amber);" />
+								<h3 class="text-xl font-bold" style="color: oklch(92% 0.02 70);">Astronomía y Espacio</h3>
 							</div>
+							<p style="color: oklch(70% 0.02 260);">Desde los campos profundos del Hubble hasta la termodinámica de agujeros negros — el cosmos es mi fascinación más duradera.</p>
 						</div>
-						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-							<div class="card-body">
-								<h3 class="card-title">⚙️ Desarrollo Fullstack</h3>
-								<p>Node.js, React, PostgreSQL, MongoDB</p>
+
+						<!-- Books & Science Fiction -->
+						<div class="retro-card retro-animate-in relative overflow-hidden group">
+							<div class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-10 group-hover:opacity-20 transition-opacity" style="background: radial-gradient(circle, var(--retro-cyan) 0%, transparent 70%); transform: translate(30%, -30%);"></div>
+							<span class="retro-label block mb-3" style="color: var(--retro-cyan);">SECTOR 02</span>
+							<div class="flex items-center gap-3 mb-3">
+								<Icon name="mdi:book-open-page-variant" class="w-7 h-7" style="color: var(--retro-cyan);" />
+								<h3 class="text-xl font-bold" style="color: oklch(92% 0.02 195);">Libros y Ciencia Ficción</h3>
 							</div>
+							<p style="color: oklch(70% 0.02 260);">Asimov, Le Guin, Liu Cixin — historias que doblan la realidad y expanden lo posible.</p>
 						</div>
-						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-							<div class="card-body">
-								<h3 class="card-title">🚀 Startups y Automatización</h3>
-								<p>Construyendo MVPs, flujos de IA y herramientas internas</p>
+
+						<!-- Code & Craft -->
+						<div class="retro-card retro-animate-in relative overflow-hidden group">
+							<div class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-10 group-hover:opacity-20 transition-opacity" style="background: radial-gradient(circle, var(--retro-cyan) 0%, transparent 70%); transform: translate(30%, -30%);"></div>
+							<span class="retro-label block mb-3" style="color: var(--retro-cyan);">SECTOR 03</span>
+							<div class="flex items-center gap-3 mb-3">
+								<Icon name="mdi:code-braces" class="w-7 h-7" style="color: var(--retro-cyan);" />
+								<h3 class="text-xl font-bold" style="color: oklch(92% 0.02 195);">Código y Oficio</h3>
 							</div>
+							<p style="color: oklch(70% 0.02 260);">Construir sistemas que son elegantes, confiables y centrados en las personas — el software como disciplina creativa.</p>
+						</div>
+
+						<!-- Science & Technology -->
+						<div class="retro-card retro-animate-in relative overflow-hidden group">
+							<div class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-10 group-hover:opacity-20 transition-opacity" style="background: radial-gradient(circle, var(--retro-orange) 0%, transparent 70%); transform: translate(30%, -30%);"></div>
+							<span class="retro-label block mb-3" style="color: var(--retro-orange);">SECTOR 04</span>
+							<div class="flex items-center gap-3 mb-3">
+								<Icon name="mdi:atom" class="w-7 h-7" style="color: var(--retro-orange);" />
+								<h3 class="text-xl font-bold" style="color: oklch(92% 0.02 50);">Ciencia y Tecnología</h3>
+							</div>
+							<p style="color: oklch(70% 0.02 260);">Física, IA, biotecnología — la frontera donde la curiosidad y la ingeniería colisionan.</p>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			<!-- Latest Blog Section -->
-			<section class="py-16 px-6 bg-base-200">
-				<div class="max-w-6xl mx-auto">
-					<h2 class="text-3xl md:text-4xl mb-2 text-center">✍️ Últimas del Blog</h2>
-					<h3 class="text-2xl mb-6 text-center">Ideas Que Me Mueven – Y Tal Vez a Ti También</h3>
-					<p class="text-lg mb-12 text-center max-w-3xl mx-auto">
-						Escribo sobre tecnología, proyectos personales, estrategia de datos, crecimiento profesional y a veces la vida misma.
-					</p>
+			<hr class="retro-divider" />
+
+			<!-- ═══ LATEST WRITINGS ═══ -->
+			<section
+				class="py-20 px-6 retro-grid-bg retro-scanlines"
+				style="background-color: var(--retro-deep-navy);"
+			>
+				<div class="relative z-10 max-w-6xl mx-auto">
+					<div class="text-center mb-14 retro-stagger">
+						<span class="retro-label retro-animate-in block mb-3" style="color: var(--retro-amber);">TRANSMISIONES ENTRANTES</span>
+						<h2 class="retro-animate-in text-3xl md:text-4xl font-bold retro-glow-amber" style="color: var(--retro-amber-bright);">
+							Últimas Escrituras
+						</h2>
+					</div>
 
 					{latestPosts.length === 0 ? (
 						<div class="text-center py-8">
-							<p class="text-lg text-gray-600 mb-4">Aún no hay posts en español disponibles.</p>
-							<p class="text-sm text-gray-500">¡Pronto habrá contenido nuevo!</p>
+							<p class="text-lg mb-4" style="color: oklch(70% 0.02 260);">Aún no hay transmisiones disponibles.</p>
+							<p class="text-sm" style="color: oklch(55% 0.02 260);">Nuevas señales próximamente.</p>
 						</div>
 					) : (
-						<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+						<div class="grid grid-cols-1 md:grid-cols-3 gap-6 retro-stagger">
 							{latestPosts.map((post) => (
-								<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-									<div class="card-body">
-										<h3 class="card-title">{post.data.title}</h3>
-										<p class="text-base-content/70 mb-4">{post.data.description}</p>
-										<div class="card-actions justify-end">
-											<a href={`/es/blog/${post.id.split('/')[1]}`} class="btn btn-link no-underline">Leer más →</a>
-										</div>
-									</div>
-								</div>
+								<a href={`/es/blog/${post.id.split('/')[1]}`} class="retro-card retro-animate-in block group no-underline">
+									<span class="retro-label block mb-3" style="color: var(--retro-cyan);">TRANSMISIÓN</span>
+									<h3 class="text-lg font-bold mb-2 group-hover:retro-glow-cyan transition-all" style="color: oklch(92% 0.02 260);">
+										{post.data.title}
+									</h3>
+									<p class="text-sm mb-4" style="color: oklch(65% 0.02 260);">{post.data.description}</p>
+									<span class="font-mono-accent text-xs uppercase tracking-wider" style="color: var(--retro-amber);">
+										Leer Más &rarr;
+									</span>
+								</a>
 							))}
 						</div>
 					)}
 
-					<div class="text-center mt-12">
-						<a href="/es/blog" class="btn btn-primary btn-lg">
-							📚 Explorar el Archivo del Blog
+					<div class="text-center mt-14">
+						<a
+							href="/es/blog"
+							class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105"
+							style="background: var(--retro-amber); color: var(--retro-deep-navy);"
+						>
+							Ver Todas las Transmisiones
 						</a>
 					</div>
 				</div>
 			</section>
 
-			<!-- Projects Section -->
-			<section id="projects" class="py-16 px-6">
+			<!-- ═══ FEATURED PROJECTS ═══ -->
+			<section id="projects" class="py-20 px-6 bg-base-100">
 				<div class="max-w-6xl mx-auto">
-					<h2 class="text-3xl md:text-4xl mb-6 text-center">💡 Proyectos Destacados</h2>
-					<h3 class="text-2xl mb-6 text-center">Algunas Cosas Que He Construido</h3>
+					<div class="text-center mb-14 retro-stagger">
+						<span class="retro-label retro-animate-in block mb-3 text-base-content/50">MISIONES ACTIVAS</span>
+						<h2 class="retro-animate-in text-3xl md:text-4xl font-bold text-base-content">
+							Proyectos Destacados
+						</h2>
+					</div>
 
-					<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+					<div class="grid grid-cols-1 md:grid-cols-3 gap-6 retro-stagger">
 						{featuredProjects.map((project) => (
-							<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-								<div class="card-body">
-									<h3 class="card-title">{project.data.title.split(' - ')[0]}</h3>
-									<p class="mb-4">{project.data.description}</p>
-									<div class="flex gap-2 flex-wrap">
-										{project.data.category && (
-											<span class="badge">{project.data.category}</span>
-										)}
-										{project.data.technologies.slice(0, 2).map((tech) => (
-											<span class="badge">{tech}</span>
-										))}
-									</div>
+							<div class="retro-animate-in rounded-lg border border-base-300 bg-base-200 p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+								<div class="flex items-center gap-2 mb-3">
+									<span class="retro-pulse-dot"></span>
+									<span class="retro-label text-base-content/50">MISIÓN ACTIVA</span>
+								</div>
+								<h3 class="text-xl font-bold mb-2 text-base-content">{project.data.title.split(' - ')[0]}</h3>
+								<p class="text-base-content/70 mb-4">{project.data.description}</p>
+								<div class="flex gap-2 flex-wrap">
+									{project.data.category && (
+										<span
+											class="font-mono-accent text-xs px-2 py-1 rounded"
+											style="background: oklch(78% 0.16 70 / 0.15); color: var(--retro-amber);"
+										>
+											{project.data.category}
+										</span>
+									)}
+									{project.data.technologies.slice(0, 2).map((tech) => (
+										<span
+											class="font-mono-accent text-xs px-2 py-1 rounded"
+											style="background: oklch(78% 0.14 195 / 0.15); color: var(--retro-cyan);"
+										>
+											{tech}
+										</span>
+									))}
 								</div>
 							</div>
 						))}
 					</div>
 
-					<div class="text-center mt-12">
-						<a href="/es/projects" class="btn btn-primary btn-lg">
-							🔍 Ver Todos los Proyectos
+					<div class="text-center mt-14">
+						<a
+							href="/es/projects"
+							class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider border-2 border-base-content/20 text-base-content transition-all duration-300 hover:scale-105 hover:border-base-content/40"
+						>
+							Ver Todas las Misiones
 						</a>
 					</div>
 				</div>
 			</section>
 
-			<!-- Work With Me Section -->
-			<section id="work-with-me" class="py-16 px-6 bg-base-200">
-				<div class="max-w-4xl mx-auto text-center">
-					<h2 class="text-3xl md:text-4xl mb-6">👨‍💻 Trabaja Conmigo</h2>
-					<h3 class="text-2xl mb-6">¿Necesitas un Cerebro Detrás del Backend?</h3>
-					<p class="text-lg mb-8">
-						Desde arquitecturar modelos de datos robustos hasta lanzar MVPs de SaaS, ayudo a los equipos a enviar productos más rápido y de manera más inteligente. Estoy disponible para consultoría, mentoría o colaboración en proyectos.
-					</p>
-					<a href="#contact" class="btn btn-primary btn-lg">
-						📬 Conectemos
-					</a>
-				</div>
-			</section>
+			<!-- ═══ COMMAND CENTER (About + Contact + Newsletter) ═══ -->
+			<section
+				class="py-20 px-6 retro-scanlines"
+				style="background: var(--retro-navy);"
+			>
+				<div class="relative z-10 max-w-6xl mx-auto">
+					<div class="text-center mb-14 retro-stagger">
+						<span class="retro-label retro-animate-in block mb-3" style="color: var(--retro-cyan);">CENTRO DE COMANDO</span>
+						<h2 class="retro-animate-in text-3xl md:text-4xl font-bold retro-glow-cyan" style="color: var(--retro-cyan-bright);">
+							Sobre Mí y Conexión
+						</h2>
+					</div>
 
-			<!-- Stay in Touch Section -->
-			<section class="py-16 px-6">
-				<div class="max-w-4xl mx-auto text-center">
-					<h2 class="text-3xl md:text-4xl mb-6">📬 Mantente en Contacto</h2>
-					<h3 class="text-2xl mb-6">Recibe Mis Mejores Ideas en Tu Bandeja</h3>
-					<p class="text-lg mb-8">
-						Sin spam. Solo escritura reflexiva sobre datos, software, sistemas y aprendizaje. Un email cada pocas semanas.
-					</p>
-					<div class="text-center">
-						<a href="/es/newsletter" class="btn btn-secondary btn-lg">
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+						<!-- Left: About -->
+						<div class="retro-animate-in">
+							<h3 class="text-xl font-bold mb-4" style="color: var(--retro-amber);">Quién Está Detrás de la Señal</h3>
+							<p class="mb-4 leading-relaxed" style="color: oklch(75% 0.02 260);">
+								Soy un ingeniero peruano que cree en el poder de la claridad — en sistemas, escritura y vida.
+								Me encanta construir cosas útiles, aprender obsesivamente y compartir lo que sé.
+							</p>
+							<p class="leading-relaxed" style="color: oklch(75% 0.02 260);">
+								Fuera de la tecnología, me gusta la ciencia ficción, la astronomía, planear viajes y hacer la vida cotidiana más eficiente.
+								Desde arquitecturar modelos de datos robustos hasta lanzar MVPs de SaaS, ayudo a los equipos a enviar productos más rápido y de manera más inteligente.
+							</p>
+						</div>
+
+						<!-- Right: Social links -->
+						<div class="retro-animate-in">
+							<h3 class="text-xl font-bold mb-4" style="color: var(--retro-cyan);">Canales Abiertos</h3>
+							<div class="flex flex-col gap-3">
+								<a href="https://x.com/_misaelabanto" target="_blank" class="retro-card flex items-center gap-4 no-underline !py-3 !px-4">
+									<Icon name="simple-icons:x" class="w-5 h-5" style="color: var(--retro-cyan);" />
+									<span class="font-mono-accent text-sm" style="color: oklch(80% 0.02 260);">@_misaelabanto</span>
+								</a>
+								<a href="https://linkedin.com/in/misaelabanto" target="_blank" class="retro-card flex items-center gap-4 no-underline !py-3 !px-4">
+									<Icon name="simple-icons:linkedin" class="w-5 h-5" style="color: var(--retro-cyan);" />
+									<span class="font-mono-accent text-sm" style="color: oklch(80% 0.02 260);">misaelabanto</span>
+								</a>
+								<a href="https://github.com/misaelabanto" target="_blank" class="retro-card flex items-center gap-4 no-underline !py-3 !px-4">
+									<Icon name="simple-icons:github" class="w-5 h-5" style="color: var(--retro-cyan);" />
+									<span class="font-mono-accent text-sm" style="color: oklch(80% 0.02 260);">misaelabanto</span>
+								</a>
+								<a href="https://t.me/misaelabanto" target="_blank" class="retro-card flex items-center gap-4 no-underline !py-3 !px-4">
+									<Icon name="simple-icons:telegram" class="w-5 h-5" style="color: var(--retro-cyan);" />
+									<span class="font-mono-accent text-sm" style="color: oklch(80% 0.02 260);">misaelabanto</span>
+								</a>
+								<a href="mailto:hi@misaelabanto.com" class="retro-card flex items-center gap-4 no-underline !py-3 !px-4">
+									<Icon name="mdi:email" class="w-5 h-5" style="color: var(--retro-cyan);" />
+									<span class="font-mono-accent text-sm" style="color: oklch(80% 0.02 260);">hi@misaelabanto.com</span>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Newsletter CTA -->
+					<div class="mt-14 text-center retro-card !border-amber-500/20">
+						<span class="retro-label block mb-3" style="color: var(--retro-amber);">SUSCRÍBETE A LA SEÑAL</span>
+						<p class="mb-6" style="color: oklch(70% 0.02 260);">
+							Sin spam. Solo escritura reflexiva sobre datos, software, sistemas y aprendizaje. Un email cada pocas semanas.
+						</p>
+						<a
+							href="/es/newsletter"
+							class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105"
+							style="background: var(--retro-amber); color: var(--retro-deep-navy);"
+						>
 							Suscribirse
-						</a>
-					</div>
-				</div>
-			</section>
-
-			<!-- About Me Section -->
-			<section id="about" class="py-16 px-6 bg-base-200">
-				<div class="max-w-4xl mx-auto">
-					<h2 class="text-3xl md:text-4xl mb-6 text-center">🧭 Sobre Mí</h2>
-					<h3 class="text-2xl mb-6 text-center">Un Poco Más Sobre Misael</h3>
-					<p class="text-lg text-center">
-						Soy un ingeniero peruano que cree en el poder de la claridad — en sistemas, escritura y vida.
-						Me encanta construir cosas útiles, aprender obsesivamente y compartir lo que sé. Fuera de la tecnología,
-						me gusta la ciencia ficción, planear viajes y hacer la vida cotidiana más eficiente.
-					</p>
-				</div>
-			</section>
-
-			<!-- Contact Section -->
-			<section id="contact" class="py-16 px-6">
-				<div class="max-w-4xl mx-auto text-center">
-					<h2 class="text-3xl md:text-4xl mb-8">Conectemos</h2>
-					<div class="flex justify-center gap-6 flex-wrap">
-						<a href="https://x.com/_misaelabanto" target="_blank" class="btn btn-outline btn-square" aria-label="Twitter">
-							<Icon name="simple-icons:x" class="w-6 h-6" />
-						</a>
-						<a href="https://linkedin.com/in/misaelabanto" target="_blank" class="btn btn-outline btn-square" aria-label="LinkedIn">
-							<Icon name="simple-icons:linkedin" class="w-6 h-6" />
-						</a>
-						<a href="https://github.com/misaelabanto" target="_blank" class="btn btn-outline btn-square" aria-label="GitHub">
-							<Icon name="simple-icons:github" class="w-6 h-6" />
-						</a>
-						<a href="https://t.me/misaelabanto" target="_blank" class="btn btn-outline btn-square" aria-label="Telegram">
-							<Icon name="simple-icons:telegram" class="w-6 h-6" />
-						</a>
-						<a href="mailto:hi@misaelabanto.com" class="btn btn-outline btn-square" aria-label="Email">
-							<Icon name="mdi:email" class="w-6 h-6" />
 						</a>
 					</div>
 				</div>
 			</section>
 		</main>
 
-		<!-- Footer -->
 		<Footer />
 	</body>
 </html>
