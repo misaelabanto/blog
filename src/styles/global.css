@@ -2,8 +2,9 @@
   The CSS in this style tag is based off of Bear Blog's default CSS.
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
+*/
 @import url(https://db.onlinewebfonts.com/c/5645b7453bd2df2bf9eb77e589a4afd8?family=PolySans+Bulky);
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 @plugin 'daisyui';
@@ -87,7 +88,19 @@
   --box-shadow:
     0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
     0 16px 32px rgba(var(--gray), 33%);
+
+  /* Retro-futuristic palette */
+  --retro-deep-navy: oklch(20% 0.04 260);
+  --retro-navy: oklch(25% 0.05 260);
+  --retro-navy-light: oklch(30% 0.05 260);
+  --retro-amber: oklch(78% 0.16 70);
+  --retro-amber-bright: oklch(85% 0.18 70);
+  --retro-cyan: oklch(78% 0.14 195);
+  --retro-cyan-bright: oklch(85% 0.16 195);
+  --retro-orange: oklch(72% 0.18 50);
+  --retro-star: oklch(95% 0.02 90);
 }
+
 @font-face {
   font-family: 'Atkinson';
   src: url('/fonts/atkinson-regular.woff') format('woff');
@@ -103,12 +116,158 @@
   font-display: swap;
 }
 
-/* Apply PolySans Bulky to all headings */
+/* Apply Space Grotesk to all headings */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: 'PolySans Bulky', Arial, sans-serif;
+  font-family: 'Space Grotesk', 'PolySans Bulky', Arial, sans-serif;
 }
+
+/* ── IBM Plex Mono utility ── */
+.font-mono-accent {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+/* ── Retro scan-lines overlay ── */
+.retro-scanlines {
+  position: relative;
+}
+.retro-scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.04) 2px,
+    rgba(0, 0, 0, 0.04) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Neon glow text ── */
+.retro-glow-amber {
+  text-shadow:
+    0 0 8px oklch(78% 0.16 70 / 0.6),
+    0 0 24px oklch(78% 0.16 70 / 0.3);
+}
+.retro-glow-cyan {
+  text-shadow:
+    0 0 8px oklch(78% 0.14 195 / 0.6),
+    0 0 24px oklch(78% 0.14 195 / 0.3);
+}
+
+/* ── Retro card ── */
+.retro-card {
+  background: oklch(23% 0.04 260);
+  border: 1px solid oklch(78% 0.14 195 / 0.15);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.retro-card:hover {
+  transform: translateY(-4px);
+  border-color: oklch(78% 0.14 195 / 0.5);
+  box-shadow: 0 0 20px oklch(78% 0.14 195 / 0.15);
+}
+
+/* ── Retro grid background ── */
+.retro-grid-bg {
+  background-image:
+    linear-gradient(oklch(78% 0.14 195 / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(78% 0.14 195 / 0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── Mission-control label ── */
+.retro-label {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+/* ── Pulsing status dot ── */
+.retro-pulse-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: oklch(78% 0.16 70);
+  animation: retro-pulse 2s ease-in-out infinite;
+}
+
+/* ── Gradient divider ── */
+.retro-divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    oklch(78% 0.14 195 / 0.4),
+    oklch(78% 0.16 70 / 0.4),
+    transparent
+  );
+}
+
+/* ── Keyframe animations ── */
+@keyframes retro-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes retro-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes retro-flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.8; }
+  94% { opacity: 1; }
+  96% { opacity: 0.9; }
+  97% { opacity: 1; }
+}
+
+@keyframes retro-pulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 4px oklch(78% 0.16 70 / 0.6);
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 12px oklch(78% 0.16 70 / 0.8);
+  }
+}
+
+/* ── Entrance animation classes ── */
+.retro-animate-in {
+  animation: retro-slide-up 0.7s ease-out both;
+}
+.retro-animate-fade {
+  animation: retro-fade-in 0.8s ease-out both;
+}
+.retro-animate-flicker {
+  animation: retro-flicker 4s ease-in-out infinite;
+}
+
+/* ── Staggered animation delays ── */
+.retro-stagger > *:nth-child(1) { animation-delay: 0.1s; }
+.retro-stagger > *:nth-child(2) { animation-delay: 0.2s; }
+.retro-stagger > *:nth-child(3) { animation-delay: 0.3s; }
+.retro-stagger > *:nth-child(4) { animation-delay: 0.4s; }
+.retro-stagger > *:nth-child(5) { animation-delay: 0.5s; }
+.retro-stagger > *:nth-child(6) { animation-delay: 0.6s; }
