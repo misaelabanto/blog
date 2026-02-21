@@ -5,8 +5,6 @@ import Footer from '@/components/Footer.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
 import { getCollection } from 'astro:content';
 import { filterByLanguage } from '@/i18n/utils';
-import ThemeManager from '@/components/ThemeManager.astro';
-
 import RetroHero from '@/components/home/RetroHero.astro';
 import RetroPassions from '@/components/home/RetroPassions.astro';
 import RetroWritings from '@/components/home/RetroWritings.astro';
@@ -26,10 +24,9 @@ const latestPosts = filterByLanguage(allPosts, 'en')
 ---
 
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<ThemeManager />
 	</head>
 	<body>
 		<Header />

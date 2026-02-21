@@ -23,7 +23,7 @@ export async function getStaticPaths() {
 const { posts, category } = Astro.props;
 ---
 
-<html lang="es" data-theme="light">
+<html lang="es" data-theme="dark">
 	<head>
 		<BaseHead title={`Posts en "${category}" | Blog`} description={`Todos los posts del blog en la categoría ${category}`} />
 		<script is:inline>

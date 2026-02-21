@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 const { posts, tag } = Astro.props;
 ---
 
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 	<head>
 		<BaseHead title={`Posts tagged "${tag}" | Blog`} description={`All blog posts tagged with ${tag}`} />
 		<script is:inline>
