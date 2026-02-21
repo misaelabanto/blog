@@ -1,0 +1,81 @@
+---
+interface Post {
+	id: string;
+	data: {
+		title: string;
+		description: string;
+	};
+}
+
+interface Props {
+	sectionLabel: string;
+	heading: string;
+	emptyTitle: string;
+	emptySubtitle: string;
+	postLabel: string;
+	readMore: string;
+	browseAllText: string;
+	browseAllHref: string;
+	postBaseHref: string;
+	posts: Post[];
+}
+
+const {
+	sectionLabel,
+	heading,
+	emptyTitle,
+	emptySubtitle,
+	postLabel,
+	readMore,
+	browseAllText,
+	browseAllHref,
+	postBaseHref,
+	posts,
+} = Astro.props;
+---
+
+<section
+	class="py-20 px-6 retro-grid-bg retro-scanlines"
+	style="background-color: var(--retro-deep-navy);"
+>
+	<div class="relative z-10 max-w-6xl mx-auto">
+		<div class="text-center mb-14 retro-stagger">
+			<span class="retro-label retro-animate-in block mb-3" style="color: var(--retro-amber);">{sectionLabel}</span>
+			<h2 class="retro-animate-in text-3xl md:text-4xl font-bold retro-glow-amber" style="color: var(--retro-amber-bright);">
+				{heading}
+			</h2>
+		</div>
+
+		{posts.length === 0 ? (
+			<div class="text-center py-8">
+				<p class="text-lg mb-4" style="color: oklch(70% 0.02 260);">{emptyTitle}</p>
+				<p class="text-sm" style="color: oklch(55% 0.02 260);">{emptySubtitle}</p>
+			</div>
+		) : (
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6 retro-stagger">
+				{posts.map((post) => (
+					<a href={`${postBaseHref}${post.id.split('/')[1]}`} class="retro-card retro-animate-in block group no-underline">
+						<span class="retro-label block mb-3" style="color: var(--retro-cyan);">{postLabel}</span>
+						<h3 class="text-lg font-bold mb-2 group-hover:retro-glow-cyan transition-all" style="color: oklch(92% 0.02 260);">
+							{post.data.title}
+						</h3>
+						<p class="text-sm mb-4" style="color: oklch(65% 0.02 260);">{post.data.description}</p>
+						<span class="font-mono-accent text-xs uppercase tracking-wider" style="color: var(--retro-amber);">
+							{readMore} &rarr;
+						</span>
+					</a>
+				))}
+			</div>
+		)}
+
+		<div class="text-center mt-14">
+			<a
+				href={browseAllHref}
+				class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105"
+				style="background: var(--retro-amber); color: var(--retro-deep-navy);"
+			>
+				{browseAllText}
+			</a>
+		</div>
+	</div>
+</section>

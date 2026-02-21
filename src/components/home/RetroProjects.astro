@@ -1,0 +1,72 @@
+---
+interface Project {
+	data: {
+		title: string;
+		description: string;
+		category?: string;
+		technologies: string[];
+	};
+}
+
+interface Props {
+	sectionLabel: string;
+	heading: string;
+	statusLabel: string;
+	viewAllText: string;
+	viewAllHref: string;
+	projects: Project[];
+}
+
+const { sectionLabel, heading, statusLabel, viewAllText, viewAllHref, projects } = Astro.props;
+---
+
+<section id="projects" class="py-20 px-6 bg-base-100">
+	<div class="max-w-6xl mx-auto">
+		<div class="text-center mb-14 retro-stagger">
+			<span class="retro-label retro-animate-in block mb-3 text-base-content/50">{sectionLabel}</span>
+			<h2 class="retro-animate-in text-3xl md:text-4xl font-bold text-base-content">
+				{heading}
+			</h2>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-6 retro-stagger">
+			{projects.map((project) => (
+				<div class="retro-animate-in rounded-lg border border-base-300 bg-base-200 p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+					<div class="flex items-center gap-2 mb-3">
+						<span class="retro-pulse-dot"></span>
+						<span class="retro-label text-base-content/50">{statusLabel}</span>
+					</div>
+					<h3 class="text-xl font-bold mb-2 text-base-content">{project.data.title.split(' - ')[0]}</h3>
+					<p class="text-base-content/70 mb-4">{project.data.description}</p>
+					<div class="flex gap-2 flex-wrap">
+						{project.data.category && (
+							<span
+								class="font-mono-accent text-xs px-2 py-1 rounded"
+								style="background: oklch(78% 0.16 70 / 0.15); color: var(--retro-amber);"
+							>
+								{project.data.category}
+							</span>
+						)}
+						{project.data.technologies.slice(0, 2).map((tech) => (
+							<span
+								class="font-mono-accent text-xs px-2 py-1 rounded"
+								style="background: oklch(78% 0.14 195 / 0.15); color: var(--retro-cyan);"
+							>
+								{tech}
+							</span>
+						))}
+					</div>
+				</div>
+			))}
+		</div>
+
+		<div class="text-center mt-14">
+			<a
+				href={viewAllHref}
+				class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider border-2 border-base-content/20 text-base-content transition-all duration-300 hover:scale-105 hover:border-base-content/40"
+			>
+				{viewAllText}
+			</a>
+		</div>
+	</div>
+</section>
