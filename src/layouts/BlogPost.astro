@@ -6,8 +6,6 @@ import Footer from '@/components/Footer.astro';
 import FormattedDate from '@/components/FormattedDate.astro';
 import Header from '@/components/Header.astro';
 
-import ThemeManager from '@/components/ThemeManager.astro';
-
 type Props = CollectionEntry<'blog'>['data'] & {
 	lang?: string;
 	slug?: string;
@@ -16,7 +14,7 @@ type Props = CollectionEntry<'blog'>['data'] & {
 const { title, description, pubDate, updatedDate, heroImage, category, tags = [], lang = 'en', slug = '' } = Astro.props;
 ---
 
-<html lang={lang} data-theme="light">
+<html lang={lang} data-theme="dark">
 	<head>
 		<BaseHead
 			title={title}
@@ -40,7 +38,7 @@ const { title, description, pubDate, updatedDate, heroImage, category, tags = []
 			lang={lang}
 			slug={slug}
 		/>
-		<ThemeManager />	</head>
+	</head>
 
 	<body class="flex flex-col min-h-screen">
 		<Header />
