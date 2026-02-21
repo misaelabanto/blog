@@ -6,20 +6,23 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
 import { getCollection } from 'astro:content';
 import { filterByLanguage } from '@/i18n/utils';
 import ThemeManager from '@/components/ThemeManager.astro';
-import { Icon } from 'astro-icon/components';
 
-// Get featured projects, sorted by order
+import RetroHero from '@/components/home/RetroHero.astro';
+import RetroPassions from '@/components/home/RetroPassions.astro';
+import RetroWritings from '@/components/home/RetroWritings.astro';
+import RetroProjects from '@/components/home/RetroProjects.astro';
+import RetroCommandCenter from '@/components/home/RetroCommandCenter.astro';
+
 const allProjects = await getCollection('projects');
 const featuredProjects = filterByLanguage(allProjects, 'es')
 	.filter(project => project.data.featured)
 	.sort((a, b) => a.data.order - b.data.order)
-	.slice(0, 3); // Show only top 3 featured projects
+	.slice(0, 3);
 
-// Get latest Spanish blog posts, sorted by date (most recent first)
 const allPosts = await getCollection('blog');
 const latestPosts = filterByLanguage(allPosts, 'es')
 	.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
-	.slice(0, 3); // Show only the 3 most recent posts
+	.slice(0, 3);
 ---
 
 <!doctype html>
@@ -31,198 +34,60 @@ const latestPosts = filterByLanguage(allPosts, 'es')
 	<body>
 		<Header />
 		<main>
-			<!-- Hero Section -->
-			<section class="py-20 px-6 bg-gradient-to-r from-gray-900 to-slate-800 text-white text-center">
-				<div class="max-w-4xl mx-auto">
-					<h1 class="text-4xl md:text-5xl mb-4 bg-gradient-to-r from-amber-200 to-yellow-400 bg-clip-text text-transparent">
-						Hola, soy Misael - Ingeniero de Software y Humano Curioso.
-					</h1>
-					<p class="text-xl md:text-2xl mb-8 text-gray-200">
-						Construyo sistemas elegantes, simplifico datos complejos y exploro tecnología que empodera a las personas.
-					</p>
-					<div class="flex flex-wrap justify-center gap-4">
-						<a href="/es/blog" class="btn btn-primary btn-lg">
-							📖 Lee Mi Blog
-						</a>
-						<a href="#work-with-me" class="btn btn-secondary btn-lg">
-							💼 Trabaja Conmigo
-						</a>
-					</div>
-				</div>
-			</section>
+			<RetroHero
+				subtitle="Ingeniero Fullstack &middot; Pensador de Sistemas &middot; Humano Curioso"
+				description="Construyo sistemas elegantes, simplifico datos complejos y exploro tecnología que empodera a las personas."
+				ctaPrimaryText="Leer Transmisiones"
+				ctaPrimaryHref="/es/blog"
+				ctaSecondaryText="Explorar"
+			/>
 
-			<!-- What I Do Section -->
-			<section id="what-i-do" class="py-16 px-6">
-				<div class="max-w-6xl mx-auto">
-					<h2 class="text-3xl md:text-4xl mb-2 text-center">🛠️ Lo Que Hago</h2>
-					<h3 class="text-2xl mb-6 text-center">Resolviendo Problemas a Escala</h3>
-					<p class="text-lg mb-12 text-center max-w-3xl mx-auto">
-						Con experiencia en arquitectura de datos, desarrollo fullstack y liderazgo en startups, diseño e implemento sistemas que son eficientes, confiables y centrados en las personas.
-					</p>
+			<RetroPassions
+				heading="Lo Que Alimenta la Señal"
+				cards={[
+					{ label: 'SECTOR 01', icon: 'mdi:telescope', title: 'Astronomía y Espacio', description: 'Desde los campos profundos del Hubble hasta la termodinámica de agujeros negros — el cosmos es mi fascinación más duradera.', accent: 'amber' },
+					{ label: 'SECTOR 02', icon: 'mdi:book-open-page-variant', title: 'Libros y Ciencia Ficción', description: 'Asimov, Le Guin, Liu Cixin — historias que doblan la realidad y expanden lo posible.', accent: 'cyan' },
+					{ label: 'SECTOR 03', icon: 'mdi:code-braces', title: 'Código y Oficio', description: 'Construir sistemas que son elegantes, confiables y centrados en las personas — el software como disciplina creativa.', accent: 'cyan' },
+					{ label: 'SECTOR 04', icon: 'mdi:atom', title: 'Ciencia y Tecnología', description: 'Física, IA, biotecnología — la frontera donde la curiosidad y la ingeniería colisionan.', accent: 'orange' },
+				]}
+			/>
 
-					<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-							<div class="card-body">
-								<h3 class="card-title">🧩 Modelado de Datos</h3>
-								<p>Modelado de nivel empresarial para bancos y startups</p>
-							</div>
-						</div>
-						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-							<div class="card-body">
-								<h3 class="card-title">⚙️ Desarrollo Fullstack</h3>
-								<p>Node.js, React, PostgreSQL, MongoDB</p>
-							</div>
-						</div>
-						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-							<div class="card-body">
-								<h3 class="card-title">🚀 Startups y Automatización</h3>
-								<p>Construyendo MVPs, flujos de IA y herramientas internas</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+			<RetroWritings
+				sectionLabel="TRANSMISIONES ENTRANTES"
+				heading="Últimas Escrituras"
+				emptyTitle="Aún no hay transmisiones disponibles."
+				emptySubtitle="Nuevas señales próximamente."
+				postLabel="TRANSMISIÓN"
+				readMore="Leer Más"
+				browseAllText="Ver Todas las Transmisiones"
+				browseAllHref="/es/blog"
+				postBaseHref="/es/blog/"
+				posts={latestPosts}
+			/>
 
-			<!-- Latest Blog Section -->
-			<section class="py-16 px-6 bg-base-200">
-				<div class="max-w-6xl mx-auto">
-					<h2 class="text-3xl md:text-4xl mb-2 text-center">✍️ Últimas del Blog</h2>
-					<h3 class="text-2xl mb-6 text-center">Ideas Que Me Mueven – Y Tal Vez a Ti También</h3>
-					<p class="text-lg mb-12 text-center max-w-3xl mx-auto">
-						Escribo sobre tecnología, proyectos personales, estrategia de datos, crecimiento profesional y a veces la vida misma.
-					</p>
+			<RetroProjects
+				sectionLabel="MISIONES ACTIVAS"
+				heading="Proyectos Destacados"
+				statusLabel="MISIÓN ACTIVA"
+				viewAllText="Ver Todas las Misiones"
+				viewAllHref="/es/projects"
+				projects={featuredProjects}
+			/>
 
-					{latestPosts.length === 0 ? (
-						<div class="text-center py-8">
-							<p class="text-lg text-gray-600 mb-4">Aún no hay posts en español disponibles.</p>
-							<p class="text-sm text-gray-500">¡Pronto habrá contenido nuevo!</p>
-						</div>
-					) : (
-						<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-							{latestPosts.map((post) => (
-								<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-									<div class="card-body">
-										<h3 class="card-title">{post.data.title}</h3>
-										<p class="text-base-content/70 mb-4">{post.data.description}</p>
-										<div class="card-actions justify-end">
-											<a href={`/es/blog/${post.id.split('/')[1]}`} class="btn btn-link no-underline">Leer más →</a>
-										</div>
-									</div>
-								</div>
-							))}
-						</div>
-					)}
-
-					<div class="text-center mt-12">
-						<a href="/es/blog" class="btn btn-primary btn-lg">
-							📚 Explorar el Archivo del Blog
-						</a>
-					</div>
-				</div>
-			</section>
-
-			<!-- Projects Section -->
-			<section id="projects" class="py-16 px-6">
-				<div class="max-w-6xl mx-auto">
-					<h2 class="text-3xl md:text-4xl mb-6 text-center">💡 Proyectos Destacados</h2>
-					<h3 class="text-2xl mb-6 text-center">Algunas Cosas Que He Construido</h3>
-
-					<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-						{featuredProjects.map((project) => (
-							<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
-								<div class="card-body">
-									<h3 class="card-title">{project.data.title.split(' - ')[0]}</h3>
-									<p class="mb-4">{project.data.description}</p>
-									<div class="flex gap-2 flex-wrap">
-										{project.data.category && (
-											<span class="badge">{project.data.category}</span>
-										)}
-										{project.data.technologies.slice(0, 2).map((tech) => (
-											<span class="badge">{tech}</span>
-										))}
-									</div>
-								</div>
-							</div>
-						))}
-					</div>
-
-					<div class="text-center mt-12">
-						<a href="/es/projects" class="btn btn-primary btn-lg">
-							🔍 Ver Todos los Proyectos
-						</a>
-					</div>
-				</div>
-			</section>
-
-			<!-- Work With Me Section -->
-			<section id="work-with-me" class="py-16 px-6 bg-base-200">
-				<div class="max-w-4xl mx-auto text-center">
-					<h2 class="text-3xl md:text-4xl mb-6">👨‍💻 Trabaja Conmigo</h2>
-					<h3 class="text-2xl mb-6">¿Necesitas un Cerebro Detrás del Backend?</h3>
-					<p class="text-lg mb-8">
-						Desde arquitecturar modelos de datos robustos hasta lanzar MVPs de SaaS, ayudo a los equipos a enviar productos más rápido y de manera más inteligente. Estoy disponible para consultoría, mentoría o colaboración en proyectos.
-					</p>
-					<a href="#contact" class="btn btn-primary btn-lg">
-						📬 Conectemos
-					</a>
-				</div>
-			</section>
-
-			<!-- Stay in Touch Section -->
-			<section class="py-16 px-6">
-				<div class="max-w-4xl mx-auto text-center">
-					<h2 class="text-3xl md:text-4xl mb-6">📬 Mantente en Contacto</h2>
-					<h3 class="text-2xl mb-6">Recibe Mis Mejores Ideas en Tu Bandeja</h3>
-					<p class="text-lg mb-8">
-						Sin spam. Solo escritura reflexiva sobre datos, software, sistemas y aprendizaje. Un email cada pocas semanas.
-					</p>
-					<div class="text-center">
-						<a href="/es/newsletter" class="btn btn-secondary btn-lg">
-							Suscribirse
-						</a>
-					</div>
-				</div>
-			</section>
-
-			<!-- About Me Section -->
-			<section id="about" class="py-16 px-6 bg-base-200">
-				<div class="max-w-4xl mx-auto">
-					<h2 class="text-3xl md:text-4xl mb-6 text-center">🧭 Sobre Mí</h2>
-					<h3 class="text-2xl mb-6 text-center">Un Poco Más Sobre Misael</h3>
-					<p class="text-lg text-center">
-						Soy un ingeniero peruano que cree en el poder de la claridad — en sistemas, escritura y vida.
-						Me encanta construir cosas útiles, aprender obsesivamente y compartir lo que sé. Fuera de la tecnología,
-						me gusta la ciencia ficción, planear viajes y hacer la vida cotidiana más eficiente.
-					</p>
-				</div>
-			</section>
-
-			<!-- Contact Section -->
-			<section id="contact" class="py-16 px-6">
-				<div class="max-w-4xl mx-auto text-center">
-					<h2 class="text-3xl md:text-4xl mb-8">Conectemos</h2>
-					<div class="flex justify-center gap-6 flex-wrap">
-						<a href="https://x.com/_misaelabanto" target="_blank" class="btn btn-outline btn-square" aria-label="Twitter">
-							<Icon name="simple-icons:x" class="w-6 h-6" />
-						</a>
-						<a href="https://linkedin.com/in/misaelabanto" target="_blank" class="btn btn-outline btn-square" aria-label="LinkedIn">
-							<Icon name="simple-icons:linkedin" class="w-6 h-6" />
-						</a>
-						<a href="https://github.com/misaelabanto" target="_blank" class="btn btn-outline btn-square" aria-label="GitHub">
-							<Icon name="simple-icons:github" class="w-6 h-6" />
-						</a>
-						<a href="https://t.me/misaelabanto" target="_blank" class="btn btn-outline btn-square" aria-label="Telegram">
-							<Icon name="simple-icons:telegram" class="w-6 h-6" />
-						</a>
-						<a href="mailto:hi@misaelabanto.com" class="btn btn-outline btn-square" aria-label="Email">
-							<Icon name="mdi:email" class="w-6 h-6" />
-						</a>
-					</div>
-				</div>
-			</section>
+			<RetroCommandCenter
+				sectionLabel="CENTRO DE COMANDO"
+				heading="Sobre Mí y Conexión"
+				aboutHeading="Quién Está Detrás de la Señal"
+				aboutParagraph1="Soy un ingeniero peruano que cree en el poder de la claridad — en sistemas, escritura y vida. Me encanta construir cosas útiles, aprender obsesivamente y compartir lo que sé."
+				aboutParagraph2="Fuera de la tecnología, me gusta la ciencia ficción, la astronomía, planear viajes y hacer la vida cotidiana más eficiente. Desde arquitecturar modelos de datos robustos hasta lanzar MVPs de SaaS, ayudo a los equipos a enviar productos más rápido y de manera más inteligente."
+				channelsHeading="Canales Abiertos"
+				newsletterLabel="SUSCRÍBETE A LA SEÑAL"
+				newsletterDescription="Sin spam. Solo escritura reflexiva sobre datos, software, sistemas y aprendizaje. Un email cada pocas semanas."
+				newsletterButtonText="Suscribirse"
+				newsletterHref="/es/newsletter"
+			/>
 		</main>
 
-		<!-- Footer -->
 		<Footer />
 	</body>
 </html>

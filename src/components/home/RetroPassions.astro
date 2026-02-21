@@ -1,0 +1,78 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface PassionCard {
+	label: string;
+	icon: string;
+	title: string;
+	description: string;
+	accent: 'amber' | 'cyan' | 'orange';
+}
+
+interface Props {
+	heading: string;
+	cards: [PassionCard, PassionCard, PassionCard, PassionCard];
+}
+
+const { heading, cards } = Astro.props;
+
+const accentColors = {
+	amber: {
+		label: 'var(--retro-amber)',
+		icon: 'var(--retro-amber)',
+		title: 'oklch(92% 0.02 70)',
+		gradient: 'var(--retro-amber)',
+	},
+	cyan: {
+		label: 'var(--retro-cyan)',
+		icon: 'var(--retro-cyan)',
+		title: 'oklch(92% 0.02 195)',
+		gradient: 'var(--retro-cyan)',
+	},
+	orange: {
+		label: 'var(--retro-orange)',
+		icon: 'var(--retro-orange)',
+		title: 'oklch(92% 0.02 50)',
+		gradient: 'var(--retro-orange)',
+	},
+};
+---
+
+<section
+	id="passions"
+	class="py-20 px-6 retro-scanlines"
+	style="background: var(--retro-navy);"
+>
+	<div class="relative z-10 max-w-6xl mx-auto">
+		<div class="text-center mb-14 retro-stagger">
+			<span class="retro-label retro-animate-in block mb-3" style="color: var(--retro-cyan);">SECTORS OF INTEREST</span>
+			<h2 class="retro-animate-in text-3xl md:text-4xl font-bold retro-glow-cyan" style="color: var(--retro-cyan-bright);">
+				{heading}
+			</h2>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-6 retro-stagger">
+			{cards.map((card, index) => {
+				const colors = accentColors[card.accent];
+				return (
+					<div class="retro-card retro-animate-in relative overflow-hidden group">
+						<div
+							class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-10 group-hover:opacity-20 transition-opacity"
+							style={`background: radial-gradient(circle, ${colors.gradient} 0%, transparent 70%); transform: translate(30%, -30%);`}
+						/>
+						<span class="retro-label block mb-3" style={`color: ${colors.label};`}>
+							{card.label}
+						</span>
+						<div class="flex items-center gap-3 mb-3">
+							<Icon name={card.icon} class="w-7 h-7" style={`color: ${colors.icon};`} />
+							<h3 class="text-xl font-bold" style={`color: ${colors.title};`}>{card.title}</h3>
+						</div>
+						<p style="color: oklch(70% 0.02 260);">{card.description}</p>
+					</div>
+				);
+			})}
+		</div>
+	</div>
+</section>
+
+<hr class="retro-divider" />

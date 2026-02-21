@@ -1,0 +1,98 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+	sectionLabel: string;
+	heading: string;
+	aboutHeading: string;
+	aboutParagraph1: string;
+	aboutParagraph2: string;
+	channelsHeading: string;
+	newsletterLabel: string;
+	newsletterDescription: string;
+	newsletterButtonText: string;
+	newsletterHref: string;
+}
+
+const {
+	sectionLabel,
+	heading,
+	aboutHeading,
+	aboutParagraph1,
+	aboutParagraph2,
+	channelsHeading,
+	newsletterLabel,
+	newsletterDescription,
+	newsletterButtonText,
+	newsletterHref,
+} = Astro.props;
+---
+
+<section
+	class="py-20 px-6 retro-scanlines"
+	style="background: var(--retro-navy);"
+>
+	<div class="relative z-10 max-w-6xl mx-auto">
+		<div class="text-center mb-14 retro-stagger">
+			<span class="retro-label retro-animate-in block mb-3" style="color: var(--retro-cyan);">{sectionLabel}</span>
+			<h2 class="retro-animate-in text-3xl md:text-4xl font-bold retro-glow-cyan" style="color: var(--retro-cyan-bright);">
+				{heading}
+			</h2>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+			<!-- Left: About -->
+			<div class="retro-animate-in">
+				<h3 class="text-xl font-bold mb-4" style="color: var(--retro-amber);">{aboutHeading}</h3>
+				<p class="mb-4 leading-relaxed" style="color: oklch(75% 0.02 260);">
+					{aboutParagraph1}
+				</p>
+				<p class="leading-relaxed" style="color: oklch(75% 0.02 260);">
+					{aboutParagraph2}
+				</p>
+			</div>
+
+			<!-- Right: Social links -->
+			<div class="retro-animate-in">
+				<h3 class="text-xl font-bold mb-4" style="color: var(--retro-cyan);">{channelsHeading}</h3>
+				<div class="flex flex-col gap-3">
+					<a href="https://x.com/_misaelabanto" target="_blank" class="retro-card flex items-center gap-4 no-underline !py-3 !px-4">
+						<Icon name="simple-icons:x" class="w-5 h-5" style="color: var(--retro-cyan);" />
+						<span class="font-mono-accent text-sm" style="color: oklch(80% 0.02 260);">@_misaelabanto</span>
+					</a>
+					<a href="https://linkedin.com/in/misaelabanto" target="_blank" class="retro-card flex items-center gap-4 no-underline !py-3 !px-4">
+						<Icon name="simple-icons:linkedin" class="w-5 h-5" style="color: var(--retro-cyan);" />
+						<span class="font-mono-accent text-sm" style="color: oklch(80% 0.02 260);">misaelabanto</span>
+					</a>
+					<a href="https://github.com/misaelabanto" target="_blank" class="retro-card flex items-center gap-4 no-underline !py-3 !px-4">
+						<Icon name="simple-icons:github" class="w-5 h-5" style="color: var(--retro-cyan);" />
+						<span class="font-mono-accent text-sm" style="color: oklch(80% 0.02 260);">misaelabanto</span>
+					</a>
+					<a href="https://t.me/misaelabanto" target="_blank" class="retro-card flex items-center gap-4 no-underline !py-3 !px-4">
+						<Icon name="simple-icons:telegram" class="w-5 h-5" style="color: var(--retro-cyan);" />
+						<span class="font-mono-accent text-sm" style="color: oklch(80% 0.02 260);">misaelabanto</span>
+					</a>
+					<a href="mailto:hi@misaelabanto.com" class="retro-card flex items-center gap-4 no-underline !py-3 !px-4">
+						<Icon name="mdi:email" class="w-5 h-5" style="color: var(--retro-cyan);" />
+						<span class="font-mono-accent text-sm" style="color: oklch(80% 0.02 260);">hi@misaelabanto.com</span>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Newsletter CTA -->
+		<div class="mt-14 text-center retro-card !border-amber-500/20">
+			<span class="retro-label block mb-3" style="color: var(--retro-amber);">{newsletterLabel}</span>
+			<p class="mb-6" style="color: oklch(70% 0.02 260);">
+				{newsletterDescription}
+			</p>
+			<a
+				href={newsletterHref}
+				class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105"
+				style="background: var(--retro-amber); color: var(--retro-deep-navy);"
+			>
+				{newsletterButtonText}
+			</a>
+		</div>
+	</div>
+</section>

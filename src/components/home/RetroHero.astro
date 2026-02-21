@@ -1,0 +1,85 @@
+---
+interface Props {
+	subtitle: string;
+	description: string;
+	ctaPrimaryText: string;
+	ctaPrimaryHref: string;
+	ctaSecondaryText: string;
+}
+
+const { subtitle, description, ctaPrimaryText, ctaPrimaryHref, ctaSecondaryText } = Astro.props;
+---
+
+<section
+	class="relative min-h-[90vh] flex items-center justify-center overflow-hidden retro-scanlines"
+	style="background: linear-gradient(135deg, var(--retro-deep-navy) 0%, var(--retro-navy) 50%, oklch(22% 0.06 240) 100%);"
+>
+	<!-- Star field -->
+	<div class="absolute inset-0" style="z-index: 0;">
+		{Array.from({ length: 60 }).map((_, i) => (
+			<div
+				class="absolute rounded-full retro-animate-fade"
+				style={`
+					width: ${1 + (i % 3)}px;
+					height: ${1 + (i % 3)}px;
+					background: var(--retro-star);
+					top: ${(i * 17 + 7) % 100}%;
+					left: ${(i * 23 + 13) % 100}%;
+					opacity: ${0.3 + (i % 5) * 0.14};
+					animation-delay: ${(i % 8) * 0.3}s;
+				`}
+			/>
+		))}
+	</div>
+
+	<!-- Perspective grid -->
+	<div
+		class="absolute inset-0 retro-grid-bg"
+		style="opacity: 0.4; mask-image: linear-gradient(to bottom, transparent 10%, black 40%, black 60%, transparent 90%); z-index: 0;"
+	></div>
+
+	<!-- Hero content -->
+	<div class="relative z-10 text-center px-6 max-w-4xl mx-auto retro-stagger">
+		<div class="retro-animate-in mb-8 flex items-center justify-center gap-2">
+			<span class="retro-pulse-dot"></span>
+			<span class="retro-label" style="color: var(--retro-amber);">SIGNAL ACTIVE</span>
+		</div>
+
+		<h1
+			class="retro-animate-in text-5xl md:text-7xl font-bold mb-6 retro-glow-amber retro-animate-flicker"
+			style="color: var(--retro-amber-bright);"
+		>
+			MISAEL ABANTO
+		</h1>
+
+		<p
+			class="retro-animate-in font-mono-accent text-lg md:text-xl mb-4"
+			style="color: var(--retro-cyan);"
+			set:html={subtitle}
+		/>
+
+		<p
+			class="retro-animate-in text-base md:text-lg mb-10 max-w-2xl mx-auto"
+			style="color: oklch(80% 0.02 260);"
+		>
+			{description}
+		</p>
+
+		<div class="retro-animate-in flex flex-wrap justify-center gap-4">
+			<a
+				href={ctaPrimaryHref}
+				class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105"
+				style="background: var(--retro-amber); color: var(--retro-deep-navy);"
+			>
+				{ctaPrimaryText}
+			</a>
+			<a
+				href="#passions"
+				class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider border-2 transition-all duration-300 hover:scale-105"
+				style="border-color: var(--retro-cyan); color: var(--retro-cyan);"
+			>
+				{ctaSecondaryText}
+			</a>
+		</div>
+	</div>
+</section>
