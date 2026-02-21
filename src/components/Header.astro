@@ -32,11 +32,6 @@ const homeUrl = translatePath('/');
 					<div class="divider my-2"></div>
 					<div class="flex items-center justify-center gap-4">
 						<LanguageSelector />
-						<label class="swap swap-rotate">
-							<input type="checkbox" class="theme-controller" value="dark" />
-							<Icon name="mdi:weather-sunny" class="swap-on h-5 w-5 fill-current" />
-							<Icon name="mdi:weather-night" class="swap-off h-5 w-5 fill-current" />
-						</label>
 					</div>
 				</div>
 			</div>
@@ -45,11 +40,6 @@ const homeUrl = translatePath('/');
 		<!-- Desktop Controls -->
 		<div class="hidden lg:flex items-center gap-4">
 			<LanguageSelector />
-			<label class="swap swap-rotate">
-				<input type="checkbox" class="theme-controller" value="dark" />
-				<Icon name="mdi:weather-sunny" class="swap-on h-6 w-6 fill-current" />
-				<Icon name="mdi:weather-night" class="swap-off h-6 w-6 fill-current" />
-			</label>
 			<div class="social-links flex">
 				<a href="https://github.com/misaelabanto" target="_blank" class="btn btn-ghost btn-sm btn-circle">
 					<span class="sr-only">Go to Misael's GitHub</span>
@@ -60,35 +50,3 @@ const homeUrl = translatePath('/');
 	</nav>
 </header>
 
-<script>
-	// Add a script to save the theme to localStorage and update the HTML data-theme attribute
-	document.addEventListener('DOMContentLoaded', () => {
-		const themeControllers = document.querySelectorAll('.theme-controller') as NodeListOf<HTMLInputElement>;
-		
-		// Check if there's a theme preference in localStorage
-		const savedTheme = localStorage.getItem('theme');
-		const isDark = savedTheme === 'dark';
-		
-		themeControllers.forEach(controller => {
-			controller.checked = isDark;
-		});
-		
-		document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-		
-		// Add event listener to save theme preference and update HTML attribute
-		themeControllers.forEach(controller => {
-			controller.addEventListener('change', () => {
-				const theme = controller.checked ? 'dark' : 'light';
-				localStorage.setItem('theme', theme);
-				document.documentElement.setAttribute('data-theme', theme);
-				
-				// Sync all theme controllers
-				themeControllers.forEach(otherController => {
-					if (otherController !== controller) {
-						otherController.checked = controller.checked;
-					}
-				});
-			});
-		});
-	});
-</script>
