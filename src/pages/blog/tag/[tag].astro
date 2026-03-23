@@ -26,7 +26,7 @@ const { posts, tag } = Astro.props;
 
 <html lang="en" data-theme="dark">
 	<head>
-		<BaseHead title={`Posts tagged "${tag}" | Blog`} description={`All blog posts tagged with ${tag}`} />
+		<BaseHead title={`Posts tagged "${tag}" | Blog`} description={`Browse all ${posts.length} blog posts tagged with ${tag}. Articles, tutorials, and insights by Misael Abanto.`} />
 		<script is:inline>
 			const savedTheme = localStorage.getItem('theme');
 			document.documentElement.setAttribute('data-theme', savedTheme || 'light');

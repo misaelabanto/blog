@@ -19,6 +19,6 @@ const { Content } = await render(post);
 const slug = getSlugFromId(post.id);
 ---
 
-<BlogPost {...post.data} lang="es" slug={slug}>
+<BlogPost {...post.data} lang="es" slug={slug} draft={post.data.draft}>
 	<Content />
 </BlogPost> 

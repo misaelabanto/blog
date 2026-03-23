@@ -25,7 +25,7 @@ const { posts, category } = Astro.props;
 
 <html lang="en" data-theme="dark">
 	<head>
-		<BaseHead title={`Posts in "${category}" | Blog`} description={`All blog posts in the ${category} category`} />
+		<BaseHead title={`Posts in "${category}" | Blog`} description={`Browse all ${posts.length} blog posts about ${category}. Articles, tutorials, and insights by Misael Abanto.`} />
 		<script is:inline>
 			const savedTheme = localStorage.getItem('theme');
 			document.documentElement.setAttribute('data-theme', savedTheme || 'light');
