@@ -11,7 +11,15 @@ export default defineConfig({
   site: 'https://misaelabanto.com',
   integrations: [
     mdx(),
-    sitemap(),
+    sitemap({
+      serialize(item) {
+        // Add lastmod to all sitemap entries
+        if (!item.lastmod) {
+          item.lastmod = new Date().toISOString();
+        }
+        return item;
+      },
+    }),
     mermaid({
       autoTheme: true 
     }),
