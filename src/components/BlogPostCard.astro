@@ -1,96 +1,63 @@
 ---
 import FormattedDate from './FormattedDate.astro';
-import { getLangFromUrl, useTranslatedPath } from '@/i18n/utils';
+import { getLangFromUrl, getSlugFromId, useTranslatedPath } from '@/i18n/utils';
 
 export interface Props {
 	post: any;
-	isFirst?: boolean;
 }
 
-const { post, isFirst = false } = Astro.props;
+const { post } = Astro.props;
 
-// Determine the current language from the URL
 const currentLang = getLangFromUrl(Astro.url);
-// Get a path translation function for the current language
 const translatePath = useTranslatedPath(currentLang);
 
-// Extract the slug from the post ID (e.g., 'en/my-post' -> 'my-post')
-const postSlug = post.id.split('/')[1];
-// Translate the blog post link
-const postLink = translatePath(`/blog/${postSlug}/`);
+const postLink = translatePath(`/blog/${getSlugFromId(post.id)}/`);
 
-// Prepare category link
-const categorySlug = post.data.category?.toLowerCase().replace(/\s+/g, '-');
-const categoryLink = categorySlug ? translatePath(`/blog/category/${categorySlug}`) : '';
-
-// Prepare tag links
 const tagLinks = post.data.tags.map((tag: string) => ({
-    name: tag,
-    link: translatePath(`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`)
+	name: tag,
+	link: translatePath(`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`)
 }));
 ---
 
-<li class:list={[
-	'card',
-	'bg-base-100',
-	'shadow-md',
-	'hover:shadow-xl',
-	'transition-shadow',
-	'w-full', // Default to full width on small screens
-	isFirst ? 'text-center' : '', // Conditional text-center for first item
-	isFirst ? '' : 'md:w-[calc(50%-1rem)]', // Conditional width for non-first items on md+
-]}>
-	<a href={postLink} class="block group no-underline transition-all duration-200 ease-in-out">
-		<figure class="rounded-xl overflow-hidden mb-2">
-			<img
-				width={720}
-				height={360}
-				src={post.data.heroImage}
-				alt=""
-				class="w-full h-[300px] object-cover group-hover:shadow-xl"
-			/>
-		</figure>
-		<div class="card-body p-4">
-			<h4 class:list={[
-				'card-title',
-				'm-0',
-				'leading-tight',
-				isFirst ? 'text-4xl sm:text-2xl' : '', // Larger title for first item
-			]}>
-				{post.data.title}
-			</h4>
-			<p class="m-0 text-[rgb(var(--gray))] text-sm group-hover:text-[rgb(var(--accent))]">
-				<FormattedDate date={post.data.pubDate} />
-			</p>
-			<p class="text-base-content/70 mt-2">{post.data.description}</p>
-			
-			<!-- Category and Tags -->
-			<div class="meta-info mt-3">
-				{post.data.category && (
-					<div class="category mb-2">
-						<a 
-							href={categoryLink}
-							class="inline-block bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-300 dark:hover:bg-blue-800 transition-colors"
-						>
-							{post.data.category}
-						</a>
-					</div>
-				)}
-				{post.data.tags.length > 0 && (
-					<div class="tags">
-						<div class="flex flex-wrap gap-1 justify-center">
-							{tagLinks.map((tag: { name: string, link: string }) => (
-								<a 
-									href={tag.link}
-									class="inline-block bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-md hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 transition-colors"
-								>
-									#{tag.name}
-								</a>
-							))}
-						</div>
-					</div>
-				)}
+<li class="list-none">
+	<a href={postLink} class="retro-card block group no-underline h-full">
+		{post.data.heroImage && (
+			<div class="mb-4 rounded overflow-hidden" style="border: 1px solid oklch(78% 0.14 195 / 0.15);">
+				<img
+					width={720}
+					height={360}
+					src={post.data.heroImage}
+					alt=""
+					class="w-full h-48 object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+				/>
 			</div>
-		</div>
+		)}
+
+		{post.data.category && (
+			<p class="retro-label mb-2" style="color: var(--retro-amber);">// {post.data.category}</p>
+		)}
+
+		<h4
+			class="text-xl font-bold mb-2"
+			style="color: var(--retro-amber-bright);"
+		>
+			{post.data.title}
+		</h4>
+
+		<p class="font-mono-accent text-xs mb-3" style="color: var(--retro-cyan);">
+			<FormattedDate date={post.data.pubDate} />
+		</p>
+
+		<p class="text-sm mb-4 leading-relaxed" style="color: oklch(72% 0.02 260);">
+			{post.data.description}
+		</p>
+
+		{tagLinks.length > 0 && (
+			<div class="flex flex-wrap gap-1 mt-auto">
+				{tagLinks.map((tag: { name: string, link: string }) => (
+					<span class="retro-tag">#{tag.name}</span>
+				))}
+			</div>
+		)}
 	</a>
 </li>
