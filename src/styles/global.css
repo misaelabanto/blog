@@ -169,6 +169,19 @@ h6 {
   animation: retro-pulse 2s ease-in-out infinite;
 }
 
+/* ── Retro tag badge (cyan, monospace, bordered) ── */
+.retro-tag {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid oklch(78% 0.14 195 / 0.25);
+  color: var(--retro-cyan);
+}
+
 /* ── Gradient divider ── */
 .retro-divider {
   border: none;
