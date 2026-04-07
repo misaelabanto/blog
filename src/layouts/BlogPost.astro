@@ -41,57 +41,75 @@ const { title, description, pubDate, updatedDate, heroImage, category, tags = []
 		/>
 	</head>
 
-	<body class="flex flex-col min-h-screen">
+	<body class="flex flex-col min-h-screen retro-scanlines" style="background: var(--retro-deep-navy);">
 		<Header />
-		<main class="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8 flex-grow">
-			<article>
-				<div class="hero-image mb-8 rounded-lg overflow-hidden">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt={`Hero image for ${title}`} />}
+		<main class="flex-grow">
+			<!-- Post Header -->
+			<section
+				class="relative py-16 px-6 retro-grid-bg"
+				style="background: linear-gradient(180deg, var(--retro-deep-navy) 0%, var(--retro-navy) 100%);"
+			>
+				<div class="max-w-3xl mx-auto retro-stagger">
+					{category && (
+						<div class="retro-animate-in mb-4">
+							<a
+								href={`${lang === 'es' ? '/es' : ''}/blog/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
+								class="retro-label hover:opacity-80 transition-opacity"
+								style="color: var(--retro-amber);"
+							>
+								// {category}
+							</a>
+						</div>
+					)}
+
+					<h1
+						class="retro-animate-in text-3xl md:text-5xl font-bold mb-6 retro-glow-amber"
+						style="color: var(--retro-amber-bright);"
+					>
+						{title}
+					</h1>
+
+					<p class="retro-animate-in font-mono-accent text-sm mb-6" style="color: var(--retro-cyan);">
+						<FormattedDate date={pubDate} />
+						{updatedDate && (
+							<span class="opacity-60 ml-4">· Updated <FormattedDate date={updatedDate} /></span>
+						)}
+					</p>
+
+					{tags.length > 0 && (
+						<div class="retro-animate-in flex flex-wrap gap-2 mb-8">
+							{tags.map((tag: string) => (
+								<a
+									href={`${lang === 'es' ? '/es' : ''}/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+									class="retro-tag hover:opacity-80 transition-opacity"
+								>
+									#{tag}
+								</a>
+							))}
+						</div>
+					)}
+
+					<hr class="retro-divider" />
 				</div>
-				<div class="prose lg:prose-xl mx-auto">
-					<div>
-						<div>
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on text-sm text-gray-500 mt-2">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1>{title}</h1>
+			</section>
 
-						<!-- Category and Tags -->
-						<div class="meta-info mt-4 mb-8">
-							{category && (
-								<div class="category mb-2">
-									<a
-										href={`${lang === 'es' ? '/es' : ''}/blog/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
-										class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-300 dark:hover:bg-blue-800 transition-colors"
-									>
-										{category}
-									</a>
-								</div>
-							)}
-							{tags.length > 0 && (
-								<div class="tags">
-									<div class="flex flex-wrap gap-2">
-										{tags.map((tag: string) => (
-											<a
-												href={`${lang === 'es' ? '/es' : ''}/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
-												class="inline-block bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-md hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 transition-colors"
-											>
-												#{tag}
-											</a>
-										))}
-									</div>
-								</div>
-							)}
-						</div>
-
-						<hr class="my-8 border-t border-gray-300" />
+			<!-- Hero Image -->
+			{heroImage && (
+				<div class="max-w-3xl mx-auto px-4 sm:px-6 pt-8">
+					<div class="rounded-lg overflow-hidden" style="border: 1px solid oklch(78% 0.14 195 / 0.2);">
+						<img width={1020} height={510} src={heroImage} alt={`Hero image for ${title}`} class="w-full" />
 					</div>
+				</div>
+			)}
+
+			<!-- Content -->
+			<article class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+				<div class="prose prose-invert lg:prose-xl mx-auto
+					prose-headings:font-sans prose-headings:text-amber-300 prose-headings:font-bold
+					prose-a:text-cyan-400 prose-a:no-underline hover:prose-a:underline
+					prose-code:text-cyan-300
+					prose-blockquote:border-l-4 prose-blockquote:border-amber-500/60 prose-blockquote:text-gray-300
+					prose-strong:text-amber-200">
 					<slot />
 				</div>
 			</article>
