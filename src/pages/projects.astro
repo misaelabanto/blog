@@ -4,157 +4,147 @@ import Footer from '@/components/Footer.astro';
 import Header from '@/components/Header.astro';
 import { SITE_TITLE } from '@/consts';
 import { filterByLanguage } from '@/i18n/utils';
+import { formatDate, getStatusLabel } from '@/utils/content';
 import { getCollection } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 
-// Get all projects and filter for English only
 const allProjects = await getCollection('projects');
 const projects = filterByLanguage(allProjects, 'en').sort(
   (a, b) => a.data.order - b.data.order
 );
 
 const featuredProjects = projects.filter(project => project.data.featured);
-
-// Helper function to format dates
-function formatDate(dateString: string) {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', { 
-    year: 'numeric', 
-    month: 'short' 
-  });
-}
-
-// Helper function to get status badge
-function getStatusBadge(status: string) {
-  switch (status) {
-    case 'completed': return { class: 'badge-success', text: '✅ Completed' };
-    case 'in-progress': return { class: 'badge-warning', text: '🚧 In Progress' };
-    case 'archived': return { class: 'badge-neutral', text: '📦 Archived' };
-    default: return { class: 'badge-neutral', text: status };
-  }
-}
-
-// Helper function to get project icon
-function getProjectIcon(title: string) {
-  if (title.includes('Agéndalo')) return '📅';
-  if (title.includes('YouTube')) return '🎮';
-  if (title.includes('Covid') || title.includes('COVID')) return '🗺️';
-  if (title.includes('BuscarPlaca') || title.includes('Placa')) return '🚗';
-  return '💻';
-}
 ---
 
 <!doctype html>
 <html lang="en" data-theme="dark">
   <head>
-    <BaseHead title={`Projects - ${SITE_TITLE}`} description="Explore my featured projects, from successful SaaS platforms to open-source tools that have made a real impact." />
+    <BaseHead title={`Projects · ${SITE_TITLE}`} description="Explore my featured projects, from successful SaaS platforms to open-source tools that have made a real impact." />
   </head>
-  <body>
+  <body class="retro-scanlines" style="background: var(--retro-deep-navy);">
     <Header />
     <main>
-      <!-- Hero Section -->
-      <section class="py-20 px-6 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
-        <div class="max-w-4xl mx-auto text-center">
-          <h1 class="text-4xl md:text-6xl mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            🚀 My Projects
-          </h1>
-          <p class="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto">
-            A showcase of solutions I've built that solve real problems, 
-            from successful SaaS platforms to open-source tools that make a difference.
+
+      <!-- Hero -->
+      <section
+        class="relative py-20 px-6 retro-grid-bg overflow-hidden"
+        style="background: linear-gradient(135deg, var(--retro-deep-navy) 0%, var(--retro-navy) 50%, oklch(22% 0.06 240) 100%);"
+      >
+        <div class="max-w-4xl mx-auto text-center retro-stagger">
+          <p class="retro-animate-in retro-label mb-4" style="color: var(--retro-amber);">
+            ACTIVE MISSIONS
           </p>
-          <div class="flex flex-wrap justify-center gap-4">
-            <a href="#featured" class="btn btn-primary">
-              ⭐ Featured Projects
+          <h1
+            class="retro-animate-in text-5xl md:text-6xl font-bold mb-6 retro-glow-amber retro-animate-flicker"
+            style="color: var(--retro-amber-bright);"
+          >
+            PROJECTS
+          </h1>
+          <p
+            class="retro-animate-in font-mono-accent text-base md:text-lg max-w-2xl mx-auto mb-10"
+            style="color: var(--retro-cyan);"
+          >
+            Solutions I've built that solve real problems — from SaaS platforms to open-source tools.
+          </p>
+          <div class="retro-animate-in flex flex-wrap justify-center gap-4">
+            <a
+              href="#featured"
+              class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105"
+              style="background: var(--retro-amber); color: var(--retro-deep-navy);"
+            >
+              Featured Projects
             </a>
-            <a href="#all-projects" class="btn btn-secondary">
-              📂 All Projects
+            <a
+              href="#all-projects"
+              class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider border-2 transition-all duration-300 hover:scale-105"
+              style="border-color: var(--retro-cyan); color: var(--retro-cyan);"
+            >
+              All Projects
             </a>
           </div>
         </div>
       </section>
 
-      <!-- Featured Projects Section -->
-      <section id="featured" class="py-16 px-6">
+      <hr class="retro-divider" />
+
+      <!-- Featured Projects -->
+      <section id="featured" class="py-16 px-6" style="background: var(--retro-deep-navy);">
         <div class="max-w-6xl mx-auto">
-          <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl mb-4">⭐ Featured Projects</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-              These are the projects I'm most proud of - each one represents a significant milestone 
-              in my journey as a software engineer and entrepreneur.
-            </p>
+          <div class="text-center mb-14">
+            <span class="retro-label block mb-3" style="color: var(--retro-amber);">FEATURED MISSIONS</span>
+            <h2 class="text-3xl md:text-4xl font-bold retro-glow-amber" style="color: var(--retro-amber-bright);">
+              Featured Projects
+            </h2>
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {featuredProjects.map((project) => {
-              const statusBadge = getStatusBadge(project.data.status);
+              const status = getStatusLabel(project.data.status);
               return (
-                <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
-                  <figure class="px-6 pt-6">
-                    <div class="w-full h-48 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
-                      <div class="text-4xl">
-                        {getProjectIcon(project.data.title)}
-                      </div>
-                    </div>
-                  </figure>
-                  <div class="card-body">
-                    <h3 class="card-title text-xl mb-2">{project.data.title}</h3>
-                    <p class="text-base-content/70 mb-4">{project.data.description}</p>
-                    
-                    <!-- Project Status and Category -->
-                    <div class="flex items-center gap-2 mb-4">
-                      <div class={`badge ${statusBadge.class}`}>
-                        {statusBadge.text}
-                      </div>
-                      {project.data.category && (
-                        <div class="badge badge-outline">
-                          {project.data.category}
-                        </div>
-                      )}
-                      <div class="text-sm text-base-content/70">
-                        {formatDate(project.data.startDate)}
-                      </div>
-                    </div>
-
-                    <!-- Technologies -->
-                    <div class="mb-4">
-                      <div class="flex flex-wrap gap-1">
-                        {project.data.technologies.slice(0, 4).map((tech) => (
-                          <span class="badge badge-outline badge-sm">{tech}</span>
-                        ))}
-                        {project.data.technologies.length > 4 && (
-                          <span class="badge badge-outline badge-sm">+{project.data.technologies.length - 4}</span>
-                        )}
-                      </div>
-                    </div>
-
-                    <!-- Project Highlights -->
-                    {project.data.highlights && project.data.highlights.length > 0 && (
-                      <div class="mb-4">
-                        <h5 class="font-semibold mb-2 text-sm">Key Highlights:</h5>
-                        <ul class="list-disc list-inside space-y-1 text-sm text-base-content/70">
-                          {project.data.highlights.slice(0, 3).map((highlight) => (
-                            <li>{highlight}</li>
-                          ))}
-                        </ul>
-                      </div>
+                <div class="retro-card flex flex-col h-full">
+                  <div class="flex items-center justify-between mb-4">
+                    <span class="retro-label" style={`color: ${status.color};`}>[{status.text}]</span>
+                    {project.data.category && (
+                      <span class="retro-label" style="color: var(--retro-cyan);">{project.data.category}</span>
                     )}
+                  </div>
 
-                    <div class="card-actions justify-between items-center mt-auto">
-                      <div class="flex gap-2">
-                        {project.data.githubUrl && (
-                          <a href={project.data.githubUrl} target="_blank" class="btn btn-ghost btn-sm">
-                            <Icon name="simple-icons:github" class="w-4 h-4" />
-                            Code
-                          </a>
-                        )}
-                        {project.data.liveUrl && (
-                          <a href={project.data.liveUrl} target="_blank" class="btn btn-ghost btn-sm">
-                            <Icon name="mdi:open-in-new" class="w-4 h-4" />
-                            Live Demo
-                          </a>
-                        )}
-                      </div>
-                    </div>
+                  <h3 class="text-xl font-bold mb-3" style="color: var(--retro-amber-bright);">
+                    {project.data.title}
+                  </h3>
+
+                  <p class="text-sm mb-4 leading-relaxed flex-grow" style="color: oklch(72% 0.02 260);">
+                    {project.data.description}
+                  </p>
+
+                  {project.data.highlights && project.data.highlights.length > 0 && (
+                    <ul class="mb-4 space-y-1">
+                      {project.data.highlights.slice(0, 3).map((highlight) => (
+                        <li class="font-mono-accent text-xs flex gap-2" style="color: oklch(65% 0.02 260);">
+                          <span style="color: var(--retro-cyan);">›</span>
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  <div class="flex flex-wrap gap-1 mb-5">
+                    {project.data.technologies.slice(0, 5).map((tech) => (
+                      <span class="retro-tag">{tech}</span>
+                    ))}
+                    {project.data.technologies.length > 5 && (
+                      <span class="retro-label px-2 py-0.5" style="color: oklch(55% 0.02 260);">
+                        +{project.data.technologies.length - 5}
+                      </span>
+                    )}
+                  </div>
+
+                  <div class="flex gap-4 mt-auto pt-2" style="border-top: 1px solid oklch(78% 0.14 195 / 0.1);">
+                    {project.data.githubUrl && (
+                      <a
+                        href={project.data.githubUrl}
+                        target="_blank"
+                        class="font-mono-accent text-xs uppercase tracking-wider flex items-center gap-1.5 hover:opacity-80 transition-opacity"
+                        style="color: var(--retro-amber);"
+                      >
+                        <Icon name="simple-icons:github" class="w-3.5 h-3.5" />
+                        Code
+                      </a>
+                    )}
+                    {project.data.liveUrl && (
+                      <a
+                        href={project.data.liveUrl}
+                        target="_blank"
+                        class="font-mono-accent text-xs uppercase tracking-wider flex items-center gap-1.5 hover:opacity-80 transition-opacity"
+                        style="color: var(--retro-cyan);"
+                      >
+                        <Icon name="mdi:open-in-new" class="w-3.5 h-3.5" />
+                        Live Demo
+                      </a>
+                    )}
+                    <span class="font-mono-accent text-xs ml-auto" style="color: oklch(50% 0.02 260);">
+                      {formatDate(project.data.startDate)}
+                    </span>
                   </div>
                 </div>
               );
@@ -163,61 +153,70 @@ function getProjectIcon(title: string) {
         </div>
       </section>
 
-      <!-- All Projects Section -->
-      <section id="all-projects" class="py-16 px-6 bg-base-200">
+      <hr class="retro-divider" />
+
+      <!-- All Projects -->
+      <section id="all-projects" class="py-16 px-6 retro-grid-bg" style="background-color: var(--retro-navy);">
         <div class="max-w-6xl mx-auto">
-          <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl mb-4">📂 All Projects</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-              A comprehensive list of all my projects, including experimental work and contributions to the open-source community.
-            </p>
+          <div class="text-center mb-14">
+            <span class="retro-label block mb-3" style="color: var(--retro-amber);">MISSION ARCHIVE</span>
+            <h2 class="text-3xl md:text-4xl font-bold retro-glow-amber" style="color: var(--retro-amber-bright);">
+              All Projects
+            </h2>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project) => {
-              const statusBadge = getStatusBadge(project.data.status);
+              const status = getStatusLabel(project.data.status);
               return (
-                <div class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow">
-                  <div class="card-body">
-                    <div class="flex items-center gap-3 mb-3">
-                      <div class="text-2xl">{getProjectIcon(project.data.title)}</div>
-                      <h3 class="card-title text-lg">{project.data.title}</h3>
-                    </div>
-                    
-                    <p class="text-sm text-base-content/70 mb-3">{project.data.description}</p>
-                    
-                    <div class="flex items-center gap-2 mb-3">
-                      <div class={`badge badge-sm ${statusBadge.class}`}>
-                        {statusBadge.text}
-                      </div>
-                      {project.data.category && (
-                        <div class="badge badge-outline badge-sm">
-                          {project.data.category}
-                        </div>
-                      )}
-                    </div>
+                <div class="retro-card">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="retro-label text-xs" style={`color: ${status.color};`}>[{status.text}]</span>
+                    {project.data.category && (
+                      <span class="retro-label text-xs" style="color: oklch(55% 0.02 260);">{project.data.category}</span>
+                    )}
+                  </div>
 
-                    <div class="flex flex-wrap gap-1 mb-3">
-                      {project.data.technologies.slice(0, 3).map((tech) => (
-                        <span class="badge badge-outline badge-xs">{tech}</span>
-                      ))}
-                      {project.data.technologies.length > 3 && (
-                        <span class="badge badge-outline badge-xs">+{project.data.technologies.length - 3}</span>
-                      )}
-                    </div>
+                  <h3 class="text-lg font-bold mb-2" style="color: var(--retro-amber-bright);">
+                    {project.data.title}
+                  </h3>
 
-                    <div class="card-actions justify-start">
-                      {project.data.githubUrl && (
-                        <a href={project.data.githubUrl} target="_blank" class="btn btn-ghost btn-xs">
-                          Code
-                        </a>
-                      )}
-                      {project.data.liveUrl && (
-                        <a href={project.data.liveUrl} target="_blank" class="btn btn-ghost btn-xs">
-                          Live
-                        </a>
-                      )}
-                    </div>
+                  <p class="text-sm mb-4 leading-relaxed" style="color: oklch(68% 0.02 260);">
+                    {project.data.description}
+                  </p>
+
+                  <div class="flex flex-wrap gap-1 mb-4">
+                    {project.data.technologies.slice(0, 3).map((tech) => (
+                      <span class="retro-tag">{tech}</span>
+                    ))}
+                    {project.data.technologies.length > 3 && (
+                      <span class="retro-label text-xs px-1.5" style="color: oklch(50% 0.02 260);">
+                        +{project.data.technologies.length - 3}
+                      </span>
+                    )}
+                  </div>
+
+                  <div class="flex gap-4" style="border-top: 1px solid oklch(78% 0.14 195 / 0.1); padding-top: 0.75rem;">
+                    {project.data.githubUrl && (
+                      <a
+                        href={project.data.githubUrl}
+                        target="_blank"
+                        class="font-mono-accent text-xs uppercase tracking-wider hover:opacity-80 transition-opacity"
+                        style="color: var(--retro-amber);"
+                      >
+                        Code ↗
+                      </a>
+                    )}
+                    {project.data.liveUrl && (
+                      <a
+                        href={project.data.liveUrl}
+                        target="_blank"
+                        class="font-mono-accent text-xs uppercase tracking-wider hover:opacity-80 transition-opacity"
+                        style="color: var(--retro-cyan);"
+                      >
+                        Live ↗
+                      </a>
+                    )}
                   </div>
                 </div>
               );
@@ -226,25 +225,44 @@ function getProjectIcon(title: string) {
         </div>
       </section>
 
-      <!-- Call to Action -->
-      <section class="py-16 px-6 bg-gradient-to-r from-primary to-secondary text-white">
-        <div class="max-w-4xl mx-auto text-center">
-          <h2 class="text-3xl md:text-4xl mb-6">Have a Project in Mind?</h2>
-          <p class="text-xl mb-8 opacity-90">
-            I'm always excited to work on challenging projects that make a real difference. 
-            Let's discuss how we can bring your ideas to life.
+      <hr class="retro-divider" />
+
+      <!-- CTA -->
+      <section class="py-20 px-6 retro-grid-bg" style="background: var(--retro-deep-navy);">
+        <div class="max-w-4xl mx-auto text-center retro-stagger">
+          <span class="retro-animate-in retro-label block mb-4" style="color: var(--retro-cyan);">ESTABLISH CONTACT</span>
+          <h2
+            class="retro-animate-in text-3xl md:text-4xl font-bold mb-6 retro-glow-amber"
+            style="color: var(--retro-amber-bright);"
+          >
+            Have a Project in Mind?
+          </h2>
+          <p
+            class="retro-animate-in font-mono-accent text-base mb-10 max-w-xl mx-auto"
+            style="color: oklch(72% 0.02 260);"
+          >
+            I'm available for consulting, project collaboration, or full-time opportunities.
           </p>
-          <div class="flex flex-wrap justify-center gap-4">
-            <a href="#contact" class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-primary">
-              📬 Let's Talk
+          <div class="retro-animate-in flex flex-wrap justify-center gap-4">
+            <a
+              href="mailto:hola@misaelabanto.com"
+              class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105"
+              style="background: var(--retro-amber); color: var(--retro-deep-navy);"
+            >
+              Get In Touch
             </a>
-            <a href="/experience" class="btn btn-ghost btn-lg text-white hover:bg-white/10">
-              💼 View Experience
+            <a
+              href="/experience"
+              class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider border-2 transition-all duration-300 hover:scale-105"
+              style="border-color: var(--retro-cyan); color: var(--retro-cyan);"
+            >
+              View Experience
             </a>
           </div>
         </div>
       </section>
+
     </main>
     <Footer />
   </body>
-</html> 
+</html>

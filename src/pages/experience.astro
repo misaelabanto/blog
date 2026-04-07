@@ -4,10 +4,10 @@ import Footer from '@/components/Footer.astro';
 import Header from '@/components/Header.astro';
 import { SITE_TITLE } from '@/consts';
 import { filterByLanguage } from '@/i18n/utils';
+import { formatDate, getSkillLevelColor, getStatusLabel, getTypeLabel } from '@/utils/content';
 import { getCollection } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 
-// Get all experience, projects, and skills from content collections
 const allExperiences = await getCollection('experience');
 const experiences = filterByLanguage(allExperiences, 'en').sort(
   (a, b) => a.data.order - b.data.order
@@ -25,137 +25,112 @@ const skills = filterByLanguage(allSkills, 'en').sort(
 
 const featuredProjects = projects.filter(project => project.data.featured);
 const featuredSkills = skills.filter(skill => skill.data.featured);
-
-// Helper function to format dates
-function formatDate(dateString: string) {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', { 
-    year: 'numeric', 
-    month: 'short' 
-  });
-}
-
-// Helper function to get type badge
-function getTypeBadge(type: string) {
-  switch (type) {
-    case 'work': return '💼 Full-time';
-    case 'freelance': return '🏃‍♂️ Freelance';
-    case 'startup': return '🚀 Startup';
-    default: return '💼 Work';
-  }
-}
-
-// Helper function to get status badge
-function getStatusBadge(status: string) {
-  switch (status) {
-    case 'completed': return { class: 'badge-success', text: '✅ Completed' };
-    case 'in-progress': return { class: 'badge-warning', text: '🚧 In Progress' };
-    case 'archived': return { class: 'badge-neutral', text: '📦 Archived' };
-    default: return { class: 'badge-neutral', text: status };
-  }
-}
-
-// Helper function to get project icon
-function getProjectIcon(title: string) {
-  if (title.includes('Agéndalo')) return '📅';
-  if (title.includes('YouTube')) return '🎮';
-  if (title.includes('Covid')) return '🗺️';
-  return '💻';
-}
-
-// Helper function to get skill level badge
-function getSkillLevelBadge(level: string) {
-  switch (level) {
-    case 'expert': return { class: 'badge-success', text: 'Expert' };
-    case 'advanced': return { class: 'badge-warning', text: 'Advanced' };
-    case 'intermediate': return { class: 'badge-info', text: 'Intermediate' };
-    case 'beginner': return { class: 'badge-neutral', text: 'Beginner' };
-    default: return { class: 'badge-neutral', text: level };
-  }
-}
 ---
 
 <!doctype html>
 <html lang="en" data-theme="dark">
   <head>
-    <BaseHead title={`Experience - ${SITE_TITLE}`} description="My professional journey, work experience, and featured projects showcasing my skills in data architecture, fullstack development, and system design." />
+    <BaseHead title={`Experience · ${SITE_TITLE}`} description="My professional journey, work experience, and featured projects showcasing my skills in data architecture, fullstack development, and system design." />
   </head>
-  <body>
+  <body class="retro-scanlines" style="background: var(--retro-deep-navy);">
     <Header />
     <main>
-      <!-- Hero Section -->
-      <section class="py-20 px-6 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
-        <div class="max-w-4xl mx-auto text-center">
-          <h1 class="text-4xl md:text-6xl mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            My Journey
-          </h1>
-          <p class="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto">
-            From data architecture at Fortune 500 companies to building successful startups, 
-            here's the story of my professional evolution and the projects that define my expertise.
+
+      <!-- Hero -->
+      <section
+        class="relative py-20 px-6 retro-grid-bg overflow-hidden"
+        style="background: linear-gradient(135deg, var(--retro-deep-navy) 0%, var(--retro-navy) 50%, oklch(22% 0.06 240) 100%);"
+      >
+        <div class="max-w-4xl mx-auto text-center retro-stagger">
+          <p class="retro-animate-in retro-label mb-4" style="color: var(--retro-amber);">
+            MISSION LOG
           </p>
-          <div class="flex flex-wrap justify-center gap-4">
-            <a href="#experience" class="btn btn-primary">
-              💼 Work Experience
+          <h1
+            class="retro-animate-in text-5xl md:text-6xl font-bold mb-6 retro-glow-amber retro-animate-flicker"
+            style="color: var(--retro-amber-bright);"
+          >
+            EXPERIENCE
+          </h1>
+          <p
+            class="retro-animate-in font-mono-accent text-base md:text-lg max-w-2xl mx-auto mb-10"
+            style="color: var(--retro-cyan);"
+          >
+            From data architecture at enterprise companies to building successful startups.
+          </p>
+          <div class="retro-animate-in flex flex-wrap justify-center gap-4">
+            <a
+              href="#experience"
+              class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105"
+              style="background: var(--retro-amber); color: var(--retro-deep-navy);"
+            >
+              Work History
             </a>
-            <a href="#projects" class="btn btn-secondary">
-              🚀 Featured Projects
+            <a
+              href="#projects"
+              class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider border-2 transition-all duration-300 hover:scale-105"
+              style="border-color: var(--retro-cyan); color: var(--retro-cyan);"
+            >
+              Projects
             </a>
           </div>
         </div>
       </section>
 
-      <!-- Experience Section -->
-      <section id="experience" class="py-16 px-6">
-        <div class="max-w-6xl mx-auto">
-          <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl mb-4">💼 Professional Experience</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-              My career journey spans enterprise data architecture, startup leadership, and freelance consulting, 
-              with a focus on building scalable systems that solve real-world problems.
-            </p>
+      <hr class="retro-divider" />
+
+      <!-- Experience Timeline -->
+      <section id="experience" class="py-16 px-6" style="background: var(--retro-deep-navy);">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-14">
+            <span class="retro-label block mb-3" style="color: var(--retro-amber);">PROFESSIONAL HISTORY</span>
+            <h2 class="text-3xl md:text-4xl font-bold retro-glow-amber" style="color: var(--retro-amber-bright);">
+              Work Experience
+            </h2>
           </div>
 
-          <div class="space-y-8">
+          <div class="space-y-6">
             {experiences.map((experience) => (
-              <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-primary">
-                <div class="card-body">
-                  <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                    <div class="flex-1">
-                      <h3 class="card-title text-2xl mb-2">{experience.data.position}</h3>
-                      <h4 class="text-lg font-semibold text-primary mb-2">{experience.data.company}</h4>
-                      <p class="text-base-content/70 mb-4">{experience.data.description}</p>
+              <div class="retro-card" style="border-left: 3px solid var(--retro-amber); border-radius: 0 0.5rem 0.5rem 0;">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                  <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-1">
+                      <span class="retro-label" style="color: var(--retro-cyan);">{getTypeLabel(experience.data.type)}</span>
                     </div>
-                    <div class="flex flex-col items-end text-right">
-                      <div class="badge badge-outline mb-2">
-                        {getTypeBadge(experience.data.type)}
-                      </div>
-                      <div class="text-sm text-base-content/70 mb-1">
-                        {formatDate(experience.data.startDate)} - 
-                        {experience.data.current ? 'Present' : formatDate(experience.data.endDate || '')}
-                      </div>
-                      <div class="text-sm text-base-content/70">{experience.data.location}</div>
-                    </div>
+                    <h3 class="text-xl font-bold mb-1" style="color: var(--retro-amber-bright);">
+                      {experience.data.position}
+                    </h3>
+                    <p class="font-semibold mb-3" style="color: var(--retro-cyan);">{experience.data.company}</p>
+                    <p class="text-sm leading-relaxed" style="color: oklch(72% 0.02 260);">{experience.data.description}</p>
                   </div>
+                  <div class="flex flex-col md:items-end gap-1 shrink-0">
+                    <p class="font-mono-accent text-xs" style="color: oklch(65% 0.02 260);">
+                      {formatDate(experience.data.startDate)} — {experience.data.current ? 'Present' : formatDate(experience.data.endDate || '')}
+                    </p>
+                    <p class="font-mono-accent text-xs" style="color: oklch(55% 0.02 260);">{experience.data.location}</p>
+                  </div>
+                </div>
 
-                  <!-- Technologies -->
-                  <div class="mb-4">
-                    <h5 class="font-semibold mb-2">Technologies & Tools:</h5>
-                    <div class="flex flex-wrap gap-2">
-                      {experience.data.technologies.map((tech) => (
-                        <span class="badge badge-secondary">{tech}</span>
-                      ))}
-                    </div>
+                <!-- Technologies -->
+                <div class="mb-4">
+                  <p class="retro-label mb-2 text-xs" style="color: oklch(55% 0.02 260);">STACK</p>
+                  <div class="flex flex-wrap gap-1.5">
+                    {experience.data.technologies.map((tech) => (
+                      <span class="retro-tag">{tech}</span>
+                    ))}
                   </div>
+                </div>
 
-                  <!-- Key Achievements -->
-                  <div class="mb-4">
-                    <h5 class="font-semibold mb-2">Key Achievements:</h5>
-                    <ul class="list-disc list-inside space-y-1 text-base-content/80">
-                      {experience.data.achievements.map((achievement) => (
-                        <li>{achievement}</li>
-                      ))}
-                    </ul>
-                  </div>
+                <!-- Achievements -->
+                <div>
+                  <p class="retro-label mb-2 text-xs" style="color: oklch(55% 0.02 260);">ACHIEVEMENTS</p>
+                  <ul class="space-y-1.5">
+                    {experience.data.achievements.map((achievement) => (
+                      <li class="font-mono-accent text-xs flex gap-2" style="color: oklch(68% 0.02 260);">
+                        <span style="color: var(--retro-amber);">›</span>
+                        {achievement}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             ))}
@@ -163,88 +138,83 @@ function getSkillLevelBadge(level: string) {
         </div>
       </section>
 
-      <!-- Projects Section -->
-      <section id="projects" class="py-16 px-6 bg-base-200">
+      <hr class="retro-divider" />
+
+      <!-- Featured Projects -->
+      <section id="projects" class="py-16 px-6 retro-grid-bg" style="background-color: var(--retro-navy);">
         <div class="max-w-6xl mx-auto">
-          <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl mb-4">🚀 Featured Projects</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-              A selection of projects that showcase my technical skills, problem-solving abilities, 
-              and passion for building solutions that make a real impact.
-            </p>
+          <div class="text-center mb-14">
+            <span class="retro-label block mb-3" style="color: var(--retro-amber);">ACTIVE MISSIONS</span>
+            <h2 class="text-3xl md:text-4xl font-bold retro-glow-amber" style="color: var(--retro-amber-bright);">
+              Featured Projects
+            </h2>
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {featuredProjects.map((project) => {
-              const statusBadge = getStatusBadge(project.data.status);
+              const status = getStatusLabel(project.data.status);
               return (
-                <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
-                  <figure class="px-6 pt-6">
-                    <div class="w-full h-48 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
-                      <div class="text-4xl">
-                        {getProjectIcon(project.data.title)}
-                      </div>
-                    </div>
-                  </figure>
-                  <div class="card-body">
-                    <h3 class="card-title text-xl mb-2">{project.data.title}</h3>
-                    <p class="text-base-content/70 mb-4">{project.data.description}</p>
-                    
-                    <!-- Project Status and Category -->
-                    <div class="flex items-center gap-2 mb-4">
-                      <div class={`badge ${statusBadge.class}`}>
-                        {statusBadge.text}
-                      </div>
-                      {project.data.category && (
-                        <div class="badge badge-outline">
-                          {project.data.category}
-                        </div>
-                      )}
-                      <div class="text-sm text-base-content/70">
-                        {formatDate(project.data.startDate)}
-                      </div>
-                    </div>
-
-                    <!-- Technologies -->
-                    <div class="mb-4">
-                      <div class="flex flex-wrap gap-1">
-                        {project.data.technologies.slice(0, 4).map((tech) => (
-                          <span class="badge badge-outline badge-sm">{tech}</span>
-                        ))}
-                        {project.data.technologies.length > 4 && (
-                          <span class="badge badge-outline badge-sm">+{project.data.technologies.length - 4}</span>
-                        )}
-                      </div>
-                    </div>
-
-                    <!-- Project Highlights -->
-                    {project.data.highlights && project.data.highlights.length > 0 && (
-                      <div class="mb-4">
-                        <h5 class="font-semibold mb-2 text-sm">Key Highlights:</h5>
-                        <ul class="list-disc list-inside space-y-1 text-sm text-base-content/70">
-                          {project.data.highlights.slice(0, 2).map((highlight) => (
-                            <li>{highlight}</li>
-                          ))}
-                        </ul>
-                      </div>
+                <div class="retro-card flex flex-col h-full">
+                  <div class="flex items-center justify-between mb-4">
+                    <span class="retro-label" style={`color: ${status.color};`}>[{status.text}]</span>
+                    {project.data.category && (
+                      <span class="retro-label" style="color: var(--retro-cyan);">{project.data.category}</span>
                     )}
+                  </div>
 
-                    <div class="card-actions justify-between items-center">
-                      <div class="flex gap-2">
-                        {project.data.githubUrl && (
-                          <a href={project.data.githubUrl} target="_blank" class="btn btn-ghost btn-sm">
-                            <Icon name="simple-icons:github" class="w-4 h-4" />
-                            Code
-                          </a>
-                        )}
-                        {project.data.liveUrl && (
-                          <a href={project.data.liveUrl} target="_blank" class="btn btn-ghost btn-sm">
-                            <Icon name="mdi:open-in-new" class="w-4 h-4" />
-                            Live
-                          </a>
-                        )}
-                      </div>
-                    </div>
+                  <h3 class="text-xl font-bold mb-3" style="color: var(--retro-amber-bright);">
+                    {project.data.title}
+                  </h3>
+
+                  <p class="text-sm mb-4 leading-relaxed flex-grow" style="color: oklch(72% 0.02 260);">
+                    {project.data.description}
+                  </p>
+
+                  {project.data.highlights && project.data.highlights.length > 0 && (
+                    <ul class="mb-4 space-y-1">
+                      {project.data.highlights.slice(0, 2).map((highlight) => (
+                        <li class="font-mono-accent text-xs flex gap-2" style="color: oklch(65% 0.02 260);">
+                          <span style="color: var(--retro-cyan);">›</span>
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  <div class="flex flex-wrap gap-1 mb-5">
+                    {project.data.technologies.slice(0, 4).map((tech) => (
+                      <span class="retro-tag">{tech}</span>
+                    ))}
+                    {project.data.technologies.length > 4 && (
+                      <span class="retro-label px-2 py-0.5" style="color: oklch(55% 0.02 260);">
+                        +{project.data.technologies.length - 4}
+                      </span>
+                    )}
+                  </div>
+
+                  <div class="flex gap-4 mt-auto pt-2" style="border-top: 1px solid oklch(78% 0.14 195 / 0.1);">
+                    {project.data.githubUrl && (
+                      <a
+                        href={project.data.githubUrl}
+                        target="_blank"
+                        class="font-mono-accent text-xs uppercase tracking-wider flex items-center gap-1.5 hover:opacity-80 transition-opacity"
+                        style="color: var(--retro-amber);"
+                      >
+                        <Icon name="simple-icons:github" class="w-3.5 h-3.5" />
+                        Code
+                      </a>
+                    )}
+                    {project.data.liveUrl && (
+                      <a
+                        href={project.data.liveUrl}
+                        target="_blank"
+                        class="font-mono-accent text-xs uppercase tracking-wider flex items-center gap-1.5 hover:opacity-80 transition-opacity"
+                        style="color: var(--retro-cyan);"
+                      >
+                        <Icon name="mdi:open-in-new" class="w-3.5 h-3.5" />
+                        Live Demo
+                      </a>
+                    )}
                   </div>
                 </div>
               );
@@ -253,105 +223,112 @@ function getSkillLevelBadge(level: string) {
         </div>
       </section>
 
-      <!-- Skills & Technologies Overview -->
-      <section class="py-16 px-6">
+      <hr class="retro-divider" />
+
+      <!-- Skills -->
+      <section class="py-16 px-6" style="background: var(--retro-deep-navy);">
         <div class="max-w-6xl mx-auto">
-          <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl mb-4">🛠️ Technical Expertise</h2>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-              A comprehensive overview of the technologies, tools, and methodologies I've mastered throughout my career.
-            </p>
+          <div class="text-center mb-14">
+            <span class="retro-label block mb-3" style="color: var(--retro-amber);">TECHNICAL ARSENAL</span>
+            <h2 class="text-3xl md:text-4xl font-bold retro-glow-amber" style="color: var(--retro-amber-bright);">
+              Skills & Expertise
+            </h2>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {featuredSkills.map((skill) => (
-              <div class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow">
-                <div class="card-body text-center">
-                  <div class="text-3xl mb-4">{skill.data.icon}</div>
-                  <h3 class="card-title justify-center mb-2">{skill.data.title}</h3>
-                  {skill.data.description && (
-                    <p class="text-sm text-base-content/70 mb-4">{skill.data.description}</p>
+              <div class="retro-card">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="text-2xl">{skill.data.icon}</span>
+                  <h3 class="font-bold" style="color: var(--retro-amber-bright);">{skill.data.title}</h3>
+                </div>
+                {skill.data.description && (
+                  <p class="text-xs mb-4 leading-relaxed" style="color: oklch(65% 0.02 260);">{skill.data.description}</p>
+                )}
+                <div class="flex flex-wrap gap-1">
+                  {skill.data.technologies.slice(0, 6).map((tech) => (
+                    <span class="retro-tag" style={`color: ${getSkillLevelColor(tech.level || '')};`}>
+                      {tech.name}{tech.level === 'expert' ? ' ★' : ''}
+                    </span>
+                  ))}
+                  {skill.data.technologies.length > 6 && (
+                    <span class="retro-label text-xs px-1.5" style="color: oklch(50% 0.02 260);">
+                      +{skill.data.technologies.length - 6}
+                    </span>
                   )}
-                  <div class="flex flex-wrap gap-1 justify-center">
-                    {skill.data.technologies.slice(0, 6).map((tech) => {
-                      const levelBadge = tech.level ? getSkillLevelBadge(tech.level) : null;
-                      return (
-                        <div class="tooltip" data-tip={tech.level ? `${tech.level}${tech.years ? ` - ${tech.years} years` : ''}` : tech.name}>
-                          <span class={`badge badge-outline badge-sm ${levelBadge ? 'cursor-help' : ''}`}>
-                            {tech.name}
-                            {tech.level === 'expert' && <span class="ml-1">⭐</span>}
-                          </span>
-                        </div>
-                      );
-                    })}
-                    {skill.data.technologies.length > 6 && (
-                      <span class="badge badge-outline badge-sm opacity-60">
-                        +{skill.data.technologies.length - 6}
-                      </span>
-                    )}
-                  </div>
                 </div>
               </div>
             ))}
           </div>
 
-          <!-- Detailed Skills Breakdown -->
-          <div class="mt-16">
-            <h3 class="text-2xl mb-8 text-center">Detailed Skills Overview</h3>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {featuredSkills.map((skill) => (
-                <div class="card bg-base-100 shadow-md">
-                  <div class="card-body">
-                    <h4 class="card-title mb-4">
-                      <span class="text-2xl mr-2">{skill.data.icon}</span>
-                      {skill.data.title}
-                    </h4>
-                    <div class="space-y-3">
-                      {skill.data.technologies.map((tech) => {
-                        const levelBadge = tech.level ? getSkillLevelBadge(tech.level) : null;
-                        return (
-                          <div class="flex items-center justify-between">
-                            <span class="font-medium">{tech.name}</span>
-                            <div class="flex items-center gap-2">
-                              {tech.years && (
-                                <span class="text-sm text-base-content/60">{tech.years}y</span>
-                              )}
-                              {levelBadge && (
-                                <span class={`badge badge-sm ${levelBadge.class}`}>
-                                  {levelBadge.text}
-                                </span>
-                              )}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
+          <!-- Detailed breakdown -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {featuredSkills.map((skill) => (
+              <div class="retro-card">
+                <div class="flex items-center gap-3 mb-5" style="border-bottom: 1px solid oklch(78% 0.14 195 / 0.1); padding-bottom: 0.75rem;">
+                  <span class="text-xl">{skill.data.icon}</span>
+                  <h4 class="font-bold" style="color: var(--retro-amber-bright);">{skill.data.title}</h4>
                 </div>
-              ))}
-            </div>
+                <div class="space-y-2.5">
+                  {skill.data.technologies.map((tech) => (
+                    <div class="flex items-center justify-between">
+                      <span class="font-mono-accent text-xs" style="color: oklch(78% 0.02 260);">{tech.name}</span>
+                      <div class="flex items-center gap-2">
+                        {tech.years && (
+                          <span class="font-mono-accent text-xs" style="color: oklch(50% 0.02 260);">{tech.years}y</span>
+                        )}
+                        {tech.level && (
+                          <span class="retro-tag" style={`color: ${getSkillLevelColor(tech.level)};`}>
+                            {tech.level.toUpperCase()}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <!-- Call to Action -->
-      <section class="py-16 px-6 bg-gradient-to-r from-primary to-secondary text-white">
-        <div class="max-w-4xl mx-auto text-center">
-          <h2 class="text-3xl md:text-4xl mb-6">Let's Build Something Amazing Together</h2>
-          <p class="text-xl mb-8 opacity-90">
-            Ready to tackle your next technical challenge? I'm available for consulting, 
-            project collaboration, or full-time opportunities.
+      <hr class="retro-divider" />
+
+      <!-- CTA -->
+      <section class="py-20 px-6 retro-grid-bg" style="background: var(--retro-deep-navy);">
+        <div class="max-w-4xl mx-auto text-center retro-stagger">
+          <span class="retro-animate-in retro-label block mb-4" style="color: var(--retro-cyan);">ESTABLISH CONTACT</span>
+          <h2
+            class="retro-animate-in text-3xl md:text-4xl font-bold mb-6 retro-glow-amber"
+            style="color: var(--retro-amber-bright);"
+          >
+            Let's Build Something Amazing
+          </h2>
+          <p
+            class="retro-animate-in font-mono-accent text-base mb-10 max-w-xl mx-auto"
+            style="color: oklch(72% 0.02 260);"
+          >
+            Available for consulting, project collaboration, or full-time opportunities.
           </p>
-          <div class="flex flex-wrap justify-center gap-4">
-            <a href="#contact" class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-primary">
-              📬 Get In Touch
+          <div class="retro-animate-in flex flex-wrap justify-center gap-4">
+            <a
+              href="mailto:hola@misaelabanto.com"
+              class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105"
+              style="background: var(--retro-amber); color: var(--retro-deep-navy);"
+            >
+              Get In Touch
             </a>
-            <a href="/blog" class="btn btn-ghost btn-lg text-white hover:bg-white/10">
-              📖 Read My Blog
+            <a
+              href="/blog"
+              class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider border-2 transition-all duration-300 hover:scale-105"
+              style="border-color: var(--retro-cyan); color: var(--retro-cyan);"
+            >
+              Read Blog
             </a>
           </div>
         </div>
       </section>
+
     </main>
     <Footer />
   </body>

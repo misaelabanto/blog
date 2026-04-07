@@ -7,7 +7,6 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
 import { filterByLanguage } from '@/i18n/utils';
 import { getCollection } from 'astro:content';
 
-// Get all blog posts and filter for English only
 const allPosts = await getCollection('blog');
 const posts = filterByLanguage(allPosts, 'en').sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -15,32 +14,55 @@ const posts = filterByLanguage(allPosts, 'en').sort(
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={`Blog · ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 	</head>
-	<body>
+	<body class="retro-scanlines" style="background: var(--retro-deep-navy);">
 		<Header />
-		<main class="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-			<section>
-				<h1 class="text-4xl mb-8 text-center">Blog</h1>
-				<p class="text-lg mb-12 text-center max-w-3xl mx-auto text-gray-600">
-					My thoughts on technology, development, data, and learning. Ideas I hope you'll find useful and interesting.
-				</p>
-				{posts.length === 0 ? (
-					<div class="text-center py-12">
-						<p class="text-lg text-gray-600 mb-4">No English posts available yet.</p>
-						<p class="text-sm text-gray-500">New content coming soon!</p>
-					</div>
-				) : (
-					<ul class="flex flex-wrap gap-4 list-none m-0 p-0 md:gap-8">
-						{
-							posts.map((post) => (
-								<BlogPostCard post={post} isFirst={post === posts[0]} />
-							))
-						}
-					</ul>
-				)}
+		<main>
+			<!-- Hero -->
+			<section
+				class="relative py-20 px-6 retro-grid-bg overflow-hidden"
+				style="background: linear-gradient(135deg, var(--retro-deep-navy) 0%, var(--retro-navy) 50%, oklch(22% 0.06 240) 100%);"
+			>
+				<div class="max-w-4xl mx-auto text-center retro-stagger">
+					<p class="retro-animate-in retro-label mb-4" style="color: var(--retro-amber);">
+						INCOMING TRANSMISSIONS
+					</p>
+					<h1
+						class="retro-animate-in text-5xl md:text-6xl font-bold mb-6 retro-glow-amber retro-animate-flicker"
+						style="color: var(--retro-amber-bright);"
+					>
+						WRITINGS
+					</h1>
+					<p
+						class="retro-animate-in font-mono-accent text-base md:text-lg max-w-2xl mx-auto"
+						style="color: var(--retro-cyan);"
+					>
+						Thoughts on technology, development, data, and learning.
+					</p>
+				</div>
+			</section>
+
+			<hr class="retro-divider" />
+
+			<!-- Posts Grid -->
+			<section class="py-16 px-6">
+				<div class="max-w-5xl mx-auto">
+					{posts.length === 0 ? (
+						<div class="text-center py-20">
+							<p class="retro-label" style="color: var(--retro-cyan);">NO TRANSMISSIONS YET</p>
+							<p class="font-mono-accent text-sm mt-4 opacity-60" style="color: var(--retro-amber);">New content incoming soon.</p>
+						</div>
+					) : (
+						<ul class="grid grid-cols-1 md:grid-cols-2 gap-6 list-none m-0 p-0">
+							{posts.map((post) => (
+								<BlogPostCard post={post} />
+							))}
+						</ul>
+					)}
+				</div>
 			</section>
 		</main>
 		<Footer />
