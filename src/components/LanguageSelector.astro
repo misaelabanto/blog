@@ -1,5 +1,6 @@
 ---
 import { languages, getLangFromUrl, translateRoute } from '../i18n/utils';
+import { LANGUAGE_STORAGE_KEY } from '../i18n/constants';
 import { Icon } from 'astro-icon/components';
 
 const currentLang = getLangFromUrl(Astro.url);
@@ -37,7 +38,7 @@ const languageOptions = Object.entries(languages).map(([lang, label]) => {
           <a 
             href={option.href}
             class={`flex items-center gap-3 ${option.isActive ? 'active bg-primary text-primary-content' : ''}`}
-            onclick="localStorage.setItem('language', this.dataset.lang)"
+            onclick={`localStorage.setItem('${LANGUAGE_STORAGE_KEY}', this.dataset.lang)`}
             data-lang={option.lang}
           >
             <span class="text-lg">{option.flag}</span>
@@ -71,7 +72,7 @@ const languageOptions = Object.entries(languages).map(([lang, label]) => {
           <a 
             href={option.href}
             class={`flex items-center gap-2 ${option.isActive ? 'active bg-primary text-primary-content' : ''}`}
-            onclick="localStorage.setItem('language', this.dataset.lang)"
+            onclick={`localStorage.setItem('${LANGUAGE_STORAGE_KEY}', this.dataset.lang)`}
             data-lang={option.lang}
           >
             <span>{option.flag}</span>
@@ -87,18 +88,19 @@ const languageOptions = Object.entries(languages).map(([lang, label]) => {
 </div>
 
 <script>
-  // Store language preference when switching
+  import { LANGUAGE_STORAGE_KEY } from '@/i18n/constants';
+
   document.addEventListener('DOMContentLoaded', () => {
     const languageLinks = document.querySelectorAll('[data-lang]');
-    
+
     languageLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         const target = e.currentTarget as HTMLElement;
         const lang = target?.getAttribute('data-lang');
         if (lang) {
-          localStorage.setItem('language', lang);
+          localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
         }
       });
     });
   });
-</script> 
+</script>

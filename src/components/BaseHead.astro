@@ -99,15 +99,13 @@ const {
 
 <!-- Language Detection Script -->
 <script>
-  // Client-side language detection for static builds
-  // This replaces server-side header detection that doesn't work with static output
-  
+  import { LANGUAGE_STORAGE_KEY } from '@/i18n/constants';
+
   const languages = { "es": "es", "en": "en" };
   const defaultLang = "en";
 
   function detectUserLanguage() {
-    // Check for stored preference first
-    const stored = localStorage.getItem('preferred-language');
+    const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
     if (stored && stored in languages) {
       return stored;
     }
@@ -144,8 +142,7 @@ const {
       return;
     }
 
-    // Store the preference
-    localStorage.setItem('preferred-language', preferredLang);
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, preferredLang);
 
     // Build the redirect URL
     let redirectPath;
