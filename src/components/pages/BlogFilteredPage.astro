@@ -1,0 +1,119 @@
+---
+import BaseHead from '@/components/BaseHead.astro';
+import FormattedDate from '@/components/FormattedDate.astro';
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+import type { Language } from '@/i18n/utils';
+import { useTranslatedPath } from '@/i18n/utils';
+import { getUI } from '@/i18n/ui';
+
+interface Props {
+	lang: Language;
+	heading: string;
+	browserTitle: string;
+	metaDescription: string;
+	posts: any[];
+	activeTag?: string;
+}
+
+const { lang, heading, browserTitle, metaDescription, posts, activeTag } = Astro.props;
+const t = getUI(lang);
+const translatePath = useTranslatedPath(lang);
+
+const backHref = translatePath('/blog');
+const countLabel =
+	posts.length === 1 ? t['blog.transmissionSingular'] : t['blog.transmissionPlural'];
+---
+
+<html lang={lang} data-theme="dark">
+	<head>
+		<BaseHead title={browserTitle} description={metaDescription} />
+	</head>
+
+	<body class="retro-scanlines" style="background: var(--retro-deep-navy);">
+		<Header />
+		<main>
+			<section
+				class="relative py-16 px-6 retro-grid-bg"
+				style="background: linear-gradient(180deg, var(--retro-deep-navy) 0%, var(--retro-navy) 100%);"
+			>
+				<div class="max-w-4xl mx-auto retro-stagger">
+					<div class="retro-animate-in mb-2">
+						<a href={backHref} class="retro-label hover:opacity-80 transition-opacity" style="color: var(--retro-cyan);">
+							{t['blog.backToAll']}
+						</a>
+					</div>
+					<h1
+						class="retro-animate-in text-3xl md:text-5xl font-bold mb-3 retro-glow-amber"
+						style="color: var(--retro-amber-bright);"
+					>
+						{heading}
+					</h1>
+					<p class="retro-animate-in font-mono-accent text-sm" style="color: var(--retro-cyan);">
+						{posts.length} {countLabel} {t['blog.found']}
+					</p>
+				</div>
+				<hr class="retro-divider mt-8" />
+			</section>
+
+			<section class="py-12 px-6">
+				<div class="max-w-4xl mx-auto space-y-6">
+					{posts.map((post) => {
+						const postHref = translatePath(`/blog/${post.id.replace(/^(en|es)\//, '')}`);
+						const categoryHref = post.data.category
+							? translatePath(`/blog/category/${post.data.category.toLowerCase().replace(/\s+/g, '-')}`)
+							: null;
+						return (
+							<a href={postHref} class="retro-card block group no-underline">
+								<div class="flex flex-col md:flex-row gap-6">
+									{post.data.heroImage && (
+										<div class="md:w-48 shrink-0 rounded overflow-hidden" style="border: 1px solid oklch(78% 0.14 195 / 0.15);">
+											<img
+												src={post.data.heroImage}
+												alt={post.data.title}
+												class="w-full h-36 object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+											/>
+										</div>
+									)}
+									<div class="flex-1">
+										<div class="flex items-center gap-3 mb-2">
+											<p class="font-mono-accent text-xs" style="color: var(--retro-cyan);">
+												<FormattedDate date={post.data.pubDate} />
+											</p>
+											{categoryHref && (
+												<a
+													href={categoryHref}
+													class="retro-label text-xs hover:opacity-80 transition-opacity"
+													style="color: var(--retro-amber);"
+												>
+													// {post.data.category}
+												</a>
+											)}
+										</div>
+										<h2 class="text-xl font-bold mb-2" style="color: var(--retro-amber-bright);">
+											{post.data.title}
+										</h2>
+										<p class="text-sm leading-relaxed mb-4" style="color: oklch(70% 0.02 260);">
+											{post.data.description}
+										</p>
+										{post.data.tags.length > 0 && (
+											<div class="flex flex-wrap gap-1">
+												{post.data.tags.map((tagItem: string) => (
+													<span
+														class="retro-tag"
+														style={activeTag && tagItem === activeTag ? 'color: var(--retro-amber);' : undefined}
+													>#{tagItem}</span>
+												))}
+											</div>
+										)}
+									</div>
+								</div>
+							</a>
+						);
+					})}
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

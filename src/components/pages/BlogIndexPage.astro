@@ -1,0 +1,77 @@
+---
+import BaseHead from '@/components/BaseHead.astro';
+import BlogPostCard from '@/components/BlogPostCard.astro';
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
+import type { Language } from '@/i18n/utils';
+import { filterByLanguage } from '@/i18n/utils';
+import { getUI } from '@/i18n/ui';
+import { getCollection } from 'astro:content';
+
+interface Props {
+	lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = getUI(lang);
+
+const allPosts = await getCollection('blog');
+const posts = filterByLanguage(allPosts, lang).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<!doctype html>
+<html lang={lang} data-theme="dark">
+	<head>
+		<BaseHead title={`${t['blog.pageTitle']} · ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+	</head>
+	<body class="retro-scanlines" style="background: var(--retro-deep-navy);">
+		<Header />
+		<main>
+			<section
+				class="relative py-20 px-6 retro-grid-bg overflow-hidden"
+				style="background: linear-gradient(135deg, var(--retro-deep-navy) 0%, var(--retro-navy) 50%, oklch(22% 0.06 240) 100%);"
+			>
+				<div class="max-w-4xl mx-auto text-center retro-stagger">
+					<p class="retro-animate-in retro-label mb-4" style="color: var(--retro-amber);">
+						{t['blog.heroLabel']}
+					</p>
+					<h1
+						class="retro-animate-in text-5xl md:text-6xl font-bold mb-6 retro-glow-amber retro-animate-flicker"
+						style="color: var(--retro-amber-bright);"
+					>
+						{t['blog.heroHeading']}
+					</h1>
+					<p
+						class="retro-animate-in font-mono-accent text-base md:text-lg max-w-2xl mx-auto"
+						style="color: var(--retro-cyan);"
+					>
+						{t['blog.heroSubtitle']}
+					</p>
+				</div>
+			</section>
+
+			<hr class="retro-divider" />
+
+			<section class="py-16 px-6">
+				<div class="max-w-5xl mx-auto">
+					{posts.length === 0 ? (
+						<div class="text-center py-20">
+							<p class="retro-label" style="color: var(--retro-cyan);">{t['blog.emptyLabel']}</p>
+							<p class="font-mono-accent text-sm mt-4 opacity-60" style="color: var(--retro-amber);">{t['blog.emptyText']}</p>
+						</div>
+					) : (
+						<ul class="grid grid-cols-1 md:grid-cols-2 gap-6 list-none m-0 p-0">
+							{posts.map((post) => (
+								<BlogPostCard post={post} />
+							))}
+						</ul>
+					)}
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

@@ -1,0 +1,346 @@
+---
+import BaseHead from '@/components/BaseHead.astro';
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+import { SITE_TITLE } from '@/consts';
+import type { Language } from '@/i18n/utils';
+import { filterByLanguage, useTranslatedPath } from '@/i18n/utils';
+import { getUI } from '@/i18n/ui';
+import {
+	formatDate,
+	getSkillLevelColor,
+	getStatusLabel,
+	getTypeLabel,
+} from '@/utils/content';
+import { getCollection } from 'astro:content';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+	lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = getUI(lang);
+const translatePath = useTranslatedPath(lang);
+
+const allExperiences = await getCollection('experience');
+const experiences = filterByLanguage(allExperiences, lang).sort(
+	(a, b) => a.data.order - b.data.order,
+);
+
+const allProjects = await getCollection('projects');
+const projects = filterByLanguage(allProjects, lang).sort(
+	(a, b) => a.data.order - b.data.order,
+);
+
+const allSkills = await getCollection('skills');
+const skills = filterByLanguage(allSkills, lang).sort(
+	(a, b) => a.data.order - b.data.order,
+);
+
+const featuredProjects = projects.filter((project) => project.data.featured);
+const featuredSkills = skills.filter((skill) => skill.data.featured);
+
+const blogHref = translatePath('/blog');
+---
+
+<!doctype html>
+<html lang={lang} data-theme="dark">
+	<head>
+		<BaseHead
+			title={`${t['experience.pageTitle']} · ${SITE_TITLE}`}
+			description={t['experience.pageDescription']}
+		/>
+	</head>
+	<body class="retro-scanlines" style="background: var(--retro-deep-navy);">
+		<Header />
+		<main>
+			<section
+				class="relative py-20 px-6 retro-grid-bg overflow-hidden"
+				style="background: linear-gradient(135deg, var(--retro-deep-navy) 0%, var(--retro-navy) 50%, oklch(22% 0.06 240) 100%);"
+			>
+				<div class="max-w-4xl mx-auto text-center retro-stagger">
+					<p class="retro-animate-in retro-label mb-4" style="color: var(--retro-amber);">
+						{t['experience.heroLabel']}
+					</p>
+					<h1
+						class="retro-animate-in text-5xl md:text-6xl font-bold mb-6 retro-glow-amber retro-animate-flicker"
+						style="color: var(--retro-amber-bright);"
+					>
+						{t['experience.heroHeading']}
+					</h1>
+					<p
+						class="retro-animate-in font-mono-accent text-base md:text-lg max-w-2xl mx-auto mb-10"
+						style="color: var(--retro-cyan);"
+					>
+						{t['experience.heroSubtitle']}
+					</p>
+					<div class="retro-animate-in flex flex-wrap justify-center gap-4">
+						<a
+							href="#experience"
+							class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105"
+							style="background: var(--retro-amber); color: var(--retro-deep-navy);"
+						>
+							{t['experience.ctaHistoryText']}
+						</a>
+						<a
+							href="#projects"
+							class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider border-2 transition-all duration-300 hover:scale-105"
+							style="border-color: var(--retro-cyan); color: var(--retro-cyan);"
+						>
+							{t['experience.ctaProjectsText']}
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<hr class="retro-divider" />
+
+			<section id="experience" class="py-16 px-6" style="background: var(--retro-deep-navy);">
+				<div class="max-w-5xl mx-auto">
+					<div class="text-center mb-14">
+						<span class="retro-label block mb-3" style="color: var(--retro-amber);">{t['experience.historyLabel']}</span>
+						<h2 class="text-3xl md:text-4xl font-bold retro-glow-amber" style="color: var(--retro-amber-bright);">
+							{t['experience.historyHeading']}
+						</h2>
+					</div>
+
+					<div class="space-y-6">
+						{experiences.map((experience) => (
+							<div class="retro-card" style="border-left: 3px solid var(--retro-amber); border-radius: 0 0.5rem 0.5rem 0;">
+								<div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+									<div class="flex-1">
+										<div class="flex items-center gap-3 mb-1">
+											<span class="retro-label" style="color: var(--retro-cyan);">{getTypeLabel(experience.data.type, lang)}</span>
+										</div>
+										<h3 class="text-xl font-bold mb-1" style="color: var(--retro-amber-bright);">
+											{experience.data.position}
+										</h3>
+										<p class="font-semibold mb-3" style="color: var(--retro-cyan);">{experience.data.company}</p>
+										<p class="text-sm leading-relaxed" style="color: oklch(72% 0.02 260);">{experience.data.description}</p>
+									</div>
+									<div class="flex flex-col md:items-end gap-1 shrink-0">
+										<p class="font-mono-accent text-xs" style="color: oklch(65% 0.02 260);">
+											{formatDate(experience.data.startDate, lang)} — {experience.data.current ? t['experience.present'] : formatDate(experience.data.endDate || '', lang)}
+										</p>
+										<p class="font-mono-accent text-xs" style="color: oklch(55% 0.02 260);">{experience.data.location}</p>
+									</div>
+								</div>
+
+								<div class="mb-4">
+									<p class="retro-label mb-2 text-xs" style="color: oklch(55% 0.02 260);">{t['experience.stackLabel']}</p>
+									<div class="flex flex-wrap gap-1.5">
+										{experience.data.technologies.map((tech) => (
+											<span class="retro-tag">{tech}</span>
+										))}
+									</div>
+								</div>
+
+								<div>
+									<p class="retro-label mb-2 text-xs" style="color: oklch(55% 0.02 260);">{t['experience.achievementsLabel']}</p>
+									<ul class="space-y-1.5">
+										{experience.data.achievements.map((achievement) => (
+											<li class="font-mono-accent text-xs flex gap-2" style="color: oklch(68% 0.02 260);">
+												<span style="color: var(--retro-amber);">›</span>
+												{achievement}
+											</li>
+										))}
+									</ul>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<hr class="retro-divider" />
+
+			<section id="projects" class="py-16 px-6 retro-grid-bg" style="background-color: var(--retro-navy);">
+				<div class="max-w-6xl mx-auto">
+					<div class="text-center mb-14">
+						<span class="retro-label block mb-3" style="color: var(--retro-amber);">{t['experience.projectsLabel']}</span>
+						<h2 class="text-3xl md:text-4xl font-bold retro-glow-amber" style="color: var(--retro-amber-bright);">
+							{t['experience.projectsHeading']}
+						</h2>
+					</div>
+
+					<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+						{featuredProjects.map((project) => {
+							const status = getStatusLabel(project.data.status, lang);
+							return (
+								<div class="retro-card flex flex-col h-full">
+									<div class="flex items-center justify-between mb-4">
+										<span class="retro-label" style={`color: ${status.color};`}>[{status.text}]</span>
+										{project.data.category && (
+											<span class="retro-label" style="color: var(--retro-cyan);">{project.data.category}</span>
+										)}
+									</div>
+
+									<h3 class="text-xl font-bold mb-3" style="color: var(--retro-amber-bright);">
+										{project.data.title}
+									</h3>
+
+									<p class="text-sm mb-4 leading-relaxed flex-grow" style="color: oklch(72% 0.02 260);">
+										{project.data.description}
+									</p>
+
+									{project.data.highlights && project.data.highlights.length > 0 && (
+										<ul class="mb-4 space-y-1">
+											{project.data.highlights.slice(0, 2).map((highlight) => (
+												<li class="font-mono-accent text-xs flex gap-2" style="color: oklch(65% 0.02 260);">
+													<span style="color: var(--retro-cyan);">›</span>
+													{highlight}
+												</li>
+											))}
+										</ul>
+									)}
+
+									<div class="flex flex-wrap gap-1 mb-5">
+										{project.data.technologies.slice(0, 4).map((tech) => (
+											<span class="retro-tag">{tech}</span>
+										))}
+										{project.data.technologies.length > 4 && (
+											<span class="retro-label px-2 py-0.5" style="color: oklch(55% 0.02 260);">
+												+{project.data.technologies.length - 4}
+											</span>
+										)}
+									</div>
+
+									<div class="flex gap-4 mt-auto pt-2" style="border-top: 1px solid oklch(78% 0.14 195 / 0.1);">
+										{project.data.githubUrl && (
+											<a
+												href={project.data.githubUrl}
+												target="_blank"
+												class="font-mono-accent text-xs uppercase tracking-wider flex items-center gap-1.5 hover:opacity-80 transition-opacity"
+												style="color: var(--retro-amber);"
+											>
+												<Icon name="simple-icons:github" class="w-3.5 h-3.5" />
+												{t['experience.projectCode']}
+											</a>
+										)}
+										{project.data.liveUrl && (
+											<a
+												href={project.data.liveUrl}
+												target="_blank"
+												class="font-mono-accent text-xs uppercase tracking-wider flex items-center gap-1.5 hover:opacity-80 transition-opacity"
+												style="color: var(--retro-cyan);"
+											>
+												<Icon name="mdi:open-in-new" class="w-3.5 h-3.5" />
+												{t['experience.projectLive']}
+											</a>
+										)}
+									</div>
+								</div>
+							);
+						})}
+					</div>
+				</div>
+			</section>
+
+			<hr class="retro-divider" />
+
+			<section class="py-16 px-6" style="background: var(--retro-deep-navy);">
+				<div class="max-w-6xl mx-auto">
+					<div class="text-center mb-14">
+						<span class="retro-label block mb-3" style="color: var(--retro-amber);">{t['experience.skillsLabel']}</span>
+						<h2 class="text-3xl md:text-4xl font-bold retro-glow-amber" style="color: var(--retro-amber-bright);">
+							{t['experience.skillsHeading']}
+						</h2>
+					</div>
+
+					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+						{featuredSkills.map((skill) => (
+							<div class="retro-card">
+								<div class="flex items-center gap-3 mb-4">
+									<span class="text-2xl">{skill.data.icon}</span>
+									<h3 class="font-bold" style="color: var(--retro-amber-bright);">{skill.data.title}</h3>
+								</div>
+								{skill.data.description && (
+									<p class="text-xs mb-4 leading-relaxed" style="color: oklch(65% 0.02 260);">{skill.data.description}</p>
+								)}
+								<div class="flex flex-wrap gap-1">
+									{skill.data.technologies.slice(0, 6).map((tech) => (
+										<span class="retro-tag" style={`color: ${getSkillLevelColor(tech.level || '')};`}>
+											{tech.name}{tech.level === 'expert' ? ' ★' : ''}
+										</span>
+									))}
+									{skill.data.technologies.length > 6 && (
+										<span class="retro-label text-xs px-1.5" style="color: oklch(50% 0.02 260);">
+											+{skill.data.technologies.length - 6}
+										</span>
+									)}
+								</div>
+							</div>
+						))}
+					</div>
+
+					<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+						{featuredSkills.map((skill) => (
+							<div class="retro-card">
+								<div class="flex items-center gap-3 mb-5" style="border-bottom: 1px solid oklch(78% 0.14 195 / 0.1); padding-bottom: 0.75rem;">
+									<span class="text-xl">{skill.data.icon}</span>
+									<h4 class="font-bold" style="color: var(--retro-amber-bright);">{skill.data.title}</h4>
+								</div>
+								<div class="space-y-2.5">
+									{skill.data.technologies.map((tech) => (
+										<div class="flex items-center justify-between">
+											<span class="font-mono-accent text-xs" style="color: oklch(78% 0.02 260);">{tech.name}</span>
+											<div class="flex items-center gap-2">
+												{tech.years && (
+													<span class="font-mono-accent text-xs" style="color: oklch(50% 0.02 260);">{tech.years}y</span>
+												)}
+												{tech.level && (
+													<span class="retro-tag" style={`color: ${getSkillLevelColor(tech.level)};`}>
+														{tech.level.toUpperCase()}
+													</span>
+												)}
+											</div>
+										</div>
+									))}
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<hr class="retro-divider" />
+
+			<section class="py-20 px-6 retro-grid-bg" style="background: var(--retro-deep-navy);">
+				<div class="max-w-4xl mx-auto text-center retro-stagger">
+					<span class="retro-animate-in retro-label block mb-4" style="color: var(--retro-cyan);">{t['experience.ctaContactLabel']}</span>
+					<h2
+						class="retro-animate-in text-3xl md:text-4xl font-bold mb-6 retro-glow-amber"
+						style="color: var(--retro-amber-bright);"
+					>
+						{t['experience.ctaContactHeading']}
+					</h2>
+					<p
+						class="retro-animate-in font-mono-accent text-base mb-10 max-w-xl mx-auto"
+						style="color: oklch(72% 0.02 260);"
+					>
+						{t['experience.ctaContactSubtitle']}
+					</p>
+					<div class="retro-animate-in flex flex-wrap justify-center gap-4">
+						<a
+							href="mailto:hola@misaelabanto.com"
+							class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105"
+							style="background: var(--retro-amber); color: var(--retro-deep-navy);"
+						>
+							{t['experience.ctaContactButton']}
+						</a>
+						<a
+							href={blogHref}
+							class="inline-flex items-center gap-2 px-8 py-3 rounded font-mono-accent font-semibold text-sm uppercase tracking-wider border-2 transition-all duration-300 hover:scale-105"
+							style="border-color: var(--retro-cyan); color: var(--retro-cyan);"
+						>
+							{t['experience.ctaBlogButton']}
+						</a>
+					</div>
+				</div>
+			</section>
+
+		</main>
+		<Footer />
+	</body>
+</html>
