@@ -33,6 +33,35 @@ const {
 	noindex = false
 } = Astro.props;
 ---
+<!-- Language redirect — must run synchronously before paint to avoid a blank flash when redirecting. Key must match LANGUAGE_STORAGE_KEY in src/i18n/constants.ts. -->
+<script is:inline>
+  (function () {
+    var languages = { es: 1, en: 1 };
+    var defaultLang = 'en';
+    var path = location.pathname;
+    var firstSegment = path.split('/').filter(Boolean)[0];
+    if (firstSegment && firstSegment in languages) return;
+
+    var stored = localStorage.getItem('language');
+    var preferred;
+    if (stored && stored in languages) {
+      preferred = stored;
+    } else {
+      var browserLangs = navigator.languages || [navigator.language];
+      for (var i = 0; i < browserLangs.length; i++) {
+        var lang = browserLangs[i].split('-')[0].toLowerCase();
+        if (lang in languages) { preferred = lang; break; }
+      }
+      preferred = preferred || defaultLang;
+    }
+
+    if (preferred === defaultLang) return;
+
+    localStorage.setItem('language', preferred);
+    var target = path === '/' ? '/' + preferred + '/' : '/' + preferred + path;
+    location.replace(target);
+  })();
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2TX7WWXJ4L"></script>
 <script is:inline>
@@ -97,69 +126,3 @@ const {
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-<!-- Language Detection Script -->
-<script>
-  import { LANGUAGE_STORAGE_KEY } from '@/i18n/constants';
-
-  const languages = { "es": "es", "en": "en" };
-  const defaultLang = "en";
-
-  function detectUserLanguage() {
-    const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
-    if (stored && stored in languages) {
-      return stored;
-    }
-
-    // Get browser languages in order of preference
-    const browserLanguages = navigator.languages || [navigator.language];
-    
-    // Find the first supported language
-    for (const browserLang of browserLanguages) {
-      const language = browserLang.split('-')[0].toLowerCase();
-      if (language in languages) {
-        return language;
-      }
-    }
-
-    return defaultLang;
-  }
-
-  function handleLanguageRedirection() {
-    const currentPath = window.location.pathname;
-    const currentUrl = new URL(window.location.href);
-    
-    // Skip if we're already on a localized path
-    const pathSegments = currentPath.split('/').filter(Boolean);
-    const potentialLocale = pathSegments[0];
-    if (potentialLocale && potentialLocale in languages) {
-      return;
-    }
-
-    const preferredLang = detectUserLanguage();
-    
-    // Only redirect if preferred language is not the default
-    if (preferredLang === defaultLang) {
-      return;
-    }
-
-    localStorage.setItem(LANGUAGE_STORAGE_KEY, preferredLang);
-
-    // Build the redirect URL
-    let redirectPath;
-    if (currentPath === '/') {
-      redirectPath = `/${preferredLang}/`;
-    } else {
-      redirectPath = `/${preferredLang}${currentPath}`;
-    }
-
-    // Perform the redirect
-    window.location.href = new URL(redirectPath, currentUrl.origin).href;
-  }
-
-  // Initialize language detection when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', handleLanguageRedirection);
-  } else {
-    handleLanguageRedirection();
-  }
-</script>
