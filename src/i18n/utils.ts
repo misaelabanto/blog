@@ -1,4 +1,5 @@
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import { LANGUAGE_STORAGE_KEY } from './constants';
 
 export const languages = {
   en: 'English',
@@ -62,7 +63,7 @@ export function getBrowserLanguage(): Language {
 export function getStoredLanguage(): Language | null {
   if (typeof localStorage === 'undefined') return null;
   
-  const stored = localStorage.getItem('language');
+  const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
   return stored && stored in languages ? (stored as Language) : null;
 }
 
@@ -71,7 +72,7 @@ export function getStoredLanguage(): Language | null {
  */
 export function storeLanguage(lang: Language): void {
   if (typeof localStorage !== 'undefined') {
-    localStorage.setItem('language', lang);
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
   }
 }
 
