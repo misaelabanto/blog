@@ -1,5 +1,5 @@
 ---
-import { SITE_TITLE } from '../consts';
+import { SITE_NAME } from '../consts';
 import { getLangFromUrl, useTranslatedPath } from '../i18n/utils';
 import Navigation from './Navigation.astro';
 import LanguageSelector from './LanguageSelector.astro';
@@ -13,7 +13,7 @@ const homeUrl = translatePath('/');
 <header class="m-0 px-4 shadow-md">
 	<nav class="flex items-center justify-between">
 		<h2 class="m-0">
-			<a href={homeUrl} class="no-underline text-xl">{SITE_TITLE}</a>
+			<a href={homeUrl} class="no-underline text-xl">{SITE_NAME}</a>
 		</h2>
 		
 		<!-- Desktop Navigation -->

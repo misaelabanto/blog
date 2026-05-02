@@ -2,7 +2,7 @@
 import BaseHead from '@/components/BaseHead.astro';
 import Footer from '@/components/Footer.astro';
 import Header from '@/components/Header.astro';
-import { SITE_TITLE } from '@/consts';
+import { SITE_NAME } from '@/consts';
 import type { Language } from '@/i18n/utils';
 import { filterByLanguage, useTranslatedPath } from '@/i18n/utils';
 import { getUI } from '@/i18n/ui';
@@ -32,7 +32,7 @@ const experienceHref = translatePath('/experience');
 <html lang={lang} data-theme="dark">
 	<head>
 		<BaseHead
-			title={`${t['projects.pageTitle']} · ${SITE_TITLE}`}
+			title={`${t['projects.pageTitle']} · ${SITE_NAME}`}
 			description={t['projects.pageDescription']}
 		/>
 	</head>
