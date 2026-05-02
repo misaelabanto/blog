@@ -2,7 +2,7 @@
 import BaseHead from '@/components/BaseHead.astro';
 import Footer from '@/components/Footer.astro';
 import Header from '@/components/Header.astro';
-import { SITE_TITLE } from '@/consts';
+import { SITE_NAME } from '@/consts';
 import { filterByLanguage } from '@/i18n/utils';
 import { getCollection } from 'astro:content';
 
@@ -40,7 +40,7 @@ function getProficiencyPercentage(level: string): number {
 <!doctype html>
 <html lang="es" data-theme="dark">
   <head>
-    <BaseHead title={`Habilidades - ${SITE_TITLE}`} description="Explora mi experiencia técnica en desarrollo frontend, sistemas backend, arquitectura de datos y tecnologías en la nube." />
+    <BaseHead title={`Habilidades - ${SITE_NAME}`} description="Explora mi experiencia técnica en desarrollo frontend, sistemas backend, arquitectura de datos y tecnologías en la nube." />
   </head>
   <body>
     <Header />
